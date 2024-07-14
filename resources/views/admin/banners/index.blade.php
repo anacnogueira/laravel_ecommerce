@@ -1,0 +1,62 @@
+@extends('adminlte::page')
+
+@section('title', 'Listar Banners')
+
+@section('content_header')
+    <h1>Listar Banners
+    <a href="{{ route('admin.banners.create') }}" class="btn btn-sm btn-primary">
+        <i class="fa fa-lg fa-fw fa-file"></i> Adicionar
+</a></h1>
+@stop
+
+@section('content')
+    @php
+        $data = [];
+
+        $heads = [
+            ['label' => 'ID', 'width' => 5],
+            ['label' => 'Nome', 'width' => 20],
+            ['label' => 'Dimensão', 'width' => 20],
+            ['label' => 'Status', 'width' => 10],
+            ['label' => 'Ações', 'no-export' => true, 'width' => 5],
+        ];
+
+        foreach($banners  as $key => $banner) {
+            $data[$key] = [
+                $banner->id,
+                $banner->name,
+                $banner->dimension,
+                ($banner->status == 'S' ? 'Ativo' : 'Inativo'),
+                '<nobr><a href="'. route('admin.banners.edit', $banner->id).'" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
+                <i class="fa fa-lg fa-fw fa-pen"></i></a>
+                <form action="'.route('admin.banners.destroy', $banner->id) .'" method="POST" style="display: inline">
+                    <input type="hidden" name="_token" value="'.csrf_token().'">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+                        <i class="fa fa-lg fa-fw fa-trash"></i>
+                    </button>
+                </form>
+                <a href="'.route('admin.banners.show', $banner->id) .'" class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
+                    <i class="fa fa-lg fa-fw fa-eye"></i>
+                </a>
+                </nobr>',
+            ];
+        }
+        
+        $config = [
+            'data' => $data,
+            'order' => [[1, 'asc']],
+            'columns' => [null, null, null, ['orderable' => false]],
+        ];
+    @endphp
+    <x-adminlte-datatable id="table-banner" :heads="$heads" head-theme="light" hoverable bordered with-buttons>
+        @foreach($config['data'] as $row)
+            <tr>
+                @foreach($row as $cell)
+                    <td>{!! $cell !!}</td>
+                @endforeach
+            </tr>
+        @endforeach
+    </x-adminlte-datatable>     
+   
+@stop
