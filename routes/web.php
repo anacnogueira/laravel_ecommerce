@@ -27,5 +27,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
 //2. SITE
 Auth::routes();
+//2.1 Banners
+Route::get('/banners', [App\Http\Controllers\BannerController::class, 'index'])->name('banner.index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
