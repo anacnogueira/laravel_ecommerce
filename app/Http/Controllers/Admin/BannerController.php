@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banner;
 use App\Http\Requests\AdminBannerStoreRequest;
+use App\Services\StoreFileService;
+use Illuminate\Support\Str;
 
 class BannerController extends Controller
 {
@@ -47,10 +49,20 @@ class BannerController extends Controller
     public function store(AdminBannerStoreRequest $request)
     {
         $data = $request->all();
-        $this->banner->create($data);
+        $data["status"] = isset($data["status"]) ? 'S' : 'N';
+        $banner = $this->banner->create($data);
+        $fileName = Str::kebab($banner->name)."-".date('dmYHis');
 
-        //TO DO:
-        //Upload de arquivo
+        $storeFileService = new StoreFileService(
+            $request->file("upload"),
+            "public/images/banners",
+            $fileName
+        );
+        $pathFile = $storeFileService->upload();
+        $banner->update([
+            "image" => $pathFile,
+        ]);
+
 
         return redirect()->route('admin.banners.index');
     }

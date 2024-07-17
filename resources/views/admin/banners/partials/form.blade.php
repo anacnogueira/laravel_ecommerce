@@ -1,15 +1,35 @@
 @csrf
 
-<x-adminlte-input name="name" label="Name:*" value="{{ $banner->name }}" placeholder="Insira nome do banner"/>
+<x-adminlte-input name="name" label="Name:*" value="{{ $banner->name ?? ''}}" placeholder="Insira nome do banner"/>
+
+@php
+    $config = [
+        'state' => ((isset($banner) && $banner->status == 'S') || !isset($banner->status) ? true : false),
+    ];
+@endphp    
+<x-adminlte-input-switch 
+    name="status"
+    label="status"
+    data-on-color="success"
+    data-off-color="danger"
+    data-on-text="Ativo"
+    data-off-text="Inativo"
+    :config="$config"/>
+
 <x-adminlte-input name="dimension" label="Tamanho:" placeholder="Insira o tamanho dobanner no formato alturaXlargura"/>
 <x-adminlte-input name="url" label="Link:" placeholder="Insira o link do banner"/>
-<x-adminlte-input-file name="upload" label="Imagem:" placeholder="Escolha um arquivo...">
+<x-adminlte-input-file name="upload" label="Imagem:" placeholder="Escolha um arquivo..." legend="Procurar">
     <x-slot name="prependSlot">
         <div class="input-group-text bg-lightblue">
             <i class="fas fa-upload"></i>
         </div>
     </x-slot>
 </x-adminlte-input-file>
+
+<div id="imagePreview">
+
+</div>
+
 <p><strong>Instruções para inserção de imagem:</strong></p>
  <ul>
     <li>Extensões permitidas: gif,jpg e png</li>
@@ -58,3 +78,21 @@ $config = ['format' => 'DD/MM/YYYY'];
 
 <a href="{{ route('admin.banners.index') }}" class="btn btn-warning"><i class="fa fa-times"></i> Cancelar</a>
 <x-adminlte-button type="submit" label="Salvar" theme="success" icon="fas fa-check"/>
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('upload').addEventListener('change', function() {
+        displayImagePreview(this);
+    });
+
+    function displayImagePreview(input) {
+        var file = input.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('imagePreview').innerHTML = '<img src="' + e.target.result + '" width="200" alt="Profile Image Preview">';
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+});
+</script>
