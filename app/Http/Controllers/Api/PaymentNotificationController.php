@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Efi\Exception\EfiException;
 use Efi\EfiPay;
 
-class PaymentNotificatioController extends Controller
+class PaymentNotificationController extends Controller
 {
     protected $options = [];
 

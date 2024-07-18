@@ -7,7 +7,8 @@ use App\Http\Controllers\Api\BannersController;
 use App\Http\Controllers\Api\PixController;
 use App\Http\Controllers\Api\BilletController;
 use App\Http\Controllers\Api\CreditCardController;
-use App\Http\Controllers\Api\PaymentNotificatioController;
+use App\Http\Controllers\Api\PaymentNotificationController;
+use App\Http\Controllers\Api\Admin\StatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,15 @@ use App\Http\Controllers\Api\PaymentNotificatioController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+// A - ADMIN
+// 1- Status items
+Route::post('/admin/status-change',[StatusController::class,'change']);
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+
 
 
 //B - Loja
@@ -52,4 +58,4 @@ Route::group(['prefix' => 'creditCard'], function () {
 });
 
 //Notificações de Pagamento
-Route::post('/efi/notification',[PaymentNotificatioController::class,'store']);
+Route::post('/efi/notification',[PaymentNotificationController::class,'store']);

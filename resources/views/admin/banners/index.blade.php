@@ -3,30 +3,32 @@
 @section('title', 'Listar Banners')
 
 @section('content_header')
-    <h1>Listar Banners
-    <a href="{{ route('admin.banners.create') }}" class="btn btn-sm btn-primary">
-        <i class="fa fa-lg fa-fw fa-file"></i> Adicionar
-</a></h1>
+    <h1>Banners</h1>
 @stop
 
+@section('plugins.Datatables', true)
+@section('plugins.DatatablesPlugin', true)
+
 @section('content')
+    @inject('statusChange', 'App\Services\StatusChangeService')
     @php
         $data = [];
 
         $heads = [
             ['label' => 'ID', 'width' => 5],
-            ['label' => 'Nome', 'width' => 20],
-            ['label' => 'Dimensão', 'width' => 20],
-            ['label' => 'Status', 'width' => 10],
+            'Nome',
+            'Dimensão',
+            ['label' => 'Ativo', 'width' => 5],
             ['label' => 'Ações', 'no-export' => true, 'width' => 5],
         ];
 
         foreach($banners  as $key => $banner) {
+            $status = $statusChange->returnStatusBullets("banners", $banner->status, $banner->id);
             $data[$key] = [
                 $banner->id,
                 $banner->name,
                 $banner->dimension,
-                ($banner->status == 'S' ? 'Ativo' : 'Inativo'),
+                $status,
                 '<nobr><a href="'. route('admin.banners.edit', $banner->id).'" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                 <i class="fa fa-lg fa-fw fa-pen"></i></a>
                 <form action="'.route('admin.banners.destroy', $banner->id) .'" method="POST" style="display: inline">
@@ -49,14 +51,73 @@
             'columns' => [null, null, null, ['orderable' => false]],
         ];
     @endphp
-    <x-adminlte-datatable id="table-banner" :heads="$heads" head-theme="light" hoverable bordered with-buttons>
-        @foreach($config['data'] as $row)
-            <tr>
-                @foreach($row as $cell)
-                    <td>{!! $cell !!}</td>
-                @endforeach
-            </tr>
-        @endforeach
-    </x-adminlte-datatable>     
-   
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary card-outline">
+                <div class="card-header"> <a href="{{ route('admin.banners.create') }}" class="btn btn-sm btn-primary">
+                    <i class="fa fa-lg fa-fw fa-file"></i> Adicionar
+                </a></div>
+                <div class="card-body">
+                    <x-adminlte-datatable id="table-banner" :heads="$heads" head-theme="light" hoverable bordered with-buttons>
+                        @foreach($config['data'] as $row)
+                            <tr>
+                                @foreach($row as $cell)
+                                    <td>{!! $cell !!}</td>
+                                @endforeach
+                            </tr>
+                        @endforeach
+                    </x-adminlte-datatable>
+                </div>
+            </div>
+        </div>
+    </div>                  
 @stop
+
+@push('css')
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+@endpush
+@push('js')
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+   <script>
+        const elements = document.querySelectorAll(".status-change");
+
+        const url = "../api/admin/status-change";
+        elements.forEach((item) => {
+            item.addEventListener("click", async (event) => {
+                let inputCheckbox= event.target.parentNode.parentNode.querySelector('input[type=checkbox]');
+                let status = inputCheckbox.checked == true ? 'N' : 'S'; 
+               
+                formData = {
+                    table: inputCheckbox.dataset.table,
+                    status,
+                    id: inputCheckbox.dataset.id,      
+                };
+
+              try {
+                    const response = await fetch(url, {
+                        method: "POST",
+                        body: JSON.stringify(formData),
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    });
+
+                    const data = await response.json();
+
+                    if (response.status === 200) {
+                        
+                    } else if (response.status === 422) {
+                        console.log('Erro de validação');
+                        //validationError(data);
+                    } else {
+                        console.log('Erro inesperado');
+                        //unexpectedError();
+                    }
+                } catch (error) {
+                    console.log(error.message);
+                    //unexpectedError();
+                }
+            });
+        }); 
+   </script>     
+@endpush
