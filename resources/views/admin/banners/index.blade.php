@@ -78,46 +78,5 @@
 @endpush
 @push('js')
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
-   <script>
-        const elements = document.querySelectorAll(".status-change");
-
-        const url = "../api/admin/status-change";
-        elements.forEach((item) => {
-            item.addEventListener("click", async (event) => {
-                let inputCheckbox= event.target.parentNode.parentNode.querySelector('input[type=checkbox]');
-                let status = inputCheckbox.checked == true ? 'N' : 'S'; 
-               
-                formData = {
-                    table: inputCheckbox.dataset.table,
-                    status,
-                    id: inputCheckbox.dataset.id,      
-                };
-
-              try {
-                    const response = await fetch(url, {
-                        method: "POST",
-                        body: JSON.stringify(formData),
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                    });
-
-                    const data = await response.json();
-
-                    if (response.status === 200) {
-                        
-                    } else if (response.status === 422) {
-                        console.log('Erro de validação');
-                        //validationError(data);
-                    } else {
-                        console.log('Erro inesperado');
-                        //unexpectedError();
-                    }
-                } catch (error) {
-                    console.log(error.message);
-                    //unexpectedError();
-                }
-            });
-        }); 
-   </script>     
+    <script  type="text/javascript" src="{{ asset('js/admin/banner-status.js') }}"></script>     
 @endpush
