@@ -7,6 +7,7 @@
 @stop
 
 @section('plugins.TempusDominusBs4', true)
+@section('plugins.BootstrapSwitch', true)
 
 @section('content')
     

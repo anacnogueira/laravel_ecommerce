@@ -28,7 +28,7 @@ class Banner extends Model
     }
 
     /**
-     * Set the user's first name.
+     * Set the scheduled date
      *
      * @param  string  $value
      * @return void
@@ -41,7 +41,7 @@ class Banner extends Model
     }
 
     /**
-     * Set the user's first name.
+     * Set the expire date
      *
      * @param  string  $value
      * @return void
@@ -53,6 +53,27 @@ class Banner extends Model
         null;
     }
 
+    /**
+     * Get the scheduled date
+     *
+     * @param  string  scheduled date
+     * @return string
+     */
+    public function getScheduledDateAttribute($value)
+    {
+        return Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
+    }
+
+    /**
+     * Get the expire date
+     *
+     * @param  string  expire date
+     * @return string
+     */
+    public function getExpireDateAttribute($value)
+    {
+        return Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
+    }
 
     public static function show()
     {   
