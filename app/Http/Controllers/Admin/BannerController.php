@@ -49,8 +49,10 @@ class BannerController extends Controller
     public function store(AdminBannerStoreRequest $request)
     {
         $data = $request->all();
+
         $data["status"] = isset($data["status"]) ? 'S' : 'N';
         $banner = $this->banner->create($data);
+
         $fileName = Str::kebab($banner->name)."-".date('dmYHis');
 
         $storeFileService = new StoreFileService(

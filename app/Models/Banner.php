@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Banner extends Model
 {
@@ -25,6 +26,33 @@ class Banner extends Model
     {
         return $this->hasMany(BannerLog::class);
     }
+
+    /**
+     * Set the user's first name.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setScheduledDateAttribute($value)
+    {
+        $this->attributes['scheduled_date'] = $value ?
+        Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d') :
+        null;
+    }
+
+    /**
+     * Set the user's first name.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setExpireDateAttribute($value)
+    {
+        $this->attributes['expire_date'] = $value ?
+        Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d') :
+        null;
+    }
+
 
     public static function show()
     {   

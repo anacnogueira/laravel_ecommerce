@@ -49,6 +49,7 @@
             'data' => $data,
             'order' => [[1, 'asc']],
             'columns' => [null, null, null, ['orderable' => false]],
+          
         ];
     @endphp
     <div class="row">
