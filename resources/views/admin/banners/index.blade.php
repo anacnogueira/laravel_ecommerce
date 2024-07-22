@@ -8,6 +8,7 @@
 
 @section('plugins.Datatables', true)
 @section('plugins.DatatablesPlugin', true)
+@section('plugins.Sweetalert2', true);
 
 @section('content')
     @inject('statusChange', 'App\Services\StatusChangeService')
@@ -31,7 +32,7 @@
                 $status,
                 '<nobr><a href="'. route('admin.banners.edit', $banner->id).'" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                 <i class="fa fa-lg fa-fw fa-pen"></i></a>
-                <form action="'.route('admin.banners.destroy', $banner->id) .'" method="POST" style="display: inline">
+                <form action="'.route('admin.banners.destroy', $banner->id) .'" method="POST" class="frm-delete" style="display: inline">
                     <input type="hidden" name="_token" value="'.csrf_token().'">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
@@ -79,5 +80,6 @@
 @endpush
 @push('js')
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
-    <script  type="text/javascript" src="{{ asset('js/admin/banner-status.js') }}"></script>     
+    <script  type="text/javascript" src="{{ asset('js/admin/banner-status.js') }}"></script>
+    <script  type="text/javascript" src="{{ asset('js/admin/banner-delete.js') }}"></script>
 @endpush
