@@ -30,16 +30,16 @@
                 $banner->name,
                 $banner->dimension,
                 $status,
-                '<nobr><a href="'. route('admin.banners.edit', $banner->id).'" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
+                '<nobr><a href="'. route('admin.banners.edit', $banner->id).'" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar">
                 <i class="fa fa-lg fa-fw fa-pen"></i></a>
                 <form action="'.route('admin.banners.destroy', $banner->id) .'" method="POST" class="frm-delete" style="display: inline">
                     <input type="hidden" name="_token" value="'.csrf_token().'">
                     <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+                    <button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Excluir">
                         <i class="fa fa-lg fa-fw fa-trash"></i>
                     </button>
                 </form>
-                <a href="'.route('admin.banners.show', $banner->id) .'" class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
+                <a href="'.route('admin.banners.show', $banner->id) .'" class="btn btn-xs btn-default text-teal mx-1 shadow" title="Detalhes">
                     <i class="fa fa-lg fa-fw fa-eye"></i>
                 </a>
                 </nobr>',
