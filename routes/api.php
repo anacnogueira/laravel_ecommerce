@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategoriesController;
-use App\Http\Controllers\Api\BannersController;
+use App\Http\Controllers\Api\BannersController as ApiBannersController;
 use App\Http\Controllers\Api\PixController;
 use App\Http\Controllers\Api\BilletController;
 use App\Http\Controllers\Api\CreditCardController;
@@ -29,12 +29,10 @@ Route::post('/admin/status-change',[StatusController::class,'change']);
 // });
 
 
-
-
 //B - Loja
 //Categories
 // Route::get('/categories/menu',[CategoriesController::class,'menu']);
-// Route::get('/banners/show',[BannersController::class,'show']);
+Route::get('/banners',[ApiBannersController::class,'index']);
 
 //PIX
 Route::group(['prefix' => 'pix'], function () {
