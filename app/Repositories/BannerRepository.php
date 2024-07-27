@@ -18,9 +18,9 @@ class BannerRepository implements BannerRepositoryInterface
      * Get all Banners
      * @return array
      */
-    public function getAllBanners($perPage)
+    public function getAllBanners()
     {
-        return $this->entity->paginate();
+        return $this->entity->all();
     }
 
     /**

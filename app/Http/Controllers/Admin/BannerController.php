@@ -3,19 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Banner;
-use App\Http\Requests\AdminBannerStoreRequest;
-use App\Services\StoreFileService;
-use Illuminate\Support\Str;
+use App\Services\BannerService;
+use App\Http\Requests\AdminStoreUpdateBannerRequest;
 
 class BannerController extends Controller
 {
-    protected $banner;
+    protected $bannerService;
 
-    public function __construct(Banner $banner)
+    public function __construct(BannerService $bannerService)
     {
-        $this->banner = $banner;
+        $this->bannerService = $bannerService;
     }
     
     /**
@@ -25,7 +22,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $banners =  $this->banner->all();
+        $banners = $this->bannerService->getAllBanners();
 
         return view('admin.banners.index', compact('banners'));
     }
@@ -37,7 +34,9 @@ class BannerController extends Controller
      */
     public function create()
     {
-        return view('admin.banners.create');
+        $banner = null;
+        
+        return view('admin.banners.create', compact('banner'));
     }
 
      /**
@@ -46,25 +45,11 @@ class BannerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminBannerStoreRequest $request)
+    public function store(AdminStoreUpdateBannerRequest $request)
     {
         $data = $request->all();
-
-        $data["status"] = isset($data["status"]) ? 'S' : 'N';
-        $banner = $this->banner->create($data);
-
-        $fileName = Str::kebab($banner->name)."-".date('dmYHis');
-
-        $storeFileService = new StoreFileService(
-            $request->file("upload"),
-            "public/images/banners",
-            $fileName
-        );
-        $pathFile = $storeFileService->upload();
-        $banner->update([
-            "image" => $pathFile,
-        ]);
-
+        
+        $banner = $this->bannerService->makeBanner($data, $request->file("upload"));
 
         return redirect()->route('admin.banners.index');
     }
@@ -77,7 +62,7 @@ class BannerController extends Controller
      */
     public function show($id)
     {
-        $banner = $this->banner->find($id);
+        $banner = $this->bannerService->getBannerById($id);
         
         return view('admin.banners.show', compact('banner'));
     }
@@ -90,7 +75,7 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        $banner = $this->banner->find($id);
+        $banner = $this->bannerService->getBannerById($id);
         
         return view('admin.banners.edit', compact('banner'));
     }
@@ -102,13 +87,11 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdminStoreUpdateBannerRequest $request, $id)
     {
         $data = $request->all();
-
-        $banner = $this->banner->findOrFail($id);
-
-        $banner->update($data);
+ 
+        $banner = $this->bannerService->updateBanner($id, $data, $request->file("upload"));
 
         return redirect()->route('admin.banners.index');
     }
@@ -121,9 +104,7 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
-        $banner = $this->banner->findOrFail($id);
-
-        $banner->delete();
+        $banner = $this->bannerService->destroyBanner($id);
 
         return redirect()->route('admin.banners.index');
     }

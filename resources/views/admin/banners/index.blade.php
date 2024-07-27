@@ -8,7 +8,8 @@
 
 @section('plugins.Datatables', true)
 @section('plugins.DatatablesPlugin', true)
-@section('plugins.Sweetalert2', true);
+@section('plugins.Sweetalert2', true)
+@section('plugins.BootstrapSwitch', true)
 
 @section('content')
     @inject('statusChange', 'App\Services\StatusChangeService')

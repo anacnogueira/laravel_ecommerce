@@ -61,7 +61,7 @@ class Banner extends Model
      */
     public function getScheduledDateAttribute($value)
     {
-        return Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
+        return $value ? Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y') : null;
     }
 
     /**
@@ -72,7 +72,7 @@ class Banner extends Model
      */
     public function getExpireDateAttribute($value)
     {
-        return Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
+        return $value ? Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y') : null;
     }
 
     public static function show()

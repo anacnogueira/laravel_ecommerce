@@ -19,9 +19,9 @@ class BannerService
      * Select all banners
      * @return array
     */
-    public function getAllBanners($perPage = null)
+    public function getAllBanners()
     {
-        return $this->bannerRepository->getAllBanners($perPage);
+        return $this->bannerRepository->getAllBanners();
     }
 
      /**

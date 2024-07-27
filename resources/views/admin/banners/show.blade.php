@@ -38,7 +38,7 @@
                         @enhphp    
                     @endif
                     <a href="{{ $url }}">
-                        <img src="{{ url('images/banners/'.$banner->image) }}" >
+                        <img src="{{ Storage::url($banner->image) }}" >
                     </a>                    
                     @endif
                     <div class="row" style="margin-top: 20px">
