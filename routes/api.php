@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\BilletController;
 use App\Http\Controllers\Api\CreditCardController;
 use App\Http\Controllers\Api\PaymentNotificationController;
 use App\Http\Controllers\Api\Admin\StatusController;
+use App\Http\Controllers\Api\Admin\BannerController as ApiAdminBannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,11 @@ use App\Http\Controllers\Api\Admin\StatusController;
 // A - ADMIN
 // 1- Status items
 Route::post('/admin/status-change',[StatusController::class,'change']);
+
+Route::prefix('admin')->name('admin.')->group(function(){
+    //1.1 Banners
+    Route::apiResource('banners', ApiAdminBannerController::class);
+});
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
