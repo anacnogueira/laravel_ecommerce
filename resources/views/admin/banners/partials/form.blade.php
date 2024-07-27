@@ -6,6 +6,7 @@
     $config = [
         'state' => (isset($banner) && $banner->status == 'S') || !isset($banner) ? true : false,
     ];
+    
 @endphp    
 <x-adminlte-input-switch 
     name="status"
@@ -14,7 +15,8 @@
     data-off-color="danger"
     data-on-text="Ativo"
     data-off-text="Inativo"
-    :config="$config"/>
+    :config="$config"
+    checked="$config['state']" />
 
 <x-adminlte-input name="dimension" label="Tamanho:" placeholder="Insira o tamanho dobanner no formato alturaXlargura" value="{{ $banner ? $banner->dimension : ''}}"/>
 <x-adminlte-input name="url" label="Link:" placeholder="Insira o link do banner" value="{{ $banner ? $banner->url : ''}}"/>

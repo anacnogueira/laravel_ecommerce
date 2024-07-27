@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Banner;
+
+use App\Services\BannerService;
 use App\Http\Resources\BannerResource;
 
 class BannerController extends Controller
 {
-    protected $banner;
+    protected $bannerService;
 
-    public function __construct(Banner $banner)
+    public function __construct(BannerService $bannerService)
     {
-        $this->banner = $banner;
+        $this->bannerService = $bannerService;
     }
 
-    public function index(Request $request)
+    public function index()
     {
-        $banners = BannerResource::collection(Banner::show());
+        //Banner::show()
+        
+        $banners = BannerResource::collection($this->bannerService->getActiveBanners());
 
         return view('banners.index', compact('banners'));
     }

@@ -24,6 +24,11 @@ class BannerService
         return $this->bannerRepository->getAllBanners();
     }
 
+    public function getActiveBanners()
+    {
+        return $this->bannerRepository->getActiveBanners();
+    }
+
      /**
      * Create a new banner
      * @param array $data
@@ -37,16 +42,17 @@ class BannerService
 
         $fileName = Str::kebab($banner->name)."-".date('dmYHis');
 
-
-        $storeFileService = new StoreFileService(
-            $file,
-            "public/images/banners",
-            $fileName
-        );
-        $pathFile = $storeFileService->upload();
-        $banner->update([
-            "image" => $pathFile,
-        ]);
+        if($file) {
+            $storeFileService = new StoreFileService(
+                $file,
+                "public/images/banners",
+                $fileName
+            );
+            $pathFile = $storeFileService->upload();
+            $banner->update([
+                "image" => $pathFile,
+            ]);
+        }        
 
         return $banner;
     }

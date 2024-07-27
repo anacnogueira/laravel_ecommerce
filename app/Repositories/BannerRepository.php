@@ -24,6 +24,15 @@ class BannerRepository implements BannerRepositoryInterface
     }
 
     /**
+     * Get all Banners
+     * @return array
+     */
+    public function getActiveBanners()
+    {
+        return $this->entity->show();
+    }
+
+    /**
      * Select Banner by ID
      * @param int $id
      * @return object

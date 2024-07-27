@@ -37,7 +37,7 @@
 					@php					
 						$bullets[$key] = "<button class='glide__bullet' data-glide-dir='=$key'></button>";
 						$content = !empty($banner->html) ?: 
-						"<a href='".$banner->url."'><img src='". url("images/banners/".$banner->image)."' alt='".$banner->name."' width='900' height='480' /></a>";
+						"<a href='".$banner->url."'><img src='". Storage::url($banner->image)."' alt='".$banner->name."' width='900' height='480' /></a>";
 					@endphp
 					<li class="glide__slide">{!! $content !!}</li>
 				@endforeach
