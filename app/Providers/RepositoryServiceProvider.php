@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Contracts\BannerRepositoryInterface;
 use App\Repositories\BannerRepository;
+use App\Repositories\Contracts\BrandRepositoryInterface;
+use App\Repositories\BrandRepository;
+
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -18,6 +21,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             BannerRepositoryInterface::class,
             BannerRepository::class,
+        );
+        $this->app->bind(
+            BrandRepositoryInterface::class,
+            BrandRepository::class,
         );
     }
 
