@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\CreditCardController;
 use App\Http\Controllers\Api\PaymentNotificationController;
 use App\Http\Controllers\Api\Admin\StatusController;
 use App\Http\Controllers\Api\Admin\BannerController as ApiAdminBannerController;
+use App\Http\Controllers\Api\Admin\BrandController as ApiAdminBrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +23,15 @@ use App\Http\Controllers\Api\Admin\BannerController as ApiAdminBannerController;
 |
 */
 // A - ADMIN
-// 1- Status items
-Route::post('/admin/status-change',[StatusController::class,'change']);
-
 Route::prefix('admin')->name('admin.')->group(function(){
-    //1.1 Banners
+    // 1- Status items
+    Route::post('/status-change',[StatusController::class,'change']);
+    
+    //2. Banners
     Route::apiResource('banners', ApiAdminBannerController::class);
+    
+    //3. Brands
+    Route::apiResource('brands', ApiAdminBrandController::class);
 });
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {

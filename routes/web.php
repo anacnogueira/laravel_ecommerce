@@ -30,4 +30,8 @@ Auth::routes();
 //2.1 Banners
 Route::get('/banners', [App\Http\Controllers\BannerController::class, 'index'])->name('banner.index');
 
+//2.2 Brands
+Route::get('/marcas', [App\Http\Controllers\BrandController::class, 'index'])->name('brand.index');
+Route::get('/marca/{permalink}', [App\Http\Controllers\BrandController::class, 'show'])->name('brand.show');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

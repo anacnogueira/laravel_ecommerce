@@ -10,5 +10,5 @@ interface BrandRepositoryInterface
     public function getBrandById($id);
     public function createBrand(array $data);
     public function updateBrand(Brand $brand, array $data);
-    public function destroyBanner(Brand $brand);
+    public function destroyBrand(Brand $brand);
 }

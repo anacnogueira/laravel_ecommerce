@@ -27,4 +27,12 @@ class Brand extends Model
             ->orderBy('name')
             ->get();
     }
+
+    public static function activeBrands()
+    {
+        return static::select('*')
+            ->where('status','S')
+            ->orderBy('name')
+            ->get();
+    }
 }

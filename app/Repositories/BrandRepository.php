@@ -29,7 +29,7 @@ class BrandRepository implements BrandRepositoryInterface
      */
     public function getActiveBrands()
     {
-        return $this->entity->menu();
+        return $this->entity->activeBrands();
     }
 
     /**
@@ -40,6 +40,16 @@ class BrandRepository implements BrandRepositoryInterface
     public function getBrandById($id)
     {
         return $this->entity->find($id);
+    }
+
+     /**
+     * Select Brand by Permalink
+     * @param string $permalink
+     * @return object
+     */
+    public function getBrandByPermalink($permalink)
+    {
+        return $this->entity->where('permalink', $permalink)->first();
     }
 
     /**

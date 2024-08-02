@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class BannerService
 {
-    protected $banneryRepository;
+    protected $bannerRepository;
 
     public function __construct(BannerRepositoryInterface $bannerRepository)
     {
