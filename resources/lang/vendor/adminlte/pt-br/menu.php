@@ -16,4 +16,11 @@ return [
     'Important' => 'Importante',
     'Warning' => 'Aviso',
     'Information' => 'Informação',
+    'Sales' => 'Vendas',
+    'Catalog' => 'Catálogo',
+    'Customers' => 'Clientes',
+    'Content' => 'Conteúdo',
+    'Tools' => 'Ferramentas',
+    'Reports' => 'Relatórios',
+    'System' => 'Sistema',
 ];

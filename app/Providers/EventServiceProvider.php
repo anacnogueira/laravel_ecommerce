@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -27,6 +28,58 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Event::listen(BuildingMenu::class, function (BuildingMenu $event) {
+            // Add some items to the menu...
+            $event->menu->add([
+                'header'=> 'main_navigation',
+                'classes' => 'text-bold text-center',
+            ]);
+            $event->menu->add([
+                'text' => 'Dashboard',
+                'url' => 'admin/',
+                'icon' => 'nav-icon fas fa-tachometer-alt'
+            ]);
+            $event->menu->add([
+                'text' => 'Sales',
+                'url' => '#',
+                'icon' => 'nav-icon fa fa-shopping-cart fa-fw'
+            ]);
+            $event->menu->add([
+                'text' => 'Catalog',
+                'url' => '#',
+                'icon' => 'nav-icon fa fa-tags fa-fw'
+            ]);
+            $event->menu->add([
+                'text' => 'Customers',
+                'url' => '#',
+                'icon' => 'nav-icon fa fa-users fa-fw'
+            ]);
+            $event->menu->add([
+                'text' => 'Newsletters',
+                'url' => '#',
+                'icon' => 'nav-icon fa fa-envelope fa-fw'
+            ]);
+            $event->menu->add([
+                'text' => 'Content',
+                'url' => '#',
+                'icon' => 'nav-icon fa fa-cubes fa-fw'
+            ]);
+            $event->menu->add([
+                'text' => 'Tools',
+                'url' => '#',
+                'icon' => 'nav-icon fa fa-wrench fa-fw'
+            ]);
+            $event->menu->add([
+                'text' => 'Reports',
+                'url' => '#',
+                'icon' => 'nav-icon fas fa-chart-bar fa-fw'
+            ]);
+            $event->menu->add([
+                'text' => 'System',
+                'url' => '#',
+                'icon' => 'nav-icon fa fa-cog fa-fw'
+            ]);
+
+        });
     }
 }
