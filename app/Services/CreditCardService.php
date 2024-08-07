@@ -4,13 +4,17 @@ namespace App\Services;
 use Exception;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 use Efi\Exception\EfiException;
 use Efi\EfiPay;
+use App\Models\Order;
 use Carbon\Carbon;
+use App\Mail\OrderPaymentDone;
 
 class CreditCardService
 {
     protected $options = [];
+    protected $order = [];
     
     public function __construct()
     {
@@ -22,6 +26,8 @@ class CreditCardService
             "debug" => false,
             "timeout" => 0
         ];
+
+        $this->order = new Order();
     }
 
     public function createCharge($infoCreditCard)
@@ -93,6 +99,10 @@ class CreditCardService
         try {
             $api = new EfiPay($this->options);
             $response = $api->createOneStepCharge($params = [], $body);
+
+            $order = $this->order->find($infoCreditCard['order_id']);
+
+            $this->sendEmailAdmin($order);
             
             return  [
                 'status' => $response['data']['status'],
@@ -115,5 +125,11 @@ class CreditCardService
             ]
         ];
 
+    }
+
+    private function sendEmailAdmin($order)
+    {
+        Mail::to("anacnogueira@gmail.com")
+        ->send(new OrderPaymentDone($order, "Cartão de Crédito"));            
     }
 }

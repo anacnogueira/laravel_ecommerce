@@ -4,13 +4,17 @@ namespace App\Services;
 use Exception;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 use Efi\Exception\EfiException;
 use Efi\EfiPay;
+use App\Models\Order;
 use App\Services\TimeService;
+use App\Mail\OrderPaymentDone;
 
 class BilletService
 {
     protected $options = [];
+    protected $order = [];
     
     public function __construct()
     {
@@ -22,6 +26,8 @@ class BilletService
             "debug" => false,
             "timeout" => 0
         ];
+
+        $this->order = new Order();
     }
 
     public function createCharge($infoBillet)
@@ -77,6 +83,10 @@ class BilletService
         try {
             $api = new EfiPay($this->options);
             $response = $api->createOneStepCharge($params = [], $body);
+
+            $order = $this->order->find($infoBillet['order_id']);
+
+            $this->sendEmailAdmin($order);
             
             return  [
                 'payment_link' => $response['data']["billet_link"],
@@ -101,5 +111,11 @@ class BilletService
             ]
         ];
 
+    }
+
+    private function sendEmailAdmin($order)
+    {
+        Mail::to("anacnogueira@gmail.com")
+        ->send(new OrderPaymentDone($order, "Boleto"));            
     }
 }

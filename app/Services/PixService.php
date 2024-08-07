@@ -9,6 +9,7 @@ use Efi\EfiPay;
 use App\Models\Order;
 use App\Models\OrderPix;
 use App\Mail\OrderStatusChanged;
+use App\Mail\OrderPaymentDone;
 
 class PixService
 {
@@ -81,6 +82,10 @@ class PixService
                         'qrCodeImage' => $qrcode['imagemQrcode'],
                         'dueDate' => $dueDate
                     ];
+
+                    $order = $this->order->find($infoPix['order_id']);
+
+                    $this->sendEmailAdmin($order);
 
                     return $response;
                 } catch (EfiException $e) {
@@ -232,11 +237,17 @@ class PixService
         }
     }
 
-    private function sendEmailStatus($data)
+    private function sendEmailStatus($order)
     {
-        Mail::to($data->contact)
+        Mail::to($order->contact)
             ->bcc("anacnogueira@gmail.com")
-            ->send(new OrderStatusChanged($data));           
+            ->send(new OrderStatusChanged($order));                  
+    }
+
+    private function sendEmailAdmin($order)
+    {
+        Mail::to("anacnogueira@gmail.com")
+        ->send(new OrderPaymentDone($order, "pix"));            
     }
 
     private function setExcectionMessageError($code, $message, $log = [])
