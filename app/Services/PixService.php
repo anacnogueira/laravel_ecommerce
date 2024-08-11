@@ -177,6 +177,22 @@ class PixService
         }
     }
 
+    public function listWebhook($params)
+    {
+        try {
+            $api = new EfiPay($this->options);
+            $response = $api->pixListWebhook($params);
+        
+            print_r("<pre>" . json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . "</pre>");
+        } catch (EfiException $e) {
+            print_r($e->code . "<br>");
+            print_r($e->error . "<br>");
+            print_r($e->errorDescription) . "<br>";
+        } catch (Exception $e) {
+            print_r($e->getMessage());
+        }
+    }
+
     public function develution($e2eId, $id, $value)
     {
         $params = [

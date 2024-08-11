@@ -51,6 +51,7 @@ Route::group(['prefix' => 'pix'], function () {
     Route::get('/list-charges',[PixController::class, 'listCharges']);
     Route::post('/webhook',[PixController::class,'webhook']);
     Route::put("/webhook/config-webhook", [PixController::class, 'configWebhook']);
+    Route::put("/webhook/list-webhook", [PixController::class, 'listWebhook']);
     Route::post('/webhook/pix',[PixController::class, 'pix']);
     Route::put('/{e2eid}/devolution/{id}',[PixController::class, 'devolution']);
 });

@@ -69,6 +69,18 @@ class PixController extends Controller
         return $pixService->configWebhook();
     }
 
+    public function listWebhook()
+    {
+        $pixService = new PixService();
+
+        $params = [
+            "inicio" => "2024-08-01T00:00:00Z",
+            "fim" => "2024-08-11T23:59:59Z"
+        ];
+
+        return $pixService->listWebhook($params);
+    }
+
     public function pix(Request $request)
     {
         $pixService = new PixService();
@@ -79,15 +91,15 @@ class PixController extends Controller
         Storage::disk('local')->put($fileName, json_encode($request->input()));
 
 
-        // foreach($request["pix"] as $pix) {
-        //     $this->pixEvent->create([
-        //         "e2eid" => $pix["endToEndId"],
-        //         "txid" => $pix["txid"],
-        //         "event" => json_encode($pix)
-        //     ]);
+        foreach($request["pix"] as $pix) {
+            $this->pixEvent->create([
+                "e2eid" => $pix["endToEndId"],
+                "txid" => $pix["txid"],
+                "event" => json_encode($pix)
+            ]);
             
-        //     $pixService->saveOrderPix($pix);            
-        // }        
+            $pixService->saveOrderPix($pix);            
+        }
     }
 
     public function devolution($e2eid, $id, Request $request)
