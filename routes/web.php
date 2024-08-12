@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BannerController as AdminBannerController;
+use App\Http\Controllers\Admin\BrandController as AdminBrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Route::get('/', function () {
 Route::prefix('admin')->name('admin.')->group(function(){
     //1.1 Banners
     Route::resource('banners', AdminBannerController::class);
+    //1.2 Brands
+    Route::resource('brands', AdminBrandController::class);
 });
 
 //2. SITE

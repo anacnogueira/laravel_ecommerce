@@ -520,15 +520,30 @@ return [
             ],
         ],
         'BootstrapSwitch' => [
-        'active' => false,
-        'files' => [
-            [
-                'type' => 'js',
-                'asset' => true,
-                'location' => 'vendor/bootstrap-switch/js/bootstrap-switch.min.js',
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/bootstrap-switch/js/bootstrap-switch.min.js',
+                ],
             ],
         ],
-    ],
+        'Summernote' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/summernote/summernote-bs4.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/summernote/summernote-bs4.min.css',
+                ],
+            ],
+        ],
     ],
 
     /*

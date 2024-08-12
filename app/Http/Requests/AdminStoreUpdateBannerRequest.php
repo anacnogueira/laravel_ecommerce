@@ -27,6 +27,7 @@ class AdminStoreUpdateBannerRequest extends FormRequest
         return [
             'name' => ['required'],
             'upload' => ['file', 'image', 'mimes: jpeg,png,jpg,gif', 'max:20248'],
+            'permalink' => ['required'],
         ];
     }
 

@@ -47,7 +47,14 @@ class EventServiceProvider extends ServiceProvider
             $event->menu->add([
                 'text' => 'Catalog',
                 'url' => '#',
-                'icon' => 'nav-icon fa fa-tags fa-fw'
+                'icon' => 'nav-icon fa fa-tags fa-fw',
+                'submenu' => [
+                    [
+                        'text' => 'Brands',
+                        'url' => '/admin/brands',
+                        'icon' => 'fa fa-gem'
+                    ],
+                ]
             ]);
             $event->menu->add([
                 'text' => 'Customers',
@@ -62,7 +69,14 @@ class EventServiceProvider extends ServiceProvider
             $event->menu->add([
                 'text' => 'Content',
                 'url' => '#',
-                'icon' => 'nav-icon fa fa-cubes fa-fw'
+                'icon' => 'nav-icon fa fa-cubes fa-fw',
+                'submenu' => [
+                    [
+                        'text' => 'Banners',
+                        'url' => '/admin/banners',
+                        'icon' => 'fa fa-star'
+                    ],
+                ]
             ]);
             $event->menu->add([
                 'text' => 'Tools',

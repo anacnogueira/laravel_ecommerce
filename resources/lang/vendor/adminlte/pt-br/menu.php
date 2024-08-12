@@ -23,4 +23,5 @@ return [
     'Tools' => 'Ferramentas',
     'Reports' => 'Relatórios',
     'System' => 'Sistema',
+    'Brands' => 'Marcas',
 ];
