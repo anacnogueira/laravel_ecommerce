@@ -74,7 +74,7 @@ class PixController extends Controller
         $pixService = new PixService();
 
         $params = [
-            "inicio" => "2024-08-01T00:00:00Z",
+            "inicio" => "2023-08-01T00:00:00Z",
             "fim" => "2024-08-11T23:59:59Z"
         ];
 
