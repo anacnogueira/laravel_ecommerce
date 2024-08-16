@@ -48,16 +48,16 @@ class EventServiceProvider extends ServiceProvider
                 'text' => 'Catalog',
                 'url' => '#',
                 'icon' => 'nav-icon fa fa-tags fa-fw',
-                'submenu' => [
-                    [
-                        'text' => 'Brands',
-                        'url' => '/admin/brands',
-                        'icon' => 'fa fa-gem'
-                    ],
+                'submenu' => [                    
                     [
                         'text' => 'Categories',
                         'url' => '/admin/categories',
                         'icon' => 'fa fa-cubes'
+                    ],
+                    [
+                        'text' => 'Brands',
+                        'url' => '/admin/brands',
+                        'icon' => 'fa fa-gem'
                     ],
                 ]
             ]);

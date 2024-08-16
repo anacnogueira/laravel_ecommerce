@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\BannerController as AdminBannerController;
 use App\Http\Controllers\Admin\BrandController as AdminBrandController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +24,25 @@ Route::get('/', function () {
 
 //1. ADMIN
 Route::prefix('admin')->name('admin.')->group(function(){
-    //1.1 Banners
-    Route::resource('banners', AdminBannerController::class);
-    //1.2 Brands
+    //1. Dashboard
+    Route::get('/', [AdminDashboardController::class, 'index']);
+    //2. Vendas
+    //3. Catálogo
+    //3.1 Categorias
+    Route::resource('categories', AdminCategoryController::class);
+    //3.2 Marcas
     Route::resource('brands', AdminBrandController::class);
+    //4. Clientes
+    //5. Newsletters
+    //6. Conteúdo
+    //6.1 Banners
+    Route::resource('banners', AdminBannerController::class);
+    //7. Ferramentas
+    //8. Relatórios
+    //9. Sistema
+    
+   
+   
 });
 
 //2. SITE
