@@ -24,4 +24,5 @@ return [
     'Reports' => 'Relatórios',
     'System' => 'Sistema',
     'Brands' => 'Marcas',
+    'Categories' => 'Categorias',
 ];

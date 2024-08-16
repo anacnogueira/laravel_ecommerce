@@ -54,6 +54,11 @@ class EventServiceProvider extends ServiceProvider
                         'url' => '/admin/brands',
                         'icon' => 'fa fa-gem'
                     ],
+                    [
+                        'text' => 'Categories',
+                        'url' => '/admin/categories',
+                        'icon' => 'fa fa-cubes'
+                    ],
                 ]
             ]);
             $event->menu->add([
