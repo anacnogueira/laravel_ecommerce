@@ -9,7 +9,7 @@ interface CategoryRepositoryInterface
     public function getAllCategories();
     public function getCategoriesForMenu();
     public function getCategoryById($id);
-    public function getCategoryByPermalinkg($permalink);
+    public function getCategoryByPermalink($permalink);
     public function createCategory(array $data);
     public function updateCategory(Category $category, array $data);
     public function destroyCategory(Category $category);

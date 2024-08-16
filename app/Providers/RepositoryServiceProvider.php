@@ -7,7 +7,8 @@ use App\Repositories\Contracts\BannerRepositoryInterface;
 use App\Repositories\BannerRepository;
 use App\Repositories\Contracts\BrandRepositoryInterface;
 use App\Repositories\BrandRepository;
-
+use App\Repositories\Contracts\CategoryRepositoryInterface;
+use App\Repositories\CategoryRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             BrandRepositoryInterface::class,
             BrandRepository::class,
+        );
+        $this->app->bind(
+            CategoryRepositoryInterface::class,
+            CategoryRepository::class,
         );
     }
 
