@@ -104,6 +104,8 @@ class CountryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $country = $this->countryService->destroyCountry($id);
+
+        return redirect()->route('admin.countries.index');
     }
 }
