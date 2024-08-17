@@ -87,9 +87,13 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdminStoreUpdateCountryRequest $request, $id)
     {
-        //
+        $data = $request->all();
+ 
+        $banner = $this->countryService->updateCountry($id, $data);
+
+        return redirect()->route('admin.countries.index');
     }
 
     /**
