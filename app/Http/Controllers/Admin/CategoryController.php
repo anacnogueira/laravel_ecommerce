@@ -80,7 +80,14 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = $this->categoryService->getCategoryById($id);
+
+        $categories = $this->categoryService->getAllCategories();
+    	$categories[0]->id = 0;
+        $categories[0]->name = " Categoria Pai";
+      	$categories = $categories->sortBy('name');
+        
+        return view('admin.categories.edit', compact('category','categories'));
     }
 
     /**

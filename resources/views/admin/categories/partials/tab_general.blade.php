@@ -3,7 +3,7 @@
  	<div class="col-md-12">
         <x-adminlte-select name="parent_id" label="Pai:">
         @foreach($categories as $cat)
-                <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                <option value="{{ $cat->id }}" {{ isset($category->parent_id) && $cat->id == $category->parent_id ? "selected" : "" }}>{{ $cat->name }}</option>
         @endforeach
         </x-adminlte-select>
         <x-adminlte-input name="name" label="Nome:*" value="{{ $category->name ?? ''}}" placeholder="Insira nome da categoria"/>
