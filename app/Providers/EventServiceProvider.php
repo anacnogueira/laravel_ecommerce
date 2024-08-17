@@ -81,6 +81,11 @@ class EventServiceProvider extends ServiceProvider
                         'url' => '/admin/banners',
                         'icon' => 'fa fa-star'
                     ],
+                    [
+                        'text' => 'Countries',
+                        'url' => '/admin/countries',
+                        'icon' => 'fa fa-globe'
+                    ],
                 ]
             ]);
             $event->menu->add([

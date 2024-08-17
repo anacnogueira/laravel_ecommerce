@@ -25,4 +25,5 @@ return [
     'System' => 'Sistema',
     'Brands' => 'Marcas',
     'Categories' => 'Categorias',
+    'Countries' => 'Países',
 ];
