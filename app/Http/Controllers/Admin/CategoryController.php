@@ -114,6 +114,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = $this->categoryService->destroyCategory($id);
+
+        return redirect()->route('admin.categories.index');
     }
 }
