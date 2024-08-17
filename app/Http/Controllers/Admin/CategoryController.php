@@ -66,8 +66,10 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    { 
+        $category = $this->categoryService->getCategoryById($id);
+        
+        return view('admin.categories.show', compact('category'));
     }
 
     /**

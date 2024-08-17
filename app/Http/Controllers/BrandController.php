@@ -28,9 +28,7 @@ class BrandController extends Controller
         $brand = $this->brandService->getBrandByPermalink($permalink);
         $title = $brand->name;
         $description = $brand->text;
-
-        //To do: Get Products By Brand
-
+        
         return view('brands.show', compact('title', 'description'));
     }
 
