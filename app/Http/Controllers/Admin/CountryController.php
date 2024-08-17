@@ -33,7 +33,9 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        $country = null;
+        
+        return view('admin.countries.create', compact('country'));
     }
 
     /**
