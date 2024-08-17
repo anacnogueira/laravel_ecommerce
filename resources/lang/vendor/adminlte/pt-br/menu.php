@@ -26,4 +26,5 @@ return [
     'Brands' => 'Marcas',
     'Categories' => 'Categorias',
     'Countries' => 'Países',
+    'States' => 'Estados',
 ];
