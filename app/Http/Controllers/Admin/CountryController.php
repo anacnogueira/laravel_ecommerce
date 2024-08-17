@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\CountryService;
+use App\Http\Requests\AdminStoreUpdateCountryRequest;
 
 class CountryController extends Controller
 {
@@ -44,9 +45,13 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminStoreUpdateCountryRequest $request)
     {
-        //
+        $data = $request->all();
+        
+        $country = $this->countryService->makeCountry($data);
+
+        return redirect()->route('admin.countries.index');
     }
 
     /**
