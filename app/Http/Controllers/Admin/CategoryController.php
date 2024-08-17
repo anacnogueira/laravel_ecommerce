@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\CategoryService;
-use Illuminate\Http\Request;
+use App\Http\Requests\AdminStoreUpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -50,9 +50,13 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminStoreUpdateCategoryRequest $request)
     {
-        //
+        $data = $request->all();
+        
+        $category = $this->categoryService->makeCategory($data, $request->file("upload"));
+
+        return redirect()->route('admin.categories.index');
     }
 
     /**

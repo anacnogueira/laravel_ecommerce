@@ -50,7 +50,7 @@ class CategoryService
             ]);
         }        
 
-        return $Category;
+        return $category;
     }
 
     /**

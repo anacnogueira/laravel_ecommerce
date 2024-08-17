@@ -2,8 +2,8 @@
 <div class="row">
  	<div class="col-md-12">
         <x-adminlte-select name="parent_id" label="Pai:">
-        @foreach($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @foreach($categories as $cat)
+                <option value="{{ $cat->id }}">{{ $cat->name }}</option>
         @endforeach
         </x-adminlte-select>
         <x-adminlte-input name="name" label="Nome:*" value="{{ $category->name ?? ''}}" placeholder="Insira nome da categoria"/>
@@ -30,10 +30,12 @@
             </x-slot>
         </x-adminlte-input-file>
         <div id="imagePreview">
-            @if(isset($brand->image))
-                <img src="{{ Storage::url($brand->image) }}" alt="" style="width: 300px;">
+            @if(isset($category->image))
+                <img src="{{ Storage::url($category->image) }}" alt="" style="width: 300px;">
             @endif
-        </div>    
+        </div>
+
+        <x-adminlte-input name="order" label="Ordem:*" type="number" value="{{ $category->order ?? ''}}" placeholder="Insira ordem da categoria"/>
     </div>
 </div>
 
