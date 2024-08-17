@@ -3,10 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Services\CountryService;
 
 class CountryController extends Controller
 {
+    protected $countryService;
+
+    public function __construct(CountryService $countryService)
+    {
+        $this->countryService = $countryService;
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,9 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+        $countries = $this->countryService->getAllCountries();
+
+        return view('admin.countries.index', compact('countries'));
     }
 
     /**
