@@ -1,13 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Inserir Banner')
+@section('title', 'Editar Páis')
 
 @section('content_header')
-    <h1>Novo Banner</h1>
+    <h1>Editar Páis</h1>
 @stop
-
-@section('plugins.TempusDominusBs4', true)
-@section('plugins.BootstrapSwitch', true)
 
 @section('content')    
     <div class="row">
@@ -15,8 +12,9 @@
             <div class="card card-primary card-outline">
                 <div class="card-body">
                     <p>Os campos com * são obrigatórios</p>
-                    <form method="POST" action="{{ route('admin.banners.store') }}">
-                        @include('admin.banners.partials.form')
+                    <form method="POST" action="{{ route('admin.countries.update', $country->id) }}">
+                        @method('PUT')
+                        @include('admin.countries.partials.form')
                     </form>
                 </div>
             </div>

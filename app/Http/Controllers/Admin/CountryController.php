@@ -75,7 +75,9 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $country = $this->countryService->getCountryById($id);
+        
+        return view('admin.countries.edit', compact('country'));
     }
 
     /**
