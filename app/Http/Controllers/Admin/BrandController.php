@@ -91,7 +91,7 @@ class BrandController extends Controller
     {
         $data = $request->all();
  
-        $Brand = $this->brandService->updateBrand($id, $data, $request->file("upload"));
+        $brand = $this->brandService->updateBrand($id, $data, $request->file("upload"));
 
         return redirect()->route('admin.brands.index');
     }

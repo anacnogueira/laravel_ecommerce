@@ -97,9 +97,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdminStoreUpdateCategoryRequest $request, $id)
     {
-        //
+        $data = $request->all();
+ 
+        $category = $this->categoryService->updateCategory($id, $data, $request->file("upload"));
+
+        return redirect()->route('admin.categories.index');
     }
 
     /**

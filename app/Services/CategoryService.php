@@ -83,7 +83,7 @@ class CategoryService
     {
         $category = $this->categoryRepository->getCategoryById($id);
 
-        if (!$cCategory) {
+        if (!$category) {
             return response()->json(['message' => 'Category Not Found'], 404);
         }
 
