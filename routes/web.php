@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\BannerController as AdminBannerController;
 use App\Http\Controllers\Admin\BrandController as AdminBrandController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\CountryController as AdminCountryController;
+use App\Http\Controllers\Admin\StateController as AdminStateController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::resource('banners', AdminBannerController::class);
     //6.2 Países
     Route::resource('countries', AdminCountryController::class);
+    //6.3 Estados
+    Route::resource('states', AdminStateController::class);
     //7. Ferramentas
     //8. Relatórios
     //9. Sistema

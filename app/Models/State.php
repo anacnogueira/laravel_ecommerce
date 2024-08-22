@@ -11,7 +11,7 @@ class State extends Model
         'uf',
     ];
 
-    public function state()
+    public function country()
     {
         return $this->belongsTo(Country::class);
     }

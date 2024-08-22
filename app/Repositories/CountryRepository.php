@@ -24,15 +24,6 @@ class CountryRepository implements CountryRepositoryInterface
     }
 
     /**
-     * Get all Countrys
-     * @return array
-     */
-    public function getActiveCountrys()
-    {
-        return $this->entity->show();
-    }
-
-    /**
      * Select Country by ID
      * @param int $id
      * @return object

@@ -11,6 +11,8 @@ use App\Repositories\Contracts\CategoryRepositoryInterface;
 use App\Repositories\CategoryRepository;
 use App\Repositories\Contracts\CountryRepositoryInterface;
 use App\Repositories\CountryRepository;
+use App\Repositories\Contracts\StateRepositoryInterface;
+use App\Repositories\StateRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -36,6 +38,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             CountryRepositoryInterface::class,
             CountryRepository::class,
+        );
+        $this->app->bind(
+            StateRepositoryInterface::class,
+            StateRepository::class,
         );
     }
 
