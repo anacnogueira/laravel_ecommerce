@@ -4,15 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\StateService;
+use App\Services\CountryService;
 use App\Http\Requests\AdminStoreUpdateStateRequest;
 
 class StateController extends Controller
 {
     protected $stateService;
 
-    public function __construct(StateService $stateService)
+    public function __construct(StateService $stateService, CountryService $countryService)
     {
         $this->stateService = $stateService;
+        $this->countryService = $countryService;
     }
     
     /**
@@ -35,8 +37,16 @@ class StateController extends Controller
     public function create()
     {
         $state = null;
+
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione o país";
+
+        $countries = $this->countryService->getAllCountries();
+        $countries = $countries->sortBy('name');
+        $countries = $countries->prepend($select);
         
-        return view('admin.states.create', compact('state'));
+        return view('admin.states.create', compact('state', 'countries'));
     }
 
     /**

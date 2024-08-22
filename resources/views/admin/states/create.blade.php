@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Inserir País')
+@section('title', 'Inserir Estado')
 
 @section('content_header')
-    <h1>Novo País</h1>
+    <h1>Novo Estado</h1>
 @stop
 
 
@@ -13,8 +13,8 @@
             <div class="card card-primary card-outline">
                 <div class="card-body">
                     <p>Os campos com * são obrigatórios</p>
-                    <form method="POST" action="{{ route('admin.countries.store') }}">
-                        @include('admin.countries.partials.form')
+                    <form method="POST" action="{{ route('admin.states.store') }}">
+                        @include('admin.states.partials.form')
                     </form>
                 </div>
             </div>

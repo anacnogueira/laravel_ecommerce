@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Listar Países')
+@section('title', 'Listar Estados')
 
 @section('content_header')
-    <h1>Países</h1>
+    <h1>Estados</h1>
 @stop
 
 @section('plugins.Datatables', true)
@@ -53,7 +53,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card card-primary card-outline">
-                <div class="card-header"> <a href="{{ route('admin.countries.create') }}" class="btn btn-sm btn-primary">
+                <div class="card-header"> <a href="{{ route('admin.states.create') }}" class="btn btn-sm btn-primary">
                     <i class="fa fa-lg fa-fw fa-file"></i> Adicionar
                 </a></div>
                 <div class="card-body">
