@@ -86,8 +86,16 @@ class StateController extends Controller
     public function edit($id)
     {
         $state = $this->stateService->getStateById($id);
+
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione o país";
+
+        $countries = $this->countryService->getAllCountries();
+        $countries = $countries->sortBy('name');
+        $countries = $countries->prepend($select);
         
-        return view('admin.states.edit', compact('state'));
+        return view('admin.states.edit', compact('state','countries'));
     }
 
     /**
