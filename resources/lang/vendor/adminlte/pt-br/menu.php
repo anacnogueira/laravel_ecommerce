@@ -27,4 +27,5 @@ return [
     'Categories' => 'Categorias',
     'Countries' => 'Países',
     'States' => 'Estados',
+    'Cities' => 'Cidades',
 ];
