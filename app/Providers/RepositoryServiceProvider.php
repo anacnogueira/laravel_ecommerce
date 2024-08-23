@@ -13,6 +13,8 @@ use App\Repositories\Contracts\CountryRepositoryInterface;
 use App\Repositories\CountryRepository;
 use App\Repositories\Contracts\StateRepositoryInterface;
 use App\Repositories\StateRepository;
+use App\Repositories\Contracts\CityRepositoryInterface;
+use App\Repositories\CityRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -42,6 +44,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             StateRepositoryInterface::class,
             StateRepository::class,
+        );
+        $this->app->bind(
+            CityRepositoryInterface::class,
+            CityRepository::class,
         );
     }
 
