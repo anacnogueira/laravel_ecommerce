@@ -109,7 +109,7 @@ class StateController extends Controller
     {
         $data = $request->all();
  
-        $banner = $this->stateService->updateState($id, $data);
+        $state = $this->stateService->updateState($id, $data);
 
         return redirect()->route('admin.states.index');
     }
