@@ -16,7 +16,9 @@
                     <dl>
                         <dt>ID:</dt>
                         <dd>{{ $state->id }}&nbsp;</dd>
-                        <dt>Páis:</dt>
+                        <dt>Nome:</dt>
+                        <dd>{{ $state->name }}&nbsp;</dd>
+                        <dt>País:</dt>
                         <dd>{{ $state->country->name }}&nbsp;</dd>
                         <dt>UF:</dt>
                         <dd>{{ $state->uf }}&nbsp;</dd>                        
