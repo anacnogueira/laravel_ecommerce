@@ -111,7 +111,7 @@ class CityController extends Controller
  
         $city = $this->cityService->updateCity($id, $data);
 
-        return redirect()->route('admin.citys.index');
+        return redirect()->route('admin.cities.index');
     }
 
     /**
