@@ -43,8 +43,8 @@ class CityController extends Controller
         $select->name = "Selecione o estado";
 
         $states = $this->stateService->getAllStates();
-        $states = $countries->sortBy('name');
-        $states = $countries->prepend($select);
+        $states = $states->sortBy('name');
+        $states = $states->prepend($select);
         
         return view('admin.cities.create', compact('city', 'states'));
     }
@@ -92,8 +92,8 @@ class CityController extends Controller
         $select->name = "Selecione o estado";
 
         $states = $this->stateService->getAllStates();
-        $states = $countries->sortBy('name');
-        $states = $countries->prepend($select);
+        $states = $states->sortBy('name');
+        $states = $states->prepend($select);
         
         return view('admin.cities.edit', compact('city','states'));
     }
