@@ -77,6 +77,11 @@ class EventServiceProvider extends ServiceProvider
                 'icon' => 'nav-icon fa fa-cubes fa-fw',
                 'submenu' => [
                     [
+                        'text' => 'Pages',
+                        'url' => '/admin/pages',
+                        'icon' => 'far fa-file-alt'
+                    ],
+                    [
                         'text' => 'Banners',
                         'url' => '/admin/banners',
                         'icon' => 'fa fa-star'

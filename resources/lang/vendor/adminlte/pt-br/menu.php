@@ -28,4 +28,5 @@ return [
     'Countries' => 'Países',
     'States' => 'Estados',
     'Cities' => 'Cidades',
+    'Pages' => 'Páginas',
 ];
