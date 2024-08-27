@@ -22,7 +22,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        $cities = $this->pageService->getAllPages();
+        $pages = $this->pageService->getAllPages();
 
         return view('admin.pages.index', compact('pages'));
     }
