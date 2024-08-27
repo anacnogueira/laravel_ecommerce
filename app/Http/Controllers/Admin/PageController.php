@@ -13,7 +13,6 @@ class PageController extends Controller
     public function __construct(PageService $pageService)
     {
         $this->pageService = $pageService;
-        $this->stateService = $stateService;
     }
     
     /**
