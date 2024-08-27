@@ -7,6 +7,7 @@
 @stop
 
 @section('plugins.BootstrapSwitch', true)
+@section('plugins.TempusDominusBs4', true)
 @section('plugins.Summernote', true)
 
 @section('content')    

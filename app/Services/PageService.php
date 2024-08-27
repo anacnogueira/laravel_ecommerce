@@ -29,6 +29,9 @@ class PageService
     */
     public function makePage(array $data)
     {
+        $data["status"] = isset($data["status"]) ? 'S' : 'N';
+        $data["show_in_menu"] = isset($data["show_in_menu"]) ? 1 : 0;
+        
         $page = $this->pageRepository->createPage($data);
 
         return $page;
@@ -52,6 +55,9 @@ class PageService
     */
     public function updatePage(int $id, array $data)
     {
+        $data["status"] = isset($data["status"]) ? 'S' : 'N';
+        $data["show_in_menu"] = isset($data["show_in_menu"]) ? 1 : 0;
+        
         $page = $this->pageRepository->getPageById($id);
 
         if (!$page) {
