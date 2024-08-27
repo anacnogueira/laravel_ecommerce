@@ -56,7 +56,9 @@
 <x-adminlte-input name="description" label="Descrição Abreviada:" value="{{ $page->description ?? ''}}" placeholder="Insira descrição para SEO" enable-old-support/>
 
 <x-adminlte-text-editor name="content" label="Conteúdo:" 
-    igroup-size="sm" placeholder="Conteúdo da página" :config="$config" enable-old-support/>
+    igroup-size="sm" placeholder="Conteúdo da página" :config="$config" enable-old-support>
+    {{ $page->content ?? ''}}
+</x-adminlte-text-editor>
 
 @php
     $config = ['format' => 'DD/MM/YYYY'];
