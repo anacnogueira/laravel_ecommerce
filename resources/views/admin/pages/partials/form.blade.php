@@ -1,7 +1,7 @@
 @csrf
 
-<x-adminlte-input name="title" label="Título:*" value="{{ $page->title ?? ''}}" placeholder="Insira título da página"/>
-<x-adminlte-input name="permalink" label="Link:" placeholder="Insira o link da página" value="{{ $page ? $page->permalink : ''}}"/>
+<x-adminlte-input name="title" label="Título:*" value="{{ $page->title ?? ''}}" placeholder="Insira título da página" enable-old-support/>
+<x-adminlte-input name="permalink" label="Link:" placeholder="Insira o link da página" value="{{ $page ? $page->permalink : ''}}" enable-old-support />
 @php
     $config = [
         'state' => (isset($banner) && $banner->status == 'S') || !isset($banner) ? true : false,
@@ -16,7 +16,8 @@
     data-on-text="Ativo"
     data-off-text="Inativo"
     :config="$config"
-    checked="$config['state']" />
+    checked="$config['state']"
+    enable-old-support />
 
  @php
     $config = [
@@ -36,6 +37,6 @@
     ]
 @endphp
 <x-adminlte-text-editor name="content" label="Conteúdo:" 
-    igroup-size="sm" placeholder="Conteúdo da página" :config="$config"/>
+    igroup-size="sm" placeholder="Conteúdo da página" :config="$config" enable-old-support/>
 <a href="{{ route('admin.pages.index') }}" class="btn btn-warning"><i class="fa fa-times"></i> Cancelar</a>
 <x-adminlte-button type="submit" label="Salvar" theme="success" icon="fas fa-check"/>
