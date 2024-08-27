@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\CountryController as AdminCountryController;
 use App\Http\Controllers\Admin\StateController as AdminStateController;
 use App\Http\Controllers\Admin\CityController as AdminCityController;
-
+use App\Http\Controllers\Admin\PageController as AdminPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +25,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 //1. ADMIN
 Route::prefix('admin')->name('admin.')->group(function(){
     //1. Dashboard
@@ -39,6 +38,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
     //4. Clientes
     //5. Newsletters
     //6. Conteúdo
+    //6.1 Páginas
+    Route::resource('pages', AdminPageController::class);
     //6.1 Banners
     Route::resource('banners', AdminBannerController::class);
     //6.2 Países
