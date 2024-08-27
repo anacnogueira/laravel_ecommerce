@@ -15,7 +15,7 @@
             <div class="card card-primary card-outline">
                 <div class="card-body">
                     <p>Os campos com * são obrigatórios</p>
-                    <form method="POST" action="{{ route('admin.banners.store') }}">
+                    <form method="POST" action="{{ route('admin.banners.store') }}" enctype="multipart/form-data">
                         @include('admin.banners.partials.form')
                     </form>
                 </div>
