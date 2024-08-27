@@ -63,6 +63,8 @@ class PageController extends Controller
     public function show($id)
     {
         $page = $this->pageService->getPageById($id);
+        $page->status = $page->status == 'S' ? 'Ativo' : 'Inativo';
+        $page->show_in_menu = $page->show_in_menu == 1 ? 'Sim' : 'Não';
         
         return view('admin.pages.show', compact('page'));
     }
