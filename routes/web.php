@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BannerController as AdminBannerController;
 use App\Http\Controllers\Admin\BrandController as AdminBrandController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\CountryController as AdminCountryController;
+use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\StateController as AdminStateController;
 use App\Http\Controllers\Admin\CityController as AdminCityController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
@@ -40,13 +41,15 @@ Route::prefix('admin')->name('admin.')->group(function(){
     //6. Conteúdo
     //6.1 Páginas
     Route::resource('pages', AdminPageController::class);
-    //6.1 Banners
+    //6.2 Banners
     Route::resource('banners', AdminBannerController::class);
-    //6.2 Países
+    //6.3 Eventos
+    Route::resource('events', AdminEventController::class);
+    //6.4 Países
     Route::resource('countries', AdminCountryController::class);
-    //6.3 Estados
+    //6.5 Estados
     Route::resource('states', AdminStateController::class);
-    //6.3 Cidades
+    //6.6 Cidades
     Route::resource('cities', AdminCityController::class);
     //7. Ferramentas
     //8. Relatórios
