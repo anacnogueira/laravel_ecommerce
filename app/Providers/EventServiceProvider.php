@@ -87,6 +87,11 @@ class EventServiceProvider extends ServiceProvider
                         'icon' => 'fa fa-star'
                     ],
                     [
+                        'text' => 'Events',
+                        'url' => '/admin/events',
+                        'icon' => 'fa fa-book'
+                    ],
+                    [
                         'text' => 'Countries',
                         'url' => '/admin/countries',
                         'icon' => 'fa fa-globe'
