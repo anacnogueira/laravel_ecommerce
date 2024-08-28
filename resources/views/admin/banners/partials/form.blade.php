@@ -1,6 +1,6 @@
 @csrf
 
-<x-adminlte-input name="name" label="Name:*" value="{{ $banner->name ?? ''}}" placeholder="Insira nome do banner"/>
+<x-adminlte-input name="name" label="Name:*" value="{{ $banner->name ?? ''}}" placeholder="Insira nome do banner" enable-old-support/>
 
 @php
     $config = [
@@ -16,10 +16,11 @@
     data-on-text="Ativo"
     data-off-text="Inativo"
     :config="$config"
-    checked="$config['state']" />
+    checked="$config['state']"
+    enable-old-support />
 
-<x-adminlte-input name="dimension" label="Tamanho:" placeholder="Insira o tamanho dobanner no formato alturaXlargura" value="{{ $banner ? $banner->dimension : ''}}"/>
-<x-adminlte-input name="url" label="Link:" placeholder="Insira o link do banner" value="{{ $banner ? $banner->url : ''}}"/>
+<x-adminlte-input name="dimension" label="Tamanho:" placeholder="Insira o tamanho dobanner no formato alturaXlargura" value="{{ $banner ? $banner->dimension : ''}}" enable-old-support/>
+<x-adminlte-input name="url" label="Link:" placeholder="Insira o link do banner" value="{{ $banner ? $banner->url : ''}}" enable-old-support/>
 <x-adminlte-input-file name="upload" label="Imagem:" placeholder="Escolha um arquivo..." legend="Procurar">
     <x-slot name="prependSlot">
         <div class="input-group-text bg-lightblue">
@@ -39,7 +40,7 @@
     <li>Extensões permitidas: gif,jpg e png</li>
     <li>Cada imagem não deve ultrapassar 5MB</li>
 </ul>
-<x-adminlte-textarea name="html" label="HTML:" cols="40" rows="10">
+<x-adminlte-textarea name="html" label="HTML:" cols="40" rows="10" enable-old-support>
 {{ $banner ? $banner->html : ''}}
 </x-adminlte-textarea>
 
@@ -48,7 +49,7 @@ $config = ['format' => 'DD/MM/YYYY'];
 @endphp
 <div class="row">
     <x-adminlte-input-date name="scheduled_date" :config="$config" placeholder="Escolha a data"
-        label="Data Publicação:" class="col-md-6" value="{{ $banner ? $banner->scheduled_date : ''}}">
+        label="Data Publicação:" class="col-md-6" value="{{ $banner ? $banner->scheduled_date : ''}}" enable-old-support>
         <x-slot name="appendSlot">
             <x-adminlte-button icon="fas fa-lg fa-calendar"
                 title="Selecione a data de publicação"/>
@@ -56,7 +57,7 @@ $config = ['format' => 'DD/MM/YYYY'];
     </x-adminlte-input-date>
 
     <x-adminlte-input-date name="expire_date" :config="$config" placeholder="Escolha a data"
-        label="Data Finalização:" class="col-md-6"  value="{{ $banner ? $banner->expire_date : ''}}">
+        label="Data Finalização:" class="col-md-6"  value="{{ $banner ? $banner->expire_date : ''}}" enable-old-support>
         <x-slot name="appendSlot">
             <x-adminlte-button icon="fas fa-lg fa-calendar"
                 title="Selecione a data de finalização"/>
@@ -64,7 +65,7 @@ $config = ['format' => 'DD/MM/YYYY'];
     </x-adminlte-input-date>
 </div>
 
-<x-adminlte-input type="number" name="expire_impressions" label="Impressões/visitas:" placeholder="Insira somente números"  value="{{ $banner ? $banner->expire_impressions : ''}}" />
+<x-adminlte-input type="number" name="expire_impressions" label="Impressões/visitas:" placeholder="Insira somente números"  value="{{ $banner ? $banner->expire_impressions : ''}}" enable-old-support />
 
 <p><strong>Notas sobre o banner</strong></p>
  <ul>
