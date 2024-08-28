@@ -15,6 +15,9 @@ use App\Repositories\Contracts\StateRepositoryInterface;
 use App\Repositories\StateRepository;
 use App\Repositories\Contracts\CityRepositoryInterface;
 use App\Repositories\CityRepository;
+use App\Repositories\Contracts\EventRepositoryInterface;
+use App\Repositories\EventRepository;
+
 use App\Repositories\Contracts\PageRepositoryInterface;
 use App\Repositories\PageRepository;
 
@@ -50,6 +53,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             CityRepositoryInterface::class,
             CityRepository::class,
+        );
+        $this->app->bind(
+            EventRepositoryInterface::class,
+            EventRepository::class,
         );
         $this->app->bind(
             PageRepositoryInterface::class,
