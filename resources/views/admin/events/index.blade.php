@@ -3,7 +3,7 @@
 @section('title', 'Listar Eventos')
 
 @section('content_header')
-    <h1>Banners</h1>
+    <h1>Eventos</h1>
 @stop
 
 @section('plugins.Datatables', true)
