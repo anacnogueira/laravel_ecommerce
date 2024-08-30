@@ -14,13 +14,13 @@
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_general">
-                            @include('admin.events.partials.tab_general') 
+                            @include('admin.events.partials.tab_general')
                         </div>
                         <div class="tab-pane" id="tab_date_hour">
                             @include('admin.events.partials.tab_date_hour')
                         </div>
                         <div class="tab-pane" id="tab_place">
-                            @include('admin.events.partials.tab_place') 
+                            @include('admin.events.partials.tab_place')
                         </div>
                         <div class="tab-pane" id="tab_prefessional">
                             @include('admin.events.partials.tab_prefessional')

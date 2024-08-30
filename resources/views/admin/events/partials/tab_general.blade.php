@@ -64,9 +64,5 @@
                     checked="$config['state']" />
             </div>
         </div>
-       
-        
-        
-        
  	</div>
 </div> 	
