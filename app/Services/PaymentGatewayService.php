@@ -29,11 +29,11 @@ class PaymentGatewayService
     */
     public function makePaymentGateway(array $data)
     {
-        $data["status"] = isset($data["status"]) ? 'S' : 'N';
+        $data["status"] = isset($data["status"]) ? 1 : 0;
 
         $paymentGateway = $this->paymentGatewayRepository->createPaymentGateway($data);        
 
-        return $paymentgateway;
+        return $paymentGateway;
     }
 
     /**
@@ -60,7 +60,7 @@ class PaymentGatewayService
             return response()->json(['message' => 'Payment Gateway Not Found'], 404);
         }
 
-        $data["status"] = isset($data["status"]) ? 'S' : 'N';
+        $data["status"] = isset($data["status"]) ? 1 : 0;
 
         $this->paymentGatewayRepository->updatePaymentGateway($paymentGateway, $data);
         return response()->json(['message' => 'Payment Gateway Updated'], 200);
