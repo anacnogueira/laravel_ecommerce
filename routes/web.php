@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\StateController as AdminStateController;
 use App\Http\Controllers\Admin\CityController as AdminCityController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
+use App\Http\Controllers\Admin\PaymentGatewayController as AdminPaymentGatewayController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +37,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::resource('categories', AdminCategoryController::class);
     //3.2 Marcas
     Route::resource('brands', AdminBrandController::class);
-    //4. Clientes
-    //5. Newsletters
+
     //6. Conteúdo
     //6.1 Páginas
     Route::resource('pages', AdminPageController::class);
@@ -45,11 +45,13 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::resource('banners', AdminBannerController::class);
     //6.3 Eventos
     Route::resource('events', AdminEventController::class);
-    //6.4 Países
+    //6.4 Integradoras de pagamento
+    Route::resource('payment-gateways', AdminPaymentGatewayController::class);
+    //6.5 Países
     Route::resource('countries', AdminCountryController::class);
-    //6.5 Estados
+    //6.6 Estados
     Route::resource('states', AdminStateController::class);
-    //6.6 Cidades
+    //6.7 Cidades
     Route::resource('cities', AdminCityController::class);
     //7. Ferramentas
     //8. Relatórios
