@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\StateController as AdminStateController;
 use App\Http\Controllers\Admin\CityController as AdminCityController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\PaymentGatewayController as AdminPaymentGatewayController;
+use App\Http\Controllers\Admin\PaymentMethodController as AdminPaymentMethodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,18 +48,17 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::resource('events', AdminEventController::class);
     //6.4 Integradoras de pagamento
     Route::resource('payment-gateways', AdminPaymentGatewayController::class);
-    //6.5 Países
+    //6.5 Formas de pagamento
+    Route::resource('payment-methods', AdminPaymenMethodController::class);
+    //6.6 Países
     Route::resource('countries', AdminCountryController::class);
-    //6.6 Estados
+    //6.7 Estados
     Route::resource('states', AdminStateController::class);
-    //6.7 Cidades
+    //6.8 Cidades
     Route::resource('cities', AdminCityController::class);
     //7. Ferramentas
     //8. Relatórios
-    //9. Sistema
-    
-   
-   
+    //9. Sistema  
 });
 
 //2. SITE
