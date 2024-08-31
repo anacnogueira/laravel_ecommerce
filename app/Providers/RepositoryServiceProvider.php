@@ -17,9 +17,10 @@ use App\Repositories\Contracts\CityRepositoryInterface;
 use App\Repositories\CityRepository;
 use App\Repositories\Contracts\EventRepositoryInterface;
 use App\Repositories\EventRepository;
-
 use App\Repositories\Contracts\PageRepositoryInterface;
 use App\Repositories\PageRepository;
+use App\Repositories\Contracts\PaymentGatewayRepositoryInterface;
+use App\Repositories\PaymentGatewayRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -61,6 +62,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             PageRepositoryInterface::class,
             PageRepository::class,
+        );
+        $this->app->bind(
+            PaymentGatewayRepositoryInterface::class,
+            PaymentGatewayRepository::class,
         );
     }
 
