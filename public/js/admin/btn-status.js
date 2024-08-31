@@ -7,10 +7,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 event.target.parentNode.parentNode.querySelector(
                     "input[type=checkbox]"
                 );
-            let status = inputCheckbox.checked == true ? "N" : "S";
+
+            let table = inputCheckbox.dataset.table;
+
+            let status = "";
+            if (table == "payment_gateways") {
+                status = inputCheckbox.checked == true ? 0 : 1;
+            } else {
+                status = inputCheckbox.checked == true ? "N" : "S";
+            }
 
             formData = {
-                table: inputCheckbox.dataset.table,
+                table,
                 status,
                 id: inputCheckbox.dataset.id,
             };

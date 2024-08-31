@@ -9,9 +9,9 @@ class PaymentGatewayRepository implements PaymentGatewayRepositoryInterface
 {
     protected $entity;
 
-    public function __construct(PaymentGateway $paymentgateway)
+    public function __construct(PaymentGateway $paymentGateway)
     {
-        $this->entity = $paymentgateway;
+        $this->entity = $paymentGateway;
     }
 
     /**
@@ -54,21 +54,21 @@ class PaymentGatewayRepository implements PaymentGatewayRepositoryInterface
 
      /**
      * Update data of paymentgateway
-     * @param object $paymentgateway
+     * @param object $paymentGateway
      * @param array $data
      * @return object
      */
-    public function updatePaymentGateway(PaymentGateway $paymentgateway, array $data)
+    public function updatePaymentGateway(PaymentGateway $paymentGateway, array $data)
     {
-        return $paymentgateway->update($data);
+        return $paymentGateway->update($data);
     }
 
     /**
      * Delete a paymentgateway
-     * @param object $paymentgateway
+     * @param object $paymentGateway
      */
-    public function destroyPaymentGateway(PaymentGateway $paymentgateway) 
+    public function destroyPaymentGateway(PaymentGateway $paymentGateway) 
     {
-        return $paymentgateway->delete();
+        return $paymentGateway->delete();
     }
 }

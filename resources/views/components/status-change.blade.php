@@ -1,6 +1,6 @@
 <div class="status-change">
    @php
-      $checked = $status == 'S' ? 'checked' : '';
+      $checked = ($status == 'S' || $status == 1) ? 'checked' : '';
    @endphp
    <input 
       type="checkbox"
