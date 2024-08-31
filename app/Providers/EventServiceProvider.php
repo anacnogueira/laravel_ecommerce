@@ -92,6 +92,11 @@ class EventServiceProvider extends ServiceProvider
                         'icon' => 'fa fa-sitemap'
                     ],
                     [
+                        'text' => 'Payment Methods',
+                        'url' => '/admin/payment-methods',
+                        'icon' => 'fa fa-credit-card'
+                    ],
+                    [
                         'text' => 'Events',
                         'url' => '/admin/events',
                         'icon' => 'fa fa-book'

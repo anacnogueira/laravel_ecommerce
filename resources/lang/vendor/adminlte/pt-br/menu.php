@@ -31,4 +31,5 @@ return [
     'Pages' => 'Páginas',
     'Events' => 'Eventos',
     'Payment Gateways' => 'Integradoras de pagamento',
+    'Payment Methods' => 'Formas de Pagamento',
 ];
