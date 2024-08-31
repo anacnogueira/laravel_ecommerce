@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col-md-12">
+        @csrf
         <x-adminlte-input name="name" label="Nome:*" value="{{ $paymentGateway->name ?? ''}}" placeholder="Insira nome da integradora de pagamento" enable-old-support/>
 
         @php
