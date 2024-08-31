@@ -49,7 +49,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
     //6.4 Integradoras de pagamento
     Route::resource('payment-gateways', AdminPaymentGatewayController::class);
     //6.5 Formas de pagamento
-    Route::resource('payment-methods', AdminPaymenMethodController::class);
+    Route::resource('payment-methods', AdminPaymentMethodController::class);
     //6.6 Países
     Route::resource('countries', AdminCountryController::class);
     //6.7 Estados
