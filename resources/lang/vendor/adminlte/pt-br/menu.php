@@ -30,4 +30,5 @@ return [
     'Cities' => 'Cidades',
     'Pages' => 'Páginas',
     'Events' => 'Eventos',
+    'Payment Gateways' => 'Integradoras de pagamento',
 ];
