@@ -21,6 +21,8 @@ use App\Repositories\Contracts\PageRepositoryInterface;
 use App\Repositories\PageRepository;
 use App\Repositories\Contracts\PaymentGatewayRepositoryInterface;
 use App\Repositories\PaymentGatewayRepository;
+use App\Repositories\Contracts\PaymentMethodRepositoryInterface;
+use App\Repositories\PaymentMethodRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -66,6 +68,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             PaymentGatewayRepositoryInterface::class,
             PaymentGatewayRepository::class,
+        );
+        $this->app->bind(
+            PaymentMethodRepositoryInterface::class,
+            PaymentMethodRepository::class,
         );
     }
 

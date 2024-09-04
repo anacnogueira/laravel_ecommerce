@@ -20,8 +20,8 @@ class PaymentMethod extends Model
         'icon',
     ];
    
-    public function order()
+    public function paymentMethod()
     {
-        return $this->hasMany(Order::class);
+        return $this->belongsTo(Paymentgateway::class);
     }
 }
