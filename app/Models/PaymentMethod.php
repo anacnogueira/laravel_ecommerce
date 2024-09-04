@@ -20,8 +20,8 @@ class PaymentMethod extends Model
         'icon',
     ];
    
-    public function paymentMethod()
+    public function paymentGateway()
     {
-        return $this->belongsTo(Paymentgateway::class);
+        return $this->belongsTo(PaymentGateway::class);
     }
 }

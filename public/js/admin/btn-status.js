@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let table = inputCheckbox.dataset.table;
 
             let status = "";
-            if (table == "payment_gateways") {
+            if (table == "payment_gateways" || table == "payment_methods") {
                 status = inputCheckbox.checked == true ? 0 : 1;
             } else {
                 status = inputCheckbox.checked == true ? "N" : "S";
