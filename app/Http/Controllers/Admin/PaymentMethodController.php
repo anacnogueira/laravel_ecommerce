@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\PaymentGatewayService;
 use App\Services\PaymentMethodService;
 use App\Http\Requests\AdminStoreUpdatePaymentMethodRequest;
 
@@ -10,9 +11,10 @@ class PaymentMethodController extends Controller
 {
     protected $paymentMethodService;
 
-    public function __construct(PaymentMethodService $paymentMethodService)
+    public function __construct(PaymentMethodService $paymentMethodService, PaymentGatewayService $paymentGatewayService)
     {
         $this->paymentMethodService = $paymentMethodService;
+        $this->paymentGatewayService = $paymentGatewayService;
     }
     
     /**
@@ -35,8 +37,16 @@ class PaymentMethodController extends Controller
     public function create()
     {
         $paymentMethod = null;
+
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione a integradora";
+
+        $paymentGateways = $this->paymentGatewayService->getAllPaymentGateways();
+        $paymentGateways = $paymentGateways->sortBy('name');
+        $paymentGateways = $paymentGateways->prepend($select);
         
-        return view('admin.payment-methods.create', compact('paymentMethod'));
+        return view('admin.payment-methods.create', compact('paymentMethod', 'paymentGateways'));
     }
 
      /**
