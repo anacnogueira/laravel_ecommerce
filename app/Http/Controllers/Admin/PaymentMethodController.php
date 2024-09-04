@@ -85,9 +85,17 @@ class PaymentMethodController extends Controller
      */
     public function edit($id)
     {
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione a integradora";
+
+        $paymentGateways = $this->paymentGatewayService->getAllPaymentGateways();
+        $paymentGateways = $paymentGateways->sortBy('name');
+        $paymentGateways = $paymentGateways->prepend($select);
+        
         $paymentMethod = $this->paymentMethodService->getPaymentMethodById($id);
         
-        return view('admin.payment-methods.edit', compact('paymentMethod'));
+        return view('admin.payment-methods.edit', compact('paymentMethod', 'paymentGateways'));
     }
 
     /**
@@ -101,7 +109,7 @@ class PaymentMethodController extends Controller
     {
         $data = $request->all();
  
-        $paymentMethod = $this->paymentMethodService->updatePaymentMethod($id, $data);
+        $paymentMethod = $this->paymentMethodService->updatePaymentMethod($id, $data, $request->file("upload"));
 
         return redirect()->route('admin.payment-methods.index');
     }

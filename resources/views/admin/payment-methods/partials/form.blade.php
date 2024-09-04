@@ -6,9 +6,10 @@
 
         <x-adminlte-input name="value" label="Valor:*" value="{{ $paymentMethod->value ?? ''}}" placeholder="Insira o valor referente ao nome do pagamento" enable-old-support/>
 
+        {{ $paymentMethod->payment_gateway_id}}
         <x-adminlte-select name="payment_gateway_id" label="Integradora:" enable-old-support>
             @foreach($paymentGateways as $paymentGateway)
-                <option value="{{ $paymentGateway->id }}" {{ isset($paymentMethod->payment_gateway_id) && $paymentGateway->id == $paymentMethod->payment_method_id ? "selected" : "" }}>{{ $paymentGateway->name }}</option>
+                <option value="{{ $paymentGateway->id }}" {{ isset($paymentMethod->payment_gateway_id) && $paymentGateway->id == $paymentMethod->payment_gateway_id ? "selected" : "" }}>{{ $paymentGateway->name }}</option>
             @endforeach
         </x-adminlte-select>
 
