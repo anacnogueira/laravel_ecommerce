@@ -31,11 +31,11 @@ class PaymentMethodService
     */
     public function makePaymentMethod(array $data, $file)
     {
-        $data["status"] = isset($data["status"]) ? 'S' : 'N';
+        $data["status"] = isset($data["status"]) ? 1 : 0;
 
         $paymentMethod = $this->paymentMethodRepository->createPaymentMethod($data);
 
-        $fileName = Str::kebab($paymentmethod->name)."-".date('dmYHis');
+        $fileName = Str::kebab($paymentMethod->name)."-".date('dmYHis');
 
         if($file) {
             $storeFileService = new StoreFileService(
@@ -77,7 +77,7 @@ class PaymentMethodService
             return response()->json(['message' => 'Payment Method Not Found'], 404);
         }
 
-        $data["status"] = isset($data["status"]) ? 'S' : 'N';
+        $data["status"] = isset($data["status"]) ? 1 : 0;
 
         
 

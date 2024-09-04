@@ -59,7 +59,7 @@ class PaymentMethodController extends Controller
     {
         $data = $request->all();
         
-        $paymentMethod = $this->paymentMethodService->makePaymentMethod($data);
+        $paymentMethod = $this->paymentMethodService->makePaymentMethod($data, $request->file("upload"));
 
         return redirect()->route('admin.payment-methods.index');
     }
