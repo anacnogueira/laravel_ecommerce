@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CityController as AdminCityController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\PaymentGatewayController as AdminPaymentGatewayController;
 use App\Http\Controllers\Admin\PaymentMethodController as AdminPaymentMethodController;
+use App\Http\Controllers\Admin\OrderStatusController as AdminOrderStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,11 +51,13 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::resource('payment-gateways', AdminPaymentGatewayController::class);
     //6.5 Formas de pagamento
     Route::resource('payment-methods', AdminPaymentMethodController::class);
-    //6.6 Países
+    //6.6 Status do Pedido
+    Route::resource('order-status', AdminOrderStatusController::class);
+    //6.7 Países
     Route::resource('countries', AdminCountryController::class);
-    //6.7 Estados
+    //6.77 Estados
     Route::resource('states', AdminStateController::class);
-    //6.8 Cidades
+    //6.9 Cidades
     Route::resource('cities', AdminCityController::class);
     //7. Ferramentas
     //8. Relatórios
