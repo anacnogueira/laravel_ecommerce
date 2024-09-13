@@ -55,7 +55,7 @@ class OrderStatusService
    
         $orderStatus = $this->orderStatusRepository->getOrderStatusById($id);
 
-        if (!$orderstatus) {
+        if (!$orderStatus) {
             return response()->json(['message' => 'Order Status Not Found'], 404);
         }
 

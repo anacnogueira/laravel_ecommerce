@@ -88,11 +88,11 @@ class OrderStatusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdatePaymentMethodRequest $request, $id)
+    public function update(AdminStoreUpdateOrderStatusRequest $request, $id)
     {
         $data = $request->all();
  
-        $orderStatus = $this->orderStatusService->updatePaymentMethod($id, $data);
+        $orderStatus = $this->orderStatusService->updateOrderStatus($id, $data);
 
         return redirect()->route('admin.order-status.index');
     }
