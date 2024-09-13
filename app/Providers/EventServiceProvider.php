@@ -102,6 +102,11 @@ class EventServiceProvider extends ServiceProvider
                         'icon' => 'fa fa-check-square'
                     ],
                     [
+                        'text' => 'FAQ',
+                        'url' => '/admin/faq',
+                        'icon' => 'fa fa-question'
+                    ],
+                    [
                         'text' => 'Events',
                         'url' => '/admin/events',
                         'icon' => 'fa fa-book'

@@ -33,4 +33,5 @@ return [
     'Payment Gateways' => 'Integradoras de pagamento',
     'Payment Methods' => 'Formas de Pagamento',
     'Order Status' => 'Status do Pedido',
+    'FAQ' => 'Perguntas Frequentes',
 ];
