@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use App\Repositories\Contracts\OrderStatusdRepositoryInterface;
+use App\Repositories\Contracts\OrderStatusRepositoryInterface;
 
 class OrderStatusService
 {
     protected $orderstatusdRepository;
 
-    public function __construct(OrderStatusdRepositoryInterface $orderStatusdRepository)
+    public function __construct(OrderStatusRepositoryInterface $orderStatusdRepository)
     {
         $this->orderStatusdRepository = $orderStatusdRepository;
     }
