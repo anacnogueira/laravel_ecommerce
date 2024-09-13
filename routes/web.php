@@ -55,7 +55,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
     //6.6 Status do Pedido
     Route::resource('order-status', AdminOrderStatusController::class);
     //6.7 Perguntas Frequentes
-    Route::resource('faq', AdminFaqController::class);
+    Route::resource('faqs', AdminFaqController::class);
     //6.8 Países
     Route::resource('countries', AdminCountryController::class);
     //6.9 Estados

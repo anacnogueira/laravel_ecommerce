@@ -103,7 +103,7 @@ class EventServiceProvider extends ServiceProvider
                     ],
                     [
                         'text' => 'FAQ',
-                        'url' => '/admin/faq',
+                        'url' => '/admin/faqs',
                         'icon' => 'fa fa-question'
                     ],
                     [
