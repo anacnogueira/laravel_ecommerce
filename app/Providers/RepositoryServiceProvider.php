@@ -25,6 +25,8 @@ use App\Repositories\Contracts\PaymentMethodRepositoryInterface;
 use App\Repositories\PaymentMethodRepository;
 use App\Repositories\Contracts\OrderStatusRepositoryInterface;
 use App\Repositories\OrderStatusRepository;
+use App\Repositories\Contracts\FaqRepositoryInterface;
+use App\Repositories\FaqRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -78,6 +80,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             OrderStatusRepositoryInterface::class,
             OrderStatusRepository::class,
+        );
+        $this->app->bind(
+            FaqRepositoryInterface::class,
+            FaqRepository::class,
         );
     }
 
