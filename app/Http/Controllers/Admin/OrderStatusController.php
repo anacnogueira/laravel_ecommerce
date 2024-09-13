@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\PaymentGatewayService;
 use App\Services\OrderStatusService;
-use App\Http\Requests\AdminStoreUpdatePaymentMethodRequest;
+use App\Http\Requests\AdminStoreUpdateOrderStatusRequest;
 
 class OrderStatusController extends Controller
 {
@@ -46,7 +46,7 @@ class OrderStatusController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdatePaymentMethodRequest $request)
+    public function store(AdminStoreUpdateOrderStatusRequest $request)
     {
         $data = $request->all();
         
