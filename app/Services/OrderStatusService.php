@@ -6,11 +6,11 @@ use App\Repositories\Contracts\OrderStatusRepositoryInterface;
 
 class OrderStatusService
 {
-    protected $orderstatusdRepository;
+    protected $orderstatusRepository;
 
-    public function __construct(OrderStatusRepositoryInterface $orderStatusdRepository)
+    public function __construct(OrderStatusRepositoryInterface $orderStatusRepository)
     {
-        $this->orderStatusdRepository = $orderStatusdRepository;
+        $this->orderStatusRepository = $orderStatusRepository;
     }
 
     /**
@@ -19,7 +19,7 @@ class OrderStatusService
     */
     public function getAllOrderStatuses()
     {
-        return $this->orderStatusdRepository->getAllOrderStatuses();
+        return $this->orderStatusRepository->getAllOrderStatuses();
     }
 
      /**
@@ -27,7 +27,7 @@ class OrderStatusService
      * @param array $data
      * @return object 
     */
-    public function makeOrderStatusd(array $data, $file)
+    public function makeOrderStatus(array $data)
     {
         $orderStatus = $this->orderStatusRepository->createOrderStatus($data);        
 
