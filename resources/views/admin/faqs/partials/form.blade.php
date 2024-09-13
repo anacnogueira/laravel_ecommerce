@@ -24,14 +24,13 @@
             {{ $faq->question ?? ''}}
         </x-adminlte-text-editor>
 
-        <x-adminlte-text-editor name="content" label="Resposta:*" 
+        <x-adminlte-text-editor name="answer" label="Resposta:*" 
             igroup-size="sm" placeholder="Resposta" :config="$config" enable-old-support>
             {{ $faq->answer ?? ''}}
         </x-adminlte-text-editor>        
 
         <x-adminlte-input name="order" type="number" label="Ordem:" value="{{ $faq->order ?? ''}}" placeholder="Insira a ordem da pergunta" enable-old-support/>
-        
-    
+       
         @php
             $config = [
                 'state' => (isset($faq) && $faq->status == 'S') || !isset($faq) ? true : false,
