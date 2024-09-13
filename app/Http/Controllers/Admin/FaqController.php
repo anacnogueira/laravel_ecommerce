@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Services\OrderStatusService;
-use App\Http\Requests\AdminStoreUpdateOrderStatusRequest;
+use App\Services\FaqService;
+use App\Http\Requests\AdminStoreUpdateFaqRequest;
 
-class OrderStatusController extends Controller
+class FaqController extends Controller
 {
-    protected $orderStatusService;
+    protected $faqService;
 
-    public function __construct(OrderStatusService $orderStatusService)
+    public function __construct(FaqService $faqService)
     {
-        $this->orderStatusService = $orderStatusService;
+        $this->faqService = $faqService;
     }
     
     /**
@@ -22,9 +22,9 @@ class OrderStatusController extends Controller
      */
     public function index()
     {
-        $orderStatuses = $this->orderStatusService->getAllOrderStatuses();
+        $faqs = $this->faqService->getAllFaqs();
 
-        return view('admin.order-status.index', compact('orderStatuses'));
+        return view('admin.faqs.index', compact('faqs'));
     }
 
      /**
@@ -34,9 +34,9 @@ class OrderStatusController extends Controller
      */
     public function create()
     {
-        $orderStatus = null;
+        $faq = null;
         
-        return view('admin.order-status.create', compact('orderStatus'));
+        return view('admin.faqs.create', compact('faq'));
     }
 
      /**
@@ -45,13 +45,13 @@ class OrderStatusController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateOrderStatusRequest $request)
+    public function store(AdminStoreUpdateFaqRequest $request)
     {
         $data = $request->all();
         
-        $orderStatus = $this->orderStatusService->makeOrderStatus($data);
+        $faq = $this->faqService->makeFaq($data);
 
-        return redirect()->route('admin.order-status.index');
+        return redirect()->route('admin.faqs.index');
     }
 
      /**
@@ -62,9 +62,9 @@ class OrderStatusController extends Controller
      */
     public function show($id)
     {
-        $orderStatus = $this->orderStatusService->getOrderStatusById($id);
+        $faq = $this->faqService->getFaqById($id);
         
-        return view('admin.order-status.show', compact('orderStatus'));
+        return view('admin.faqs.show', compact('faq'));
     }
 
     /**
@@ -75,9 +75,9 @@ class OrderStatusController extends Controller
      */
     public function edit($id)
     {
-        $orderStatus = $this->orderStatusService->getOrderStatusById($id);
+        $faq = $this->faqService->getFaqById($id);
         
-        return view('admin.order-status.edit', compact('orderStatus'));
+        return view('admin.faqs.edit', compact('faq'));
     }
 
     /**
@@ -87,13 +87,13 @@ class OrderStatusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateOrderStatusRequest $request, $id)
+    public function update(AdminStoreUpdateFaqRequest $request, $id)
     {
         $data = $request->all();
  
-        $orderStatus = $this->orderStatusService->updateOrderStatus($id, $data);
+        $faq = $this->faqService->updateFaq($id, $data);
 
-        return redirect()->route('admin.order-status.index');
+        return redirect()->route('admin.faqs.index');
     }
 
     /**
@@ -104,8 +104,8 @@ class OrderStatusController extends Controller
      */
     public function destroy($id)
     {
-        $orderStatus = $this->orderStatusService->destroyOrderStatus($id);
+        $faq = $this->faqService->destroyFaq($id);
 
-        return redirect()->route('admin.order-status.index');
+        return redirect()->route('admin.faqs.index');
     }
 }
