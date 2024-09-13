@@ -10,7 +10,7 @@
 @endphp    
 <x-adminlte-input-switch 
     name="status"
-    label="status"
+    label="Status:"
     data-on-color="success"
     data-off-color="danger"
     data-on-text="Ativo"
