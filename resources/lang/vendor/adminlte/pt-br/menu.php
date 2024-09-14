@@ -35,4 +35,5 @@ return [
     'Order Status' => 'Status do Pedido',
     'FAQ' => 'Perguntas Frequentes',
     'Website search' => 'Pesquisa no site',
+    'CEP search' => 'Pesquisa de CEP',
 ];

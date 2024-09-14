@@ -138,6 +138,11 @@ class EventServiceProvider extends ServiceProvider
                         'url' => '/admin/website-searches',
                         'icon' => 'fas fa-chart-area'
                     ],
+                    [
+                        'text' => 'CEP search',
+                        'url' => '/admin/cep-searches',
+                        'icon' => 'fas fa-chart-area'
+                    ],
                 ],    
             ]);
             $event->menu->add([
