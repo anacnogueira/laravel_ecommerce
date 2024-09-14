@@ -24,7 +24,7 @@ class UserGroupController extends Controller
     {
         $userGroups = $this->userGroupService->getAllUserGroups();
 
-        return view('admin.usergroups.index', compact('userGroups'));
+        return view('admin.user-groups.index', compact('userGroups'));
     }
 
      /**
