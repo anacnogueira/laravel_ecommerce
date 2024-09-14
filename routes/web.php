@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\PaymentGatewayController as AdminPaymentGatewayCo
 use App\Http\Controllers\Admin\PaymentMethodController as AdminPaymentMethodController;
 use App\Http\Controllers\Admin\OrderStatusController as AdminOrderStatusController;
 use App\Http\Controllers\Admin\FaqController as AdminFaqController;
+use App\Http\Controllers\Admin\WebsiteSearchController as AdminWebsiteSearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,8 +64,9 @@ Route::prefix('admin')->name('admin.')->group(function(){
     //6.10 Cidades
     Route::resource('cities', AdminCityController::class);
 
-    //7. Ferramentas
     //8. Relatórios
+    //8.1 Pesquisas no site
+    Route::get("website-searches",[AdminWebsiteSearchController::class,'index'])->name("website-search.index");
     //9. Sistema  
 });
 

@@ -135,7 +135,7 @@ class EventServiceProvider extends ServiceProvider
                 'submenu' => [
                     [
                         'text' => 'Website search',
-                        'url' => '/admin/website-search',
+                        'url' => '/admin/website-searches',
                         'icon' => 'fas fa-chart-area'
                     ],
                 ],    
