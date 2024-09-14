@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\OrderStatusController as AdminOrderStatusControll
 use App\Http\Controllers\Admin\FaqController as AdminFaqController;
 use App\Http\Controllers\Admin\WebsiteSearchController as AdminWebsiteSearchController;
 use App\Http\Controllers\Admin\CepSearchController as AdminCepSearchController;
+use App\Http\Controllers\Admin\UserGroupController as AdminUserGroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,7 +71,9 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::get("website-searches",[AdminWebsiteSearchController::class,'index'])->name("website-search.index");
     //8.2 Pesquisas de CEP
     Route::get("cep-searches",[AdminCepSearchController::class,'index'])->name("cep-search.index");
-    //9. Sistema  
+    //9. Sistema
+    //9.1 Grupos
+    Route::resource('user-groups', AdminUserGroupController::class);
 });
 
 //2. SITE
