@@ -129,14 +129,16 @@ class EventServiceProvider extends ServiceProvider
                 ]
             ]);
             $event->menu->add([
-                'text' => 'Tools',
-                'url' => '#',
-                'icon' => 'nav-icon fa fa-wrench fa-fw'
-            ]);
-            $event->menu->add([
                 'text' => 'Reports',
                 'url' => '#',
-                'icon' => 'nav-icon fas fa-chart-bar fa-fw'
+                'icon' => 'nav-icon fas fa-chart-bar fa-fw',
+                'submenu' => [
+                    [
+                        'text' => 'Website search',
+                        'url' => '/admin/website-search',
+                        'icon' => 'fas fa-chart-area'
+                    ],
+                ],    
             ]);
             $event->menu->add([
                 'text' => 'System',

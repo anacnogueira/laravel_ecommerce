@@ -34,4 +34,5 @@ return [
     'Payment Methods' => 'Formas de Pagamento',
     'Order Status' => 'Status do Pedido',
     'FAQ' => 'Perguntas Frequentes',
+    'Website search' => 'Pesquisa no site',
 ];
