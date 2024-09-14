@@ -21,8 +21,8 @@ class WebsiteSearchController extends Controller
      */
     public function index()
     {
-        $webSearches = $this->websiteSearchService->getAllWebsiteSearches();
+        $websiteSearches = $this->websiteSearchService->getAllWebsiteSearches();
 
-        return view('admin.website-searches.index', compact('webSearches'));
+        return view('admin.website-searches.index', compact('websiteSearches'));
     }
 }
