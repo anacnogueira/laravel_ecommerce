@@ -27,7 +27,7 @@ class UserGroupService
      * @param array $data
      * @return object 
     */
-    public function makeUserGroup(array $data, $file)
+    public function makeUserGroup(array $data)
     {
         $data["status"] = isset($data["status"]) ? 'S' : 'N';
 
