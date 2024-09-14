@@ -39,4 +39,16 @@ class Search extends Model
     {
         return $query->where('type', 'search');
     }
+
+
+    /**
+     * Scope a query to only include cep seaches.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCep($query)
+    {
+        return $query->where('type', 'cep');
+    }
 }
