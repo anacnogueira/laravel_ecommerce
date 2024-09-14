@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Listar Pesquisas no site')
+@section('title', 'Listar Pesquisas de CEP')
 
 @section('content_header')
-    <h1>Pesquisas no site</h1>
+    <h1>Pesquisas de CEP</h1>
 @stop
 
 @section('plugins.Datatables', true)
@@ -15,17 +15,17 @@
 
         $heads = [
             ['label' => 'ID', 'width' => 5],
-            'Palavra Chave',
+            'CEP',
             'IP',
             'Data Pesquisa'
         ];
 
-        foreach($websiteSearches  as $key => $websiteSearch) {
+        foreach($cepSearches  as $key => $cepSearch) {
             $data[$key] = [
-                $websiteSearch->id,
-                $websiteSearch->keyword,
-                $websiteSearch->ip,
-                $websiteSearch->created,               
+                $cepSearch->id,
+                $cepSearch->keyword,
+                $cepSearch->ip,
+                $cepSearch->created,               
             ];
         }
         
@@ -40,7 +40,7 @@
         <div class="col-md-12">
             <div class="card card-primary card-outline">               
                 <div class="card-body">
-                    <x-adminlte-datatable id="table-website-search" :heads="$heads" head-theme="light" hoverable bordered with-buttons>
+                    <x-adminlte-datatable id="table-cep-search" :heads="$heads" head-theme="light" hoverable bordered with-buttons>
                         @foreach($config['data'] as $row)
                             <tr>
                                 @foreach($row as $cell)
