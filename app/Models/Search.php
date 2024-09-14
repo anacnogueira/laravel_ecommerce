@@ -3,9 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
 
-class Banner extends Model
+class Search extends Model
 {
     const CREATED_AT = 'created';
 
@@ -14,4 +13,15 @@ class Banner extends Model
         'type',
         'ip',
     ];
+
+    /**
+     * Scope a query to only include website seaches.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSearch($query)
+    {
+        return $query->where('type', 'search>');
+    }
 }

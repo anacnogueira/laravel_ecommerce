@@ -27,6 +27,8 @@ use App\Repositories\Contracts\OrderStatusRepositoryInterface;
 use App\Repositories\OrderStatusRepository;
 use App\Repositories\Contracts\FaqRepositoryInterface;
 use App\Repositories\FaqRepository;
+use App\Repositories\Contracts\WebsiteSearchRepositoryInterface;
+use App\Repositories\WebsiteSearchRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -84,6 +86,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             FaqRepositoryInterface::class,
             FaqRepository::class,
+        );
+        $this->app->bind(
+            WebsiteSearchRepositoryInterface::class,
+            WebsiteSearchRepository::class,
         );
     }
 
