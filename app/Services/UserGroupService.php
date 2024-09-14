@@ -62,7 +62,7 @@ class UserGroupService
 
         $data["status"] = isset($data["status"]) ? 'S' : 'N';
 
-        $this->userGroupRepository->updateUserGroup($usergroup, $data);
+        $this->userGroupRepository->updateUserGroup($userGroup, $data);
         return response()->json(['message' => 'UserG roup Updated'], 200);
     }
 
