@@ -79,6 +79,6 @@
 @endpush
 @push('js')
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
-    <script  type="text/javascript" src="{{ asset('js/admin/usergroup-status.js') }}"></script>
-    <script  type="text/javascript" src="{{ asset('js/admin/usergroup-delete.js') }}"></script>
+    <script  type="text/javascript" src="{{ asset('js/admin/btn-status.js') }}"></script>
+    <script  type="text/javascript" src="{{ asset('js/admin/btn-delete.js') }}"></script>
 @endpush
