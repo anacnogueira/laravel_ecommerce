@@ -148,7 +148,15 @@ class EventServiceProvider extends ServiceProvider
             $event->menu->add([
                 'text' => 'System',
                 'url' => '#',
-                'icon' => 'nav-icon fa fa-cog fa-fw'
+                'icon' => 'nav-icon fa fa-cog fa-fw',
+                'submenu' => [
+                    [
+                        'text' => 'Groups',
+                        'url' => '/admin/user-groups',
+                        'icon' => 'fa fa-users'
+                    ],
+                   
+                ],
             ]);
 
         });

@@ -36,4 +36,5 @@ return [
     'FAQ' => 'Perguntas Frequentes',
     'Website search' => 'Pesquisa no site',
     'CEP search' => 'Pesquisa de CEP',
+    'Groups' => 'Grupos',
 ];
