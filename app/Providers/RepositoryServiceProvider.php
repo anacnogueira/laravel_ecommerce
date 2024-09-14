@@ -29,6 +29,8 @@ use App\Repositories\Contracts\FaqRepositoryInterface;
 use App\Repositories\FaqRepository;
 use App\Repositories\Contracts\WebsiteSearchRepositoryInterface;
 use App\Repositories\WebsiteSearchRepository;
+use App\Repositories\Contracts\CepSearchRepositoryInterface;
+use App\Repositories\CepSearchRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -90,6 +92,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             WebsiteSearchRepositoryInterface::class,
             WebsiteSearchRepository::class,
+        );
+        $this->app->bind(
+            CepSearchRepositoryInterface::class,
+            CepSearchRepository::class,
         );
     }
 
