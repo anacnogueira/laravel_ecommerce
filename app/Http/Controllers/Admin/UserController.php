@@ -87,8 +87,16 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = $this->userService->getUserById($id);
+
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione o grupo";
+
+        $userGroups = $this->userGroupService->getAllUserGroups();
+        $userGroups = $userGroups->sortBy('name');
+        $userGroups = $userGroups->prepend($select);
         
-        return view('admin.users.edit', compact('user'));
+        return view('admin.users.edit', compact('user', 'userGroups'));
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AdminStoreUpdateUserRequest extends FormRequest
 {
@@ -23,10 +24,13 @@ class AdminStoreUpdateUserRequest extends FormRequest
      */
     public function rules()
     {
-        
         return [
             'name' => ['required'],
-            'email' => ['required', 'email', 'unique:users,email'],
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($this->user),
+            ],
             'password' => ['required', 'confirmed', 'between:6,15'],
             'user_group_id' => ['required'],
         ];
