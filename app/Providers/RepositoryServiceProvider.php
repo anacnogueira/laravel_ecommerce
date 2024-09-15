@@ -33,6 +33,8 @@ use App\Repositories\Contracts\CepSearchRepositoryInterface;
 use App\Repositories\CepSearchRepository;
 use App\Repositories\Contracts\UserGroupRepositoryInterface;
 use App\Repositories\UserGroupRepository;
+use App\Repositories\Contracts\UserRepositoryInterface;
+use App\Repositories\UserRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -102,6 +104,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             UserGroupRepositoryInterface::class,
             UserGroupRepository::class,
+        );
+        $this->app->bind(
+            UserRepositoryInterface::class,
+            UserRepository::class,
         );
     }
 
