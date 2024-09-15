@@ -4,15 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\UserService;
+use App\Services\UserGroupService;
 use App\Http\Requests\AdminStoreUpdateUserRequest;
 
 class UserController extends Controller
 {
     protected $userService;
+    protected $userGroupService;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, UserGroupService $userGroupService)
     {
         $this->userService = $userService;
+        $this->userGroupService = $userGroupService;
     }
     
     /**
@@ -35,8 +38,16 @@ class UserController extends Controller
     public function create()
     {
         $user = null;
+
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione o grupo";
+
+        $userGroups = $this->userGroupService->getAllUserGroups();
+        $userGroups = $userGroups->sortBy('name');
+        $userGroups = $userGroups->prepend($select);
         
-        return view('admin.users.create', compact('user'));
+        return view('admin.users.create', compact('user', 'userGroups'));
     }
 
      /**
