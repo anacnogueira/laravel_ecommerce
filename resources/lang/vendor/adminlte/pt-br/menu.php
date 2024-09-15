@@ -37,4 +37,5 @@ return [
     'Website search' => 'Pesquisa no site',
     'CEP search' => 'Pesquisa de CEP',
     'Groups' => 'Grupos',
+    'Users' => 'Usuários',
 ];

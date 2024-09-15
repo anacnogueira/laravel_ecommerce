@@ -155,7 +155,11 @@ class EventServiceProvider extends ServiceProvider
                         'url' => '/admin/user-groups',
                         'icon' => 'fa fa-users'
                     ],
-                   
+                    [
+                        'text' => 'Users',
+                        'url' => '/admin/users',
+                        'icon' => 'fa fa-user'
+                    ],                   
                 ],
             ]);
 
