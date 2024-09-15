@@ -27,7 +27,7 @@ class UserService
      * @param array $data
      * @return object 
     */
-    public function makeUser(array $data, $file)
+    public function makeUser(array $data)
     {
         $data["status"] = isset($data["status"]) ? 'S' : 'N';
 
