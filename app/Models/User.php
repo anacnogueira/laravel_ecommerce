@@ -19,7 +19,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'telephone',
+        'cellular',
         'password',
+        'status',
+        'user_group_id',
     ];
 
     /**
@@ -40,4 +44,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function group()
+    {
+        return $this->belongsTo(UserGroup::class);
+    }
 }
