@@ -3,7 +3,7 @@
 @section('title', 'Inserir Módulo')
 
 @section('content_header')
-    <h1>Novo Banner</h1>
+    <h1>Novo Módulo</h1>
 @stop
 
 @section('plugins.BootstrapSwitch', true)

@@ -30,5 +30,8 @@
             :config="$config"
             checked="$config['state']"
             enable-old-support />
+
+        <a href="{{ route('admin.modules.index') }}" class="btn btn-warning"><i class="fa fa-times"></i> Cancelar</a>
+        <x-adminlte-button type="submit" label="Salvar" theme="success" icon="fas fa-check"/>    
     </div>
 </div>       

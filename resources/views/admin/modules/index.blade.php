@@ -3,7 +3,7 @@
 @section('title', 'Listar Módulos')
 
 @section('content_header')
-    <h1>Múdulos</h1>
+    <h1>Módulos</h1>
 @stop
 
 @section('plugins.Datatables', true)
