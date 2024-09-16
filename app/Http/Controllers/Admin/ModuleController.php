@@ -84,8 +84,16 @@ class ModuleController extends Controller
     public function edit($id)
     {
         $module = $this->moduleService->getModuleById($id);
+
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione";
+
+        $modules = $this->moduleService->getAllModules();
+        $modules = $modules->sortBy('name');
+        $modules = $modules->prepend($select);
         
-        return view('admin.modules.edit', compact('module'));
+        return view('admin.modules.edit', compact('module', 'modules'));
     }
 
     /**
