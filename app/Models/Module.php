@@ -3,9 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
 
-class Banner extends Model
+class Module extends Model
 {
     const CREATED_AT = 'created';
     const UPDATED_AT = 'modified';
