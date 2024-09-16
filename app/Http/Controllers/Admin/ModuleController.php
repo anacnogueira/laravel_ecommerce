@@ -35,8 +35,16 @@ class ModuleController extends Controller
     public function create()
     {
         $module = null;
+
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione";
+
+        $modules = $this->moduleService->getAllModules();
+        $modules = $modules->sortBy('name');
+        $modules = $modules->prepend($select);
         
-        return view('admin.modules.create', compact('module'));
+        return view('admin.modules.create', compact('module', 'modules'));
     }
 
      /**
