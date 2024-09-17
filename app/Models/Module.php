@@ -23,4 +23,9 @@ class Module extends Model
     {
         return $this->hasOne(Module::class,'id','parent_id');
     }
+
+    public function routines()
+    {
+        return $this->hasMany(Routine::class);
+    }
 }
