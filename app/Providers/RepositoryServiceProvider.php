@@ -37,6 +37,8 @@ use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Repositories\UserRepository;
 use App\Repositories\Contracts\ModuleRepositoryInterface;
 use App\Repositories\ModuleRepository;
+use App\Repositories\Contracts\RoutineRepositoryInterface;
+use App\Repositories\RoutineRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -114,6 +116,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ModuleRepositoryInterface::class,
             ModuleRepository::class,
+        );
+        $this->app->bind(
+            RoutineRepositoryInterface::class,
+            RoutineRepository::class,
         );
     }
 
