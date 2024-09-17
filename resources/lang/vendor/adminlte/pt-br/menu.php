@@ -39,4 +39,5 @@ return [
     'Groups' => 'Grupos',
     'Users' => 'Usuários',
     'Modules' => 'Módulos',
+    'Routines' => 'Rotinas',
 ];
