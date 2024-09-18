@@ -39,7 +39,7 @@
 
         <x-adminlte-input name="btn_image" label="Imagem:" value="{{ $routine->btn_Image ?? ''}}" placeholder="Insira a imagem do botão" enable-old-support/>    
         
-        <div class="form-group">
+        <div class="form-group @error('show') is-invalid @enderror"  @error('show') style="border: 1px solid red" @enderror>
             <label>Mostrar:</label>
             <div class="radio">
                 <label>
@@ -59,7 +59,11 @@
                     {{  isset($routine->show) && $routine->show == "specific" ? "checked" : "" }}> Específico
                 </label>
             </div>
-            
+            @error('show')
+                <span class="invalid-feedback d-block" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>               
+            @enderror
         </div>
 
         
