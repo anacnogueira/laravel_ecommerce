@@ -59,7 +59,9 @@ class RoutineService
         if (!$routine) {
             return response()->json(['message' => 'Routine Not Found'], 404);
         }
-       
+        
+        $data["visible"] = isset($data["visible"]) ? 'S' : 'N';
+        
         $this->routineRepository->updateRoutine($routine, $data);
         return response()->json(['message' => 'Routine Updated'], 200);
     }

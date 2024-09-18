@@ -15,7 +15,7 @@
 
         <x-adminlte-input name="page" label="Página:" value="{{ $routine->page ?? ''}}" placeholder="Insira página da rotina" enable-old-support/>
         
-        <x-adminlte-input name="onclick" label="Ao clicar:*" value="{{ $routine->onclicke ?? ''}}" placeholder="Insira a ação ao clicar" enable-old-support/>
+        <x-adminlte-input name="onclick" label="Ao clicar:*" value="{{ $routine->onclick ?? ''}}" placeholder="Insira a ação ao clicar" enable-old-support/>
 
         <x-adminlte-input type="number" name="quantity" label="Qtde registos:" value="{{ $routine->quantity ?? ''}}" placeholder="Qtde de registros a serem afetados" enable-old-support/>
         
@@ -37,7 +37,7 @@
             checked="$config['state']"
             enable-old-support />
 
-        <x-adminlte-input name="btn_image" label="Imagem:" value="{{ $routine->btn_Image ?? ''}}" placeholder="Insira a imagem do botão" enable-old-support/>    
+        <x-adminlte-input name="btn_image" label="Imagem:" value="{{ $routine->btn_image ?? ''}}" placeholder="Insira a imagem do botão" enable-old-support/>    
         
         <div class="form-group @error('show') is-invalid @enderror"  @error('show') style="border: 1px solid red" @enderror>
             <label>Mostrar:*</label>
@@ -49,7 +49,7 @@
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="show" value="intern"
+                    <input type="radio" name="show" value="internal"
                     {{  isset($routine->show) && $routine->show == "intern" ? "checked" : "" }}> Interno
                 </label>
             </div>
