@@ -29,6 +29,8 @@ class RoutineService
     */
     public function makeRoutine(array $data)
     {
+        $data["visible"] = isset($data["visible"]) ? 'S' : 'N';
+
         $routine = $this->routineRepository->createRoutine($data);        
 
         return $routine;

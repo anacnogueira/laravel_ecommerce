@@ -15,11 +15,11 @@
 
         <x-adminlte-input name="page" label="Página:" value="{{ $routine->page ?? ''}}" placeholder="Insira página da rotina" enable-old-support/>
         
-        <x-adminlte-input name="onclick" label="Ao clicar:" value="{{ $routine->onclicke ?? ''}}" placeholder="Insira a ação ao clicar" enable-old-support/>
+        <x-adminlte-input name="onclick" label="Ao clicar:*" value="{{ $routine->onclicke ?? ''}}" placeholder="Insira a ação ao clicar" enable-old-support/>
 
-        <x-adminlte-input type="number" name="quantity" label="Qtde registos:*" value="{{ $routine->quantity ?? ''}}" placeholder="Qtde de registros a serem afetados" enable-old-support/>
+        <x-adminlte-input type="number" name="quantity" label="Qtde registos:" value="{{ $routine->quantity ?? ''}}" placeholder="Qtde de registros a serem afetados" enable-old-support/>
         
-        <x-adminlte-input type="number" name="order" label="Ordem:" value="{{ $routine->order ?? ''}}" placeholder="Insira a ordem do módulo" enable-old-support/>
+        <x-adminlte-input type="number" name="order" label="Ordem:*" value="{{ $routine->order ?? ''}}" placeholder="Insira a ordem do módulo" enable-old-support/>
 
         @php
             $config = [
@@ -40,7 +40,7 @@
         <x-adminlte-input name="btn_image" label="Imagem:" value="{{ $routine->btn_Image ?? ''}}" placeholder="Insira a imagem do botão" enable-old-support/>    
         
         <div class="form-group @error('show') is-invalid @enderror"  @error('show') style="border: 1px solid red" @enderror>
-            <label>Mostrar:</label>
+            <label>Mostrar:*</label>
             <div class="radio">
                 <label>
                     <input type="radio" name="show" value="header"
