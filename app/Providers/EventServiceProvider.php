@@ -170,6 +170,11 @@ class EventServiceProvider extends ServiceProvider
                         'url' => '/admin/routines',
                         'icon' => 'fa fa-cog'
                     ],
+                    [
+                        'text' => 'Logs',
+                        'url' => '/admin/logs',
+                        'icon' => 'fa fa-search'
+                    ],
                 ],
             ]);
 
