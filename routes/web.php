@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\ModuleController as AdminModuleController;
 use App\Http\Controllers\Admin\RoutineController as AdminRoutineController;
 use App\Http\Controllers\Admin\LogController as AdminLogController;
+use App\Http\Controllers\Admin\SupplierController as AdminSupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::resource('categories', AdminCategoryController::class);
     //3.2 Marcas
     Route::resource('brands', AdminBrandController::class);
+    //3.3 Fornecedores
+    Route::resource('suppliers', AdminSupplierController::class);
 
     //6. Conteúdo
     //6.1 Páginas
