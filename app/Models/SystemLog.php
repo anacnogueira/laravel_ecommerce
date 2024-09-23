@@ -17,4 +17,15 @@ class SystemLog extends Model
         'operation',
         'description',   
     ];
+
+    /**
+     * Scope a query to only include 24 hours of logs.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeLast24Hours($query)
+    {
+       return $query->where('created', ">=", Carbon::now()->subDay());
+    }
 }
