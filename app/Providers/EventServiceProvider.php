@@ -59,6 +59,11 @@ class EventServiceProvider extends ServiceProvider
                         'url' => '/admin/brands',
                         'icon' => 'fa fa-gem'
                     ],
+                    [
+                        'text' => 'Suppliers',
+                        'url' => '/admin/suppliers',
+                        'icon' => 'fa fa-user-secret'
+                    ],
                 ]
             ]);
             $event->menu->add([

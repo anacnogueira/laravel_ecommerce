@@ -40,4 +40,5 @@ return [
     'Users' => 'Usuários',
     'Modules' => 'Módulos',
     'Routines' => 'Rotinas',
+    'Suppliers' => 'Fornecedores',
 ];
