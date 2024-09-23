@@ -41,6 +41,8 @@ use App\Repositories\Contracts\RoutineRepositoryInterface;
 use App\Repositories\RoutineRepository;
 use App\Repositories\Contracts\LogRepositoryInterface;
 use App\Repositories\LogRepository;
+use App\Repositories\Contracts\SupplierRepositoryInterface;
+use App\Repositories\SupplierRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -126,6 +128,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             LogRepositoryInterface::class,
             LogRepository::class,
+        );
+        $this->app->bind(
+            SupplierRepositoryInterface::class,
+            SupplierRepository::class,
         );
     }
 
