@@ -11,15 +11,27 @@ class Contact extends Model
 
     protected $fillable = [
         'name',
+        'fantasy_name',
         'type_person',
         'type_contact',
         'gender',
         'rg',
         'cpf',
+        'cnpj',
+        'ie',
+        'im',
+        'business_type',
         'date_birth',
         'email',
+        'website',
         'phone',
-        'mobile'
+        'mobile',
+        'password',
+        'newsletter',
+        'image',
+        'description',
+        'url',
+        'status',
     ];
 
     public function orders()
