@@ -38,4 +38,15 @@ class Contact extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    /**
+     * Scope a query to only include suppliers (providers).
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSuppliers($query)
+    {
+        return $query->where('type_contact', 'provider');
+    }
 }
