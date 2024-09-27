@@ -33,11 +33,19 @@ class SupplierService
     {
         $data["status"] = isset($data["status"]) ? 'S' : 'N';
 
+        //1. Cadastrar Dados Geraia
         $supplier = $this->supplierRepository->createSupplier($data);
 
-        $fileName = Str::kebab($supplier->name)."-".date('dmYHis');
 
-        if($file) {
+        //2. Cadastrar Dados de de Contato
+
+
+        //3. Adicionar Dados Pessoas Para Contato
+
+        //4. Adiciona Imagem (se houver)
+        if ($file) {
+            $fileName = Str::kebab($supplier->name)."-".date('dmYHis');
+
             $storeFileService = new StoreFileService(
                 $file,
                 "public/images/suppliers",
