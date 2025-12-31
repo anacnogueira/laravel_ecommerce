@@ -1,0 +1,114 @@
+/* FOOTER */
+.footer {
+    margin-top: 30px;
+    position: relative;
+    bottom: 0;
+}
+
+.footer p {
+    text-align: left;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+    padding: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.footer .newsletter input[type="submit"] {
+    margin-left: 5px;
+}
+
+.footer-1,
+.footer-2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+
+.footer-1 form {
+    display: flex;
+}
+
+.footer-1 div,
+.footer-2 div {
+    flex: 1;
+    padding: 10px;
+}
+
+.footer .social-media {
+    color: var(--ternary-color);
+    font-size: 50px;
+}
+
+.footer .links ul {
+    display: flex;
+    width: 100%;
+}
+
+.footer .links ul li {
+    flex: 1;
+    padding: 5px;
+}
+
+.footer a {
+    display: block;
+    color: var(--secondary-color);
+    margin-bottom: 0.8rem;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--ternary-color);
+    text-decoration: underline;
+}
+
+footer .address section,
+footer .address span {
+    color: #666;
+    display: block;
+}
+footer .address div {
+    text-align: center;
+    margin: 0 auto;
+}
+
+footer .rights {
+    border-top: 2px solid var(--ternary-color);
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .footer-1,
+    .footer-2 {
+        flex-direction: row;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .footer-1 div,
+    .footer-2 div {
+        flex: 1;
+        padding: 20px;
+    }
+
+    footer .rights {
+        flex-direction: row;
+    }
+
+    footer .rights div {
+        flex: 1;
+        padding: 20px;
+        text-align: left;
+        color: #a69d9e !important;
+        height: 0.8rem;
+    }
+
+    footer .rights div:nth-child(2) {
+        text-align: right;
+    }
+}

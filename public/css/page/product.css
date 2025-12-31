@@ -1,0 +1,106 @@
+@import url("../components/breadcrumb.css");
+@import url("../components/img-gallery.css");
+
+.action_buttons {
+    margin: 15px 0;
+}
+.action_buttons ul {
+    display: flex;
+    gap: 20px;
+}
+
+.action_buttons ul li a {
+    color: #000;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+}
+
+.product section {
+    width: 100%;
+}
+
+.product h1 {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.product h2 {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.product .price {
+    font-size: 2.813rem;
+    font-weight: 500;
+    color: #000;
+}
+
+.product .installment {
+    font-size: 1.2rem;
+}
+
+.product .sharethis-inline-share-buttons {
+    margin-top: 20px;
+}
+
+.add-to-cart {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.add-to-cart input {
+    width: 80px;
+}
+
+.add-to-cart button.btn-whatsapp {
+    background: #25d366;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    padding: 7px;
+    font-size: 1rem;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+button.btn-whatsapp i {
+    font-size: 1.1rem;
+}
+
+hr {
+    margin: 20px 0;
+}
+
+.unavailable h3 {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.unavailable form {
+    width: 255px;
+    text-align: right;
+}
+.unavailable form button {
+    background: var(--secondary-color);
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    padding: 7px;
+    font-size: 1rem;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+@media (min-width: 992px) {
+    .product {
+        flex-direction: row;
+    }
+}

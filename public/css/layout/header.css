@@ -1,0 +1,186 @@
+/* Header */
+div#info {
+    display: none;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+header #header-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    margin-top: 1rem;
+}
+
+/* Search */
+header #header-2 .search {
+    text-align: center;
+}
+
+header #header-2 .search form {
+    display: flex;
+}
+
+header #header-2 .search input[type="search"] {
+    width: 90%;
+    display: inline;
+    vertical-align: top;
+}
+
+header #header-2 .search button {
+    background: 0 0;
+    border: 1px solid #ccc;
+    color: var(--primary-color);
+    font-size: 1.125rem;
+    margin-left: 2px;
+    padding: 0.4rem;
+    cursor: pointer;
+    width: 1.9rem;
+}
+
+#header-2 .search button,
+#header-2 .search input[type="search"] {
+    height: 2.7rem;
+}
+
+/* Bag */
+header #header-2 .bag {
+    display: none;
+}
+
+@media screen and (min-width: 600px) {
+    div#info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: #000;
+    }
+
+    header div#info,
+    header div#info a {
+        text-decoration: none;
+        color: #fff;
+    }
+    header ul {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+    }
+
+    header #open-modal-attendance {
+        cursor: pointer;
+    }
+
+    header #modal-attendance {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        color: #000;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+    }
+
+    .modal-content i {
+        margin-right: 1rem;
+    }
+
+    .modal-title {
+        color: var(--primary-color);
+        font-weight: bold;
+    }
+
+    /* The Close Button */
+    #modal-close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    #modal-close:hover,
+    #modal-close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    header #header-2 {
+        flex-direction: row;
+    }
+
+    header #header-2 .bag {
+        display: block;
+    }
+}
+
+@media (min-width: 992px) {
+    header #header-2 {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+    }
+
+    /* Estilo comum para as 3 colunas filhas */
+    header #header-2 > * {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    /* Colunas das Pontas (1/4 do espaço cada) */
+    header #header-2 > *:nth-child(1),
+    header #header-2 > *:nth-child(3) {
+        flex: 1;
+    }
+
+    /* Coluna do Meio (2/4 do espaço - o dobro das laterais) */
+    header #header-2 > *:nth-child(2) {
+        flex: 2;
+        justify-content: center; /* Conteúdo centralizado */
+    }
+
+    /* Alinhamentos específicos de conteúdo */
+    header #header-2 > *:nth-child(1) {
+        justify-content: flex-start; /* Conteúdo à esquerda */
+    }
+
+    header #header-2 > *:nth-child(3) {
+        justify-content: flex-end; /* Conteúdo à direita */
+        text-align: right;
+    }
+
+    header #header-2 .bag {
+        text-align: right;
+        display: flex;
+        justify-content: end;
+        gap: 0.5rem;
+        color: var(--secondary-color);
+    }
+
+    header #header-2 .bag i {
+        color: var(--secondary-color);
+        font-size: 2rem;
+        cursor: pointer;
+    }
+}

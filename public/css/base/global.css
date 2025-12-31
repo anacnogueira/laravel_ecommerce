@@ -1,0 +1,78 @@
+/* GLOBAL */
+body {
+    background-color: var(--background);
+    font-family: AvenirNextLTPro-Cn, sans-serif;
+    font-size: 1rem;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+a {
+    color: var(--primary-color);
+}
+
+ul li {
+    list-style: none;
+}
+
+.container {
+    margin: 2rem 1rem;
+    position: relative;
+}
+
+form {
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="search"],
+input[type="number"],
+input[type="email"] {
+    border: 1px solid #ccc;
+    color: rgba(0, 0, 0, 0.75);
+    display: block;
+    padding: 0.5rem;
+}
+
+input[type="submit"] {
+    background: var(--secondary-color);
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    padding: 7px;
+    font-size: 1rem;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+input.is-invalid {
+    border: 1px solid #ff0000;
+}
+
+.alert-danger {
+    color: #ff0000;
+    text-align: left;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    white-space: nowrap;
+}

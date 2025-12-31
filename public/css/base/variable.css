@@ -1,0 +1,8 @@
+/* Default Styles */
+:root {
+    --background: #ffffff;
+    --primary-color: #921130;
+    --secondary-color: #7d2840;
+    --ternary-color: #e88d8b;
+    font-size: 100%;
+}

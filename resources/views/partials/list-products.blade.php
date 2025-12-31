@@ -1,0 +1,34 @@
+<div class="products">
+    @foreach($products as $product)
+        @php
+            $categories = '';
+            foreach ($product->categories as $i => $category) {
+                $categories .= Str::slug(strtolower($category->name)).'/';
+            }
+            $link =  url('/item/'.$categories.$product->permalink);
+            //$link =  '';
+        @endphp
+        <div class="product-item">
+            <a href="{{ $link }}">
+                @if (count($product->photos) >0)
+                    <img
+                        src="{{ Storage::url($product->photos[0]->photo_redim) }}"
+                        alt="{{ $product->name }}"
+                        title="{{ $product->name }}"
+                        width="{{ $product->photos[0]->width_redim }}"
+                        height ="{{ $product->photos[0]->height_redim }}"
+                    />
+                @else
+                    <img src="{{ asset('images/no_image.jpg') }}" alt="Produto sem imagem" title="Produto sem imagem" />
+                @endif
+
+                <h2 class="desc">{{ Str::limit($product->name,40) }}</h2>
+                <h3>{{ $product->brand->name }}</h3>
+                <p class="newPrice">R$ {{ number_format($product->selling_price,2,',','.') }}</p>
+                <span class='installment'>
+                    ou 3x R$ {{  number_format(($product->selling_price/3),2,',','.') }}
+                </span>
+            </a>
+        </div>
+    @endforeach
+</div>

@@ -1,0 +1,33 @@
+.container {
+    text-align: center;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+p.error {
+    margin-bottom: 10px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+a.home {
+    display: block;
+    width: 200px;
+    background: var(--secondary-color);
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    margin: 10px auto;
+    padding: 7px;
+    font-size: 1rem;
+    border-radius: 2px;
+}

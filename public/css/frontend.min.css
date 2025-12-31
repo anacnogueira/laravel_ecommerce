@@ -1,0 +1,17 @@
+@charset "utf-8";
+/* 1. Estilo base (Mobile) */
+@import url("base/variable.css");
+@import url("base/fonts.css");
+@import url("base/reset.css");
+@import url("base/global.css");
+@import url("layout/header.css");
+@import url("layout/footer.css");
+@import url("components/menu.css");
+
+/* 2. Tablets e telas médias */
+@media screen and (min-width: 600px) {
+}
+
+/* 3. Desktops e Laptops */
+@media (min-width: 992px) {
+}

@@ -1,0 +1,367 @@
+/* MENU */
+nav#menu-dropdown {
+    width: 100%;
+    background-color: var(--ternary-color);
+    margin-top: 0.5rem;
+}
+#menu-dropdown,
+#menu-dropdown ul,
+#menu-dropdown ul li,
+#menu-dropdown ul li a,
+#menu-dropdown #btn-mobile {
+    border: 0;
+    list-style: none;
+    line-height: 1;
+    display: block;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#menu-dropdown:after,
+#menu-dropdown > ul:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+#menu-dropdown #btn-mobile {
+    display: none;
+}
+#menu-dropdown {
+    font-family: sans-serif;
+    border: none;
+}
+#menu-dropdown > ul > li {
+    float: left;
+}
+#menu-dropdown > ul > li > a {
+    padding: 17px;
+    font-size: 1em;
+    font-family: "open_sansregular";
+    text-decoration: none;
+    color: var(--background);
+}
+#menu-dropdown > ul > li:hover > a,
+#menu-dropdown ul li.active a {
+    color: var(--background);
+}
+#menu-dropdown > ul > li:hover,
+#menu-dropdown ul li.active:hover,
+#menu-dropdown ul li.active,
+#menu-dropdown ul li.has-sub.active:hover {
+    background: var(--primary-color) !important;
+    -webkit-transition: background 0.3s ease;
+    -ms-transition: background 0.3s ease;
+    transition: background 0.3s ease;
+}
+#menu-dropdown > ul > li.has-sub > a {
+    padding-right: 30px;
+}
+#menu-dropdown > ul > li.has-sub > a:after {
+    position: absolute;
+    top: 22px;
+    right: 11px;
+    width: 8px;
+    height: 2px;
+    display: block;
+    background: var(--background);
+    content: "";
+}
+#menu-dropdown > ul > li.has-sub > a:before {
+    position: absolute;
+    top: 19px;
+    right: 14px;
+    display: block;
+    width: 2px;
+    height: 8px;
+    background: var(--background);
+    content: "";
+    -webkit-transition: all 0.25s ease;
+    -ms-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+#menu-dropdown > ul > li.has-sub:hover > a:before {
+    top: 23px;
+    height: 0;
+}
+#menu-dropdown ul ul {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+}
+#menu-dropdown ul ul li {
+    height: 0;
+    -webkit-transition: all 0.25s ease;
+    -ms-transition: all 0.25s ease;
+    background: var(--ternary-color);
+    transition: all 0.25s ease;
+}
+#menu-dropdown ul ul li:hover {
+    background-color: var(--primary-color);
+}
+#menu-dropdown li:hover > ul {
+    left: auto;
+}
+#menu-dropdown li:hover > ul > li {
+    height: 50px;
+}
+#menu-dropdown ul ul ul {
+    margin-left: 100%;
+    top: 0;
+}
+#menu-dropdown ul ul li a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 11px 15px;
+    width: 200px;
+    font-size: 1em;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 400;
+}
+#menu-dropdown ul ul li:last-child > a,
+#menu-dropdown ul ul li.last-item > a {
+    border-bottom: 0;
+}
+#menu-dropdown ul ul li:hover > a,
+#menu-dropdown ul ul li a:hover {
+    background-color: var(--secondary-color);
+    color: var(--background);
+}
+#menu-dropdown ul ul li.has-sub > a:after {
+    position: absolute;
+    top: 16px;
+    right: 11px;
+    width: 8px;
+    height: 2px;
+    display: block;
+    background: #ddd;
+    content: "";
+}
+#menu-dropdown ul ul li.has-sub > a:before {
+    position: absolute;
+    top: 13px;
+    right: 14px;
+    display: block;
+    width: 2px;
+    height: 8px;
+    background: #ddd;
+    content: "";
+    -webkit-transition: all 0.25s ease;
+    -ms-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+#menu-dropdown ul ul > li.has-sub:hover > a:before {
+    top: 17px;
+    height: 0;
+}
+#menu-dropdown ul ul li.has-sub:hover,
+#menu-dropdown ul li.has-sub ul li.has-sub ul li:hover {
+    background: var(--secondary-color);
+}
+#menu-dropdown ul ul ul li.active a {
+    border-left: 1px solid #333;
+}
+#menu-dropdown > ul > li.has-sub > ul > li.active > a,
+#menu-dropdown > ul ul > li.has-sub > ul > li.active > a {
+    border-top: 1px solid #333;
+}
+/*RESPONSIVO*/
+@media screen and (max-width: 960px) {
+    nav {
+        width: 100%;
+    }
+    #menu-dropdown {
+        width: 100%;
+    }
+    #menu-dropdown ul {
+        width: 100%;
+        display: none;
+    }
+    #menu-dropdown ul li {
+        width: 100%;
+        border-top: 1px solid #f4f4f4;
+    }
+    #menu-dropdown ul li:hover {
+        background: var(--background);
+    }
+    #menu-dropdown ul ul li,
+    #menu-dropdown li:hover > ul > li {
+        height: auto;
+    }
+    #menu-dropdown ul li a,
+    #menu-dropdown ul ul li a {
+        width: 100%;
+        border-bottom: 0;
+        background: var(--ternary-color);
+    }
+    #menu-dropdown > ul > li {
+        float: none;
+    }
+    #menu-dropdown ul ul li a {
+        padding-left: 25px;
+    }
+    #menu-dropdown ul ul li {
+        background: #fbfbfb !important;
+    }
+    #menu-dropdown ul ul li:hover {
+        background: #363636 !important;
+    }
+    #menu-dropdown ul ul ul li a {
+        padding-left: 35px;
+    }
+    #menu-dropdown ul ul li a {
+        color: #242424;
+        background: none;
+    }
+    #menu-dropdown ul ul li:hover > a,
+    #menu-dropdown ul ul li.active > a {
+        color: #fff;
+    }
+    #menu-dropdown ul ul,
+    #menu-dropdown ul ul ul {
+        position: relative;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        text-align: left;
+        display: block;
+    }
+    #menu-dropdown > ul > li.has-sub > a:after,
+    #menu-dropdown > ul > li.has-sub > a:before,
+    #menu-dropdown ul ul > li.has-sub > a:after,
+    #menu-dropdown ul ul > li.has-sub > a:before {
+        display: none;
+    }
+
+    #menu-dropdown #btn-mobile {
+        display: block;
+        padding: 15px 15px;
+        color: var(--background);
+        font-size: 1em;
+    }
+
+    #menu-dropdown .button {
+        width: 55px;
+        height: 46px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+        z-index: 99;
+    }
+
+    #menu-dropdown .button:after {
+        position: absolute;
+        top: 22px;
+        right: 20px;
+        display: block;
+        height: 4px;
+        width: 20px;
+        border-top: 2px solid var(--background);
+        border-bottom: 2px solid var(--background);
+        content: "";
+    }
+
+    #menu-dropdown .button:before {
+        -webkit-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        display: block;
+        height: 2px;
+        width: 20px;
+        background: var(--background);
+        content: "";
+    }
+
+    #menu-dropdown .button.menu-opened:after {
+        -webkit-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        top: 23px;
+        border: 0;
+        height: 2px;
+        width: 19px;
+        background: var(--background);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    #menu-dropdown .button.menu-opened:before {
+        top: 23px;
+        background: var(--background);
+        width: 19px;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+
+    #menu-dropdown .submenu-button {
+        position: absolute;
+        z-index: 99;
+        right: 0;
+        top: 0;
+        display: block;
+        height: 46px;
+        width: 46px;
+        cursor: pointer;
+    }
+    #menu-dropdown .submenu-button.submenu-opened {
+        background: transparent;
+    }
+    #menu-dropdown ul ul .submenu-button {
+        height: 35px;
+        width: 35px;
+    }
+    #menu-dropdown .submenu-button:after {
+        position: absolute;
+        top: 22px;
+        right: 19px;
+        width: 8px;
+        height: 2px;
+        display: block;
+        background: var(--background);
+        content: "";
+    }
+    #menu-dropdown ul ul .submenu-button:after {
+        top: 15px;
+        right: 13px;
+    }
+    #menu-dropdown .submenu-button.submenu-opened:after {
+        background: var(--background);
+    }
+    #menu-dropdown .submenu-button:before {
+        position: absolute;
+        top: 19px;
+        right: 22px;
+        display: block;
+        width: 2px;
+        height: 8px;
+        background: var(--background);
+        content: "";
+    }
+    #menu-dropdown ul ul .submenu-button:before {
+        top: 12px;
+        right: 16px;
+    }
+    #menu-dropdown .submenu-button.submenu-opened:before {
+        display: none;
+    }
+    #menu-dropdown ul ul ul li.active a {
+        border-left: none;
+    }
+    #menu-dropdown > ul > li.has-sub > ul > li.active > a,
+    #menu-dropdown > ul ul > li.has-sub > ul > li.active > a {
+        border-top: none;
+    }
+}

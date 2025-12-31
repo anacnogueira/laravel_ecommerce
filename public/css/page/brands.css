@@ -1,0 +1,54 @@
+@import url("../components/pagination.css");
+@import url("../components/breadcrumb.css");
+
+/* BRANDS */
+.brands {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.brand-item {
+    text-align: center;
+}
+
+.brand-item img {
+    width: 50%;
+    margin: 0 auto 5px;
+    vertical-align: middle;
+}
+
+.brand-item a {
+    text-decoration: none;
+    color: #000;
+}
+
+.brand-item a:hover {
+    text-decoration: underline;
+    color: #000;
+}
+
+@media (min-width: 992px) {
+    .brands {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        padding: 15px;
+    }
+
+    .brand-item {
+        flex-basis: calc(25% - 11.25px);
+        padding: 15px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 150px;
+    }
+
+    .brand-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+}

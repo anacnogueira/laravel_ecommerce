@@ -1,0 +1,32 @@
+.product-upload-image {
+    border: 1px dashed #2d89bf;
+    color: #2d89bf;
+    background: #e3edf6;
+    padding: 10px !important;
+    text-align: center;
+    font-size: 32px;
+    cursor: pointer;
+    width: 120px;
+    height: 67px;
+    margin-bottom: 10px;
+}
+
+.file-upload {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.input-upload {
+    border: 1px solid black;
+    position: absolute !important;
+    top: 0px;
+    left: 0px;
+    margin: 0;
+    padding: 0;
+    font-size: 45px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}

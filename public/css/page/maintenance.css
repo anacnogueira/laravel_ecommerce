@@ -1,0 +1,42 @@
+.container {
+    text-align: center;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+.container i {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin: 10px;
+}
+
+p.error {
+    margin: 10px;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+a.home {
+    display: block;
+    width: 200px;
+    background: var(--secondary-color);
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    margin: 10px auto;
+    padding: 7px;
+    font-size: 1rem;
+    border-radius: 2px;
+}
