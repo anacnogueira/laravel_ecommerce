@@ -56,7 +56,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
 });
 
 //2. SITE
-Route::get('/', [ProductController::class,'index']);
+Route::get('/', [ProductController::class,'index'])->name('index');
 
 //2.1 Pages
 Route::get('/contato', [PagesController::class,'contact'])->name('pages.contact');

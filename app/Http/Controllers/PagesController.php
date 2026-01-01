@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Services\PageService;
 use App\Services\ContactService;
 use App\Http\Requests\SendContactRequest;
-
+use App\Models\Category;
+use App\Models\Brand;
+use App\Http\Resources\CategoryResource;
+use App\Http\Resources\BrandResource;
 
 class PagesController extends Controller
 {
@@ -42,7 +45,11 @@ class PagesController extends Controller
     public function sitemap()
     {
         $title = 'Mapa do Site';
-        return view('maintenance', compact('title'));
+        $categories = CategoryResource::collection(Category::tree());
+        $brands = BrandResource::collection(Brand::menu());
+        $pages = $this->pageService->getActivePages();
+
+        return view('pages.sitemap', compact('title','categories','brands', 'pages'));
     }
 
     public function show($permalink)
