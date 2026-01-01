@@ -29,6 +29,9 @@
 
 .footer-1 form {
     display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: 0;
 }
 
 .footer-1 div,

@@ -14,7 +14,7 @@
         <!-- Fonts -->
         <!-- Styles -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-        <link rel="stylesheet" href="{{ asset('css/frontend.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/frontend.min.css?v=2.0') }}">
         @stack('css')
     </head>
     <body>

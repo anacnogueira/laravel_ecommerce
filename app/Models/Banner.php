@@ -101,7 +101,7 @@ class Banner extends Model
     {
         $banners =  static::select('id','name','url','image', 'dimension', 'html', 'scheduled_date', 'expire_date')
             ->where('status','S')
-            /*->where(function($query){
+            ->where(function($query){
                 $today = date('Y-m-d');
                 $query->orWhere(function($query){
                     $query->where('scheduled_date', null)
@@ -120,7 +120,7 @@ class Banner extends Model
                     $query->where('scheduled_date', "<=", $today)
                           ->where('expire_date', "=>", $today);
                 });
-            })*/
+            })
             ->limit(4)
             ->inRandomOrder()
             ->get();

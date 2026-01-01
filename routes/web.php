@@ -60,6 +60,10 @@ Route::get('/', [ProductController::class,'index']);
 
 //2.1 Pages
 Route::get('/contato', [PagesController::class,'contact'])->name('pages.contact');
+Route::post('/send-contact', [PagesController::class,'sendContact'])->name('pages.send-contact');
+Route::get('/contato-formulario-enviado', [PagesController::class,'contactSent'])->name('pages.contact-sent');
+
+
 Route::get('/mapa-site', [PagesController::class,'sitemap'])->name('pages.sitemap');
 Route::get('/sobre', [PagesController::class, 'show'])->defaults('permalink', 'quem-somos');
 Route::get('/pagina/{permalink}', [PagesController::class,'show'])->name('pages.show');

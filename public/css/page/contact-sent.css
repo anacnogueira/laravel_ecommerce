@@ -1,0 +1,19 @@
+@import url("../components/breadcrumb.css");
+
+.container {
+    text-align: center;
+}
+
+a.home {
+    display: block;
+    width: 200px;
+    background: var(--secondary-color);
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    margin: 10px auto;
+    padding: 7px;
+    font-size: 1rem;
+    border-radius: 2px;
+}
