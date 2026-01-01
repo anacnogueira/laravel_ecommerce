@@ -53,6 +53,7 @@ class ProductController extends Controller
         $product->categories = $product->category->ancestors($product->category_id);
         $product->price = count($product->promotions) > 0 ? $product->promotions[0]->price_promotion : $product->selling_price;
         $availability =  ($product->status == "S" && $product->current_stock > 0) ?  "InStock" : "OutOfStock";
+        $brandName = isset($product->brand->name) ? $product->brand->name : '';
 
         for($i = 0; $i < count($product->photos); $i++) {
              $photo  = $product->photos[$i];
@@ -68,7 +69,7 @@ class ProductController extends Controller
             "sku" => "$product->code",
             "brand" => [
                 "@type" => "Brand",
-                "name" => "{$product->brand->name}"
+                "name" => "{$brandName}"
             ],
             "review" => [
                 "@type"=> "Review",

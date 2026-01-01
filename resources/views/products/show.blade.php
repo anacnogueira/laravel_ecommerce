@@ -38,7 +38,7 @@
             </section>
             <section itemscope itemtype="http://data-vocabulary.org/Product">
                 <h1 id="product-name"itemprop="name">{{ $product->name }}</h1>
-                <h2 id="product-brand-name">{{ $product->brand->name }}</h2>
+                <h2 id="product-brand-name">{{ $product->brand->name ?? '' }}</h2>
                 @include('partials.products.rate')
                 <hr />
                 @include('partials.products.price')

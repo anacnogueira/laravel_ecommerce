@@ -23,7 +23,7 @@
                 @endif
 
                 <h2 class="desc">{{ Str::limit($product->name,40) }}</h2>
-                <h3>{{ $product->brand->name }}</h3>
+                <h3>{{ $product->brand->name ?? '' }}</h3>
                 <p class="newPrice">R$ {{ number_format($product->selling_price,2,',','.') }}</p>
                 <span class='installment'>
                     ou 3x R$ {{  number_format(($product->selling_price/3),2,',','.') }}
