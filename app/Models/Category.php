@@ -56,6 +56,7 @@ class Category extends Model
     {
         return $this->hasMany(Category::class,'parent_id','id')
             ->select('id','name','parent_id','permalink')
+            ->where('status','S')
             ->orderBy('order');
     }
 
