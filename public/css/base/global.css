@@ -76,6 +76,11 @@ textarea.is-invalid {
     text-align: left;
 }
 
+.alert-success {
+    color: #2e8b57;
+    text-align: left;
+}
+
 .sr-only {
     position: absolute;
     width: 1px;

@@ -1,5 +1,6 @@
 import { Modal } from "./Modal.js";
 import { menumaker } from "./utils/menu-responsive.js";
+import { storeNewsletter } from "./utils/storeNewsletter.js";
 
 const modal = new Modal(
     "#modal-attendance",
@@ -14,4 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (menu) {
         menumaker(menu, { format: "multitoggle" });
     }
+
+    const formNewsletter = document.getElementById("contact-newsletter-form");
+    storeNewsletter(formNewsletter);
 });

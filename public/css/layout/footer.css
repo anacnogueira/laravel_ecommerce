@@ -40,6 +40,10 @@
     padding: 10px;
 }
 
+.footer .newsletter-response {
+    padding: 0;
+}
+
 .footer .social-media {
     color: var(--ternary-color);
     font-size: 50px;

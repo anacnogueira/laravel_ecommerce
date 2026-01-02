@@ -37,6 +37,10 @@ use App\Repositories\Contracts\ReportSearchRepositoryInterface;
 use App\Repositories\ReportSearchRepository;
 use App\Repositories\Contracts\FaqRepositoryInterface;
 use App\Repositories\FaqRepository;
+use App\Repositories\Contracts\ContactNewsletterRepositoryInterface;
+use App\Repositories\ContactNewsletterRepository;
+use App\Repositories\Contracts\CustomerRepositoryInterface;
+use App\Repositories\CustomerRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -125,9 +129,19 @@ class RepositoryServiceProvider extends ServiceProvider
             ReportSearchRepository::class,
         );
 
-         $this->app->bind(
+        $this->app->bind(
             FaqRepositoryInterface::class,
             FaqRepository::class,
+        );
+
+        $this->app->bind(
+            ContactNewsletterRepositoryInterface::class,
+            ContactNewsletterRepository::class,
+        );
+
+        $this->app->bind(
+            CustomerRepositoryInterface::class,
+            CustomerRepository::class,
         );
     }
 

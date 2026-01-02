@@ -2,10 +2,11 @@
     <section class="footer-1">
         <div class="newsletter">
             <p class="title">Cadastre seu e-mail e receba promoções</p>
-            <form action="/send-email-newsletter" method="post" id="contact-newsletter-form">
-               <input type="email" name="email" placeholder="e-mail" />
+            <form action="{{ route("newsletters") }}" method="post" id="contact-newsletter-form">
+               <input type="email" name="email" placeholder="e-mail" id="email-newsletter" required/>
                <input type="submit" value="OK">
             </form>
+            <div class="newsletter-response"></div>
         </div>
         <div class="links">
             <p class="title">Siga-nos nas redes sociais</p>
