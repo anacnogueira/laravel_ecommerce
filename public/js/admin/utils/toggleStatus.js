@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (table == "payment_gateways") {
                 status = inputCheckbox.checked == true ? 0 : 1;
             } else {
-                status = inputCheckbox.checked == true ? "N" : "S";
+                status = inputCheckbox.checked == true ? "S" : "N";
             }
 
             formData = {
