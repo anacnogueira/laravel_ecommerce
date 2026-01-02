@@ -56,7 +56,7 @@ class PagesController extends Controller
     {
         $page = $this->pageService->getPageByPermalink($permalink);
         $title = $page->title;
-        return view('maintenance', compact('title'));
+        return view('pages.show', compact('title','page'));
     }
 
 }

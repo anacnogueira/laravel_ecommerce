@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\CommentController as AdminCommentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\FaqController;
 
 //1. ADMIN
 Route::prefix('admin')->name('admin.')->group(function(){
@@ -62,14 +63,11 @@ Route::get('/', [ProductController::class,'index'])->name('index');
 Route::get('/contato', [PagesController::class,'contact'])->name('pages.contact');
 Route::post('/send-contact', [PagesController::class,'sendContact'])->name('pages.send-contact');
 Route::get('/contato-formulario-enviado', [PagesController::class,'contactSent'])->name('pages.contact-sent');
-
-
 Route::get('/mapa-site', [PagesController::class,'sitemap'])->name('pages.sitemap');
 Route::get('/sobre', [PagesController::class, 'show'])->defaults('permalink', 'quem-somos');
 Route::get('/pagina/{permalink}', [PagesController::class,'show'])->name('pages.show');
 
-
-//2.3 Produtos,Categorias  e Marcas */
+//2.2 Produtos,Categorias  e Marcas */
 Route::post('/busca', [ProductController::class,'search'])->name('products.search');
 Route::get('/resultado-busca/{keyword}', [ProductController::class,'result'])->name('products.result');
 Route::get('/categorias/{permalink}', [ProductController::class, 'categories'])
@@ -84,11 +82,8 @@ Route::get('/marcas', [BrandController::class, 'index'])->name('brand.index');
 Route::get('/marca/{permalink}', [BrandController::class, 'show'])->name('brand.show');
 
 
-// FAQ
-Route::get('/faq', function(){
-    $title = "Perguntas Frequentes";
-    return view('maintenance', compact('title'));
-});
+// 2.3FAQ
+Route::get('/faq', [FaqController::class,'index'])->name('faq.index');
 
 // Minha Sacola
 Route::get('/minha-sacola', function(){

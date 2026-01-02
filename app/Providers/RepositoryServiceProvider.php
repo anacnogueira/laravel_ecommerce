@@ -35,6 +35,8 @@ use App\Repositories\Contracts\ProductNotificationRepositoryInterface;
 use App\Repositories\ProductNotificationRepository;
 use App\Repositories\Contracts\ReportSearchRepositoryInterface;
 use App\Repositories\ReportSearchRepository;
+use App\Repositories\Contracts\FaqRepositoryInterface;
+use App\Repositories\FaqRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -121,6 +123,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ReportSearchRepositoryInterface::class,
             ReportSearchRepository::class,
+        );
+
+         $this->app->bind(
+            FaqRepositoryInterface::class,
+            FaqRepository::class,
         );
     }
 
