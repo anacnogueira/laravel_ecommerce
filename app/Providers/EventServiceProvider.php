@@ -81,7 +81,12 @@ class EventServiceProvider extends ServiceProvider
                         'url' => '/admin/pages',
                         'icon' => 'far fa-file-alt'
                     ],
-                ]
+                    [
+                        'text' => 'Banners',
+                        'url' => '/admin/banners',
+                        'icon' => 'fa fa-star'
+                    ],
+                ],
             ]);
         });
     }

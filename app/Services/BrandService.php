@@ -44,7 +44,7 @@ class BrandService
 
         $brand = $this->brandRepository->createBrand($data);
 
-        if ($data["upload"]) {
+        if (isset($data["upload"])) {
             $filename = Str::slug($brand->name)."-".date('dmYHis');
             $pathFile = $this->storeImage($data["upload"], $filename);
 

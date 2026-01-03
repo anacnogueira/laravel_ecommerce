@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\PartnerController as AdminPartnerController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\CommentController as AdminCommentController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
+use App\Http\Controllers\Admin\BannerController as AdminBannerController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -55,6 +56,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         //6. Conteúdo
         //6.1 Páginas
         Route::resource('pages', AdminPageController::class);
+        //6.2 Banners
+        Route::resource('banners', AdminBannerController::class);
 
         Route::post('/logout', [AdminLoginController::class,'logout'])->name('logout');
     });
