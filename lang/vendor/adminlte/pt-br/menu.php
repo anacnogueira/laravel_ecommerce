@@ -24,4 +24,6 @@ return [
     'Products' => 'Produtos',
     'Comments' => 'Avaliações',
     'Keywords' => 'Palavras Chaves',
+    'Content' => 'Conteúdo',
+    'Pages' => 'Páginas',
 ];

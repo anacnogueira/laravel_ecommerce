@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\SupplierController as AdminSupplierController;
 use App\Http\Controllers\Admin\PartnerController as AdminPartnerController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\CommentController as AdminCommentController;
+use App\Http\Controllers\Admin\PageController as AdminPageController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -50,6 +51,10 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
         //3.4
         Route::resource('comments', AdminCommentController::class);
+
+        //6. Conteúdo
+        //6.1 Páginas
+        Route::resource('pages', AdminPageController::class);
 
         Route::post('/logout', [AdminLoginController::class,'logout'])->name('logout');
     });

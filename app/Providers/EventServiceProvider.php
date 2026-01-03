@@ -70,6 +70,19 @@ class EventServiceProvider extends ServiceProvider
                     ]
                 ]
             ]);
+
+            $event->menu->add([
+                'text' => 'Content',
+                'url' => '#',
+                'icon' => 'nav-icon fa fa-cubes fa-fw',
+                'submenu' => [
+                    [
+                        'text' => 'Pages',
+                        'url' => '/admin/pages',
+                        'icon' => 'far fa-file-alt'
+                    ],
+                ]
+            ]);
         });
     }
 }
