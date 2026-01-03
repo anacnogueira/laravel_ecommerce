@@ -41,6 +41,8 @@ use App\Repositories\Contracts\ContactNewsletterRepositoryInterface;
 use App\Repositories\ContactNewsletterRepository;
 use App\Repositories\Contracts\CustomerRepositoryInterface;
 use App\Repositories\CustomerRepository;
+use App\Repositories\Contracts\PaymentGatewayRepositoryInterface;
+use App\Repositories\PaymentGatewayRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -142,6 +144,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             CustomerRepositoryInterface::class,
             CustomerRepository::class,
+        );
+
+         $this->app->bind(
+            PaymentGatewayRepositoryInterface::class,
+            PaymentGatewayRepository::class,
         );
     }
 

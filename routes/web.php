@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\CommentController as AdminCommentController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\BannerController as AdminBannerController;
+use App\Http\Controllers\Admin\PaymentGatewayController as AdminPaymentGatewayController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -58,6 +59,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::resource('pages', AdminPageController::class);
         //6.2 Banners
         Route::resource('banners', AdminBannerController::class);
+        //6.3 Integradoras de pagamento
+        Route::resource('payment-gateways', AdminPaymentGatewayController::class);
 
         Route::post('/logout', [AdminLoginController::class,'logout'])->name('logout');
     });

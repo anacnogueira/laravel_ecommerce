@@ -86,6 +86,11 @@ class EventServiceProvider extends ServiceProvider
                         'url' => '/admin/banners',
                         'icon' => 'fa fa-star'
                     ],
+                     [
+                        'text' => 'Payment Gateways',
+                        'url' => '/admin/payment-gateways',
+                        'icon' => 'fa fa-sitemap'
+                    ],
                 ],
             ]);
         });

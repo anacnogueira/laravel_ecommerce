@@ -26,4 +26,5 @@ return [
     'Keywords' => 'Palavras Chaves',
     'Content' => 'Conteúdo',
     'Pages' => 'Páginas',
+    'Payment Gateways' => 'Integradoras de pagamento',
 ];
