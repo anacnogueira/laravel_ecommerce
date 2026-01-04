@@ -91,6 +91,11 @@ class EventServiceProvider extends ServiceProvider
                         'url' => '/admin/payment-gateways',
                         'icon' => 'fa fa-sitemap'
                     ],
+                    [
+                        'text' => 'Payment Methods',
+                        'url' => '/admin/payment-methods',
+                        'icon' => 'fa fa-credit-card'
+                    ],
                 ],
             ]);
         });

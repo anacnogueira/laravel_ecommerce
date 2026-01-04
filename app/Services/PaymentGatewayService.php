@@ -83,4 +83,17 @@ class PaymentGatewayService
 
         return response()->json(['message' => 'Payment Gateway Deleted'], 200);
     }
+
+    public function getPaymentGatewaysToSelect()
+    {
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione a integradora";
+
+        $paymentGateways = $this->getAllPaymentGateways()
+            ->sortBy('name')
+            ->prepend($select);
+
+        return  $paymentGateways;
+    }
 }

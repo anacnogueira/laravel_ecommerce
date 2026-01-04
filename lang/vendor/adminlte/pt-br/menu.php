@@ -27,4 +27,5 @@ return [
     'Content' => 'Conteúdo',
     'Pages' => 'Páginas',
     'Payment Gateways' => 'Integradoras de pagamento',
+    'Payment Methods' => 'Formas de Pagamento',
 ];

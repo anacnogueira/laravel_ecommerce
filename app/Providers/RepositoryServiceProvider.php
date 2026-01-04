@@ -43,6 +43,8 @@ use App\Repositories\Contracts\CustomerRepositoryInterface;
 use App\Repositories\CustomerRepository;
 use App\Repositories\Contracts\PaymentGatewayRepositoryInterface;
 use App\Repositories\PaymentGatewayRepository;
+use App\Repositories\Contracts\PaymentMethodRepositoryInterface;
+use App\Repositories\PaymentMethodRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -146,9 +148,14 @@ class RepositoryServiceProvider extends ServiceProvider
             CustomerRepository::class,
         );
 
-         $this->app->bind(
+        $this->app->bind(
             PaymentGatewayRepositoryInterface::class,
             PaymentGatewayRepository::class,
+        );
+
+        $this->app->bind(
+            PaymentMethodRepositoryInterface::class,
+            PaymentMethodRepository::class,
         );
     }
 
