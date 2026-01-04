@@ -74,7 +74,7 @@ class PaymentMethodService
 
         $data["status"] = isset($data["status"]) ? 1 : 0;
 
-        if ( $data["upload"]) {
+        if (isset($data["upload"])) {
             $oldFile = $paymentMethod->image;
             $filename = Str::slug($data["name"])."-".date('dmYHis');
             $pathFile = $this->storeImage($data["upload"], $filename, $oldFile);

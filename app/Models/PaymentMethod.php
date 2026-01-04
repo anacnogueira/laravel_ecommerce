@@ -31,8 +31,8 @@ class PaymentMethod extends Model
     protected function interestRate(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) => number_format($value, 2, ',', '.'),
-            set: fn (string $value) => number_format(floatval($value), 2, '.', ','),
+            get: fn ($value) => $value ? number_format($value, 2, ',', '.') : '',
+            set: fn ($value) => $value ? number_format(floatval($value), 2, '.', ',') : null,
         );
     }
 }
