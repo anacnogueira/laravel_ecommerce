@@ -106,6 +106,11 @@ class EventServiceProvider extends ServiceProvider
                         'url' => '/admin/faqs',
                         'icon' => 'fa fa-question'
                     ],
+                    [
+                        'text' => 'Countries',
+                        'url' => '/admin/countries',
+                        'icon' => 'fa fa-globe'
+                    ],
                 ],
             ]);
         });

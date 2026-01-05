@@ -30,4 +30,5 @@ return [
     'Payment Methods' => 'Formas de Pagamento',
     'Order Status' => 'Status do Pedido',
     'FAQ' => 'Perguntas Frequentes',
+    'Countries' => 'Países',
 ];

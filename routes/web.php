@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\PaymentGatewayController as AdminPaymentGatewayCo
 use App\Http\Controllers\Admin\PaymentMethodController as AdminPaymentMethodController;
 use App\Http\Controllers\Admin\OrderStatusController as AdminOrderStatusController;
 use App\Http\Controllers\Admin\FaqController as AdminFaqController;
+use App\Http\Controllers\Admin\CountryController as AdminCountryController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -70,6 +71,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::resource('order-status', AdminOrderStatusController::class);
         //6.6 Perguntas Frequentes
         Route::resource('faqs', AdminFaqController::class);
+        //6.7 Países
+        Route::resource('countries', AdminCountryController::class);
 
         Route::post('/logout', [AdminLoginController::class,'logout'])->name('logout');
     });
