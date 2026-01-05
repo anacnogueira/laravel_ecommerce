@@ -101,6 +101,11 @@ class EventServiceProvider extends ServiceProvider
                         'url' => '/admin/order-status',
                         'icon' => 'fa fa-check-square'
                     ],
+                    [
+                        'text' => 'FAQ',
+                        'url' => '/admin/faqs',
+                        'icon' => 'fa fa-question'
+                    ],
                 ],
             ]);
         });
