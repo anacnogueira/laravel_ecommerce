@@ -79,4 +79,17 @@ class CountryService
 
         return response()->json(['message' => 'Country Deleted'], 200);
     }
+
+    public function getCountriesToSelect()
+    {
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione o pais";
+
+        $countries = $this->getAllCountries()
+            ->sortBy('name')
+            ->prepend($select);
+
+        return  $countries;
+    }
 }
