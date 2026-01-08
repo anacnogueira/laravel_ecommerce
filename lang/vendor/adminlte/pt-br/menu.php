@@ -32,4 +32,6 @@ return [
     'FAQ' => 'Perguntas Frequentes',
     'Countries' => 'Países',
     'States' => 'Estados',
+    'Cities' => 'Cidades',
+    'Events' => 'Eventos',
 ];

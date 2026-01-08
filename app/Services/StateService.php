@@ -79,4 +79,17 @@ class StateService
 
         return response()->json(['message' => 'State Deleted'], 200);
     }
+
+    public function getStatesToSelect()
+    {
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione o estado";
+
+        $states = $this->getAllStates()
+            ->sortBy('name')
+            ->prepend($select);
+
+        return  $states;
+    }
 }

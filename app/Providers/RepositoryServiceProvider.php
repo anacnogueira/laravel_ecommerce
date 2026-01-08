@@ -47,6 +47,10 @@ use App\Repositories\Contracts\PaymentMethodRepositoryInterface;
 use App\Repositories\PaymentMethodRepository;
 use App\Repositories\Contracts\OrderStatusRepositoryInterface;
 use App\Repositories\OrderStatusRepository;
+use App\Repositories\Contracts\EventRepositoryInterface;
+use App\Repositories\EventRepository;
+use App\Repositories\Contracts\EventDateRepositoryInterface;
+use App\Repositories\EventDateRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -163,6 +167,16 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             OrderStatusRepositoryInterface::class,
             OrderStatusRepository::class,
+        );
+
+        $this->app->bind(
+            EventRepositoryInterface::class,
+            EventRepository::class,
+        );
+
+        $this->app->bind(
+            EventDateRepositoryInterface::class,
+            EventDateRepository::class,
         );
     }
 

@@ -111,10 +111,20 @@ class EventServiceProvider extends ServiceProvider
                         'url' => '/admin/countries',
                         'icon' => 'fa fa-globe'
                     ],
-                     [
+                    [
                         'text' => 'States',
                         'url' => '/admin/states',
                         'icon' => 'fa fa-globe'
+                    ],
+                    [
+                        'text' => 'Cities',
+                        'url' => '/admin/cities',
+                        'icon' => 'fa fa-globe'
+                    ],
+                    [
+                        'text' => 'Events',
+                        'url' => '/admin/events',
+                        'icon' => 'fa fa-book'
                     ],
                 ],
             ]);

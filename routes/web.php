@@ -20,6 +20,8 @@ use App\Http\Controllers\Admin\OrderStatusController as AdminOrderStatusControll
 use App\Http\Controllers\Admin\FaqController as AdminFaqController;
 use App\Http\Controllers\Admin\CountryController as AdminCountryController;
 use App\Http\Controllers\Admin\StateController as AdminStateController;
+use App\Http\Controllers\Admin\CityController as AdminCityController;
+use App\Http\Controllers\Admin\EventController as AdminEventController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -76,6 +78,10 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::resource('countries', AdminCountryController::class);
         //6.8 Estados
         Route::resource('states', AdminStateController::class);
+        //6.9 Cidades
+        Route::resource('cities', AdminCityController::class);
+        //6.10 Eventos
+        Route::resource('events', AdminEventController::class);
 
         Route::post('/logout', [AdminLoginController::class,'logout'])->name('logout');
     });

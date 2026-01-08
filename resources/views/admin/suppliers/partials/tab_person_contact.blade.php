@@ -2,7 +2,6 @@
 <div class="row">
  	<div class="col-md-12">
         <div class="row">
-
             <x-adminlte-input name="contact_info_name" label="Nome:" fgroup-class="col-md-2"/>
             <x-adminlte-input name="contact_info_sector" label="Setor:" fgroup-class="col-md-2"/>
             <x-adminlte-input name="contact_info_email" type="email" label="E-mail:" fgroup-class="col-md-2"/>

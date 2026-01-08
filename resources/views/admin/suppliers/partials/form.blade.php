@@ -42,7 +42,7 @@
 </div>
 
 @push('js')
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js" integrity="sha512-F5Ul1uuyFlGnIT1dk2c4kB4DBdi5wnBJjVhL7gQlGh46Xn0VhvD8kgxLtjdZ5YN83gybk/aASUAlpdoWUjRR3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js" integrity="sha512-F5Ul1uuyFlGnIT1dk2c4kB4DBdi5wnBJjVhL7gQlGh46Xn0VhvD8kgxLtjdZ5YN83gybk/aASUAlpdoWUjRR3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script  type="text/javascript" src="{{ asset('js/admin/utils/maskField.js') }}"></script>
     <script  type="text/javascript" src="{{ asset('js/admin/utils/jquery.selects.js') }}"></script>
     <script  type="text/javascript" src="{{ asset('js/admin/utils/get-cities.js') }}"></script>

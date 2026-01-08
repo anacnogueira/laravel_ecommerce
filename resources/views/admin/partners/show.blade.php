@@ -50,7 +50,7 @@
                         @endif
 
                         @if ($partner->info)
-                            <h4>Pessoas de Contato</h2>
+                            <h42>Pessoas de Contato</h2>
                             <table style="width: 100%">
                                 <thead>
                                     <tr>

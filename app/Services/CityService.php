@@ -89,4 +89,17 @@ class CityService
 
         return response()->json(['message' => 'City Deleted'], 200);
     }
+
+     public function getCitiesToSelect()
+    {
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione a cidade";
+
+        $states = $this->getAllCities()
+            ->sortBy('name')
+            ->prepend($select);
+
+        return  $states;
+    }
 }
