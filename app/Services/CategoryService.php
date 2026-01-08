@@ -38,7 +38,7 @@ class CategoryService
 
         $category = $this->categoryRepository->createCategory($data);
 
-        if ($data["upload"]) {
+        if (isset($data["upload"])) {
             $filename = Str::slug($category->name)."-".date('dmYHis');
             $pathFile = $this->storeImage($data["upload"], $filename);
 
