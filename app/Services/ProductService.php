@@ -139,18 +139,17 @@ class ProductService
         $product = $this->productRepository->createProduct($data);
         $productId = $product->id;
 
-        //3. Store images
-        foreach ($data['files'] as $key => $file) {
-            if ($file->isValid()) {
-                $filename = $data["permalink"].'-'.$productId.'-'.($key+1).'-'.time();
-                $order = $data['order'][$key];
-                $extension = $file->extension();
-                $this->productPhotoService->makeProductPhoto($productId, $file, $filename, $extension, $order);
+        if (isset($data['files'])) {
+            foreach ($data['files'] as $key => $file) {
+                if ($file->isValid()) {
+                    $filename = $data["permalink"].'-'.$productId.'-'.($key+1).'-'.time();
+                    $order = $data['order'][$key];
+                    $extension = $file->extension();
+                    $this->productPhotoService->makeProductPhoto($productId, $file, $filename, $extension, $order);
 
-
+                }
             }
         }
-
 
         return $product;
     }
@@ -173,21 +172,24 @@ class ProductService
         $this->productRepository->updateProduct($product, $data);
 
         $productId = $product->id;
-        foreach ($data['files'] as $key => $file) {
-            if ($file->isValid()) {
-                $filename = $data["permalink"].'-'.$productId.'-'.($key+1).'-'.time();
-                $order = $data['order'][$key];
-                $extension = $file->extension();
-                if (isset($data['photo_ori'][$key]) && $data['photo_redim'][$key]) {
-                    $oldFiles['photo_ori'] = $data['photo_ori'][$key];
-                    $oldFiles['photo_redim'] = $data['photo_redim'][$key];
-                } else {
-                    $oldFiles = null;
-                }
+        if (isset($data['files'])) {
+            foreach ($data['files'] as $key => $file) {
+                if ($file->isValid()) {
+                    $filename = $data["permalink"].'-'.$productId.'-'.($key+1).'-'.time();
+                    $order = $data['order'][$key];
+                    $extension = $file->extension();
+                    if (isset($data['photo_ori'][$key]) && $data['photo_redim'][$key]) {
+                        $oldFiles['photo_ori'] = $data['photo_ori'][$key];
+                        $oldFiles['photo_redim'] = $data['photo_redim'][$key];
+                    } else {
+                        $oldFiles = null;
+                    }
 
-                $this->productPhotoService->updateProductPhoto($productId, $file, $filename, $extension, $order, $oldFiles);
+                    $this->productPhotoService->updateProductPhoto($productId, $file, $filename, $extension, $order, $oldFiles);
+                }
             }
         }
+
 
         return response()->json(['message' => 'Product Updated'], 200);
     }
