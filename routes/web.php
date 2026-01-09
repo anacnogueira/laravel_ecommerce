@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\CityController as AdminCityController;
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\WebsiteSearchController as AdminWebsiteSearchController;
 use App\Http\Controllers\Admin\CepSearchController as AdminCepSearchController;
+use App\Http\Controllers\Admin\UserGroupController as AdminUserGroupController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -92,6 +93,10 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get("cep-searches",[AdminCepSearchController::class,'index'])->name("cep-search.index");
 
         Route::post('/logout', [AdminLoginController::class,'logout'])->name('logout');
+
+        //9. Sistema
+        //9.1 Grupos
+        Route::resource('user-groups', AdminUserGroupController::class);
     });
 
 });

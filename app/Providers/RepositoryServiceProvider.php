@@ -55,6 +55,8 @@ use App\Repositories\Contracts\WebsiteSearchRepositoryInterface;
 use App\Repositories\WebsiteSearchRepository;
 use App\Repositories\Contracts\CepSearchRepositoryInterface;
 use App\Repositories\CepSearchRepository;
+use App\Repositories\Contracts\UserGroupRepositoryInterface;
+use App\Repositories\UserGroupRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -191,6 +193,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             CepSearchRepositoryInterface::class,
             CepSearchRepository::class,
+        );
+
+        $this->app->bind(
+            UserGroupRepositoryInterface::class,
+            UserGroupRepository::class,
         );
     }
 

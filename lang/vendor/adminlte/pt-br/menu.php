@@ -37,4 +37,6 @@ return [
     'Reports' => 'Relatórios',
     'Website search' => 'Pesquisa no site',
     'CEP search' => 'Pesquisa de CEP',
+    'System' => 'Sistema',
+    'Groups' => 'Grupos',
 ];
