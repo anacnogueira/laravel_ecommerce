@@ -53,6 +53,8 @@ use App\Repositories\Contracts\EventDateRepositoryInterface;
 use App\Repositories\EventDateRepository;
 use App\Repositories\Contracts\WebsiteSearchRepositoryInterface;
 use App\Repositories\WebsiteSearchRepository;
+use App\Repositories\Contracts\CepSearchRepositoryInterface;
+use App\Repositories\CepSearchRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -184,6 +186,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             WebsiteSearchRepositoryInterface::class,
             WebsiteSearchRepository::class,
+        );
+
+        $this->app->bind(
+            CepSearchRepositoryInterface::class,
+            CepSearchRepository::class,
         );
     }
 

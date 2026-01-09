@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\StateController as AdminStateController;
 use App\Http\Controllers\Admin\CityController as AdminCityController;
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\WebsiteSearchController as AdminWebsiteSearchController;
+use App\Http\Controllers\Admin\CepSearchController as AdminCepSearchController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -87,6 +88,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         //8. Relatórios
         //8.1 Pesquisas no site
         Route::get("website-searches",[AdminWebsiteSearchController::class,'index'])->name("website-search.index");
+         //8.2 Pesquisas de CEP
+        Route::get("cep-searches",[AdminCepSearchController::class,'index'])->name("cep-search.index");
 
         Route::post('/logout', [AdminLoginController::class,'logout'])->name('logout');
     });
