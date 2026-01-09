@@ -128,6 +128,24 @@ class EventServiceProvider extends ServiceProvider
                     ],
                 ],
             ]);
+
+            $event->menu->add([
+                'text' => 'Reports',
+                'url' => '#',
+                'icon' => 'nav-icon fas fa-chart-bar fa-fw',
+                'submenu' => [
+                    [
+                        'text' => 'Website search',
+                        'url' => '/admin/website-searches',
+                        'icon' => 'fas fa-chart-area'
+                    ],
+                    [
+                        'text' => 'CEP search',
+                        'url' => '/admin/cep-searches',
+                        'icon' => 'fas fa-chart-area'
+                    ],
+                ],
+            ]);
         });
     }
 }

@@ -113,7 +113,7 @@ class ProductController extends Controller
         if (isset($keyword)) {
 
             $data = [
-                'keyword' => $keyword,
+                'keyword' => strip_tags($keyword),
                 'type' => 'search',
                 'ip' => '',
             ];

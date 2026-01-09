@@ -34,4 +34,7 @@ return [
     'States' => 'Estados',
     'Cities' => 'Cidades',
     'Events' => 'Eventos',
+    'Reports' => 'Relatórios',
+    'Website search' => 'Pesquisa no site',
+    'CEP search' => 'Pesquisa de CEP',
 ];

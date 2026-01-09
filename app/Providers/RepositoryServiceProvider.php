@@ -51,6 +51,8 @@ use App\Repositories\Contracts\EventRepositoryInterface;
 use App\Repositories\EventRepository;
 use App\Repositories\Contracts\EventDateRepositoryInterface;
 use App\Repositories\EventDateRepository;
+use App\Repositories\Contracts\WebsiteSearchRepositoryInterface;
+use App\Repositories\WebsiteSearchRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -177,6 +179,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             EventDateRepositoryInterface::class,
             EventDateRepository::class,
+        );
+
+        $this->app->bind(
+            WebsiteSearchRepositoryInterface::class,
+            WebsiteSearchRepository::class,
         );
     }
 
