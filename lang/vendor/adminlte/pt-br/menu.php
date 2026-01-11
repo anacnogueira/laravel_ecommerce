@@ -40,4 +40,5 @@ return [
     'System' => 'Sistema',
     'Groups' => 'Grupos',
     'Users' => 'Usuários',
+    'Modules' => 'Módulos',
 ];

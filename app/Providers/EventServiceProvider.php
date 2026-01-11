@@ -162,6 +162,11 @@ class EventServiceProvider extends ServiceProvider
                         'url' => '/admin/users',
                         'icon' => 'fa fa-user'
                     ],
+                    [
+                        'text' => 'Modules',
+                        'url' => '/admin/modules',
+                        'icon' => 'fa fa-cubes'
+                    ],
                 ]
             ]);
         });

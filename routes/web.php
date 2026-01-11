@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\CepSearchController as AdminCepSearchController;
 use App\Http\Controllers\Admin\UserGroupController as AdminUserGroupController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\ModuleController as AdminModuleController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -105,6 +106,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::resource('user-groups', AdminUserGroupController::class);
         //9.2 Usuários
         Route::resource('users', AdminUserController::class);
+        //9.3 Módulos
+        Route::resource('modules', AdminModuleController::class);
     });
 
 });
