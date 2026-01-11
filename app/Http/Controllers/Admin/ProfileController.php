@@ -39,6 +39,7 @@ class ProfileController extends Controller
     public function update(AdminUpdateProfileRequest $request)
     {
         $data = $request->all();
+        $data['type'] = 'profile';
 
         $user = auth()->user();
 

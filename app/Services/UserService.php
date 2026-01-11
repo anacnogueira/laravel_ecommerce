@@ -32,6 +32,8 @@ class UserService
     {
         $data["status"] = isset($data["status"]) ? 'S' : 'N';
 
+        $data['password']= Hash::make($data['password']);
+
         $user = $this->userRepository->createUser($data);
 
         return $user;
@@ -62,8 +64,9 @@ class UserService
             return response()->json(['message' => 'User Not Found'], 404);
         }
 
-        //$data["status"] = isset($data["status"]) ? 'S' : 'N';
-
+        if ($data['type'] === 'admin') {
+            $data["status"] = isset($data["status"]) ? 'S' : 'N';
+        }
 
         if (!empty($data['password'])) {
             $data['password']= Hash::make($data['password']);
