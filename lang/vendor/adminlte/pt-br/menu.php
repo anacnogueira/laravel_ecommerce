@@ -39,4 +39,5 @@ return [
     'CEP search' => 'Pesquisa de CEP',
     'System' => 'Sistema',
     'Groups' => 'Grupos',
+    'Users' => 'Usuários',
 ];

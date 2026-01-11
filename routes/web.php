@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\WebsiteSearchController as AdminWebsiteSearchController;
 use App\Http\Controllers\Admin\CepSearchController as AdminCepSearchController;
 use App\Http\Controllers\Admin\UserGroupController as AdminUserGroupController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -43,6 +44,10 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::middleware(['auth:admin'])->group(function() {
         //1. Dashboard
         Route::get('/', [AdminDashboardController::class, 'index']);
+
+        //2. Profile
+        Route::get('profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('profile', [AdminProfileController::class, 'update'])->name('profile.update');
 
         //3. Catálogo
         //3.1 Categorias
