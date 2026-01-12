@@ -28,6 +28,7 @@ use App\Http\Controllers\Admin\UserGroupController as AdminUserGroupController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\ModuleController as AdminModuleController;
+use App\Http\Controllers\Admin\RoutineController as AdminRoutineController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -100,8 +101,6 @@ Route::prefix('admin')->name('admin.')->group(function(){
          //8.2 Pesquisas de CEP
         Route::get("cep-searches",[AdminCepSearchController::class,'index'])->name("cep-search.index");
 
-
-
         //9. Sistema
         //9.1 Grupos
         Route::resource('user-groups', AdminUserGroupController::class);
@@ -109,6 +108,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::resource('users', AdminUserController::class);
         //9.3 Módulos
         Route::resource('modules', AdminModuleController::class);
+        //9.4 Rotinas
+        Route::resource('routines', AdminRoutineController::class);
     });
 
 });

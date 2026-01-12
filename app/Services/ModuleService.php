@@ -83,4 +83,15 @@ class ModuleService
 
         return response()->json(['message' => 'Module Deleted'], 200);
     }
+
+    public function getModulesToSelect()
+    {
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione";
+
+        return $this->getAllModules()
+            ->sortBy('name')
+            ->prepend($select);
+    }
 }
