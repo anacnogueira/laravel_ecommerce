@@ -69,7 +69,9 @@ class UserService
         }
 
         if (!empty($data['password'])) {
-            $data['password']= Hash::make($data['password']);
+            $data['password'] = Hash::make($data['password']);
+        } else {
+            unset($data['password']);
         }
 
         $this->userRepository->updateUser($user, $data);

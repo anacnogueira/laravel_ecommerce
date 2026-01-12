@@ -46,6 +46,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::middleware(['auth:admin'])->group(function() {
         //1. Dashboard
         Route::get('/', [AdminDashboardController::class, 'index']);
+        Route::post('/logout', [AdminLoginController::class,'logout'])->name('logout');
 
         //2. Profile
         Route::get('profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
@@ -99,7 +100,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
          //8.2 Pesquisas de CEP
         Route::get("cep-searches",[AdminCepSearchController::class,'index'])->name("cep-search.index");
 
-        Route::post('/logout', [AdminLoginController::class,'logout'])->name('logout');
+
 
         //9. Sistema
         //9.1 Grupos
