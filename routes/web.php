@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\ModuleController as AdminModuleController;
 use App\Http\Controllers\Admin\RoutineController as AdminRoutineController;
 use App\Http\Controllers\Admin\LogController as AdminLogController;
 use App\Http\Controllers\Admin\CustomerController as AdminCustomerController;
+use App\Http\Controllers\Admin\ContactAddressController as AdminContactAddressController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
