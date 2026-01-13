@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\ModuleController as AdminModuleController;
 use App\Http\Controllers\Admin\RoutineController as AdminRoutineController;
+use App\Http\Controllers\Admin\LogController as AdminLogController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -110,6 +111,11 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::resource('modules', AdminModuleController::class);
         //9.4 Rotinas
         Route::resource('routines', AdminRoutineController::class);
+        //9.5 Logs
+        Route::get('logs', [AdminLogController::class, 'index'])->name("logs.index");
+        Route::get('logs/search', [AdminLogController::class, 'search'])->name("logs.search");
+        Route::get('logs/{id}', [AdminLogController::class, 'show'])->name("logs.show");
+
     });
 
 });
