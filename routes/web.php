@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\ModuleController as AdminModuleController;
 use App\Http\Controllers\Admin\RoutineController as AdminRoutineController;
 use App\Http\Controllers\Admin\LogController as AdminLogController;
+use App\Http\Controllers\Admin\CustomerController as AdminCustomerController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -71,8 +72,16 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::resource('products', AdminProductController::class);
         Route::get('products/duplicate/{id}', [AdminProductController::class, 'duplicate'])->name('products.duplicate');
 
-        //3.4
+        //3.4 Avaliações
         Route::resource('comments', AdminCommentController::class);
+
+        //4 Clientes
+        //4.1 Gerenciar Clientes
+        Route::resource('customers', AdminCustomerController::class);
+        //4.2 Gerenciar Endereços
+        Route::resource('customers/{contacId}/addresses', AdminContactAddressController::class);
+        //4.3 Gerenciar Pedidos
+        Route::resource('customers/{contacId}/orders', AdminContactOrderController::class)->names('customers.orders');
 
         //6. Conteúdo
         //6.1 Páginas

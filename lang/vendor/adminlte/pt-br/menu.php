@@ -42,4 +42,5 @@ return [
     'Users' => 'Usuários',
     'Modules' => 'Módulos',
     'Routines' => 'Rotinas',
+    'Customers' => 'Clientes',
 ];

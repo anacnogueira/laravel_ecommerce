@@ -72,6 +72,12 @@ class EventServiceProvider extends ServiceProvider
             ]);
 
             $event->menu->add([
+                'text' => 'Customers',
+                'url' => '/admin/customers',
+                'icon' => 'nav-icon fa fa-users fa-fw'
+            ]);
+
+            $event->menu->add([
                 'text' => 'Content',
                 'url' => '#',
                 'icon' => 'nav-icon fa fa-cubes fa-fw',
