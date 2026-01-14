@@ -32,6 +32,7 @@ use App\Http\Controllers\Admin\RoutineController as AdminRoutineController;
 use App\Http\Controllers\Admin\LogController as AdminLogController;
 use App\Http\Controllers\Admin\CustomerController as AdminCustomerController;
 use App\Http\Controllers\Admin\ContactAddressController as AdminContactAddressController;
+use App\Http\Controllers\Admin\ContactOrderController as AdminContactOrderController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -56,32 +57,35 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
         Route::put('profile', [AdminProfileController::class, 'update'])->name('profile.update');
 
-        //3. Catálogo
-        //3.1 Categorias
+        //3. Vendas
+        Route::resource('orders', AdminOrderController::class);
+
+        //4. Catálogo
+        //4.1 Categorias
         Route::resource('categories', AdminCategoryController::class);
 
-        //3.2 Marcas
+        //4.2 Marcas
         Route::resource('brands', AdminBrandController::class);
 
-        //3.3 Fornecedores
+        //4.3 Fornecedores
         Route::resource('suppliers', AdminSupplierController::class);
 
-        //3.3 Parceiros
+        //4.4 Parceiros
         Route::resource('partners', AdminPartnerController::class);
 
-        //3.3 Produtos
+        //4.5 Produtos
         Route::resource('products', AdminProductController::class);
         Route::get('products/duplicate/{id}', [AdminProductController::class, 'duplicate'])->name('products.duplicate');
 
-        //3.4 Avaliações
+        //4.6 Avaliações
         Route::resource('comments', AdminCommentController::class);
 
-        //4 Clientes
-        //4.1 Gerenciar Clientes
+        //5 Clientes
+        //5.1 Gerenciar Clientes
         Route::resource('customers', AdminCustomerController::class);
-        //4.2 Gerenciar Endereços
+        //5.2 Gerenciar Endereços
         Route::resource('customers/{contacId}/addresses', AdminContactAddressController::class);
-        //4.3 Gerenciar Pedidos
+        //5.3 Gerenciar Pedidos
         Route::resource('customers/{contacId}/orders', AdminContactOrderController::class)->names('customers.orders');
 
         //6. Conteúdo
@@ -106,22 +110,22 @@ Route::prefix('admin')->name('admin.')->group(function(){
         //6.10 Eventos
         Route::resource('events', AdminEventController::class);
 
-        //8. Relatórios
-        //8.1 Pesquisas no site
+        //7. Relatórios
+        //7.1 Pesquisas no site
         Route::get("website-searches",[AdminWebsiteSearchController::class,'index'])->name("website-search.index");
-         //8.2 Pesquisas de CEP
+         //7.2 Pesquisas de CEP
         Route::get("cep-searches",[AdminCepSearchController::class,'index'])->name("cep-search.index");
 
-        //9. Sistema
-        //9.1 Grupos
+        //8. Sistema
+        //8.1 Grupos
         Route::resource('user-groups', AdminUserGroupController::class);
-        //9.2 Usuários
+        //8.2 Usuários
         Route::resource('users', AdminUserController::class);
-        //9.3 Módulos
+        //8.3 Módulos
         Route::resource('modules', AdminModuleController::class);
-        //9.4 Rotinas
+        //8.4 Rotinas
         Route::resource('routines', AdminRoutineController::class);
-        //9.5 Logs
+        //8.5 Logs
         Route::get('logs', [AdminLogController::class, 'index'])->name("logs.index");
         Route::get('logs/search', [AdminLogController::class, 'search'])->name("logs.search");
         Route::get('logs/{id}', [AdminLogController::class, 'show'])->name("logs.show");
