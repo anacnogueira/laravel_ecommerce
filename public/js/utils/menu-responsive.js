@@ -20,7 +20,6 @@ export function menumaker(menuDropdown, options = {}) {
                 mainmenu.classList.add("open");
                 slideToggle(mainmenu, true);
                 if (settings.format === "dropdown") {
-                    console.log("Aqui");
                     mainmenu
                         .querySelectorAll("ul")
                         .forEach((ul) => (ul.style.display = "block"));

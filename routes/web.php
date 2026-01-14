@@ -175,8 +175,14 @@ Route::get('/cadastro', function(){
     return view('maintenance', compact('title'));
 });
 
-// Cadastro
+// Login
 Route::get('/login', function(){
     $title = "Login";
     return view('maintenance', compact('title'));
-});
+})->name('login');
+
+// Login
+Route::post('/logout', function(){
+    $title = "Logout";
+    return view('maintenance', compact('title'));
+})->name('logout');

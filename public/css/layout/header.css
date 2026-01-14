@@ -8,6 +8,48 @@ header ul {
     display: flex;
     gap: 1rem;
 }
+/* TOP Mobile */
+.top-mobile {
+    background: var(--secondary-color);
+    color: var(--background);
+    line-height: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+.top-mobile a {
+    color: var(--background);
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.top-mobile button {
+    border: 1px solid var(--background);
+    color: var(--background);
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: none;
+    padding: 0.5rem;
+}
+
+.top-mobile ul {
+    background: var(--ternary-color);
+    color: var(--background);
+    display: none;
+    position: absolute;
+    top: 6%;
+    left: 5px;
+}
+
+.top-mobile ul li {
+    display: block;
+    padding: 0 1rem;
+}
+
+.top-mobile ul li:active {
+    background: var(--secondary-color);
+}
 
 header #header-2 {
     display: flex;
@@ -58,6 +100,10 @@ header #header-2 .bag {
 }
 
 @media screen and (min-width: 600px) {
+    .top-mobile {
+        display: none;
+    }
+
     div#info {
         display: flex;
         justify-content: space-between;

@@ -27,6 +27,26 @@
             </ul>
         </div>
     </div>
+    <div class='top-mobile'>
+        <div id="menu-dropdown-top">
+            <button class="button">MENU</button>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{{  route('pages.contact') }}">Contato</a></li>
+                <li><a href="{{ route('pages.sitemap') }}">Mapa do Site</a></li>
+            </ul>
+        </div>
+        <div>
+            @if (session('contact'))
+                <form action="{{ route('logout') }}" method="POST" id="frm-logout-contact">
+                    @csrf
+                    <button type="submit"><i class="fa fa-user fa-lg"></i>LOGOUT</button>
+                </form>
+            @else
+                <a href="{{ route('login') }}"><i class="fa fa-user fa-lg"></i> LOGIN</a>
+            @endif
+        </div>
+    </div>
     <div id="header-2">
         <div class="logo">
             <a href="/">

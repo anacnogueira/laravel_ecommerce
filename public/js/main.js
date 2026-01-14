@@ -11,6 +11,11 @@ modal.init();
 
 // Executa ao carregar a página
 document.addEventListener("DOMContentLoaded", function () {
+    const menuTop = document.getElementById("menu-dropdown-top");
+    if (menuTop) {
+        menumaker(menuTop, { format: "multitoggle" });
+    }
+
     const menu = document.getElementById("menu-dropdown");
     if (menu) {
         menumaker(menu, { format: "multitoggle" });
