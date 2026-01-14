@@ -73,7 +73,27 @@
             @enderror
         </div>
         <div class="bag">
-            <i class="item hide-for-small-only fa fa-user fa-6 left"></i>
+            <div id="menu-dropdown-user">
+                <button><i class="item fa fa-user fa-6"></i></button>
+                <ul>
+                    @if (session('contact'))
+                        <li><a href="#">Meus Pedidos</a></li>
+                        <li><a href="#">Meus Dados</a></li>
+                        <li><a href="#">Meus Favoritos</a></li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST" id="frm-logout-contact">
+                                @csrf
+                                <button type="submit"><i class="fa fa-user fa-lg"></i>LOGOUT</button>
+                            </form>
+                        </li>
+                    @else
+                        <li><a href="{{ route('login') }}">Fazer Login</a></li>
+                        <li><a href="{{ route('register') }}">Novo Cadastro</a></li>
+                        <li><a href="{{ route('pages.contact') }}">Fale Conosco</a></li>
+                    @endif
+                </ul>
+            </div>
+
             <a href="#" class="item" id="show_hide_mini_cart" title="Minha Sacola">
                 <i class="fa fa-shopping-bag fa-6 left" aria-hidden="true"></i>
             </a>

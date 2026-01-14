@@ -173,7 +173,7 @@ Route::get('/minha-sacola', function(){
 Route::get('/cadastro', function(){
     $title = "Cadastro";
     return view('maintenance', compact('title'));
-});
+})->name('register');
 
 // Login
 Route::get('/login', function(){

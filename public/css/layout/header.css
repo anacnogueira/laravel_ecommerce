@@ -99,6 +99,10 @@ header #header-2 .bag {
     display: none;
 }
 
+header #header-2 .mini-bag {
+    display: none;
+}
+
 @media screen and (min-width: 600px) {
     .top-mobile {
         display: none;
@@ -177,7 +181,58 @@ header #header-2 .bag {
         flex-direction: row;
     }
 
+    /* BAG, MENU USER */
+
     header #header-2 .bag {
+        display: block;
+    }
+
+    #menu-dropdown-user button {
+        background: none;
+        border: none;
+    }
+
+    #menu-dropdown-user ul {
+        position: absolute;
+        display: none;
+        background: var(--ternary-color);
+        transform: translateX(-50%); /* Centraliza o menu em relação ao botão */
+        width: 150px;
+        color: white;
+        border-radius: 10px; /* Cantos arredondados para o balão */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    #menu-dropdown-user ul::after {
+        content: "";
+        position: absolute;
+        bottom: 100%; /* Posiciona o bico acima do balão */
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent transparent var(--ternary-color) transparent; /* Cria um triângulo apontando para cima com a cor do balão */
+    }
+
+    #menu-dropdown-user ul li {
+        text-align: left;
+        display: block;
+        padding: 10px;
+    }
+
+    #menu-dropdown-user ul li a {
+        text-decoration: none;
+        color: var(--background);
+    }
+
+    #menu-dropdown-user ul li:hover {
+        background: var(--primary-color);
+        color: var(--background);
+        border-radius: 10px;
+    }
+
+    #menu-dropdown-user:hover ul {
         display: block;
     }
 }
