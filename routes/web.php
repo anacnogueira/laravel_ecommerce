@@ -33,6 +33,7 @@ use App\Http\Controllers\Admin\LogController as AdminLogController;
 use App\Http\Controllers\Admin\CustomerController as AdminCustomerController;
 use App\Http\Controllers\Admin\ContactAddressController as AdminContactAddressController;
 use App\Http\Controllers\Admin\ContactOrderController as AdminContactOrderController;
+use App\Http\Controllers\Admin\ContactCommentController as AdminContactCommentController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -81,12 +82,14 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::resource('comments', AdminCommentController::class);
 
         //5 Clientes
-        //5.1 Gerenciar Clientes
+        //5.1 Clientes
         Route::resource('customers', AdminCustomerController::class);
-        //5.2 Gerenciar Endereços
+        //5.2 Endereços
         Route::resource('customers/{contacId}/addresses', AdminContactAddressController::class);
-        //5.3 Gerenciar Pedidos
+        //5.3 Pedidos
         Route::resource('customers/{contacId}/orders', AdminContactOrderController::class)->names('customers.orders');
+        //4.4 Gerenciar Avaliações
+        Route::resource('customers/{contacId}/comments', AdminContactCommentController::class)->names('customers.comments');
 
         //6. Conteúdo
         //6.1 Páginas

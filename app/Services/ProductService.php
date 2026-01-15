@@ -215,6 +215,19 @@ class ProductService
         return response()->json(['message' => 'Product Deleted'], 200);
     }
 
+    public function getProductToSelect()
+    {
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione o produto";
+
+        $products = $this->getAllProducts()
+            ->sortBy('name')
+            ->prepend($select);
+
+        return $products;
+    }
+
 
 
 }

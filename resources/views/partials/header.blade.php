@@ -97,7 +97,7 @@
             <a href="#" class="item" id="show_hide_mini_cart" title="Minha Sacola">
                 <i class="fa fa-shopping-bag fa-6 left" aria-hidden="true"></i>
             </a>
-            <div class="item mini-bag hide-for-small-only">
+            <div class="mini-bag">
                 Minha Sacola <i class="fa fa-sort-asc"></i><br>
                 <span class="cart_count">0 itens </span>|
                 <span class="total_cart">R$0,00</span>

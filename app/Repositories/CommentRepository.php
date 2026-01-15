@@ -24,6 +24,15 @@ class CommentRepository implements CommentRepositoryInterface
     }
 
     /**
+     * Get all Comments By ContactId
+     * @return array
+     */
+    public function getAllCommentsByContactId($contactId)
+    {
+        return $this->entity->where('contact_id', $contactId)->get();
+    }
+
+    /**
      * Select Comment by ID
      * @param int $id
      * @return object

@@ -42,7 +42,7 @@
                     <ul>
                         <li><a href="{{ route('admin.addresses.index', $customer->id) }}">Endereços</a></li>
                         <li><a href="{{ route('admin.customers.orders.index', $customer->id) }}">Pedidos</a></li>
-                        <li><a href="#">Comentários</a></li>
+                        <li><a href="{{ route('admin.customers.comments.index', $customer->id) }}">Comentários</a></li>
                     </ul>
                     <div class="row" style="margin-top: 20px">
                         <div class="col-md-12">

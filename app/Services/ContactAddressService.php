@@ -30,9 +30,9 @@ class ContactAddressService
     */
     public function makeContactAddress(array $data)
     {
-        $contactAdress = $this->contactAddressRepository->createContactAddress($data);
+        $contactAddress = $this->contactAddressRepository->createContactAddress($data);
 
-        return $contactAdress;
+        return $contactAddress;
     }
 
     /**

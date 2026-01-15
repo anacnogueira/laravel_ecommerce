@@ -23,6 +23,15 @@ class CommentService
     }
 
      /**
+     * Select all comments By ContactId
+     * @return array
+    */
+    public function getAllCommentsByContactId($contactId)
+    {
+        return $this->commentRepository->getAllCommentsByContactId($contactId);
+    }
+
+     /**
      * Create a new comment
      * @param array $data
      * @return object
