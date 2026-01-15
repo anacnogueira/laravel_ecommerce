@@ -49,6 +49,16 @@ class CustomerService
     }
 
     /**
+     * Get Customer by email
+     * @param int $id
+     * @return object
+    */
+    public function getCustomerByEmail(string $email)
+    {
+        return $this->customerRepository->getCustomerByEmail($email);
+    }
+
+    /**
      * Update a customer
      * @param int $id
      * @param arrray $data

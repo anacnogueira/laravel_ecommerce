@@ -32,8 +32,16 @@ class AppServiceProvider extends ServiceProvider
             return new CakeSHA1Hasher();
         });
 
-        ResetPassword::createUrlUsing(function (User $user, string $token) {
-            return env('APP_URL') . '/admin/password/reset/' . $token;
+        ResetPassword::createUrlUsing(function (object $user, string $token) {
+            if ($user instanceof User) {
+                return url("/admin/password/reset/{$token}");
+            }
+
+            if ($user instanceof Contact) {
+                return url("/resetar-senha/{$token}");
+            }
+
+            //return env('APP_URL') . '/admin/password/reset/' . $token;
         });
     }
 }

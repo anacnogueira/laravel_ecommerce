@@ -2,13 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use App\Notifications\ContactResetPasswordNotification;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
-class Contact extends Model
+class Contact extends Authenticatable
 {
+    use Notifiable, CanResetPassword;
+
     const CREATED_AT = 'created';
     const UPDATED_AT = 'modified';
 
@@ -134,13 +141,16 @@ class Contact extends Model
 
 
      /**
-     * Scope a query to only include customers (clients).
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * Scope a query to only include partners.
      */
-    public function scopeCustomers($query)
+    #[Scope]
+    protected function customers(Builder $query): void
     {
-        return $query->where('type_contact', 'client')->get();
+        $query->where('type_contact', 'client');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ContactResetPasswordNotification($token));
     }
 }

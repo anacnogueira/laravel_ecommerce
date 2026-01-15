@@ -33,6 +33,10 @@ header ul {
     padding: 0.5rem;
 }
 
+.top-mobile button[type="submit"] {
+    border: none;
+}
+
 .top-mobile ul {
     background: var(--ternary-color);
     color: var(--background);
@@ -221,9 +225,11 @@ header #header-2 .mini-bag {
         padding: 10px;
     }
 
-    #menu-dropdown-user ul li a {
+    #menu-dropdown-user ul li a,
+    #menu-dropdown-user ul li button {
         text-decoration: none;
         color: var(--background);
+        text-align: left;
     }
 
     #menu-dropdown-user ul li:hover {

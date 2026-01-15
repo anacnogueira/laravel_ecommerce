@@ -1,0 +1,21 @@
+@import url("../components/breadcrumb.css");
+
+h1,
+h2,
+p {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.alert-success {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: #fff;
+    background-color: #28a745;
+    border-color: #23923d;
+}

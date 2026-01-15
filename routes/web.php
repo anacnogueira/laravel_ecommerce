@@ -39,6 +39,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ResetPasswordController;
 
 //1. ADMIN
 Route::prefix('admin')->name('admin.')->group(function(){
@@ -179,13 +182,76 @@ Route::get('/cadastro', function(){
 })->name('register');
 
 // Login
-Route::get('/login', function(){
-    $title = "Login";
-    return view('maintenance', compact('title'));
-})->name('login');
+Route::get('/login',[LoginController::class,'login'])->name('login');
+Route::post('/login',[LoginController::class,'authenticate'])->name('login.authenticate');
+Route::get('/esqueci-minha-senha', [ForgotPasswordController::class, 'passwordReset'])->name('password.forgot');
+Route::post('/password/email', [ForgotPasswordController::class, 'passwordEmail'])->name('password.email');
+Route::get('/resetar-senha/{token}', [ResetPasswordController::class, 'resetPassword'])->name('password.reset');
+Route::post('/password/reset', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
 
-// Login
-Route::post('/logout', function(){
-    $title = "Logout";
-    return view('maintenance', compact('title'));
-})->name('logout');
+
+Route::middleware(['auth'])->group(function() {
+    Route::get('/meus-pedidos/{filter?}', function($filter = null) {
+        $type = null;
+        if ($filter) {
+            $filters = explode(":", $filter);
+            $type = $filters[1];
+        }
+
+        switch ($type) {
+            case 'ultimos':
+                $title = "Últimos pedidos";
+                break;
+            case 'abertos':
+                $title = "Pedidos Abertos";
+                break;
+            case 'entregues':
+                $title = "Pedidos Entregues";
+                break;
+            case "numero":
+                $title = "Pedidos por número";
+                break;
+            case "data":
+                $title = "Pedidos por data";
+                break;
+            default:
+                $title = "Todos os pedidos";
+        }
+
+        return view('maintenance', compact('title'));
+    });
+
+    Route::get('/minha-conta/alterar-email', function(){
+        $title = "Alterar e-mail";
+        return view('maintenance', compact('title'));
+    });
+
+    Route::get('/minha-conta/alterar-senha', function(){
+        $title = "Alterar Senha";
+        return view('maintenance', compact('title'));
+    });
+
+    Route::get('/minha-conta/alterar-dados-cadastrais', function(){
+        $title = "Alterar Dados";
+        return view('maintenance', compact('title'));
+    });
+
+    Route::get('/minha-conta/email-ofertas', function(){
+        $title = "E-mail de ofertas";
+        return view('maintenance', compact('title'));
+    });
+
+    Route::get('/minha-conta/meus-enderecos', function(){
+        $title = "Meus Endereços";
+        return view('maintenance', compact('title'));
+    });
+
+     Route::get('/meus-favoritos', function(){
+        $title = "Meus Favoritos";
+        return view('maintenance', compact('title'));
+    });
+
+
+    // Logout
+    Route::post('/logout', [LoginController::class,'logout'])->name('logout');
+});

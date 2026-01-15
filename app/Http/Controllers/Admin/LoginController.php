@@ -32,7 +32,7 @@ class LoginController extends Controller
         return view('admin.login');
     }
 
-     public function authenticate(LoginRequest $request)
+    public function authenticate(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
 

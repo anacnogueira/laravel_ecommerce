@@ -34,6 +34,16 @@ class CustomerRepository implements CustomerRepositoryInterface
     }
 
     /**
+     * Select Customer by E-mail
+     * @param int $id
+     * @return object
+     */
+    public function getCustomerByEmail($email)
+    {
+        return $this->entity->customers()->where('email',$email)->first();
+    }
+
+    /**
      * Create a new Customer
      * @param array $data
      * @return object

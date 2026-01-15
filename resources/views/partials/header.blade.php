@@ -37,14 +37,16 @@
             </ul>
         </div>
         <div>
-            @if (session('contact'))
+            @auth
                 <form action="{{ route('logout') }}" method="POST" id="frm-logout-contact">
                     @csrf
-                    <button type="submit"><i class="fa fa-user fa-lg"></i>LOGOUT</button>
+                    <button type="submit"><i class="fa fa-user fa-lg"></i> LOGOUT</button>
                 </form>
-            @else
+            @endauth
+
+            @guest
                 <a href="{{ route('login') }}"><i class="fa fa-user fa-lg"></i> LOGIN</a>
-            @endif
+            @endguest
         </div>
     </div>
     <div id="header-2">
@@ -76,21 +78,23 @@
             <div id="menu-dropdown-user">
                 <button><i class="item fa fa-user fa-6"></i></button>
                 <ul>
-                    @if (session('contact'))
+                   @auth
                         <li><a href="#">Meus Pedidos</a></li>
                         <li><a href="#">Meus Dados</a></li>
                         <li><a href="#">Meus Favoritos</a></li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST" id="frm-logout-contact">
                                 @csrf
-                                <button type="submit"><i class="fa fa-user fa-lg"></i>LOGOUT</button>
+                                <button type="submit">Sair</button>
                             </form>
                         </li>
-                    @else
+                    @endauth
+
+                    @guest
                         <li><a href="{{ route('login') }}">Fazer Login</a></li>
                         <li><a href="{{ route('register') }}">Novo Cadastro</a></li>
                         <li><a href="{{ route('pages.contact') }}">Fale Conosco</a></li>
-                    @endif
+                    @endguest
                 </ul>
             </div>
 

@@ -46,7 +46,7 @@
         <div class="my-account">
             <p class="title">Minha Conta</p>
             <ul>
-                @if (session('user'))
+                @auth
                     <li><a href="/meus-pedidos/filtro:ultimos">Úlltimos Pedidos</a></li>
                     <li><a href="/meus-pedidos/filtro:abertos">Pedidos Abertos</a></li>
                     <li><a href="/meus-pedidos/filtro:entregues">Pedidos Entregues</a></li>
@@ -61,10 +61,12 @@
                     <li><hr></li>
                     <li><a href="/meus-favoritos">Meus Produtos Favoritos</a></li>
                     <li><hr></li>
-                @else
-                <li><a href="/cadastro">Cadastro</a></li>
-                <li><a href="/login">Login</a></li>
-                @endif
+                @endauth
+
+                @guest
+                    <li><a href="/cadastro">Cadastro</a></li>
+                    <li><a href="/login">Login</a></li>
+                @endguest
             </ul>
         </div>
         <div class="contact">

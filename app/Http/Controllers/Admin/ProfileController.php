@@ -24,7 +24,6 @@ class ProfileController extends Controller
     public function edit()
     {
         $user = auth()->user();
-        //dd($user);
 
         return view('admin.profile.edit', compact('user'));
     }
