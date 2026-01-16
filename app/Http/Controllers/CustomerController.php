@@ -41,7 +41,7 @@ class CustomerController extends Controller
 
         $data["type_contact"] = "client";
 
-        $customer = $this->customerService->makeCustomer($data);
+        $customer = $this->customerService->makeCustomer($data, "site");
 
         return redirect()->route('register.confirm-store');
     }

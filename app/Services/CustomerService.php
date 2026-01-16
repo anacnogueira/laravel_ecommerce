@@ -30,7 +30,7 @@ class CustomerService
      * @param array $data
      * @return object
     */
-    public function makeCustomer(array $data)
+    public function makeCustomer(array $data, $method)
     {
         $data = $this->dataSanitization($data);
         $data["newsletter"] = isset($data["newsletter"]) ? 'S' : 'N';
@@ -39,7 +39,7 @@ class CustomerService
 
         $customer = $this->customerRepository->createCustomer($data);
 
-        $this->sendEmailToRegisteredCustomer($customer->email, "admin");
+        $this->sendEmailToRegisteredCustomer($customer->email, $method);
 
         return $customer;
     }
