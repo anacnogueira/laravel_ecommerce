@@ -44,6 +44,21 @@ class Contact extends Authenticatable
         'status',
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var list<string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ContactResetPasswordNotification($token));
+    }
+
     public function orders()
     {
         return $this->hasMany(Order::class);
@@ -147,10 +162,5 @@ class Contact extends Authenticatable
     protected function customers(Builder $query): void
     {
         $query->where('type_contact', 'client');
-    }
-
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notify(new ContactResetPasswordNotification($token));
     }
 }
