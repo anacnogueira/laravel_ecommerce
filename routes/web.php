@@ -219,7 +219,12 @@ Route::middleware(['auth'])->group(function() {
         }
 
         return view('maintenance', compact('title'));
-    });
+    })->name('orders.index');
+
+    Route::get('/minha-conta', function(){
+        $title = "Minha Conta";
+        return view('maintenance', compact('title'));
+    })->name('customer.index');
 
     Route::get('/minha-conta/alterar-email', function(){
         $title = "Alterar e-mail";
@@ -249,7 +254,7 @@ Route::middleware(['auth'])->group(function() {
      Route::get('/meus-favoritos', function(){
         $title = "Meus Favoritos";
         return view('maintenance', compact('title'));
-    });
+    })->name('customer.products.favorite');
 
 
     // Logout

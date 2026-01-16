@@ -79,9 +79,9 @@
                 <button><i class="item fa fa-user fa-6"></i></button>
                 <ul>
                    @auth
-                        <li><a href="#">Meus Pedidos</a></li>
-                        <li><a href="#">Meus Dados</a></li>
-                        <li><a href="#">Meus Favoritos</a></li>
+                        <li><a href="{{ route('orders.index') }}">Meus Pedidos</a></li>
+                        <li><a href="{{ route('customer.index') }}">Meus Dados</a></li>
+                        <li><a href="{{ route('customer.products.favorite') }}">Meus Favoritos</a></li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST" id="frm-logout-contact">
                                 @csrf
