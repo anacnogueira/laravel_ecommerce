@@ -42,6 +42,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\CustomerController;
 
 //1. ADMIN
 Route::prefix('admin')->name('admin.')->group(function(){
@@ -176,10 +177,9 @@ Route::get('/minha-sacola', function(){
 });
 
 // Cadastro
-Route::get('/cadastro', function(){
-    $title = "Cadastro";
-    return view('maintenance', compact('title'));
-})->name('register');
+Route::get('/cadastro', [CustomerController::class,'create'])->name('register');
+Route::post('/cadastro', [CustomerController::class,'store'])->name('register.store');
+Route::get('/confirma-cadastro', [CustomerController::class,'confirm'])->name('register.confirm-store');
 
 // Login
 Route::get('/login',[LoginController::class,'login'])->name('login');

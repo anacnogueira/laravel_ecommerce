@@ -38,7 +38,8 @@ form {
 }
 
 label {
-    margin-bottom: 8px;
+    display: block;
+    margin-top: 1rem;
     font-weight: bold;
     color: #333;
 }
@@ -48,6 +49,7 @@ input[type="search"],
 input[type="number"],
 input[type="email"],
 input[type="password"],
+input[type="date"],
 textarea {
     border: 1px solid #ccc;
     color: rgba(0, 0, 0, 0.75);
@@ -68,7 +70,8 @@ input[type="submit"] {
 }
 
 input.is-invalid,
-textarea.is-invalid {
+textarea.is-invalid,
+div.is-invalid {
     border: 1px solid #ff0000;
 }
 
@@ -92,4 +95,19 @@ textarea.is-invalid {
     clip: rect(0, 0, 0, 0);
     border: 0;
     white-space: nowrap;
+}
+
+a.button {
+    display: block;
+    width: 200px;
+    background: var(--secondary-color);
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    margin: 10px auto;
+    padding: 7px;
+    font-size: 1rem;
+    border-radius: 2px;
+    text-align: center;
 }

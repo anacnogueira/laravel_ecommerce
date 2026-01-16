@@ -45,3 +45,11 @@ if (cpfField) {
     };
     const maskDate = IMask(cpfField, maskOptionsCpf);
 }
+
+const cnpjField = document.querySelector(".cnpj-mask");
+if (cnpjField) {
+    const maskOptionsCpf = {
+        mask: "00.000.000/0000-00",
+    };
+    const maskDate = IMask(cnpjField, maskOptionsCpf);
+}

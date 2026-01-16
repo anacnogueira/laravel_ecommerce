@@ -42,6 +42,7 @@ class Contact extends Authenticatable
         'description',
         'url',
         'status',
+        'privacy',
     ];
 
     /**

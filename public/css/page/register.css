@@ -1,0 +1,41 @@
+@import url("../components/breadcrumb.css");
+
+h1,
+p {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+h2 {
+    margin-top: 0.5rem;
+}
+
+div.type-person,
+div.gender {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+div.radio label {
+    margin-top: 0;
+}
+
+div#frm-fields div.newsletter,
+div#frm-fields div.privacy {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    height: 50px;
+}
+
+div#frm-fields {
+    display: none;
+}

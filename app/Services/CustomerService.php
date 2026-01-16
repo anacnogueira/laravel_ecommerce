@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\Contracts\CustomerRepositoryInterface;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CustomerRegistered;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerService
 {
@@ -31,6 +32,11 @@ class CustomerService
     */
     public function makeCustomer(array $data)
     {
+        $data = $this->dataSanitization($data);
+        $data["newsletter"] = isset($data["newsletter"]) ? 'S' : 'N';
+        $data["privacy"] = isset($data["newsletter"]) ? 'S' : 'N';
+        $data['password']= Hash::make($data['password']);
+
         $customer = $this->customerRepository->createCustomer($data);
 
         $this->sendEmailToRegisteredCustomer($customer->email, "admin");
@@ -99,5 +105,19 @@ class CustomerService
         Mail::to($email)
             ->bcc("anacnogueira@gmail.com")
             ->send(new CustomerRegistered($email, "admin"));
+    }
+
+    private function dataSanitization ($data)
+    {
+        if ($data["type_person"] ==="pf") {
+            unset($data["fantasy_name"], $data['cnpj'], $data['ie']);
+        }
+
+        if ($data["type_person"] ==="pj") {
+            unset($data["cpf"], $data["gender"], $data["date_birth"]);
+        }
+
+        return $data;
+
     }
 }
