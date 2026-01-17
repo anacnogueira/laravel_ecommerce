@@ -105,14 +105,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="mobile">Telefone:</label>
+                    <label for="mobile">Telefone:*</label>
                     <input
                         type="text"
                         name="mobile"
                         id="mobile"
-                        class="phone-mask"
+                        class="phone-mask @error('mobile') is-invalid @enderror"
                         placeholder="(99)99999-9999"
-                        value="{{ old('mobile') }}">
+                        value="{{ old('mobile') }}"
+                    />
+                    @error('mobile')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div id="div-gender">
@@ -201,10 +205,15 @@
                         type="checkbox"
                         name="privacy"
                         id="privacy"
-                        value="S"
-                        {{ (old('privacy') || old('privacy')) == "S" ? "checked" : ""}} />
+                        value="1"
+                        {{ (old('privacy') || old('privacy')) == "S" ? "checked" : ""}}
+                    />
                     <label for="privacy">Concordo com o uso dos meus dados para compra e experiência no site conforme a
-                        <a href="{{ url('pagina/politica-de-privacidade') }}" target="_blank">Política de Privacidade</a></label>
+                        <a href="{{ url('pagina/politica-de-privacidade') }}" target="_blank">Política de Privacidade</a>
+                    </label>
+                    @error('privacy')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div><br />
 
                 <input type="submit" value="Enviar" />

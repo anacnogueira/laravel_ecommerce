@@ -22,7 +22,8 @@ div.gender {
     justify-content: space-between;
 }
 
-div.radio label {
+div.newsletter label,
+div.privacy label {
     margin-top: 0;
 }
 
@@ -30,7 +31,6 @@ div#frm-fields div.newsletter,
 div#frm-fields div.privacy {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     gap: 5px;
     height: 50px;

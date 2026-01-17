@@ -36,6 +36,6 @@ class CustomerRegistered extends Mailable
         $email = $this->email;
 
         return $this->subject("[".env("APP_NAME")."] Cliente cadastrado com sucesso")
-        ->view('mails.customers.registered', compact("method", "email"));
+            ->view('mails.customers.registered', compact("method", "email"));
     }
 }

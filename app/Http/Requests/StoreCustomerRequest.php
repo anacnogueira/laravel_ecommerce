@@ -24,8 +24,10 @@ class StoreCustomerRequest extends FormRequest
        $rules = [
             'type_person' => 'required|in:pf,pj',
             'name' => ['required'],
-            'email' => 'required|email|unique:contacts,email',
+            'email' => ['required','email','unique:contacts,email'],
             'password' => ['required', 'confirmed', 'between:6,15'],
+            'mobile' => ['required'],
+            'privacy' => ['accepted']
         ];
 
         if ($this->type_person === 'pf') {
@@ -48,8 +50,10 @@ class StoreCustomerRequest extends FormRequest
             'required' => 'O campo é obrigatório',
             'email' => 'Formato de e-mail inválido',
             'email.unique' => 'E-mail já cadastrado',
+            'confirmed' =>'A confirmação da senha não corresponde',
             'cpf.unique' => 'CPF já cadastrado',
             'cnpj.unique' => 'CNPJ já cadastrado',
+            'accepted' => 'Concorde os termos de uso'
         ];
     }
 }

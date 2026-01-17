@@ -91,27 +91,14 @@ class Contact extends Authenticatable
     }
 
     /**
-     * Set the scheduled date
-     *
-     * @param  string  $value
-     * @return void
+     * Define como o campo date_birth será manipulado.
      */
-    public function setDateBirthAttribute($value)
+    protected function dateBirth(): Attribute
     {
-        $this->attributes['date_birth'] = $value ?
-        Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d') :
-        null;
-    }
-
-     /**
-     * Get the created date
-     *
-     * @param  string  expire date
-     * @return string
-     */
-    public function getDateBirthAttribute($value)
-    {
-        return $value ? Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y') : null;
+        return Attribute::make(
+            get: fn (?string $value) => $value ? Carbon::parse($value)->format('d/m/Y') : null,
+            set: fn (?string $value) => $value ? Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d') : null,
+        );
     }
 
      /**

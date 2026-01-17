@@ -12,19 +12,18 @@ if (phoneField) {
         mask: [
             {
                 mask: "(00) 0000-0000", // telefone fixo
-                lazy: false,
             },
             {
                 mask: "(00) 00000-0000", // celular
             },
         ],
-        dispatch: function (appended, dynamicMasked) {
-            const number = (dynamicMasked.value + appended).replace(/\D/g, "");
+        // dispatch: function (appended, dynamicMasked) {
+        //     const number = (dynamicMasked.value + appended).replace(/\D/g, "");
 
-            return number.length > 10
-                ? dynamicMasked.compiledMasks[1] // celular
-                : dynamicMasked.compiledMasks[0]; // fixo
-        },
+        //     return number.length > 10
+        //         ? dynamicMasked.compiledMasks[1] // celular
+        //         : dynamicMasked.compiledMasks[0]; // fixo
+        // },
     };
 
     IMask(phoneField, maskOptionsPhone);

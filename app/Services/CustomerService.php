@@ -6,14 +6,19 @@ use App\Repositories\Contracts\CustomerRepositoryInterface;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CustomerRegistered;
 use Illuminate\Support\Facades\Hash;
+use App\Services\MailchimpService;
 
 class CustomerService
 {
     protected $customerRepository;
+    protected $mailchimpService;
 
-    public function __construct(CustomerRepositoryInterface $customerRepository)
+    public function __construct(
+        CustomerRepositoryInterface $customerRepository,
+        MailchimpService $mailchimpService)
     {
         $this->customerRepository = $customerRepository;
+        $this->mailchimpService = $mailchimpService;
     }
 
     /**
@@ -36,6 +41,10 @@ class CustomerService
         $data["newsletter"] = isset($data["newsletter"]) ? 'S' : 'N';
         $data["privacy"] = isset($data["newsletter"]) ? 'S' : 'N';
         $data['password']= Hash::make($data['password']);
+
+        if ($data["newsletter"] == 'S') {
+            $this->mailchimpService->addSubscriber($data['email'],$data['name']);
+        }
 
         $customer = $this->customerRepository->createCustomer($data);
 
@@ -100,11 +109,11 @@ class CustomerService
         return response()->json(['message' => 'Customer Deleted'], 200);
     }
 
-    private function sendEmailToRegisteredCustomer($email)
+    private function sendEmailToRegisteredCustomer($email, $method)
     {
         Mail::to($email)
             ->bcc("anacnogueira@gmail.com")
-            ->send(new CustomerRegistered($email, "admin"));
+            ->send(new CustomerRegistered($email, $method));
     }
 
     private function dataSanitization ($data)
