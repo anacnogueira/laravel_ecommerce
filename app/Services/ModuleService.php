@@ -87,7 +87,7 @@ class ModuleService
     public function getModulesToSelect()
     {
         $select = new \stdClass();
-        $select->id = null;
+        $select->id = 0;
         $select->name = "Selecione";
 
         return $this->getAllModules()

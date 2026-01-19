@@ -36,13 +36,7 @@ class ModuleController extends Controller
     {
         $module = null;
 
-        $select = new \stdClass();
-        $select->id = null;
-        $select->name = "Selecione";
-
-        $modules = $this->moduleService->getAllModules();
-        $modules = $modules->sortBy('name');
-        $modules = $modules->prepend($select);
+        $modules = $this->moduleService->getModulesToSelect();
 
         return view('admin.modules.create', compact('module', 'modules'));
     }
@@ -86,13 +80,7 @@ class ModuleController extends Controller
     {
         $module = $this->moduleService->getModuleById($id);
 
-        $select = new \stdClass();
-        $select->id = null;
-        $select->name = "Selecione";
-
-        $modules = $this->moduleService->getAllModules();
-        $modules = $modules->sortBy('name');
-        $modules = $modules->prepend($select);
+        $modules = $this->moduleService->getModulesToSelect();
 
         return view('admin.modules.edit', compact('module', 'modules'));
     }
