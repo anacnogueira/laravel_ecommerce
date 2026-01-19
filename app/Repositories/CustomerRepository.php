@@ -20,7 +20,7 @@ class CustomerRepository implements CustomerRepositoryInterface
      */
     public function getAllCustomers()
     {
-        return $this->entity->customers();
+        return $this->entity->customers()->get();
     }
 
     /**
