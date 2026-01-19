@@ -28,4 +28,23 @@ class Module extends Model
     {
         return $this->hasMany(Routine::class);
     }
+
+    public function children()
+    {
+        return $this->hasMany(Module::class,'parent_id','id')
+            ->select('id','name','icon', 'parent_id','slug')
+            ->where('status','S')
+            ->orderBy('order');
+    }
+
+
+    public static function tree()
+    {
+        return static::with(implode('.', array_fill(0, 4, 'children')))
+            ->select('id','name','icon', 'parent_id','slug')
+            ->where('status','S')
+            ->where('parent_id','=', 0)
+            ->orderBy('order')
+            ->get();
+    }
 }
