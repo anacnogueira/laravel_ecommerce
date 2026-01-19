@@ -34,6 +34,7 @@ use App\Http\Controllers\Admin\CustomerController as AdminCustomerController;
 use App\Http\Controllers\Admin\ContactAddressController as AdminContactAddressController;
 use App\Http\Controllers\Admin\ContactOrderController as AdminContactOrderController;
 use App\Http\Controllers\Admin\ContactCommentController as AdminContactCommentController;
+use App\Http\Controllers\Admin\ContactNewsletterController as AdminContactNewsletterController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -95,44 +96,48 @@ Route::prefix('admin')->name('admin.')->group(function(){
         //4.4 Gerenciar Avaliações
         Route::resource('customers/{contacId}/comments', AdminContactCommentController::class)->names('customers.comments');
 
-        //6. Conteúdo
-        //6.1 Páginas
+        //6 Newsletter
+        Route::resource('newsletters', AdminContactNewsletterController::class);
+        Route::get('newsletters/export', [AdminContactNewsletterController::class, 'export'])->name("newsletters.export");
+
+        //7. Conteúdo
+        //7.1 Páginas
         Route::resource('pages', AdminPageController::class);
-        //6.2 Banners
+        //7.2 Banners
         Route::resource('banners', AdminBannerController::class);
-        //6.3 Integradoras de pagamento
+        //7.3 Integradoras de pagamento
         Route::resource('payment-gateways', AdminPaymentGatewayController::class);
-        //6.4 Formas de pagamento
+        //7.4 Formas de pagamento
         Route::resource('payment-methods', AdminPaymentMethodController::class);
-        //6.5 Status do Pedido
+        //7.5 Status do Pedido
         Route::resource('order-status', AdminOrderStatusController::class);
-        //6.6 Perguntas Frequentes
+        //7.7 Perguntas Frequentes
         Route::resource('faqs', AdminFaqController::class);
-        //6.7 Países
+        //7.7 Países
         Route::resource('countries', AdminCountryController::class);
-        //6.8 Estados
+        //7.8 Estados
         Route::resource('states', AdminStateController::class);
-        //6.9 Cidades
+        //7.9 Cidades
         Route::resource('cities', AdminCityController::class);
-        //6.10 Eventos
+        //7.10 Eventos
         Route::resource('events', AdminEventController::class);
 
-        //7. Relatórios
-        //7.1 Pesquisas no site
+        //8. Relatórios
+        //8.1 Pesquisas no site
         Route::get("website-searches",[AdminWebsiteSearchController::class,'index'])->name("website-search.index");
-         //7.2 Pesquisas de CEP
+         //8.2 Pesquisas de CEP
         Route::get("cep-searches",[AdminCepSearchController::class,'index'])->name("cep-search.index");
 
-        //8. Sistema
-        //8.1 Grupos
+        //9. Sistema
+        //9.1 Grupos
         Route::resource('user-groups', AdminUserGroupController::class);
-        //8.2 Usuários
+        //9.2 Usuários
         Route::resource('users', AdminUserController::class);
-        //8.3 Módulos
+        //9.3 Módulos
         Route::resource('modules', AdminModuleController::class);
-        //8.4 Rotinas
+        //9.4 Rotinas
         Route::resource('routines', AdminRoutineController::class);
-        //8.5 Logs
+        //9.5 Logs
         Route::get('logs', [AdminLogController::class, 'index'])->name("logs.index");
         Route::get('logs/search', [AdminLogController::class, 'search'])->name("logs.search");
         Route::get('logs/{id}', [AdminLogController::class, 'show'])->name("logs.show");
