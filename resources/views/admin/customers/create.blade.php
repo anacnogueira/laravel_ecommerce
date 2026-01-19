@@ -22,3 +22,15 @@
         </div>
     </div>
 @stop
+
+
+@push('css')
+   <link rel="stylesheet" href="{{ asset('css/admin/form-customer.css') }}">
+@endpush
+
+@push('js')
+    <script src="https://unpkg.com/imask"></script>
+    <script  type="text/javascript" src="{{ asset('js/utils/mask-field.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/admin/utils/set-type-person-fields.js') }}"></script>
+@endpush
+
