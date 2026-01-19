@@ -18,6 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const divGender = document.getElementById("div-gender");
     const divDateBirth = document.getElementById("div-date-birth");
 
+    if (typePersonChecked) {
+        selectedValue = typePersonChecked.value;
+        verifySelectedPerson(selectedValue);
+    }
+
     typePersonRadios.forEach((typePerson) => {
         typePerson.addEventListener("change", function () {
             const selectedValue = this.value;

@@ -40,7 +40,7 @@ class CustomerService
         $data = $this->dataSanitization($data);
         $data["newsletter"] = isset($data["newsletter"]) ? 'S' : 'N';
         $data["privacy"] = isset($data["newsletter"]) ? 'S' : 'N';
-        $data['password']= Hash::make($data['password']);
+        $data['password']= isset($data['password']) ? Hash::make($data['password']) : null;
 
         if ($data["newsletter"] == 'S') {
             $this->mailchimpService->addSubscriber($data['email'],$data['name']);

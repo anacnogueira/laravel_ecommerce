@@ -22,7 +22,7 @@ class StoreCustomerRequest extends FormRequest
     public function rules(): array
     {
        $rules = [
-            'type_person' => 'required|in:pf,pj',
+            'type_person' => ['required','in:pf,pj'],
             'name' => ['required'],
             'email' => ['required','email','unique:contacts,email'],
             'password' => ['required', 'confirmed', 'between:6,15'],
@@ -53,7 +53,7 @@ class StoreCustomerRequest extends FormRequest
             'confirmed' =>'A confirmação da senha não corresponde',
             'cpf.unique' => 'CPF já cadastrado',
             'cnpj.unique' => 'CNPJ já cadastrado',
-            'accepted' => 'Concorde os termos de uso'
+            'accepted' => 'Concorde com os termos de uso'
         ];
     }
 }

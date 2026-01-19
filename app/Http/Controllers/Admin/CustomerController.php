@@ -48,10 +48,9 @@ class CustomerController extends Controller
     public function store(AdminStoreUpdateCustomerRequest $request)
     {
         $data = $request->all();
-        $data["type_person"] = "pf";
         $data["type_contact"] = "client";
 
-        $customer = $this->customerService->makeCustomer($data);
+        $customer = $this->customerService->makeCustomer($data, "admin");
 
         return redirect()->route('admin.customers.index');
     }

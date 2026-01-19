@@ -16,22 +16,27 @@
                     <dl>
                         <dt>ID:</dt>
                         <dd>{{ $customer->id }}&nbsp;</dd>
-                        <dt>Nome:</dt>
-                        <dd>{{ $customer->name }}&nbsp;</dd>
-                        <dt>Sexo:</dt>
-                        <dd>{{ $customer->gender }}&nbsp;</dd>
-                        <dt>RG:</dt>
-                        <dd>{{ $customer->rg }}&nbsp;</dd>
-                        <dt>CPF:</dt>
-                        <dd>{{ $customer->cpf }}&nbsp;</dd>
-                        <dt>Data Nascimento:</dt>
-                        <dd>{{ $customer->date_birth }}&nbsp;</dd>
+                        @if ($customer->type_person == "pf")
+                            <dt>Nome Completo:</dt>
+                            <dd>{{ $customer->name }}&nbsp;</dd>
+                            <dt>CPF:</dt>
+                            <dd>{{ $customer->cpf }}&nbsp;</dd>
+                            <dt>Data Nascimento:</dt>
+                            <dd>{{ $customer->date_birth }}&nbsp;</dd>
+                            <dt>Sexo:</dt>
+                            <dd>{{ $customer->gender }}&nbsp;</dd>
+                        @else
+                            <dt>Razão Social:</dt>
+                            <dd>{{ $customer->name }}&nbsp;</dd>
+                            <dt>CNPJ:</dt>
+                            <dd>{{ $customer->cnpj }}&nbsp;</dd>
+                            <dt>Inscrição Estadual:</dt>
+                            <dd>{{ $customer->ie }}&nbsp;</dd>
+                        @endif
+                        <dt>Telefone:</dt>
+                        <dd>{{ $customer->mobile }}&nbsp;</dd>
                         <dt>E-mail:</dt>
                         <dd>{{ $customer->email }}&nbsp;</dd>
-                        <dt>Telefone:</dt>
-                        <dd>{{ $customer->phone }}&nbsp;</dd>
-                        <dt>Celular:</dt>
-                        <dd>{{ $customer->mobile }}&nbsp;</dd>
                         <dt>Newsletter:</dt>
                         <dd>{{ $customer->newsletter }}&nbsp;</dd>
                         <dt>Criado em:</dt>

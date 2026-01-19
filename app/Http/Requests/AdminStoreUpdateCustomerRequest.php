@@ -24,33 +24,53 @@ class AdminStoreUpdateCustomerRequest extends FormRequest
      */
     public function rules()
     {
-
-        return [
+        $rules = [
+            'type_person' => ['required','in:pf,pj'],
             'name' => ['required'],
             'email' => [
                 'required',
                 'email',
                 Rule::unique('contacts')->ignore($this->customer)
-             ],
-            'gender' => ['required'],
-            'cpf' => [
-                'required',
-                'cpf',
-                Rule::unique('contacts')->ignore($this->customer)
             ],
-            'date_birth' => ['required'],
-            'newsletter' => ['required'],
+            'mobile' => ['required'],
+            'privacy' => ['accepted']
         ];
+
+        if ($this->type_person === 'pf') {
+            $rules = array_merge($rules, [
+                'cpf' => [
+                    'required',
+                    'cpf',
+                    'formato_cpf',
+                    'unique:contacts,cpf',
+                    Rule::unique('contacts')->ignore($this->customer),
+                ]
+            ]);
+        } elseif ($this->type_person === 'pj') {
+            $rules = array_merge($rules, [
+                'cnpj' => [
+                    'required',
+                    'cnpj',
+                    'formato_cnpj',
+                    Rule::unique('contacts')->ignore($this->customer),
+                ],
+
+            ]);
+        }
+
+        return $rules;
     }
 
-    public function messages()
+   public function messages()
     {
         return [
             'required' => 'O campo é obrigatório',
             'email' => 'Formato de e-mail inválido',
             'email.unique' => 'E-mail já cadastrado',
+            'confirmed' =>'A confirmação da senha não corresponde',
             'cpf.unique' => 'CPF já cadastrado',
+            'cnpj.unique' => 'CNPJ já cadastrado',
+            'accepted' => 'Concorde com os termos de uso'
         ];
     }
-
 }
