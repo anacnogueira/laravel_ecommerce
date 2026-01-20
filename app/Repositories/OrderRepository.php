@@ -53,6 +53,17 @@ class OrderRepository implements OrderRepositoryInterface
         return $this->entity->sum('value');
     }
 
+     /**
+     * Update data of order
+     * @param object $order
+     * @param array $data
+     * @return object
+     */
+    public function updateOrder(Order $order, array $data)
+    {
+        return $order->update($data);
+    }
+
     /**
      * Delete a order
      * @param object $order

@@ -35,6 +35,7 @@ use App\Http\Controllers\Admin\ContactAddressController as AdminContactAddressCo
 use App\Http\Controllers\Admin\ContactOrderController as AdminContactOrderController;
 use App\Http\Controllers\Admin\ContactCommentController as AdminContactCommentController;
 use App\Http\Controllers\Admin\ContactNewsletterController as AdminContactNewsletterController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;

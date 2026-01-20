@@ -10,6 +10,7 @@ interface OrderRepositoryInterface
     public function getAllOrders();
     public function getOrderById($id);
     public function getTotalSalesAmount();
+    public function updateOrder(Order $order, array $data);
     public function destroyOrder(Order $order);
 
 }

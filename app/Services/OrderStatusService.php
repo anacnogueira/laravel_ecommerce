@@ -6,7 +6,7 @@ use App\Repositories\Contracts\OrderStatusRepositoryInterface;
 
 class OrderStatusService
 {
-    protected $orderstatusRepository;
+    protected $orderStatusRepository;
 
     public function __construct(OrderStatusRepositoryInterface $orderStatusRepository)
     {
@@ -79,5 +79,16 @@ class OrderStatusService
         $this->orderStatusRepository->destroyOrderStatus($orderStatus);
 
         return response()->json(['message' => 'Order Status Deleted'], 200);
+    }
+
+    public function getAllOrderStatusesToSelect()
+    {
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione o status";
+
+        return $this->getAllOrderStatuses()
+            ->sortBy('name')
+            ->prepend($select);
     }
 }

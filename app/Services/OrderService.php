@@ -50,6 +50,24 @@ class OrderService
         return $this->orderRepository->getTotalSalesAmount();
     }
 
+    /**
+     * Update tracking code shipping
+     * @return float
+    */
+    public function updateTrackingCodeOrder(int $id, array $data)
+    {
+        $order = $this->orderRepository->getOrderById($id);
+
+        if (!$order) {
+            return response()->json(['message' => 'Order Not Found'], 404);
+        }
+
+        $this->orderRepository->updateOrder($order, $data);
+        return response()->json(['message' => 'Module Updated'], 200);
+    }
+
+
+
      /**
      * Delete a order
      * @param int $id
@@ -62,6 +80,9 @@ class OrderService
         if (!$order) {
             return response()->json(['message' => 'Order Not Found'], 404);
         }
+
+        $order->orderItems()->delete();
+        $order->orderLogs()->delete();
 
         $this->orderRepository->destroyOrder($order);
 
