@@ -1,12 +1,12 @@
-function get_cities(state_id, city_id, text) {
+function get_cities(state_id, city_id, text, disabled = true) {
     var city_sel = city_id.val();
     var state_sel = state_id.val();
     var dropdownSet = city_id;
 
     dropdownSet.attr({
-        disabled: true,
+        disabled,
         tabindex: -1,
-        "aria-disabled": true,
+        "aria-disabled": disabled,
     });
     $(dropdownSet).emptySelect();
 

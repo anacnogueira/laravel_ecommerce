@@ -215,7 +215,7 @@ class ProductService
         return response()->json(['message' => 'Product Deleted'], 200);
     }
 
-    public function getProductToSelect()
+    public function getProductsToSelect()
     {
         $select = new \stdClass();
         $select->id = null;

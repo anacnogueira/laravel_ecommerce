@@ -69,6 +69,8 @@ use App\Repositories\Contracts\LogRepositoryInterface;
 use App\Repositories\LogRepository;
 use App\Repositories\Contracts\OrderRepositoryInterface;
 use App\Repositories\OrderRepository;
+use App\Repositories\Contracts\ShippingRepositoryInterface;
+use App\Repositories\ShippingRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -240,6 +242,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             OrderRepositoryInterface::class,
             OrderRepository::class,
+        );
+
+         $this->app->bind(
+            ShippingRepositoryInterface::class,
+            ShippingRepository::class,
         );
     }
 

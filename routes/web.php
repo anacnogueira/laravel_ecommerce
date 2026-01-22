@@ -36,6 +36,7 @@ use App\Http\Controllers\Admin\ContactOrderController as AdminContactOrderContro
 use App\Http\Controllers\Admin\ContactCommentController as AdminContactCommentController;
 use App\Http\Controllers\Admin\ContactNewsletterController as AdminContactNewsletterController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Admin\ShippingController as AdminShippingController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -65,7 +66,11 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::put('profile', [AdminProfileController::class, 'update'])->name('profile.update');
 
         //3. Vendas
+        //3.1 Pedidos
         Route::resource('orders', AdminOrderController::class);
+
+        //3.2 Fretes
+        Route::resource('shippings', AdminShippingController::class);
 
         //4. Catálogo
         //4.1 Categorias

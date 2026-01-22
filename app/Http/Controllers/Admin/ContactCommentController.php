@@ -53,7 +53,7 @@ class ContactCommentController extends Controller
         $comment->name = $customer->name;
         $comment->email = $customer->email;
 
-        $products = $this->productService->getProductToSelect();
+        $products = $this->productService->getProductsToSelect();
 
         return view('admin.contact-comments.create', compact('comment','customer','products'));
     }
@@ -98,7 +98,7 @@ class ContactCommentController extends Controller
     {
         $customer = $this->customerService->getCustomerById($contactId);
         $comment = $this->commentService->getCommentById($id);
-        $products = $this->productService->getProductToSelect();
+        $products = $this->productService->getProductsToSelect();
 
         return view('admin.contact-comments.edit', compact('customer', 'comment', 'products'));
     }
