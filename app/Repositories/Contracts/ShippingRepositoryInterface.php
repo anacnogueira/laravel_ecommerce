@@ -9,6 +9,6 @@ interface ShippingRepositoryInterface
     public function getAllShippings();
     public function getShippingById($id);
     public function createShipping(array $data);
-    public function updateShipping(Shipping $Shipping, array $data);
-    public function destroyShipping(Shipping $Shipping);
+    public function updateShipping(Shipping $shipping, array $data);
+    public function destroyShipping(Shipping $shipping);
 }

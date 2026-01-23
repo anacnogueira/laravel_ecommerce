@@ -49,17 +49,17 @@ class ShippingRepository implements ShippingRepositoryInterface
      * @param array $data
      * @return object
      */
-    public function updateShipping(Shipping $Shipping, array $data)
+    public function updateShipping(Shipping $shipping, array $data)
     {
-        return $Shipping->update($data);
+        return $shipping->update($data);
     }
 
     /**
      * Delete a Shipping
      * @param object $Shipping
      */
-    public function destroyShipping(Shipping $Shipping)
+    public function destroyShipping(Shipping $shipping)
     {
-        return $Shipping->delete();
+        return $shipping->delete();
     }
 }
