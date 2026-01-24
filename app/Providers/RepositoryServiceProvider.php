@@ -71,6 +71,9 @@ use App\Repositories\Contracts\OrderRepositoryInterface;
 use App\Repositories\OrderRepository;
 use App\Repositories\Contracts\ShippingRepositoryInterface;
 use App\Repositories\ShippingRepository;
+use App\Repositories\Contracts\PromotionRepositoryInterface;
+use App\Repositories\PromotionRepository;
+
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -244,9 +247,14 @@ class RepositoryServiceProvider extends ServiceProvider
             OrderRepository::class,
         );
 
-         $this->app->bind(
+        $this->app->bind(
             ShippingRepositoryInterface::class,
             ShippingRepository::class,
+        );
+
+        $this->app->bind(
+            PromotionRepositoryInterface::class,
+            PromotionRepository::class,
         );
     }
 

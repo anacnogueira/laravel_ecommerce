@@ -70,5 +70,4 @@ class Shipping extends Model
             get: fn ($value) => $value ? Carbon::parse($value)->format('d/m/Y H:i:s') : null,
         );
     }
-
 }
