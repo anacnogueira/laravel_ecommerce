@@ -38,6 +38,7 @@ use App\Http\Controllers\Admin\ContactNewsletterController as AdminContactNewsle
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ShippingController as AdminShippingController;
 use App\Http\Controllers\Admin\PromotionController as AdminPromotionController;
+use App\Http\Controllers\Admin\CouponController as AdminCouponController;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PagesController;
@@ -75,6 +76,9 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
         //3.3 Promoções
         Route::resource('promotions', AdminPromotionController::class);
+
+        //3.4 Cupons
+        Route::resource('coupons', AdminCouponController::class);
 
         //4. Catálogo
         //4.1 Categorias

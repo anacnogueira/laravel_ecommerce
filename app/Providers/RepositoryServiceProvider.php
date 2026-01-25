@@ -73,7 +73,8 @@ use App\Repositories\Contracts\ShippingRepositoryInterface;
 use App\Repositories\ShippingRepository;
 use App\Repositories\Contracts\PromotionRepositoryInterface;
 use App\Repositories\PromotionRepository;
-
+use App\Repositories\Contracts\CouponRepositoryInterface;
+use App\Repositories\CouponRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -255,6 +256,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             PromotionRepositoryInterface::class,
             PromotionRepository::class,
+        );
+
+        $this->app->bind(
+            CouponRepositoryInterface::class,
+            CouponRepository::class,
         );
     }
 
