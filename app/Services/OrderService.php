@@ -26,9 +26,9 @@ class OrderService
      * Select all Orders By Contact ID
      * @return array
     */
-    public function getAllOrdersByContactId($contactId)
+    public function getAllOrdersByContactId($contactId, $queryParams)
     {
-        return $this->orderRepository->getAllOrdersByContactId($contactId);
+        return $this->orderRepository->getAllOrdersByContactId($contactId, $queryParams);
     }
 
      /**

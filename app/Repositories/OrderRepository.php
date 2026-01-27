@@ -28,9 +28,37 @@ class OrderRepository implements OrderRepositoryInterface
      * Get all Orders by Contact ID
      * @return array
      */
-    public function getAllOrdersByContactId($contactId)
+    public function getAllOrdersByContactId($contactId, $queryParams = null)
     {
-        return $this->entity->where('contact_id', $contactId)->get();
+        //dd($queryParams);
+        $orders = $this->entity->where('contact_id', $contactId);
+        //Filters
+        if ($queryParams['filter']) {
+            switch ($queryParams['filter']) {
+                case "ultimos":
+                    $orders = $orders->latest()->take(5);
+                    $queryParams['paginate'] = null;
+                    break;
+            }
+        }
+
+        if (isset($queryParams["conditions"])) {
+            foreach ($queryParams["conditions"] as $condition) {
+                if ($condition["operator"]!= "between") {
+                    $orders = $orders->where($condition["column"], $condition["operator"], $condition["value"]);
+                } else {
+                    $orders = $orders->whereBetween($condition["column"], $condition["value"]);
+                }
+
+            }
+        }
+
+        if ($queryParams['sort'] && $queryParams['direction']) {
+            $orders = $orders->orderBy($queryParams['sort'], $queryParams['direction']);
+        }
+        $orders = !empty($queryParams['paginate']) ? $orders->paginate($queryParams['paginate']) : $orders->get();
+
+        return $orders;
     }
 
 

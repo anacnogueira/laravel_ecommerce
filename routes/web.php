@@ -48,6 +48,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 
 //1. ADMIN
 Route::prefix('admin')->name('admin.')->group(function(){
@@ -208,37 +209,10 @@ Route::post('/password/email', [ForgotPasswordController::class, 'passwordEmail'
 Route::get('/resetar-senha/{token}', [ResetPasswordController::class, 'resetPassword'])->name('password.reset');
 Route::post('/password/reset', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
 
-
+// Area Autenticada
 Route::middleware(['auth'])->group(function() {
-    Route::get('/meus-pedidos/{filter?}', function($filter = null) {
-        $type = null;
-        if ($filter) {
-            $filters = explode(":", $filter);
-            $type = $filters[1];
-        }
-
-        switch ($type) {
-            case 'ultimos':
-                $title = "Últimos pedidos";
-                break;
-            case 'abertos':
-                $title = "Pedidos Abertos";
-                break;
-            case 'entregues':
-                $title = "Pedidos Entregues";
-                break;
-            case "numero":
-                $title = "Pedidos por número";
-                break;
-            case "data":
-                $title = "Pedidos por data";
-                break;
-            default:
-                $title = "Todos os pedidos";
-        }
-
-        return view('maintenance', compact('title'));
-    })->name('orders.index');
+    Route::get('/meus-pedidos/{filter?}', [OrderController::class,'index'])->name('orders.index');
+    Route::get('/pedido/{id}', [OrderController::class,'show'])->name('orders.show');
 
     Route::get('/minha-conta', function(){
         $title = "Minha Conta";

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Carbon\Carbon;
 
 class Order extends Model
@@ -72,11 +73,13 @@ class Order extends Model
      * @param  string  expire date
      * @return string
      */
-    public function getCreatedAttribute($value)
+    protected function createdFormatted(): Attribute
     {
-        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i') : null;
+        return Attribute::make(
+            get: fn ($value, array $attributes) =>
+                isset($attributes['created']) ? \Carbon\Carbon::parse($attributes['created'])->format('d/m/Y H:i:s') : null,
+        );
     }
-
     /*
      * Get the Value Formated
      *
