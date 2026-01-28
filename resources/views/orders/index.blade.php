@@ -12,10 +12,8 @@
     </nav>
     <div class="container">
         <h1>{{ $title }}</h1>
-       <div class="orders">
-            <!-- Filtros -->
-            @if ($type == "numero" || $type == "data")
-                <div class="filters">
+        @if ($type == "numero" || $type == "data")
+             <div class="filters">
                     <form name="frm_order" method="get">
                         @if ($type == "numero")
                             <div class="form-group">
@@ -57,17 +55,50 @@
                         <input type="submit" value="Filtrar" />
                     </form>
                 </div>
-
             @endif
-            <p>Total de  {{ $orders->count() }} pedidos encontrados </p>
-            @if(isset($orders))
-                <table style="width: 100%">
+        @if($orders->count() > 0)
+            <p class="counter">Total de  {{ $orders->count() }} pedidos encontrados </p>
+            <div class="order-container-mobile">
+                @foreach($orders as $order)
+                    <div class="order-item">
+                        <buttom class="order-number">
+                            <h2>
+                                <i class='fa fa-chevron-down arrow'></i>
+                                {{ str_pad($order->id, 10,0,STR_PAD_LEFT) }}
+                            </h2>
+                        </buttom>
+                        <div class='order-detail'>
+                            <dl>
+                                <dt>Data:</dt>
+                                <dd>{{ $order->created_formatted }}&nbsp;</dd>
+                                <dt>Total:</dt>
+                                <dd>R$ {{ number_format($order->value_total,2,',','.') }}&nbsp; </dd>
+                                <dt>Pagamento:</dt>
+                                <dd>{{ $order->paymentMethod->name }}&nbsp;</dd>
+                                <dt>Status:</dt>
+                                <dd>{{ $order->orderStatus->name }}&nbsp;</dd>
+                                @if (!empty($order->tracking_code))
+                                    <dt>Código de rastreio</dt>
+                                    <dd>{{ $order->tracking_code }}</dd>
+                                @endif
+                            </dl>
+                            <p>
+                                <a href="{{ route('orders.show', $order->id) }}" class="button">Detalhes do pedido</a>
+                            </p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <div class="order-container-desktop">
+                <table>
                     <thead>
                         <tr>
                             <th><a href="?sort=orders.id&direction={{ $direction }}">Nº Pedido</a</th>
                             <th><a href="?sort=orders.created&direction={{ $direction }}">Data</a></th>
                             <th><a href="?sort=orders.value_total&direction={{ $direction }}">Total</a></th>
                             <th><a href="?sort=orders.payment_method_id&direction={{ $direction }}">Forma de pagamento</a></th>
+                            <th><a href="?sort=orders.order_status_id&direction={{ $direction }}">Status</a></th>
                             <th>Detalhes</th>
                         </tr>
                     </thead>
@@ -78,16 +109,21 @@
                                 <td>{{ $order->created_formatted }}</td>
                                 <td>R$ {{ number_format($order->value_total,2,',','.') }}</td>
                                 <td>{{ $order->paymentMethod->name }}</td>
+                                <td>{{ $order->orderStatus->name }}</td>
                                 <td><a href="{{ route('orders.show', $order->id) }}" class="button">Detalhes do pedido</a></td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+             @if (method_exists($orders,'links'))
+                <div class="pagination">
+                    {{ $orders->links() }}
+                </div>
             @endif
-        </div>
-        @if (method_exists($orders,'links'))
-            <div class="pagination">
-                {{ $orders->links() }}
+        @else
+            <div>
+                <p class="panel alert">Nenhum Pedido Encontrado</p>
             </div>
         @endif
     </div>
@@ -95,4 +131,8 @@
 
 @push("css")
     <link rel="stylesheet" href="{{ asset('css/page/order-index.css') }}">
+@endpush
+
+@push("scripts")
+    <script type="text/javascript" src="{{ asset('js/order-accordeon.js') }}"></script>
 @endpush
