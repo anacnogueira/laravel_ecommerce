@@ -47,7 +47,7 @@
 			    @endif
 		    </div>
             </div>
-            <div class="payment-info"></div>
+            <!--div class="payment-info"></div-->
             <div class="order-items">
                 <h2>Produtos</h2>
                 @php

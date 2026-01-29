@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Services\CustomerService;
 use App\Http\Requests\StoreCustomerRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\UpdateEmailCustomerRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
@@ -32,7 +33,7 @@ class CustomerController extends Controller
      /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\StoreCustomerRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreCustomerRequest $request)
@@ -51,6 +52,26 @@ class CustomerController extends Controller
         $title = "Confirmação de Cadastro";
 
         return view('customers.confirm-store', compact('title'));
+    }
+
+    public function editEmail()
+    {
+        $title = 'Alterar E-mail';
+        $id = Auth::id();
+        $customer = $this->customerService->getCustomerById($id);
+
+        return view("customers.edit-email", compact("title","customer"));
+
+    }
+
+    public function updateEmail(UpdateEmailCustomerRequest $request)
+    {
+        $data = $request->all();
+        $id = Auth::id();
+
+        $customer = $this->customerService->updateCustomer($id, $data);
+
+        return redirect()->back()->with('success', 'E-mail atualizado com sucesso!');
     }
 
 }

@@ -219,10 +219,8 @@ Route::middleware(['auth'])->group(function() {
         return view('maintenance', compact('title'));
     })->name('customer.index');
 
-    Route::get('/minha-conta/alterar-email', function(){
-        $title = "Alterar e-mail";
-        return view('maintenance', compact('title'));
-    });
+    Route::get('/minha-conta/alterar-email', [CustomerController::class, 'editEmail'])->name("customers.edit-email");
+    Route::put('/minha-conta/alterar-email', [CustomerController::class, 'updateEmail'])->name("customers.update-email");
 
     Route::get('/minha-conta/alterar-senha', function(){
         $title = "Alterar Senha";

@@ -54,3 +54,22 @@
 .totals {
     text-align: right;
 }
+
+@media (min-width: 992px) {
+    .order {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .order > div {
+        /* Define 50% para duas colunas, subtraindo o padding/gap se houver */
+        flex: 0 0 50%;
+        box-sizing: border-box; /* Garante que padding não aumente o tamanho */
+        padding: 10px;
+    }
+
+    .totals {
+        text-align: left;
+    }
+}
