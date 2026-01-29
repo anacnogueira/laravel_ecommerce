@@ -5,17 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Services\OrderService;
+use App\Services\ShippingService;
 use App\Http\Resources\OrderResource;
 
 class OrderController extends Controller
 {
     protected $orderService;
+    protected $shippingService;
 
-    public function __construct(OrderService $orderService)
+    public function __construct(OrderService $orderService, ShippingService $shippingService)
     {
         $this->orderService = $orderService;
+        $this->shippingService = $shippingService;
     }
-
 
     /**
      * Display a listing of the resource.
@@ -92,21 +94,7 @@ class OrderController extends Controller
         return view('orders.index', compact('orders','title', 'type', 'direction'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -114,31 +102,12 @@ class OrderController extends Controller
     public function show(string $id)
     {
         $title = "Detalhe do pedido $id";
-        return view('maintenance', compact('title'));
-    }
+        $customerId = Auth::id();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        $order = $this->orderService->getOrderByIdAndContactId($id, $customerId);
+        $order->shipping = $this->shippingService->getServiceDescription($order->type_shipping);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return view('orders.show', compact('title','order'));
     }
 
     private function defineTitleFilter($filter)

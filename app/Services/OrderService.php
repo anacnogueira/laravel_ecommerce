@@ -41,6 +41,16 @@ class OrderService
         return $this->orderRepository->getOrderById($id);
     }
 
+     /**
+     * Get Order by ID and ContactId
+     * @param int $id
+     * @return object
+    */
+    public function getOrderByIdAndContactId(int $id, int $contactId)
+    {
+        return $this->orderRepository->getOrderByIdAndContactId($id, $contactId);
+    }
+
     /**
      * Get total sales amount
      * @return float

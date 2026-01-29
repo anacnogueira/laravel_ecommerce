@@ -39,14 +39,4 @@ class OrderItem extends Model
         return number_format($value,2,",",".");
     }
 
-    /**
-     * Get the created date
-     *
-     * @param  string  expire date
-     * @return string
-     */
-    public function getValueTotalAttribute($value)
-    {
-        return number_format($value,2,",",".");
-    }
 }

@@ -6,21 +6,6 @@ p.counter {
     margin: 1rem auto;
 }
 
-dl {
-    line-height: 2em;
-    width: 100%;
-}
-dt {
-    padding-left: 4px;
-    width: 15em;
-    vertical-align: top;
-}
-dd {
-    margin-left: 10em;
-    margin-top: -2.41rem;
-    vertical-align: top;
-}
-
 .order-container {
     margin: 20px auto;
     font-family: Arial, sans-serif;

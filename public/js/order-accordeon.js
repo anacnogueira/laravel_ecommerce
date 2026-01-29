@@ -1,8 +1,8 @@
 const orders = document.querySelectorAll(".order-number");
 
-orders.forEach((question) => {
-    question.addEventListener("click", () => {
-        const item = question.parentElement;
+orders.forEach((order) => {
+    order.addEventListener("click", () => {
+        const item = order.parentElement;
         const detail = item.querySelector(".order-detail");
         const isOpen = item.classList.contains("active");
 
@@ -13,7 +13,7 @@ orders.forEach((question) => {
 
         if (!isOpen) {
             item.classList.add("active");
-            detail.style.maxHeight = answer.scrollHeight + "px";
+            detail.style.maxHeight = detail.scrollHeight + "px";
         }
     });
 });

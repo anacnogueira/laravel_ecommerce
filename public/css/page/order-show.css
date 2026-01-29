@@ -1,0 +1,56 @@
+@import url("../components/breadcrumb.css");
+
+.order {
+    display: flex;
+    flex-direction: column;
+}
+
+.order > div {
+    margin: 0.5rem 0;
+}
+
+.order-item-container {
+    margin: 20px auto;
+}
+
+.order-item-item {
+    border-bottom: 1px solid #ddd;
+}
+
+.item-product {
+    width: 100%;
+    padding: 15px;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.item-product-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #f9f9f9;
+}
+
+.order-item-item.active .item-product-detail {
+    max-height: 200px;
+}
+
+.order-item-item.active .arrow {
+    transform: rotate(180deg);
+    transition: transform 0.3s;
+}
+
+.arrow {
+    transition: transform 0.3s;
+}
+
+.totals {
+    text-align: right;
+}

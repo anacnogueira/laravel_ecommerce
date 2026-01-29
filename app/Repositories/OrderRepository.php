@@ -73,6 +73,19 @@ class OrderRepository implements OrderRepositoryInterface
     }
 
     /**
+     * Select Order by ID and contactId
+     * @param int $id
+     * @return object
+     */
+    public function getOrderByIdAndContactId($id, $contactId)
+    {
+         return $this->entity
+            ->where('id', $id)
+            ->where('contact_id', $contactId)
+            ->first();
+    }
+
+    /**
      * Get total sales amount
      * @return float
      */

@@ -77,51 +77,7 @@ class Order extends Model
     {
         return Attribute::make(
             get: fn ($value, array $attributes) =>
-                isset($attributes['created']) ? \Carbon\Carbon::parse($attributes['created'])->format('d/m/Y H:i:s') : null,
+                isset($attributes['created']) ? \Carbon\Carbon::parse($attributes['created'])->format('d/m/Y H:i') : null,
         );
     }
-    /*
-     * Get the Value Formated
-     *
-     * @param  string  expire date
-     * @return string
-
-    public function getValueAttribute($value)
-    {
-        return number_format($value,2,",",".");
-    }
-
-    /**
-     * Get the Value Shipping Formated
-     *
-     * @param  string  expire date
-     * @return string
-
-    public function getValueShippingAttribute($value)
-    {
-        return number_format($value,2,",",".");
-    }
-
-
-     * Get the Value Discount Formated
-     *
-     * @param  string  expire date
-     * @return string
-
-    public function getValueDiscountAttribute($value)
-    {
-        return number_format($value,2,",",".");
-    }
-
-
-     * Get the Value Total Formated
-     *
-     * @param  string  expire date
-     * @return string
-
-    public function getValueTotalAttribute($value)
-    {
-        return number_format($value,2,",",".");
-    }
-    */
 }

@@ -11,6 +11,11 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
 a {
     color: var(--primary-color);
 }
@@ -110,4 +115,19 @@ a.button {
     font-size: 1rem;
     border-radius: 2px;
     text-align: center;
+}
+
+dl {
+    line-height: 2em;
+    width: 100%;
+}
+dt {
+    padding-left: 4px;
+    width: 15em;
+    vertical-align: top;
+}
+dd {
+    margin-left: 10em;
+    margin-top: -2.41rem;
+    vertical-align: top;
 }
