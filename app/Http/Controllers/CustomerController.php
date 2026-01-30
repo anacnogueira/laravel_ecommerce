@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\CustomerService;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateEmailCustomerRequest;
+use App\Http\Requests\UpdatePasswordCustomerRequest;
 use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
@@ -72,6 +73,23 @@ class CustomerController extends Controller
         $customer = $this->customerService->updateCustomer($id, $data);
 
         return redirect()->back()->with('success', 'E-mail atualizado com sucesso!');
+    }
+
+    public function editPassword()
+    {
+        $title = "Alterar Senha";
+
+        return view("customers.edit-password", compact("title"));
+    }
+
+    public function updatePassword(UpdatePasswordCustomerRequest $request)
+    {
+        $data = $request->all();
+        $id = Auth::id();
+
+        $customer = $this->customerService->updateCustomer($id, $data);
+
+        return redirect()->back()->with('success', 'Senha atualizada com sucesso!');
     }
 
 }

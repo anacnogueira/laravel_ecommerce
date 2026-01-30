@@ -29,7 +29,7 @@
                     name="email"
                     id="email"
                     value="{{ $customer->email ?? old('email') }}"
-                    class="@error('name') is-invalid @enderror">
+                    class="@error('email') is-invalid @enderror">
                 @error('email')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
