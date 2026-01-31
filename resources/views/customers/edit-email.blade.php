@@ -11,7 +11,6 @@
         </ul>
     </nav>
     <div class="container">
-
         <h1>{{ $title }}</h1>
         @if(session('success'))
             <div class="alert alert-success">

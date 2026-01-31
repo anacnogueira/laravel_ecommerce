@@ -225,10 +225,8 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/minha-conta/alterar-senha', [CustomerController::class,'editPassword'])->name("customers.edit-password");
     Route::put('/minha-conta/alterar-senha', [CustomerController::class,'updatePassword'])->name("customers.update-password");
 
-    Route::get('/minha-conta/alterar-dados-cadastrais', function(){
-        $title = "Alterar Dados";
-        return view('maintenance', compact('title'));
-    });
+    Route::get('/minha-conta/alterar-dados-cadastrais', [CustomerController::class,'edit'])->name('customers.edit');
+    Route::put('/minha-conta/alterar-dados-cadastrais', [CustomerController::class,'update'])->name('customers.update');
 
     Route::get('/minha-conta/email-ofertas', function(){
         $title = "E-mail de ofertas";

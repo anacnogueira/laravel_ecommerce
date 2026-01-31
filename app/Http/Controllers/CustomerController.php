@@ -7,6 +7,7 @@ use App\Services\CustomerService;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateEmailCustomerRequest;
 use App\Http\Requests\UpdatePasswordCustomerRequest;
+use App\Http\Requests\UpdateCustomerRequest;
 use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
@@ -90,6 +91,25 @@ class CustomerController extends Controller
         $customer = $this->customerService->updateCustomer($id, $data);
 
         return redirect()->back()->with('success', 'Senha atualizada com sucesso!');
+    }
+
+    public function edit()
+    {
+        $title = 'Alterar Dados Cadastrais';
+        $id = Auth::id();
+        $customer = $this->customerService->getCustomerById($id);
+
+        return view("customers.edit", compact("title","customer"));
+    }
+
+    public function update(UpdateCustomerRequest $request)
+    {
+        $data = $request->all();
+        $id = Auth::id();
+
+        $customer = $this->customerService->updateCustomer($id, $data);
+
+        return redirect()->back()->with('success', 'Dados atualizados com sucesso!');
     }
 
 }
