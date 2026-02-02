@@ -228,10 +228,8 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/minha-conta/alterar-dados-cadastrais', [CustomerController::class,'edit'])->name('customers.edit');
     Route::put('/minha-conta/alterar-dados-cadastrais', [CustomerController::class,'update'])->name('customers.update');
 
-    Route::get('/minha-conta/email-ofertas', function(){
-        $title = "E-mail de ofertas";
-        return view('maintenance', compact('title'));
-    });
+    Route::get('/minha-conta/email-ofertas', [CustomerController::class,"editEmailNewsletter"])->name("customers.edit-email-newsletter");
+    Route::put('/minha-conta/email-ofertas', [CustomerController::class,"updateEmailNewsletter"])->name("customers.update-email-newsletter");
 
     Route::get('/minha-conta/meus-enderecos', function(){
         $title = "Meus Endereços";

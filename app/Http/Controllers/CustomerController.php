@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Services\CustomerService;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateEmailCustomerRequest;
 use App\Http\Requests\UpdatePasswordCustomerRequest;
@@ -110,6 +111,27 @@ class CustomerController extends Controller
         $customer = $this->customerService->updateCustomer($id, $data);
 
         return redirect()->back()->with('success', 'Dados atualizados com sucesso!');
+    }
+
+    public function editEmailNewsletter()
+    {
+        $title = 'E-mail de ofertas';
+        $id = Auth::id();
+        $customer = $this->customerService->getCustomerById($id);
+
+        return view("customers.edit-email-newsletter", compact("title","customer"));
+    }
+
+    public function updateEmailNewsletter(Request $request)
+    {
+        $data = $request->all();
+        $data["newsletter"] = isset($data["newsletter"]) ? 'S' : 'N';
+
+        $id = Auth::id();
+
+        $customer = $this->customerService->updateCustomer($id, $data);
+
+        return redirect()->back()->with('success', 'E-mail de ofertas atualizado com sucesso!');
     }
 
 }

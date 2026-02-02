@@ -87,6 +87,14 @@ class CustomerService
             return response()->json(['message' => 'Customer Not Found'], 404);
         }
 
+        if (isset($data["newsletter"])) {
+            if ($data["newsletter"] == 'S') {
+                $this->mailchimpService->addSubscriber($customer->email, $customer->name);
+            } else {
+                $this->mailchimpService->removeSubscriber($customer->email);
+            }
+        }
+
         $this->customerRepository->updateCustomer($customer, $data);
         return response()->json(['message' => 'Customer Updated'], 200);
     }
