@@ -2,17 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Services\ContactAddressService;
-use Illuminate\Support\Facades\Auth;
+use App\Services\CountryService;
+use App\Services\StateService;
+use App\Services\CityService;
+use App\Http\Requests\StoreUpdateContactAddressRequest;
 
 class ContactAddressController extends Controller
 {
     protected $contactAddressService;
+    protected $countryService;
+    protected $stateService;
+    protected $cityService;
 
-     public function __construct(ContactAddressService $contactAddressService)
+     public function __construct(
+        ContactAddressService $contactAddressService,
+        CountryService $countryService,
+        StateService $stateService,
+        CityService $cityService
+    )
     {
         $this->contactAddressService = $contactAddressService;
+        $this->countryService = $countryService;
+        $this->stateService = $stateService;
+        $this->cityService = $cityService;
     }
 
     /**
@@ -51,15 +66,25 @@ class ContactAddressController extends Controller
     public function create()
     {
         $title = "Cadastrar Novo Endereço";
-        return view('maintenance', compact('title'));
+        $address = null;
+        $countries = $this->countryService ->getCountriesToSelect();
+        $states = $this->stateService ->getStatesToSelect();
+        $cities = $this->cityService ->getCitiesToSelect();
+
+        return view('addresses.create', compact('title', 'address', 'countries','states', 'cities'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUpdateContactAddressRequest $request)
     {
-        //
+        $data = $request->all();
+        $data["contact_id"] = Auth::id();
+
+        $address = $this->contactAddressService->makeContactAddress($data);
+
+        return redirect()->route('customers.addresses.index')->with('success', 'Endereço cadastrado com sucesso!');
     }
 
     /**

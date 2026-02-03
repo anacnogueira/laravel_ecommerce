@@ -30,12 +30,25 @@ p.counter {
     width: 150px;
 }
 
-.button.success {
+.button.edit {
     background-color: #2e8b57;
 }
 
-.button.alert {
+.button.delete {
     background-color: #dc3545;
+}
+
+.alert-success {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: #fff;
+    background-color: #28a745;
+    border-color: #23923d;
 }
 
 @media (min-width: 992px) {

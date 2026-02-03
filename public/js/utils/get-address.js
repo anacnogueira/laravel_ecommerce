@@ -24,9 +24,9 @@ cepField.addEventListener("blur", async (event) => {
             if (!data.erro) {
                 addressField.value = data.logradouro;
                 neighborhoodField.value = data.bairro;
-                selectedOption("#country_id", "Brasil");
-                selectedOption("#state_id", data.estado);
-                selectedOption("#city_id", data.localidade);
+                selectedOption("#country-id", "Brasil");
+                selectedOption("#state-id", data.estado);
+                selectedOption("#city-id", data.localidade);
             } else {
                 console.log("Erro");
                 const spanError = document.createElement("span");
@@ -36,7 +36,7 @@ cepField.addEventListener("blur", async (event) => {
 
                 cepField.parentNode.insertBefore(
                     spanError,
-                    cepField.nextSibling
+                    cepField.nextSibling,
                 );
             }
         }

@@ -36,6 +36,11 @@
 
             @if ($addresses->count() > 0)
                 <p class="counter">Total de  {{ $addresses->count() }} endereços encontrados </p>
+                 @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <div class="address-container">
                     @foreach ($addresses as $address)
                         <div class="address-item">
@@ -52,14 +57,14 @@
                                 {{ $address->country->name }}<br>
                             </div>
                             <div class="buttons">
-                                <a href="{{ route('customers.addresses.edit', $address->id) }}" class="button success">
+                                <a href="{{ route('customers.addresses.edit', $address->id) }}" class="button edit">
                                     <i class="fa fa-lg fa-fw fa-edit"></i>
                                     Alterar
                                 </a>
                                 <form action="{{ route('customers.addresses.destroy', $address->id) }}" method="POST" class="frm-delete" style="display: inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="button alert" title="Excluir">
+                                    <button type="submit" class="button delete" title="Excluir">
                                         <i class="fa fa-lg fa-fw fa-trash"></i>
                                         Excluir
                                     </button>
@@ -75,11 +80,7 @@
                 </div>
             @endif
         </div>
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+
 
     </div>
 

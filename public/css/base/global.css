@@ -55,12 +55,14 @@ input[type="number"],
 input[type="email"],
 input[type="password"],
 input[type="date"],
+select,
 textarea {
     border: 1px solid #ccc;
     color: rgba(0, 0, 0, 0.75);
     display: block;
     padding: 0.5rem;
     font-size: 1rem;
+    background: var(--background);
 }
 
 input[type="submit"] {
@@ -76,6 +78,7 @@ input[type="submit"] {
 
 input.is-invalid,
 textarea.is-invalid,
+select.is-invalid,
 div.is-invalid {
     border: 1px solid #ff0000;
 }

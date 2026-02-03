@@ -232,6 +232,7 @@ Route::middleware(['auth'])->group(function() {
     Route::prefix('/minha-conta/meus-enderecos')->name('customers.addresses.')->group(function(){
         Route::get('/', [ContactAddressController::class,'index'])->name("index");
         Route::get('/cadastrar', [ContactAddressController::class,'create'])->name("create");
+        Route::post('/cadastrar', [ContactAddressController::class,'store'])->name("store");
         Route::get('/editar/{id}', [ContactAddressController::class,'edit'])->name("edit");
         Route::delete('/excluir/{id}', [ContactAddressController::class,'destroy'])->name("destroy");
     });
