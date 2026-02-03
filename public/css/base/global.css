@@ -105,7 +105,8 @@ div.is-invalid {
     white-space: nowrap;
 }
 
-.button {
+a.button,
+button.button {
     display: block;
     width: 200px;
     background: var(--secondary-color);
