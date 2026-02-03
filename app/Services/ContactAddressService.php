@@ -17,11 +17,10 @@ class ContactAddressService
      * Select all Contact Address By Contact Id
      * @return array
     */
-    public function getAllContactAddressesByContactId($contactId)
+    public function getAllContactAddressesByContactId($contactId, $queryParams = null)
     {
-        return $this->contactAddressRepository->getAllContactAddressesByContactId($contactId);
+        return $this->contactAddressRepository->getAllContactAddressesByContactId($contactId, $queryParams);
     }
-
 
     /**
      * Create a new Contact Address

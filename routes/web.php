@@ -48,6 +48,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ContactAddressController;
 use App\Http\Controllers\OrderController;
 
 //1. ADMIN
@@ -214,10 +215,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/meus-pedidos/{filter?}', [OrderController::class,'index'])->name('orders.index');
     Route::get('/pedido/{id}', [OrderController::class,'show'])->name('orders.show');
 
-    Route::get('/minha-conta', function(){
-        $title = "Minha Conta";
-        return view('maintenance', compact('title'));
-    })->name('customer.index');
+    Route::get('/minha-conta', [CustomerController::class, 'index'])->name('customer.index');
 
     Route::get('/minha-conta/alterar-email', [CustomerController::class, 'editEmail'])->name("customers.edit-email");
     Route::put('/minha-conta/alterar-email', [CustomerController::class, 'updateEmail'])->name("customers.update-email");
@@ -231,12 +229,14 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/minha-conta/email-ofertas', [CustomerController::class,"editEmailNewsletter"])->name("customers.edit-email-newsletter");
     Route::put('/minha-conta/email-ofertas', [CustomerController::class,"updateEmailNewsletter"])->name("customers.update-email-newsletter");
 
-    Route::get('/minha-conta/meus-enderecos', function(){
-        $title = "Meus Endereços";
-        return view('maintenance', compact('title'));
+    Route::prefix('/minha-conta/meus-enderecos')->name('customers.addresses.')->group(function(){
+        Route::get('/', [ContactAddressController::class,'index'])->name("index");
+        Route::get('/cadastrar', [ContactAddressController::class,'create'])->name("create");
+        Route::get('/editar/{id}', [ContactAddressController::class,'edit'])->name("edit");
+        Route::delete('/excluir/{id}', [ContactAddressController::class,'destroy'])->name("destroy");
     });
 
-     Route::get('/meus-favoritos', function(){
+    Route::get('/meus-favoritos', function(){
         $title = "Meus Favoritos";
         return view('maintenance', compact('title'));
     })->name('customer.products.favorite');

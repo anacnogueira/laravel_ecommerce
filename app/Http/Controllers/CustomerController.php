@@ -20,6 +20,13 @@ class CustomerController extends Controller
         $this->customerService = $customerService;
     }
 
+    public function index()
+    {
+        $title = "Minha Conta";
+
+        return view('customers.index', compact('title'));
+    }
+
      /**
      * Show the form for creating a new resource.
      *

@@ -18,9 +18,30 @@ class ContactAddressRepository implements ContactAddressRepositoryInterface
      * Get all Contact Addresses By ContactId
      * @return array
      */
-    public function getAllContactAddressesByContactId($contactId)
+    public function getAllContactAddressesByContactId($contactId, $queryParams = null)
     {
-        return $this->entity->where('contact_id', $contactId)->get();
+        $addresses =$this->entity->where('contact_id', $contactId);
+
+         if (isset($queryParams["conditions"])) {
+            foreach ($queryParams["conditions"] as $condition) {
+                if ($condition["operator"]!= "between") {
+                    $addresses = $addresses->where($condition["column"], $condition["operator"], $condition["value"]);
+                } else {
+                    $addresses = $addresses->whereBetween($condition["column"], $condition["value"]);
+                }
+
+            }
+        }
+
+        if ($queryParams['sort'] && $queryParams['direction']) {
+            $addresses = $addresses->orderBy($queryParams['sort'], $queryParams['direction']);
+        }
+
+        $addresses = !empty($queryParams['paginate']) ?
+            $addresses->paginate($queryParams['paginate']) :
+            $addresses->get();
+
+        return $addresses;
     }
 
     /**

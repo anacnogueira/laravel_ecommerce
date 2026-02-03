@@ -1,0 +1,54 @@
+@import url("../components/breadcrumb.css");
+
+h1,
+p {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+p.counter {
+    max-width: 400px;
+    margin: 1rem auto;
+}
+
+.address-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.address-container > div {
+    margin: 0.5rem 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.address-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    width: 150px;
+}
+
+.button.success {
+    background-color: #2e8b57;
+}
+
+.button.alert {
+    background-color: #dc3545;
+}
+
+@media (min-width: 992px) {
+    .address-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .address-container > div {
+        flex: 0 0 calc(50% - 10px);
+        box-sizing: border-box;
+        padding: 15px;
+        border-bottom: none;
+    }
+}

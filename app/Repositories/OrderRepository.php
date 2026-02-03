@@ -30,7 +30,6 @@ class OrderRepository implements OrderRepositoryInterface
      */
     public function getAllOrdersByContactId($contactId, $queryParams = null)
     {
-        //dd($queryParams);
         $orders = $this->entity->where('contact_id', $contactId);
         //Filters
         if ($queryParams['filter']) {
