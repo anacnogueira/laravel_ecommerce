@@ -93,15 +93,27 @@ class ContactAddressController extends Controller
     public function edit(string $id)
     {
         $title = "Editar Endereço";
-        return view('maintenance', compact('title'));
+        $contactId = Auth::id();
+        $address = $this->contactAddressService->getContactAddressByIdAndContactId($id, $contactId);
+        $countries = $this->countryService ->getCountriesToSelect();
+        $states = $this->stateService ->getStatesToSelect();
+        $cities = $this->cityService ->getCitiesToSelect();
+
+        return view('addresses.edit', compact('title', 'address', 'countries','states', 'cities'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreUpdateContactAddressRequest $request, string $id)
     {
-        //
+        $data = $request->all();
+        $data["contact_id"] = Auth::id();
+
+        $address = $this->contactAddressService->updateContactAddress($id, $data);
+
+        return redirect()->route('customers.addresses.index')->with('success', 'Endereço alterado com sucesso!');
     }
 
     /**

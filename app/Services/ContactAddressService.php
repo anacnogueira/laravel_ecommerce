@@ -39,6 +39,16 @@ class ContactAddressService
      * @param int $id
      * @return object
     */
+    public function getContactAddressByIdAndContactId(int $id, int $contactId)
+    {
+        return $this->contactAddressRepository->getContactAddressByIdAndContactId($id, $contactId);
+    }
+
+       /**
+     * Get ContactAddress by ID
+     * @param int $id
+     * @return object
+    */
     public function getContactAddressById(int $id)
     {
         return $this->contactAddressRepository->getContactAddressById($id);

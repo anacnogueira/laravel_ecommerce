@@ -54,6 +54,19 @@ class ContactAddressRepository implements ContactAddressRepositoryInterface
         return $this->entity->find($id);
     }
 
+     /**
+     * Select Contact Address by ID and Contact ID
+     * @param int $id
+     * @return object
+     */
+    public function getContactAddressByIdAndContactId($id, $contactId)
+    {
+        return $this->entity
+            ->where('id',$id)
+            ->where('contact_id', $contactId)
+            ->first();
+    }
+
     /**
      * Create a new contact Address
      * @param array $data

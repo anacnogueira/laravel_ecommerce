@@ -234,6 +234,7 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/cadastrar', [ContactAddressController::class,'create'])->name("create");
         Route::post('/cadastrar', [ContactAddressController::class,'store'])->name("store");
         Route::get('/editar/{id}', [ContactAddressController::class,'edit'])->name("edit");
+        Route::put('/editar/{id}', [ContactAddressController::class,'update'])->name("update");
         Route::delete('/excluir/{id}', [ContactAddressController::class,'destroy'])->name("destroy");
     });
 
