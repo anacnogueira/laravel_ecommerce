@@ -121,7 +121,15 @@ class ContactAddressController extends Controller
      */
     public function destroy(string $id)
     {
-        $title = "Excluir Endereço";
-        return view('maintenance', compact('title'));
+        $contactId = Auth::id();
+        $address = $this->contactAddressService->getContactAddressByIdAndContactId($id, $contactId);
+
+        if ($address) {
+            $this->contactAddressService->destroyContactAddress($id);
+            return redirect()->route('customers.addresses.index')->with('success', 'Endereço excluído com sucesso!');
+        }
+
+        return redirect()->route('customers.addresses.index')->with('error', 'Não é possível excluir esse endereço');
+
     }
 }

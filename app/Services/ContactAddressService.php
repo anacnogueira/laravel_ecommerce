@@ -83,7 +83,7 @@ class ContactAddressService
         $contactAddress = $this->contactAddressRepository->getContactAddressById($id);
 
         if (!$contactAddress) {
-            return response()->json(['message' => 'Banner Not Found'], 404);
+            return response()->json(['message' => 'Contact Address Not Found'], 404);
         }
 
         $this->contactAddressRepository->destroyContactAddress($contactAddress);

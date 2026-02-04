@@ -41,6 +41,12 @@
                         {{ session('success') }}
                     </div>
                 @endif
+
+                @if(session('error'))
+                    <div class="alert alert-error">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <div class="address-container">
                     @foreach ($addresses as $address)
                         <div class="address-item">
@@ -93,5 +99,7 @@
 @push("scripts")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/7.6.1/imask.min.js" integrity="sha512-+3RJc0aLDkj0plGNnrqlTwCCyMmDCV1fSYqXw4m+OczX09Pas5A/U+V3pFwrSyoC1svzDy40Q9RU/85yb/7D2A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="{{ asset('js/utils/mask-field.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="{{ asset('js/admin/utils/deleteConfirm.js') }}"></script>
 @endpush
 
