@@ -6,7 +6,6 @@
                 $categories .= Str::slug(strtolower($category->name)).'/';
             }
             $link =  url('/item/'.$categories.$product->permalink);
-            //$link =  '';
         @endphp
         <div class="product-item">
             <a href="{{ $link }}">

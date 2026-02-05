@@ -1,0 +1,9 @@
+@import url("../components/breadcrumb.css");
+@import url("../components/list-products.css");
+@import url("../components/pagination.css");
+
+h1,
+p {
+    margin-bottom: 1rem;
+    text-align: center;
+}

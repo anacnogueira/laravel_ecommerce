@@ -50,6 +50,7 @@ use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ContactAddressController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\FavoriteController;
 
 //1. ADMIN
 Route::prefix('admin')->name('admin.')->group(function(){
@@ -188,21 +189,21 @@ Route::get('/marcas', [BrandController::class, 'index'])->name('brand.index');
 Route::get('/marca/{permalink}', [BrandController::class, 'show'])->name('brand.show');
 
 
-// 2.3FAQ
+// 2.3 FAQ
 Route::get('/faq', [FaqController::class,'index'])->name('faq.index');
 
-// Minha Sacola
+//3. Minha Sacola
 Route::get('/minha-sacola', function(){
     $title = "Minha Sacola";
     return view('maintenance', compact('title'));
 });
 
-// Cadastro
+//4. Cadastro
 Route::get('/cadastro', [CustomerController::class,'create'])->name('register');
 Route::post('/cadastro', [CustomerController::class,'store'])->name('register.store');
 Route::get('/confirma-cadastro', [CustomerController::class,'confirm'])->name('register.confirm-store');
 
-// Login
+//5. Login
 Route::get('/login',[LoginController::class,'login'])->name('login');
 Route::post('/login',[LoginController::class,'authenticate'])->name('login.authenticate');
 Route::get('/esqueci-minha-senha', [ForgotPasswordController::class, 'passwordReset'])->name('password.forgot');
@@ -210,25 +211,27 @@ Route::post('/password/email', [ForgotPasswordController::class, 'passwordEmail'
 Route::get('/resetar-senha/{token}', [ResetPasswordController::class, 'resetPassword'])->name('password.reset');
 Route::post('/password/reset', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
 
-// Area Autenticada
+// Área Autenticada
 Route::middleware(['auth'])->group(function() {
+    // Logout
+    Route::post('/logout', [LoginController::class,'logout'])->name('logout');
+
+    //1. Pedidos
     Route::get('/meus-pedidos/{filter?}', [OrderController::class,'index'])->name('orders.index');
     Route::get('/pedido/{id}', [OrderController::class,'show'])->name('orders.show');
 
+    //2. Minha Conta
     Route::get('/minha-conta', [CustomerController::class, 'index'])->name('customer.index');
-
     Route::get('/minha-conta/alterar-email', [CustomerController::class, 'editEmail'])->name("customers.edit-email");
     Route::put('/minha-conta/alterar-email', [CustomerController::class, 'updateEmail'])->name("customers.update-email");
-
     Route::get('/minha-conta/alterar-senha', [CustomerController::class,'editPassword'])->name("customers.edit-password");
     Route::put('/minha-conta/alterar-senha', [CustomerController::class,'updatePassword'])->name("customers.update-password");
-
     Route::get('/minha-conta/alterar-dados-cadastrais', [CustomerController::class,'edit'])->name('customers.edit');
     Route::put('/minha-conta/alterar-dados-cadastrais', [CustomerController::class,'update'])->name('customers.update');
-
     Route::get('/minha-conta/email-ofertas', [CustomerController::class,"editEmailNewsletter"])->name("customers.edit-email-newsletter");
     Route::put('/minha-conta/email-ofertas', [CustomerController::class,"updateEmailNewsletter"])->name("customers.update-email-newsletter");
 
+    //3. Meus Endereços
     Route::prefix('/minha-conta/meus-enderecos')->name('customers.addresses.')->group(function(){
         Route::get('/', [ContactAddressController::class,'index'])->name("index");
         Route::get('/cadastrar', [ContactAddressController::class,'create'])->name("create");
@@ -238,12 +241,6 @@ Route::middleware(['auth'])->group(function() {
         Route::delete('/excluir/{id}', [ContactAddressController::class,'destroy'])->name("destroy");
     });
 
-    Route::get('/meus-favoritos', function(){
-        $title = "Meus Favoritos";
-        return view('maintenance', compact('title'));
-    })->name('customer.products.favorite');
-
-
-    // Logout
-    Route::post('/logout', [LoginController::class,'logout'])->name('logout');
+    //4. Meus Produtos Favoritos
+    Route::get('/meus-favoritos', [FavoriteController::class,'index'])->name('customer.products.favorite');
 });

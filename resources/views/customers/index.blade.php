@@ -39,6 +39,13 @@
 			        <li><a href="{{ url('/minha-conta/meus-enderecos') }}" class="button">Meus endereços</a></li>
 		        </ul>
             </div>
+
+            <div class="my-data">
+                <h2>Preferências</h2>
+		        <ul>
+		            <li><a href="{{ url('/meus-favoritos') }}" class="button">Meus Produtos Favoritos</a></li>
+		        </ul>
+            </div>
         </div>
 
     </div>
