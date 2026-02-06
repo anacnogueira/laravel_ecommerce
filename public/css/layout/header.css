@@ -8,6 +8,7 @@ header ul {
     display: flex;
     gap: 1rem;
 }
+
 /* TOP Mobile */
 .top-mobile {
     background: var(--secondary-color);
@@ -15,8 +16,10 @@ header ul {
     line-height: 30px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0.5rem;
 }
+
 .top-mobile a {
     color: var(--background);
     text-decoration: none;
@@ -31,6 +34,7 @@ header ul {
     border-radius: 2px;
     background: none;
     padding: 0.5rem;
+    width: 100px;
 }
 
 .top-mobile button[type="submit"] {
@@ -64,20 +68,29 @@ header #header-2 {
     margin-top: 1rem;
 }
 
+header #header-2 .search-bag-user {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 5px;
+}
+
 /* Search */
 header #header-2 .search {
+    width: 90%;
     text-align: center;
 }
 
 header #header-2 .search form {
     display: flex;
-    width: 100%;
+    width: 90%;
     flex-direction: row;
     gap: 0;
+    max-width: none;
 }
 
 header #header-2 .search input[type="search"] {
-    width: 90%;
+    width: 100%;
     display: inline;
     vertical-align: top;
 }
@@ -98,9 +111,68 @@ header #header-2 .search button {
     height: 2.7rem;
 }
 
-/* Bag */
 header #header-2 .bag {
+    text-align: right;
+    display: flex;
+    justify-content: end;
+    gap: 0.5rem;
+    color: var(--secondary-color);
+}
+
+header #header-2 .bag i {
+    color: var(--secondary-color);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+#menu-dropdown-user button {
+    background: none;
+    border: none;
+}
+
+#menu-dropdown-user ul {
+    position: absolute;
     display: none;
+    background: var(--ternary-color);
+    transform: translateX(-50%);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+
+#menu-dropdown-user ul::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent var(--ternary-color) transparent;
+}
+
+#menu-dropdown-user ul li {
+    text-align: left;
+    display: block;
+    padding: 10px;
+}
+
+#menu-dropdown-user ul li a,
+#menu-dropdown-user ul li button {
+    text-decoration: none;
+    color: var(--background);
+    text-align: left;
+}
+
+#menu-dropdown-user ul li:hover {
+    background: var(--primary-color);
+    color: var(--background);
+    border-radius: 10px;
+}
+
+#menu-dropdown-user:hover ul {
+    display: block;
 }
 
 header #header-2 .mini-bag {
@@ -108,6 +180,10 @@ header #header-2 .mini-bag {
 }
 
 @media screen and (min-width: 600px) {
+    header #header-2 {
+        flex-direction: row;
+    }
+
     .top-mobile {
         display: none;
     }
@@ -166,7 +242,6 @@ header #header-2 .mini-bag {
         font-weight: bold;
     }
 
-    /* The Close Button */
     #modal-close {
         color: #aaa;
         float: right;
@@ -180,117 +255,34 @@ header #header-2 .mini-bag {
         text-decoration: none;
         cursor: pointer;
     }
-
-    header #header-2 {
-        flex-direction: row;
-    }
-
-    /* BAG, MENU USER */
-
-    header #header-2 .bag {
-        display: block;
-    }
-
-    #menu-dropdown-user button {
-        background: none;
-        border: none;
-    }
-
-    #menu-dropdown-user ul {
-        position: absolute;
-        display: none;
-        background: var(--ternary-color);
-        transform: translateX(-50%); /* Centraliza o menu em relação ao botão */
-        width: 150px;
-        color: white;
-        border-radius: 10px; /* Cantos arredondados para o balão */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-    }
-
-    #menu-dropdown-user ul::after {
-        content: "";
-        position: absolute;
-        bottom: 100%; /* Posiciona o bico acima do balão */
-        left: 50%;
-        transform: translateX(-50%);
-        border-width: 10px;
-        border-style: solid;
-        border-color: transparent transparent var(--ternary-color) transparent; /* Cria um triângulo apontando para cima com a cor do balão */
-    }
-
-    #menu-dropdown-user ul li {
-        text-align: left;
-        display: block;
-        padding: 10px;
-    }
-
-    #menu-dropdown-user ul li a,
-    #menu-dropdown-user ul li button {
-        text-decoration: none;
-        color: var(--background);
-        text-align: left;
-    }
-
-    #menu-dropdown-user ul li:hover {
-        background: var(--primary-color);
-        color: var(--background);
-        border-radius: 10px;
-    }
-
-    #menu-dropdown-user:hover ul {
-        display: block;
-    }
 }
 
 @media (min-width: 992px) {
-    header #header-2 {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 0;
-    }
-
-    /* Estilo comum para as 3 colunas filhas */
     header #header-2 > * {
         display: flex;
         align-items: center;
         box-sizing: border-box;
     }
 
-    /* Colunas das Pontas (1/4 do espaço cada) */
-    header #header-2 > *:nth-child(1),
-    header #header-2 > *:nth-child(3) {
+    header #header-2 > *:nth-child(1) {
         flex: 1;
     }
 
-    /* Coluna do Meio (2/4 do espaço - o dobro das laterais) */
     header #header-2 > *:nth-child(2) {
-        flex: 2;
-        justify-content: center; /* Conteúdo centralizado */
+        flex: 4;
+        justify-content: space-around;
     }
 
-    /* Alinhamentos específicos de conteúdo */
     header #header-2 > *:nth-child(1) {
-        justify-content: flex-start; /* Conteúdo à esquerda */
+        justify-content: flex-start;
     }
 
-    header #header-2 > *:nth-child(3) {
-        justify-content: flex-end; /* Conteúdo à direita */
-        text-align: right;
+    header #header-2 .search-bag-user > *:nth-child(1) {
+        flex: 3;
+        justify-content: center;
     }
 
-    header #header-2 .bag {
-        text-align: right;
-        display: flex;
-        justify-content: end;
-        gap: 0.5rem;
-        color: var(--secondary-color);
-    }
-
-    header #header-2 .bag i {
-        color: var(--secondary-color);
-        font-size: 2rem;
-        cursor: pointer;
+    header #header-2 .search-bag-user > *:nth-child(2) {
+        flex: 1;
     }
 }

@@ -55,56 +55,58 @@
                 <img src="{{ asset('img/logo.svg') }}" alt="Logotipo Maya Cosméticos" title="Logotipo Maya Cosméticos" width="163" height="163">
             </a>
         </div>
-        <div class="search">
-            <form action="{{ url('busca') }}" method="POST">
-                @csrf
-                <label class="sr-only" for="keyword">Faça aqui a sua busca</label>
-                <input
-                    type="search"
-                    id="keyword"
-                    name="keyword"
-                    placeholder="O que você procura?"
-                    class="@error('keyword') is-invalid @enderror"
-                    required
-                />
-
-                <button><i class="fas fa-search"></i></button>
-            </form>
-            @error('keyword')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="bag">
-            <div id="menu-dropdown-user">
-                <button><i class="item fa fa-user fa-6"></i></button>
-                <ul>
-                   @auth
-                        <li><a href="{{ route('orders.index') }}">Meus Pedidos</a></li>
-                        <li><a href="{{ route('customer.index') }}">Meus Dados</a></li>
-                        <li><a href="{{ route('customer.products.favorite') }}">Meus Favoritos</a></li>
-                        <li>
-                            <form action="{{ route('logout') }}" method="POST" id="frm-logout-contact">
-                                @csrf
-                                <button type="submit">Sair</button>
-                            </form>
-                        </li>
-                    @endauth
-
-                    @guest
-                        <li><a href="{{ route('login') }}">Fazer Login</a></li>
-                        <li><a href="{{ route('register') }}">Novo Cadastro</a></li>
-                        <li><a href="{{ route('pages.contact') }}">Fale Conosco</a></li>
-                    @endguest
-                </ul>
+        <div class="search-bag-user">
+             <div class="search">
+                <form action="{{ url('busca') }}" method="POST">
+                    @csrf
+                    <label class="sr-only" for="keyword">Faça aqui a sua busca</label>
+                    <input
+                        type="search"
+                        id="keyword"
+                        name="keyword"
+                        placeholder="O que você procura?"
+                        class="@error('keyword') is-invalid @enderror"
+                        required
+                    />
+                    <button><i class="fas fa-search"></i></button>
+                </form>
+                @error('keyword')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
-            <a href="#" class="item" id="show_hide_mini_cart" title="Minha Sacola">
-                <i class="fa fa-shopping-bag fa-6 left" aria-hidden="true"></i>
-            </a>
-            <div class="mini-bag">
-                Minha Sacola <i class="fa fa-sort-asc"></i><br>
-                <span class="cart_count">0 itens </span>|
-                <span class="total_cart">R$0,00</span>
+            <div class="bag">
+                <div id="menu-dropdown-user">
+                    <button><i class="item fa fa-user fa-6"></i></button>
+                    <ul>
+                        @auth
+                            <li><a href="{{ route('orders.index') }}">Meus Pedidos</a></li>
+                            <li><a href="{{ route('customer.index') }}">Meus Dados</a></li>
+                            <li><a href="{{ route('customer.products.favorite') }}">Meus Favoritos</a></li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST" id="frm-logout-contact">
+                                    @csrf
+                                    <button type="submit">Sair</button>
+                                </form>
+                            </li>
+                        @endauth
+
+                        @guest
+                            <li><a href="{{ route('login') }}">Fazer Login</a></li>
+                            <li><a href="{{ route('register') }}">Novo Cadastro</a></li>
+                            <li><a href="{{ route('pages.contact') }}">Fale Conosco</a></li>
+                        @endguest
+                    </ul>
+                </div>
+
+                <a href="#" class="item" id="show_hide_mini_cart" title="Minha Sacola">
+                    <i class="fa fa-shopping-bag fa-6 left" aria-hidden="true"></i>
+                </a>
+                <div class="mini-bag">
+                    Minha Sacola <i class="fa fa-sort-asc"></i><br>
+                    <span class="cart_count">0 itens </span>|
+                    <span class="total_cart">R$0,00</span>
+                </div>
             </div>
         </div>
     </div>
