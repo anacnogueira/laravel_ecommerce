@@ -47,8 +47,18 @@
     color: #000;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 600px) {
     .products {
         flex-direction: row;
+        justify-content: space-around;
+    }
+    .product-item {
+        flex-basis: calc(50% - 11.25px);
+    }
+}
+
+@media (min-width: 992px) {
+    .product-item {
+        flex-basis: calc(25% - 11.25px);
     }
 }
