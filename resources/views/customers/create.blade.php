@@ -154,7 +154,7 @@
                         type="email"
                         name="email"
                         id="email"
-                        value="{{ old('email') }}"
+                        value="{{ old('email') ?? session('email') }}"
                         class="@error('email') is-invalid @enderror"
                         >
                     @error('email')

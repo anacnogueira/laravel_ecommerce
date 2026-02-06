@@ -9,6 +9,7 @@ use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateEmailCustomerRequest;
 use App\Http\Requests\UpdatePasswordCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
+use App\Http\Requests\VerifyRegisterRequest;
 use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
@@ -55,6 +56,17 @@ class CustomerController extends Controller
         $customer = $this->customerService->makeCustomer($data, "site");
 
         return redirect()->route('register.confirm-store');
+    }
+
+    /**
+     * Verify if a register already exists.
+     *
+     * @param  \Illuminate\Http\VerifyRegisterRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function verify(VerifyRegisterRequest $request)
+    {
+        return redirect()->route('register')->with('email', $request->input("email_reg"));
     }
 
     public function confirm()

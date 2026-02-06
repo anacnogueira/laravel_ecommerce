@@ -188,7 +188,6 @@ Route::get('/item/{categoriesAndSlug}', [ProductController::class, 'show'])
 Route::get('/marcas', [BrandController::class, 'index'])->name('brand.index');
 Route::get('/marca/{permalink}', [BrandController::class, 'show'])->name('brand.show');
 
-
 // 2.3 FAQ
 Route::get('/faq', [FaqController::class,'index'])->name('faq.index');
 
@@ -202,6 +201,7 @@ Route::get('/minha-sacola', function(){
 Route::get('/cadastro', [CustomerController::class,'create'])->name('register');
 Route::post('/cadastro', [CustomerController::class,'store'])->name('register.store');
 Route::get('/confirma-cadastro', [CustomerController::class,'confirm'])->name('register.confirm-store');
+Route::post('/verifica-cadastro', [CustomerController::class,'verify'])->name('register.verify');
 
 //5. Login
 Route::get('/login',[LoginController::class,'login'])->name('login');

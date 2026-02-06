@@ -11,38 +11,65 @@
     </nav>
     <div class="container">
         <h1>{{ $title }}</h1>
-        <h2>Já sou cliente</h2>
-        <form action="{{ route('login.authenticate') }}" method="post">
-             @csrf
-            <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    value="{{ old('email') }}"
-                    class="@error('email') is-invalid @enderror">
-                @error('email')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
+        <div class="forms">
+            <div class="form-login">
+                <h2>Já sou cliente</h2>
 
-            <div class="form-group">
-                <label for="password">Senha:</label>
-                <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    class="@error('password') is-invalid @enderror">
-                @error('password')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+                <form action="{{ route('login.authenticate') }}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                            <input
+                                type="email"
+                                    name="email"
+                                    id="email"
+                                    value="{{ old('email') }}"
+                                    class="@error('email') is-invalid @enderror">
+                            @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Senha:</label>
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            class="@error('password') is-invalid @enderror">
+                        @error('password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <input type="submit" value="Entrar" />
+                </form>
+                <p>
+                    <a href="{{ route('password.forgot') }}">Esqueci minha senha</a>
+                </p>
             </div>
-            <input type="submit" value="Entrar" />
-        </form>
-        <p>
-            <a href="{{ route('password.forgot') }}">Esqueci minha senha</a>
-        </p>
+            <span class="separator">OU</span>
+            <div class="form-register">
+                <h2>Ainda Não possuo cadastro</h2>
+                 <form action="{{ route('register.verify') }}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="email-reg">E-mail:</label>
+                            <input
+                                type="email"
+                                    name="email_reg"
+                                    id="email-reg"
+                                    value="{{ old('email_reg') }}"
+                                    class="@error('email_reg') is-invalid @enderror">
+                            @error('email_reg')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                    </div>
+
+                    <input type="submit" value="Criar conta" />
+                </form>
+            </div>
+        </div>
+
     </div>
 
 @endsection

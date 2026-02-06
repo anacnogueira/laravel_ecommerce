@@ -7,6 +7,11 @@ p {
     text-align: center;
 }
 
+.forms {
+    display: flex;
+    flex-direction: column;
+}
+
 .alert-success {
     text-align: center;
     width: 100%;
@@ -18,4 +23,46 @@ p {
     color: #fff;
     background-color: #28a745;
     border-color: #23923d;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.separator::before,
+.separator::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+}
+
+.separator::before {
+    margin-right: 15px;
+}
+
+.separator::after {
+    margin-left: 15px;
+}
+
+@media (min-width: 992px) {
+    .forms {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 2rem;
+    }
+
+    .forms > * {
+        width: 100%;
+    }
+
+    .forms > *:nth-child(1) {
+        border-right: 1px solid #ccc;
+    }
+
+    .separator {
+        display: none;
+        width: 0;
+    }
 }
