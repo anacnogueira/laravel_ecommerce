@@ -49,7 +49,7 @@
             </div>
             <span class="separator">OU</span>
             <div class="form-register">
-                <h2>Ainda Não possuo cadastro</h2>
+                <h2>Ainda não possuo cadastro</h2>
                  <form action="{{ route('register.verify') }}" method="post">
                     @csrf
                     <div class="form-group">

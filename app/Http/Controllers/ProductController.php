@@ -13,6 +13,7 @@ class ProductController extends Controller
     protected $productService;
     protected $bannerService;
     protected $categoryService;
+    protected $reportSearchService;
 
     public function __construct(
         ProductService $productService,
@@ -34,9 +35,13 @@ class ProductController extends Controller
         $title = 'Catálogo de Produtos';
 
         foreach ($products as $i => $product) {
-            //$products[$i]['Promotion'] = $this->Product->ProductPromotion->getPromotion($product);
+            $products[$i]->promotion = count($product->promotions) > 0 ?
+                $product->promotions[0]->getPromotion($product) :
+                null;
+
             $products[$i]->categories = $product->category->ancestors($product->category_id);
-          }
+        }
+
 
         return view('products.index', compact('products','banners','title'));
 
@@ -130,6 +135,14 @@ class ProductController extends Controller
 
         $products = $this->productService->getProductsByKeyword($keyword);
 
+        foreach ($products as $i => $product) {
+            $products[$i]->promotion = count($product->promotions) > 0 ?
+                $product->promotions[0]->getPromotion($product) :
+                null;
+
+            $products[$i]->categories = $product->category->ancestors($product->category_id);
+        }
+
         return view('products.result', compact('products','title', 'keyword'));
 
     }
@@ -150,6 +163,14 @@ class ProductController extends Controller
 
         $products = $this->productService->getProductsInCategories($categories);
 
+        foreach ($products as $i => $product) {
+            $products[$i]->promotion = count($product->promotions) > 0 ?
+                $product->promotions[0]->getPromotion($product) :
+                null;
+
+            $products[$i]->categories = $product->category->ancestors($product->category_id);
+        }
+
         return view('products.categories', compact('category','title', 'permalink', 'ancestors', 'products'));
     }
 
@@ -158,6 +179,14 @@ class ProductController extends Controller
         $title = 'Novidades';
 
         $products = $this->productService->getProductsByNews();
+
+        foreach ($products as $i => $product) {
+            $products[$i]->promotion = count($product->promotions) > 0 ?
+                $product->promotions[0]->getPromotion($product) :
+                null;
+
+            $products[$i]->categories = $product->category->ancestors($product->category_id);
+        }
 
         return view('products.news', compact('title', 'products'));
     }

@@ -7,7 +7,7 @@
     @endforeach
 </x-adminlte-select>
 
-<x-adminlte-input name="selling_price" id="selling-price" label="Preço Original:" value="{{ $promotion->product->selling_price }}" class="money" placeholder="0,00" disabled/>
+<x-adminlte-input name="selling_price" id="selling-price" label="Preço Original:" value="{{ $promotion->product->selling_price ?? '' }}" class="money" placeholder="0,00" disabled/>
 
 <div class="row">
     <div class="col-md-6">

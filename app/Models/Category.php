@@ -33,7 +33,7 @@ class Category extends Model
      */
     public function getCreatedAttribute($value)
     {
-        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i') : null;
+        return $value ? Carbon::parse($value)->format('d/m/Y H:i') : null;
     }
 
     /**
@@ -44,7 +44,7 @@ class Category extends Model
      */
     public function getModifiedAttribute($value)
     {
-        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i') : null;
+        return $value ? Carbon::parse($value)->format('d/m/Y H:i') : null;
     }
 
     public function parent()

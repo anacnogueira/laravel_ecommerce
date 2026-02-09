@@ -1,4 +1,5 @@
 <div class="products">
+    @inject('showPrices', 'App\Services\ProductSellingPriceService')
     @foreach($products as $product)
         @php
             $categories = '';
@@ -21,12 +22,17 @@
                     <img src="{{ asset('images/no_image.jpg') }}" alt="Produto sem imagem" title="Produto sem imagem" />
                 @endif
 
+                @if ($product->promotion)
+                    <div class='price-off'>{{ $product->promotion->percent_promotion }} % desconto</div>
+                @endif
+
                 <h2 class="desc">{{ Str::limit($product->name,40) }}</h2>
                 <h3>{{ $product->brand->name ?? '' }}</h3>
-                <p class="newPrice">R$ {{ number_format($product->selling_price,2,',','.') }}</p>
-                <span class='installment'>
-                    ou 3x R$ {{  number_format(($product->selling_price/3),2,',','.') }}
-                </span>
+                @php
+                    $pricePromotion = $product->promotion->price_promotion ?? null;
+                @endphp
+
+                {{ $showPrices->returnPrices($product->selling_price, $pricePromotion) }}
             </a>
         </div>
     @endforeach
