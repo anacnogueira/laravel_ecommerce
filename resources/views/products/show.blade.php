@@ -34,6 +34,9 @@
         <div class="product">
             <section>
                 @include('partials.products.images')
+                @if ($product->promotion)
+                    <div class='price-off'>{{ $product->promotion->percent_promotion }} % desconto</div>
+                @endif
                 @include('partials.products.action-buttons')
             </section>
             <section itemscope itemtype="http://data-vocabulary.org/Product">
@@ -43,8 +46,6 @@
                 <hr />
                 @include('partials.products.price')
                 <div class="sharethis-inline-share-buttons"></div>
-
-
             </section>
         </div>
         <hr />

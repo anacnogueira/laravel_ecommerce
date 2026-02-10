@@ -2,8 +2,9 @@
     <label for="quantity">Qtde:</label>
         <input type="number"
             id="quantity"
+            value="1"
             size=2
-            min=1,
+            min=1
             max={{ $product->current_stock }}
         />
         <button type="button" class="btn-whatsapp">

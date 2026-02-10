@@ -56,7 +56,10 @@ class ProductController extends Controller
 
         $product = $this->productService->getProductByPermalink($permalink);
         $product->categories = $product->category->ancestors($product->category_id);
-        $product->price = count($product->promotions) > 0 ? $product->promotions[0]->price_promotion : $product->selling_price;
+        $product->promotion = count($product->promotions) > 0 ?
+                $product->promotions[0]->getPromotion($product) :
+                null;
+        $product->price = $product->promotion ? $product->promotion->price_promotion : $product->selling_price;
         $availability =  ($product->status == "S" && $product->current_stock > 0) ?  "InStock" : "OutOfStock";
         $brandName = isset($product->brand->name) ? $product->brand->name : '';
 
