@@ -22,14 +22,24 @@
             <ul>
                 <li><a href="/"><a href="/"><img src="{{ asset('img/i-home.png') }}" alt="Página Inicial" title="Página Inicial"></a></a></li>
                 <li><span>Resultado da Busca</span></li>
-                <li><span>{{ $keyword }}</span></li>
+                <li><span id="result-keyword">{{ $keyword }}</span></li>
             </ul>
         </nav>
         <h1>{{ $title }}</h1>
-        @include('partials.list-products')
-        <div class="pagination">
-            {{ $products->links() }}
-        </div>
+        @if ($products->count() > 0)
+            @include('partials.list-products')
+            <div class="pagination">
+                {{ $products->links() }}
+            </div>
+        @else
+            <p class="panel alert">Nenhum produto encontrado para sua busca</p>
+        @endif
+        <p>Não encontrou o que estava procurando? Mande-nos uma mensagem por WhatsApp<br>
+         <button type="button" class="btn-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+            Conversar por WhatsApp
+        </button></p>
+
     </div>
 @endsection
 
@@ -37,3 +47,6 @@
     <link rel="stylesheet" href="{{ asset('css/page/result.css') }}">
 @endpush
 
+@push('scripts')
+    <script type="text/javascript" src="{{ asset("js/utils/search-by-whatsapp-button.js") }}"></script>
+@endpush
