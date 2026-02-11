@@ -70,6 +70,8 @@ class ProductController extends Controller
             $product->favorite = $this->favoriteService->favoriteStatusFromCustomerId($customerId, $product->id);
         }
 
+        $product->rate = $product->comments()->avg('rate') ? round($product->comments()->avg('rate')) :  0;
+
         $product->price = $product->promotion ? $product->promotion->price_promotion : $product->selling_price;
         $availability =  ($product->status == "S" && $product->current_stock > 0) ?  "InStock" : "OutOfStock";
         $brandName = isset($product->brand->name) ? $product->brand->name : '';

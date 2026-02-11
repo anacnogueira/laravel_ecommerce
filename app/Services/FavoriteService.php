@@ -13,7 +13,7 @@ class FavoriteService
 
     public function returnShowCurrent($status, $productId, $url)
     {
-        return view("components.show-current", compact("status","productId","url"));
+        return view("components.favorite", compact("status","productId","url"));
     }
 
     public function favoriteStatusFromCustomerId($customerId, $productId)

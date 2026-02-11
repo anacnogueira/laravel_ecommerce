@@ -1,1 +1,0 @@
-<!-- To Do Rate Value -->
