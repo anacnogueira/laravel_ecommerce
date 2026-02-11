@@ -60,7 +60,6 @@
                     <li><a href="/minha-conta/meus-enderecos">Meus Endereços</a></li>
                     <li><hr></li>
                     <li><a href="/meus-favoritos">Meus Produtos Favoritos</a></li>
-                    <li><hr></li>
                 @endauth
 
                 @guest

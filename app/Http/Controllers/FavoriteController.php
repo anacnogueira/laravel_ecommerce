@@ -29,4 +29,21 @@ class FavoriteController extends Controller
         return view('favorites.index', compact('title', 'products'));
     }
 
+    public function store(Request $request)
+    {
+
+        $data = $request->all();
+        $data["type"] = "favorite";
+        $data["contact_id"] = Auth::id();
+
+        if ($data["status"] == "N") {
+            $this->productContactService->destroyProductContact($data["contact_id"], $data["product_id"], $data["type"]);
+        } else {
+            $this->productContactService->makeProductContact($data);
+        }
+
+        return redirect($data['url']);
+
+    }
+
 }

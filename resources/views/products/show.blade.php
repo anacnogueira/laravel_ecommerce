@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @php
-    $url = "https://mayacosmeticos.com.br/item/{$categoriesAndSlug}";
+    $relativeUrl = str_replace("https://mayacosmeticos.com.br","", $url);
     $follow = ($product->current_stock <= 0 || $product->status == 'N') ? "nofollow, noindex" : "follow, index";
 @endphp
 
@@ -26,7 +26,7 @@
             <ul>
                 <li><a href="/"><img src="{{ asset('img/i-home.png') }}" alt="Página Inicial" title="Página Inicial"></a></li>
                 @foreach ($product->categories as $category)
-                    <li><a href="/categorias{{ $category->permalink }}">{{ $category->name }}</a></li>
+                    <li><a href="/categorias/{{ $category->permalink }}">{{ $category->name }}</a></li>
                 @endforeach
                 <li><span>{{ $product->name }}</span></li>
             </ul>

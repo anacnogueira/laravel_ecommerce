@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Repositories\Contracts\ProductContactRepositoryInterface;
 use App\Models\Product;
+use App\Models\ProductContact;
 
 class ProductContactRepository implements ProductContactRepositoryInterface
 {
@@ -30,5 +31,35 @@ class ProductContactRepository implements ProductContactRepositoryInterface
                     ->where('type', 'favorite');
             })
             ->paginate(12);
+    }
+
+    public function favoriteStatusFromCustomerId($customerId, $productId)
+    {
+        return ProductContact::where('contact_id', $customerId)
+            ->where('product_id', $productId)
+            ->where('type', 'favorite')
+            ->first();
+    }
+
+    /**
+     * Create a new Product Contact
+     * @param array $data
+     * @return object
+     */
+    public function createProductContact(array $data)
+    {
+        return ProductContact::create($data);
+    }
+
+    /**
+     * Delete a contact address
+     * @param object $contactAddress
+     */
+    public function destroyProductContact($customerId, $productId, $type)
+    {
+        return ProductContact::where('contact_id', $customerId)
+            ->where('product_id', $productId)
+            ->where('type', $type)
+            ->delete();
     }
 }

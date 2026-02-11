@@ -6,7 +6,9 @@ use App\Services\ProductService;
 use App\Services\BannerService;
 use App\Services\CategoryService;
 use App\Services\ReportSearchService;
+use App\Services\FavoriteService;
 use App\Http\Requests\ProductSearchRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -14,18 +16,21 @@ class ProductController extends Controller
     protected $bannerService;
     protected $categoryService;
     protected $reportSearchService;
+    protected $favoriteService;
 
     public function __construct(
         ProductService $productService,
         BannerService $bannerService,
         CategoryService $categoryService,
         ReportSearchService $reportSearchService,
+        FavoriteService $favoriteService,
     )
     {
         $this->productService = $productService;
         $this->bannerService = $bannerService;
         $this->categoryService = $categoryService;
         $this->reportSearchService = $reportSearchService;
+        $this->favoriteService = $favoriteService;
     }
 
     public function index()
@@ -59,6 +64,12 @@ class ProductController extends Controller
         $product->promotion = count($product->promotions) > 0 ?
                 $product->promotions[0]->getPromotion($product) :
                 null;
+        $product->favorite = 'S';
+        if (Auth::check()) {
+            $customerId = Auth::id();
+            $product->favorite = $this->favoriteService->favoriteStatusFromCustomerId($customerId, $product->id);
+        }
+
         $product->price = $product->promotion ? $product->promotion->price_promotion : $product->selling_price;
         $availability =  ($product->status == "S" && $product->current_stock > 0) ?  "InStock" : "OutOfStock";
         $brandName = isset($product->brand->name) ? $product->brand->name : '';
@@ -111,7 +122,7 @@ class ProductController extends Controller
             ]
         ];
 
-        return view('products.show', compact('segments', 'product','categoriesAndSlug','comments', 'schema'));
+        return view('products.show', compact('segments', 'product','categoriesAndSlug','comments', 'schema', 'url'));
     }
 
     public function search(ProductSearchRequest $request)

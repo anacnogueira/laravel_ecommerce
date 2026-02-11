@@ -104,7 +104,7 @@ class ProductService
             $products[$i]->categories = $product->category->ancestors($product->category_id);
         }
 
-         return $products;
+        return $products;
     }
 
     /**

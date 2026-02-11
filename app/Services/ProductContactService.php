@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Repositories\Contracts\ProductContactRepositoryInterface;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ProductFavorited;
 
 class ProductContactService
 {
@@ -21,4 +23,23 @@ class ProductContactService
     {
         return $this->productContactRepository->getFavoriteProductsByCustomerId($customerId);
     }
+
+    public function makeProductContact(array $data)
+    {
+       $productContact = $this->productContactRepository->createProductContact($data);
+
+        // Envia por e-mail
+       Mail::to(env("SITE_EMAIL_DEV"))
+        ->send(new ProductFavorited($productContact));
+
+        return $productContact;
+
+    }
+
+    public function destroyProductContact($customerId, $productId, $type)
+    {
+        return $this->productContactRepository->destroyProductContact($customerId, $productId, $type);
+    }
+
+
 }

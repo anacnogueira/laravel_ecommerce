@@ -81,6 +81,12 @@
     font-size: 1.2rem;
 }
 
+.product .btn-favorite {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
 .product .sharethis-inline-share-buttons {
     margin-top: 20px;
 }

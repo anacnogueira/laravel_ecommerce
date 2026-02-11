@@ -243,4 +243,5 @@ Route::middleware(['auth'])->group(function() {
 
     //4. Meus Produtos Favoritos
     Route::get('/meus-favoritos', [FavoriteController::class,'index'])->name('customer.products.favorite');
+    Route::post('/favoritar-produto', [FavoriteController::class,'store'])->name('customer.products.favorite.store');
 });
