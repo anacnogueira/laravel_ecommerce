@@ -47,6 +47,7 @@
                 <hr />
                 @include('partials.products.price')
                 <div class="sharethis-inline-share-buttons"></div>
+                 @include('components.shipping')
             </section>
         </div>
         <hr />
@@ -104,4 +105,7 @@
         <script type="text/javascript">stLight.options({publisher: "44841ba7-ef9e-48aa-a6ff-196456a8f872", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
         <script type="text/javascript" src="{{ asset("js/utils/star-rating.min.js") }}"></script>
         <script type="text/javascript" src="{{ asset("js/utils/rater.js") }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/7.6.1/imask.min.js" integrity="sha512-+3RJc0aLDkj0plGNnrqlTwCCyMmDCV1fSYqXw4m+OczX09Pas5A/U+V3pFwrSyoC1svzDy40Q9RU/85yb/7D2A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript" src="{{ asset('js/utils/mask-field.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/components/shipping-calculate.js') }}"></script>
 @endpush

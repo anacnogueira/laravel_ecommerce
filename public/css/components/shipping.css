@@ -1,0 +1,26 @@
+.shipping {
+    padding-top: 1rem;
+    text-align: left;
+}
+
+.shipping form {
+    margin: 0;
+}
+
+.shipping .frm-components {
+    display: flex;
+    justify-content: space-between;
+    align-items: anchor-center;
+    width: 330px;
+}
+
+.shipping button.button {
+    width: 100px;
+    height: 36px;
+}
+
+.shipping #shipping-info,
+.shipping #shipping-info #shipping-error,
+.shipping #shipping-info #tbl-shipping-info {
+    display: none;
+}

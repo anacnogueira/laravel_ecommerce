@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\Admin\CouponController as AdminCouponController;
 use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\ProductNotificationController;
 use App\Http\Controllers\Api\ContactNewsletterController;
+use App\Http\Controllers\Api\ShippingController;
 
 // A - ADMIN
 Route::prefix('admin')->name('admin.')->group(function(){
@@ -24,3 +25,4 @@ Route::prefix('admin')->name('admin.')->group(function(){
 Route::get('/cities/{stateId}',[CityController::class,'citiesByState']);
 Route::post('/product-notification',[ProductNotificationController::class,'store']);
 Route::post('/newsletters',[ContactNewsletterController::class,'store'])->name("newsletters");
+Route::post('/shippings/calculate',[ShippingController::class,'calculate'])->name("shippings.calculate");
