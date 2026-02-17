@@ -16,6 +16,7 @@ class ProductController extends Controller
     protected $bannerService;
     protected $categoryService;
     protected $reportSearchService;
+
     protected $favoriteService;
 
     public function __construct(
@@ -30,6 +31,7 @@ class ProductController extends Controller
         $this->bannerService = $bannerService;
         $this->categoryService = $categoryService;
         $this->reportSearchService = $reportSearchService;
+
         $this->favoriteService = $favoriteService;
     }
 
@@ -56,7 +58,7 @@ class ProductController extends Controller
     {
         $segments = explode('/', $categoriesAndSlug);
         $permalink = array_pop($segments);
-        $comments = [];
+
         $url = "https://mayacosmeticos.com.br/item/{$categoriesAndSlug}";
 
         $product = $this->productService->getProductByPermalink($permalink);
@@ -75,6 +77,8 @@ class ProductController extends Controller
         $product->price = $product->promotion ? $product->promotion->price_promotion : $product->selling_price;
         $availability =  ($product->status == "S" && $product->current_stock > 0) ?  "InStock" : "OutOfStock";
         $brandName = isset($product->brand->name) ? $product->brand->name : '';
+
+        $comments = $product->comments->whereNotNull('text')->where('status', 'S');
 
         for($i = 0; $i < count($product->photos); $i++) {
              $photo  = $product->photos[$i];

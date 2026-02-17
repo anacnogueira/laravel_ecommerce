@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Repositories\Contracts\CommentRepositoryInterface;
+use App\Mail\CommentDone;
+use Illuminate\Support\Facades\Mail;
 
 class CommentService
 {
@@ -38,9 +40,35 @@ class CommentService
     */
     public function makeComment(array $data)
     {
-        $data["status"] = isset($data["status"]) ? 'S' : 'N';
-
         $comment = $this->commentRepository->createComment($data);
+
+        return $comment;
+    }
+
+     /**
+     * Create a new comment from site
+     * @param array $data
+     * @return object
+    */
+    public function makeCommentFromSite(array $data)
+    {
+        $comment = $this->commentRepository->createComment($data);
+
+        if ($comment) {
+            Mail::to(env("SITE_EMAIL_DEV"))
+                ->send(new CommentDone($comment));
+
+            return ["success" => 'Comentário enviado - aguardando aprovação do moderador para publicação'];
+        }
+
+        return ["error" => 'Não foi possível enviar seu comentário, tente novamente mais tarde'];
+    }
+
+    public function makeRate(array $data)
+    {
+        $comment = $this->commentRepository->createComment($data);
+
+
 
         return $comment;
     }
@@ -93,4 +121,6 @@ class CommentService
 
         return response()->json(['message' => 'Comment Deleted'], 200);
     }
+
+
 }

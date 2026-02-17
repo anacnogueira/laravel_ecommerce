@@ -24,4 +24,11 @@ class StarRatingService
 
         return view("components.rated", compact("stars","averageRate"));
     }
+
+    public function rate($productId, $comments)
+    {
+        $stars = $this->stars;
+
+        return view("components.rate", compact("stars","productId", "comments"));
+    }
 }

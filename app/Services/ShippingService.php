@@ -23,6 +23,7 @@ class ShippingService
         ];
 
         $this->shippingRepository = $shippingRepository;
+
     }
 
     public function getServiceDescription($shipping)

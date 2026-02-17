@@ -48,11 +48,13 @@
                 @include('partials.products.price')
                 <div class="sharethis-inline-share-buttons"></div>
                  @include('components.shipping')
+                 {{  $rate->rate($product->id, $comments) }}
             </section>
         </div>
         <hr />
         <p>Código: {{ $product->code }}</p>
         {!! $product->text !!}
+        @include('partials.comments.list-comments')
     </div>
 @endsection
 
@@ -108,4 +110,5 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/7.6.1/imask.min.js" integrity="sha512-+3RJc0aLDkj0plGNnrqlTwCCyMmDCV1fSYqXw4m+OczX09Pas5A/U+V3pFwrSyoC1svzDy40Q9RU/85yb/7D2A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script type="text/javascript" src="{{ asset('js/utils/mask-field.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/components/shipping-calculate.js') }}"></script>
+        <script type="module" src="{{ asset('js/components/rate.js') }}" defer></script>
 @endpush

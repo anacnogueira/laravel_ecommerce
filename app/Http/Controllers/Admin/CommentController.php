@@ -50,6 +50,7 @@ class CommentController extends Controller
     {
         $data = $request->all();
         $data["ip"] = $request->ip();
+        $data["status"] = isset($data["status"]) ? 'S' : 'N';
 
         $comment = $this->commentService->makeComment($data);
 

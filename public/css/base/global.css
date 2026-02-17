@@ -147,6 +147,15 @@ dd {
     width: auto;
 }
 
+.panel.success {
+    background: #d4edda;
+    border: 1px solid #23923d;
+    color: #23923d;
+    padding: 0.5rem;
+    text-align: center;
+    width: auto;
+}
+
 table {
     background: #fff;
     margin-bottom: 1.25rem;

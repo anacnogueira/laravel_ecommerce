@@ -10,6 +10,7 @@ class Search extends Model
     protected $table = 'report_searches';
 
     const CREATED_AT = 'created';
+    const UPDATED_AT = null;
 
     protected $fillable = [
         'keyword',
@@ -28,7 +29,6 @@ class Search extends Model
         return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i') : null;
     }
 
-
     /**
      * Scope a query to only include website seaches.
      *
@@ -39,7 +39,6 @@ class Search extends Model
     {
         return $query->where('type', 'search');
     }
-
 
     /**
      * Scope a query to only include cep seaches.

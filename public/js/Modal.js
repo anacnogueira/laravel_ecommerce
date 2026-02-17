@@ -14,14 +14,18 @@ export class Modal {
 
         // When the user clicks on <span> (x), close the modal
         this.span.onclick = () => {
-            this.modal.style.display = "none";
+            this.close();
         };
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = (event) => {
             if (event.target == this.modal) {
-                this.modal.style.display = "none";
+                this.close();
             }
         };
+    }
+
+    close() {
+        this.modal.style.display = "none";
     }
 }

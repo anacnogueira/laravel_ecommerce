@@ -1,0 +1,13 @@
+.comments p strong {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.comment-item i {
+    color: #ccc;
+}
+
+.comment-item i.star-selected {
+    color: var(--primary-color);
+}

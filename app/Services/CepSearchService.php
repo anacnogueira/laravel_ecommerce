@@ -22,4 +22,18 @@ class CepSearchService
     {
         return $this->cepSearchRepository->getAllCepSearches();
     }
+
+    public function makeReportCepSearch($cep)
+    {
+        $data = [
+            'keyword' => strip_tags($cep),
+            'type' => 'cep',
+            'ip' => '',
+        ];
+
+        // Grava Busca no banco
+        $cepSearch = $this->cepSearchRepository->createCepReportSearch($data);
+
+        return $cepSearch;
+    }
 }

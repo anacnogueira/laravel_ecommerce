@@ -2,6 +2,8 @@
 @import url("../components/img-gallery.css");
 @import url("../components/star-rating.min.css");
 @import url("../components/shipping.css");
+@import url("../components/rate.css");
+@import url("../components/list-comments.css");
 
 .product section {
     position: relative;

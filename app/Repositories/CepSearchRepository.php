@@ -22,4 +22,9 @@ class CepSearchRepository implements CepSearchRepositoryInterface
     {
         return $this->entity->cep()->get();
     }
+
+    public function createCepReportSearch(array $data)
+    {
+        return $this->entity->create($data);
+    }
 }
