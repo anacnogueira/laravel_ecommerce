@@ -112,14 +112,12 @@
                         </button>
                     </div>
                 </div>
-
-
             </div>
 
 
             <div class="cart-buttons">
                 <a href="/" class="button">&laquo; Continuar comprando</a>
-                <button id="checkout-button-whatsapp" class="btn-whatsapp">
+                <button id="checkout-button-whatsapp-mobile" class="btn-whatsapp">
                     <i class="fa-brands fa-whatsapp"></i>
                     Fechar Pedido WhatsApp
                 </button>
