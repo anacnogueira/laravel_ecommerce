@@ -51,6 +51,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ContactAddressController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\CartController;
 
 //1. ADMIN
 Route::prefix('admin')->name('admin.')->group(function(){
@@ -59,7 +60,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('/password/reset', [AdminForgotPasswordController::class, 'passwordReset'])->name('password.forgot');
     Route::post('/password/email', [AdminForgotPasswordController::class, 'passwordEmail'])->name('password.email');
     Route::get('/password/reset/{token}', [AdminResetPasswordController::class, 'resetPassword'])->name('password.reset');
-    Route::post('/password/reset', [AdminResetPassordController::class, 'updatePassword'])->name('password.update');
+    Route::post('/password/reset', [AdminResetPasswordController::class, 'updatePassword'])->name('password.update');
 
     Route::middleware(['auth:admin'])->group(function() {
         //1. Dashboard
@@ -158,7 +159,6 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('logs', [AdminLogController::class, 'index'])->name("logs.index");
         Route::get('logs/search', [AdminLogController::class, 'search'])->name("logs.search");
         Route::get('logs/{id}', [AdminLogController::class, 'show'])->name("logs.show");
-
     });
 
 });
@@ -192,10 +192,9 @@ Route::get('/marca/{permalink}', [BrandController::class, 'show'])->name('brand.
 Route::get('/faq', [FaqController::class,'index'])->name('faq.index');
 
 //3. Minha Sacola
-Route::get('/minha-sacola', function(){
-    $title = "Minha Sacola";
-    return view('maintenance', compact('title'));
-});
+Route::get('/minha-sacola',[CartController::class,'show'])->name('cart.show');
+Route::put('/cart-update',[CartController::class,'update'])->name('cart.update');
+Route::delete('/cart-delete/{id}',[CartController::class,'destroy'])->name('cart.destroy');
 
 //4. Cadastro
 Route::get('/cadastro', [CustomerController::class,'create'])->name('register');

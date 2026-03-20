@@ -21,7 +21,7 @@
             ou 3x {{ number_format(($product->selling_price/3),2,',','.') }}
         </span>
     @endif
-    @include('partials.products.add-to-cart-whatsapp')
+    @include('partials.products.add-to-cart')
  @else
     @include('partials.products.unavailable')
 @endif

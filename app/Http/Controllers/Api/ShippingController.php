@@ -20,13 +20,12 @@ class ShippingController extends Controller
     {
         $this->shippingService = $shippingService;
         $this->cepSearchService = $cepSearchService;
-
-
     }
 
     public function calculate (ApiCalculateShippingRequest $request)
     {
         $data = $request->all();
+        session(['cep' => $data['cep']]);
 
         $result = $this->shippingService->calculateShippingByFrenet($data);
 

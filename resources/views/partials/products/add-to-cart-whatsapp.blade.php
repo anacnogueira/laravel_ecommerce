@@ -9,7 +9,7 @@
         />
         <button type="button" class="btn-whatsapp">
             <i class="fa-brands fa-whatsapp"></i>
-            Comprar por WhatsApp
+            Comprar
         </button>
 
 </div>

@@ -60,13 +60,12 @@
 
 @push("css")
     <link rel="stylesheet" href="{{ asset('css/page/product.css') }}">
-
 @endpush
 
 
 @push('scripts')
     <script type="text/javascript" src="{{ asset("js/components/img-gallery.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("js/utils/add-by-whatsapp-button.js?v=2.0") }}"></script>
+    <!--script type="text/javascript" src="{{ asset("js/utils/add-by-whatsapp-button.js?v=2.0") }}"></script-->
     @if ($product->current_stock == 0 && $product->status == 'N')
         <script type="text/javascript" src="{{ asset("js/utils/send-product-notification-form.js") }}"></script>
     @endif
@@ -111,4 +110,5 @@
         <script type="text/javascript" src="{{ asset('js/utils/mask-field.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/components/shipping-calculate.js') }}"></script>
         <script type="module" src="{{ asset('js/components/rate.js') }}" defer></script>
+        <script type="text/javascript" src="{{ asset('js/utils/add-to-cart.js') }}" defer></script>
 @endpush

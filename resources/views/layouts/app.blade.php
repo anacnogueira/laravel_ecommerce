@@ -29,7 +29,8 @@
             @include('partials.footer')
         </main>
         <script type="module" src="{{ asset('js/main.js') }}" defer></script>
-
+        <script type="module" src="{{ asset('js/utils/add-to-cart.js') }}" defer></script>
+        <script type="module" src="{{ asset('js/utils/remove-from-cart.js') }}" defer></script>
         @stack('scripts')
     </body>
 </html>

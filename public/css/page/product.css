@@ -96,11 +96,24 @@
     margin-top: 20px;
 }
 
-.add-to-cart {
-    display: flex;
-    gap: 20px;
-    align-items: center;
+.add-to-cart form {
+    max-width: 100%;
 }
+
+.add-to-cart .items {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+/*.add-to-cart .items > *:nth-child(1) {
+    flex: 1;
+}
+
+.add-to-cart .items > *:nth-child(2),
+.add-to-cart .items > *:nth-child(3) {
+    flex: 2;
+}*/
 
 .add-to-cart input {
     width: 80px;
@@ -115,6 +128,12 @@
     font-size: 1rem;
     border-radius: 2px;
     cursor: pointer;
+}
+
+.add-to-cart button.button {
+    width: 100px;
+    height: 36px;
+    margin: 0;
 }
 
 button.btn-whatsapp i {

@@ -19,12 +19,12 @@
 </div>
 
 @php
-$config = ['format' => 'DD/MM/YYYY'];
+ $config = ['format' => 'DD/MM/YYYY'];
 @endphp
 <div class="row">
     <div class="col-md-6">
         <x-adminlte-input-date name="date_initial" :config="$config" placeholder="Escolha a data"
-            label="Início:" class="col-md-6" value="{{ $promotion ? $promotion->date_initial : ''}}" enable-old-support>
+            label="Início:" class="col-md-6" value="{{ $promotion ? date('d/m/Y', strtotime($promotion->date_initial)) : ''}}" enable-old-support>
             <x-slot name="appendSlot">
                 <x-adminlte-button icon="fas fa-lg fa-calendar"
                     title="Selecione a data de publicação"/>
@@ -33,7 +33,7 @@ $config = ['format' => 'DD/MM/YYYY'];
     </div>
     <div class="col-md-6">
         <x-adminlte-input-date name="date_final" :config="$config" placeholder="Escolha a data"
-            label="Data Finalização:" class="col-md-6"  value="{{ $promotion ? $promotion->date_final : ''}}" enable-old-support>
+            label="Data Finalização:" class="col-md-6"  value="{{ $promotion ? date('d/m/Y', strtotime($promotion->date_final)) : ''}}" enable-old-support>
             <x-slot name="appendSlot">
                 <x-adminlte-button icon="fas fa-lg fa-calendar"
                     title="Selecione a data de finalização"/>

@@ -1,0 +1,144 @@
+@import url("../components/breadcrumb.css");
+@import url("../components/shipping.css");
+
+.cart-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.cart-item-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.cart-item-buttons > * {
+    width: 35px;
+}
+
+.cart-item-buttons button.btn-remove-item {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.cart-item-buttons button.btn-remove-item i {
+    font-size: 1rem !important;
+    color: var(--secondary-color);
+}
+
+.cart-item-amount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.cart-item-amount > :last-child {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+.frm-cart-delete {
+    display: none;
+}
+.subtotal-info,
+.shipping-info,
+.discount-info,
+.total-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.cart-buttons-desktop {
+    display: none;
+}
+
+.cart-buttons .button,
+.cart-buttons .btn-whatsapp {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    border: none;
+}
+
+.cart-buttons .btn-whatsapp {
+    background: #25d366;
+    color: #fff;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 2px;
+}
+
+.cart-buttons button.btn-whatsapp i {
+    font-size: 1.1rem;
+    margin-right: 5px;
+}
+
+@media (min-width: 992px) {
+    .cart-content {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .cart-content > :first-child {
+        padding-left: 20px;
+        padding: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .cart-content form {
+        max-width: 100%;
+    }
+
+    .cart-items {
+        flex: 2;
+        text-align: left;
+    }
+
+    .cart-summary {
+        flex: 1;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+        height: fit-content;
+    }
+
+    .cart-buttons {
+        display: none;
+    }
+
+    .cart-buttons-desktop {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-around;
+        gap: 10px;
+    }
+
+    .cart-buttons-desktop .button {
+        margin: 0;
+        line-height: 30px;
+    }
+
+    .cart-buttons-desktop .btn-whatsapp {
+        background: #25d366;
+        color: #fff;
+        font-weight: bold;
+        padding: 8px;
+        border-radius: 2px;
+        border: none;
+        cursor: pointer;
+    }
+}

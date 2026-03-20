@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\ProductNotificationController;
 use App\Http\Controllers\Api\ContactNewsletterController;
 use App\Http\Controllers\Api\ShippingController;
 use App\Http\Controllers\Api\CommentController;
+use App\Http\Controllers\Api\CartController;
 
 // A - ADMIN
 Route::prefix('admin')->name('admin.')->group(function(){
@@ -28,3 +29,6 @@ Route::post('/newsletters',[ContactNewsletterController::class,'store'])->name("
 Route::post('/shippings/calculate',[ShippingController::class,'calculate'])->name("shippings.calculate");
 Route::post('/comments/rate',[CommentController::class,'rate'])->name("comments.rate");
 Route::post('/comments/store',[CommentController::class,'store'])->name("comments.store");
+Route::get('/carts/show-cart', [CartController::class,'showCart'])->name('carts.show-cart');
+Route::apiResource('/carts',CartController::class);
+

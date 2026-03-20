@@ -1,3 +1,7 @@
+@php
+    $cart = collect(session('cart', []));
+    $totalItemsCart = $cart->sum('quantity');
+@endphp
 <header>
     <div id="info">
         <div class="attendance">
@@ -99,14 +103,11 @@
                     </ul>
                 </div>
 
-                <a href="#" class="item" id="show_hide_mini_cart" title="Minha Sacola">
+                <div class="item" id="btn-mini-cart" title="Minha Sacola">
+                    <span id="total-items-cart">{{  $totalItemsCart }}</span>
                     <i class="fa fa-shopping-bag fa-6 left" aria-hidden="true"></i>
-                </a>
-                <div class="mini-bag">
-                    Minha Sacola <i class="fa fa-sort-asc"></i><br>
-                    <span class="cart_count">0 itens </span>|
-                    <span class="total_cart">R$0,00</span>
                 </div>
+                <div id="div-mini-cart"></div>
             </div>
         </div>
     </div>

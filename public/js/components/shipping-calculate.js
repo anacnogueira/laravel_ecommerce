@@ -48,6 +48,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                 ? `${shipping.PrazoEntrega} dia útil`
                                 : `${shipping.PrazoEntrega} dias úteis`;
 
+                        if (values["page"] === "cart-view") {
+                            newRow.insertCell().innerHTML = `<input type='radio' name='shipping' value='${shipping.valorFrete}' />`;
+                        }
                         newRow.insertCell().textContent = shipping.nome;
                         newRow.insertCell().textContent = `R$ ${valorFrete}`;
                         newRow.insertCell().textContent = deliveryTime;
@@ -69,6 +72,34 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         } catch (error) {
             console.log(error.message);
+        }
+    });
+
+    document.addEventListener("change", async function (event) {
+        const radioShipping = event.target.closest("input[name='shipping']");
+
+        if (radioShipping) {
+            event.preventDefault();
+            const selectedShipping = radioShipping.value;
+            const divShippingAmount =
+                document.querySelector("#shipping-amount");
+            const divTotalAmount = document.querySelector("#total-amount");
+
+            divShippingAmount.textContent = `R$ ${parseFloat(
+                selectedShipping,
+            ).toLocaleString("pt-BR", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+            })}`;
+            const currentTotal = parseFloat(divTotalAmount.dataset.total);
+            const newTotal = currentTotal + parseFloat(selectedShipping);
+            divTotalAmount.textContent = `R$ ${newTotal.toLocaleString(
+                "pt-BR",
+                {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                },
+            )}`;
         }
     });
 });
