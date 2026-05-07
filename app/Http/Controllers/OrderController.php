@@ -2,21 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreOrderRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Services\OrderService;
 use App\Services\ShippingService;
-use App\Http\Resources\OrderResource;
-
+use App\Services\CartService;
+use App\Services\PaymentMethodService;
+use App\Services\ContactAddressService;
 class OrderController extends Controller
 {
     protected $orderService;
     protected $shippingService;
+    protected $cartService;
+    protected $contactAddressService;
+    protected $paymentMethodService;
 
-    public function __construct(OrderService $orderService, ShippingService $shippingService)
+    public function __construct(
+        OrderService $orderService,
+        ShippingService $shippingService,
+        CartService $cartService,
+        ContactAddressService $contactAddressService,
+        PaymentMethodService $paymentMethodService
+    )
     {
         $this->orderService = $orderService;
         $this->shippingService = $shippingService;
+        $this->cartService = $cartService;
+        $this->contactAddressService = $contactAddressService;
+        $this->paymentMethodService = $paymentMethodService;
     }
 
     /**
@@ -94,8 +108,6 @@ class OrderController extends Controller
         return view('orders.index', compact('orders','title', 'type', 'direction'));
     }
 
-
-
     /**
      * Display the specified resource.
      */
@@ -108,6 +120,64 @@ class OrderController extends Controller
         $order->shipping = $this->shippingService->getServiceDescription($order->type_shipping);
 
         return view('orders.show', compact('title','order'));
+    }
+
+    /**
+     * Display checkout.
+     */
+    public function checkout()
+    {
+        $title = "Fechar pedido";
+        $carts = $this->cartService->getProductsFromCart();
+        $quantity = 0;
+        $subtotal = 0.00;
+        $weight = 0;
+        $height = 0;
+        $width = 0;
+        $contactId = Auth::id();
+        $address = $this->contactAddressService->getDefaultContactAddressesByContactId($contactId);
+        $shippings = [];
+
+
+        if ($carts > 0) {
+            $collection = collect($carts);
+            $quantity = $collection->sum("quantity");
+            $subtotal = $collection->sum(function ($item) {
+                return $item['quantity'] * $item['price'];
+            });
+            $weight = $collection->sum(function ($item) {
+                return $item['quantity'] * $item['weight'];
+            });
+            $length = $collection->max("length");
+            $height = $collection->max("height");
+            $width = $collection->max("width");
+
+            if ($address) {
+                $shippings = $this->shippingService->calculateShipping([
+                    'cep' => $address["cep"],
+                    'cart_value' => $subtotal,
+                    'quantity' => $quantity,
+                    'weight' => $weight,
+                    'length' => $length,
+                    'height' => $height,
+                    'width' => $width,
+                    'sku' =>  $collection->first()['code'],
+                ]);
+            }
+        }
+
+        $paymentMethods = $this->paymentMethodService->getAllActivePaymentMethods();
+
+        return view('orders.checkout', compact('title', 'carts','quantity','weight', 'subtotal','address','shippings','paymentMethods'));
+    }
+
+    public function store(StoreOrderRequest $request)
+    {
+        $data = $request->all();
+
+        $order = $this->orderService->makeOrder($data);
+
+        return redirect()->route('orders.show', $order->id);
     }
 
     private function defineTitleFilter($filter)

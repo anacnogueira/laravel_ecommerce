@@ -26,11 +26,13 @@ class ShippingController extends Controller
     {
         $data = $request->all();
         session(['cep' => $data['cep']]);
+        $page = $data['page'];
 
-        $result = $this->shippingService->calculateShippingByFrenet($data);
+        $shippings = $this->shippingService->calculateShipping($data);
 
         $this->cepSearchService->makeReportCepSearch($data['cep']);
 
-        return response()->json($result);
+        $renderHTML =  view("shippings.show", compact('shippings','page'))->render();
+        return response()->json(['renderHTML'=>$renderHTML]);
     }
 }

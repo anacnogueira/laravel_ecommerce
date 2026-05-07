@@ -38,6 +38,10 @@ class ContactAddressController extends Controller
         $queryParams = [];
         $title = "Meus Endereços";
 
+        if ($request->query('redirect')) {
+            session()->put('redirect', $request->query('redirect'));
+        }
+
         $sort = $request->query('sort');
         $direction = $request->query('direction') ?? 'asc';
 
@@ -70,6 +74,9 @@ class ContactAddressController extends Controller
         $countries = $this->countryService ->getCountriesToSelect();
         $states = $this->stateService ->getStatesToSelect();
         $cities = $this->cityService ->getCitiesToSelect();
+        if (request()->query('redirect')) {
+            session()->put('redirect', request()->query('redirect'));
+        }
 
         return view('addresses.create', compact('title', 'address', 'countries','states', 'cities'));
     }
@@ -82,9 +89,11 @@ class ContactAddressController extends Controller
         $data = $request->all();
         $data["contact_id"] = Auth::id();
 
-        $address = $this->contactAddressService->makeContactAddress($data);
+        $this->contactAddressService->makeContactAddress($data);
 
-        return redirect()->route('customers.addresses.index')->with('success', 'Endereço cadastrado com sucesso!');
+        $route = $this->getRedirectRoute();
+
+        return redirect()->route($route)->with('success', 'Endereço cadastrado com sucesso!');
     }
 
     /**
@@ -110,10 +119,11 @@ class ContactAddressController extends Controller
     {
         $data = $request->all();
         $data["contact_id"] = Auth::id();
+        $route = $this->getRedirectRoute();
 
-        $address = $this->contactAddressService->updateContactAddress($id, $data);
+        $$this->contactAddressService->updateContactAddress($id, $data);
 
-        return redirect()->route('customers.addresses.index')->with('success', 'Endereço alterado com sucesso!');
+        return redirect()->route($route)->with('success', 'Endereço alterado com sucesso!');
     }
 
     /**
@@ -123,13 +133,27 @@ class ContactAddressController extends Controller
     {
         $contactId = Auth::id();
         $address = $this->contactAddressService->getContactAddressByIdAndContactId($id, $contactId);
+        $route = $this->getRedirectRoute();
 
         if ($address) {
-            $this->contactAddressService->destroyContactAddress($id);
-            return redirect()->route('customers.addresses.index')->with('success', 'Endereço excluído com sucesso!');
+           $this->contactAddressService->destroyContactAddress($id);
+           return redirect()->route($route)->with('success', 'Endereço excluído com sucesso!');
         }
 
-        return redirect()->route('customers.addresses.index')->with('error', 'Não é possível excluir esse endereço');
+        return redirect()->route($route)->with('error', 'Não é possível excluir esse endereço');
+    }
 
+    private function getRedirectRoute()
+    {
+        $route = null;
+
+        if (session()->get('redirect') ==   'checkout') {
+            $route = 'orders.checkout';
+            session()->forget('redirect');
+        } else {
+            $route = 'customers.addresses.index';
+        }
+
+        return $route;
     }
 }
