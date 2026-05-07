@@ -25,6 +25,15 @@ class PaymentMethodService
         return $this->paymentMethodRepository->getAllPaymentMethods();
     }
 
+    /**
+     * Select all active payment Methods
+     * @return array
+    */
+    public function getAllActivePaymentMethods()
+    {
+        return $this->paymentMethodRepository->getAllActivePaymentMethods();
+    }
+
      /**
      * Create a new payment Method
      * @param array $data

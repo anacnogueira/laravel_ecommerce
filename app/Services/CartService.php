@@ -41,9 +41,7 @@ class CartService
        $cartProducts = collect(session('cart'));
        $cartTotal = 0;
 
-       foreach ($cartProducts as $key  => $product) {
 
-       }
     }
 
     public function getProductsFromCart()
@@ -52,8 +50,12 @@ class CartService
         if ($carts) {
             foreach ($carts as $key => $cart) {
                 $product = $this->productService->getProductById($key);
+                $carts[$key]['code'] = $product->code;
                 $carts[$key]['brand_name'] = $product->brand->name;
                 $carts[$key]['weight'] = $product->gross_weight;
+                $carts[$key]['length'] = $product->length;
+                $carts[$key]['height'] = $product->height;
+                $carts[$key]['width'] = $product->width;
                 $carts[$key]['stock'] = $product->current_stock;
             }
 

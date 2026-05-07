@@ -8,6 +8,12 @@ class OrderStatusService
 {
     protected $orderStatusRepository;
 
+    protected $pendingPayment = 1;
+    protected $canceled = 4;
+    protected $paid = 5;
+    protected $refunded = 6;
+    protected $expired = 11;
+
     public function __construct(OrderStatusRepositoryInterface $orderStatusRepository)
     {
         $this->orderStatusRepository = $orderStatusRepository;
@@ -90,5 +96,44 @@ class OrderStatusService
         return $this->getAllOrderStatuses()
             ->sortBy('name')
             ->prepend($select);
+    }
+
+    public function setOrderStatusId(string $status)
+    {
+        $orderLog = [];
+        switch($status) {
+            case 'new':
+            case 'waiting':
+            case 'approved':
+                $orderLog['order_status_id'] = $this->pendingPayment;
+                break;
+            case 'paid':
+            case 'settled':
+                $orderLog['title'] = "Pagamento Realizado com Sucesso";
+                $orderLog['msg'] = "Seu pedido será preparado e logo sairá para entrega";
+                $orderLog['order_status_id'] = $this->paid;
+                break;
+            case 'canceled':
+            case 'unpaid':
+                $orderLog['title'] = "Pagamento não realizado";
+                $orderLog['msg'] = "Seu pedido foi cancelado";
+                $orderLog['order_status_id'] = $this->canceled;
+                break;
+            case 'refunded':
+                $orderLog['title'] = "Pagamento devolvido";
+                $orderLog['msg'] = "O pagamento do seu pedido foi devolvido";
+                $orderLog['order_status_id'] = $this->refunded;
+                break;
+            case 'expired':
+                $orderLog['title'] = "Tempo para pagamento expirado";
+                $orderLog['msg'] = "Seu pedido foi cancelado por falta de pagamaneto";
+                $orderLog['order_status_id'] = $this->expired;
+                break;
+            default:
+                throw new \Exception('Status desconhecido');
+        }
+
+        return $orderLog;
+
     }
 }

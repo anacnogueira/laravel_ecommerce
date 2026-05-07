@@ -23,6 +23,15 @@ class ContactAddressService
     }
 
     /**
+     * Select Last Contact Address By Contact Id
+     * @return array
+    */
+    public function getDefaultContactAddressesByContactId($contactId)
+    {
+        return $this->contactAddressRepository->getDefaultContactAddressesByContactId($contactId);
+    }
+
+    /**
      * Create a new Contact Address
      * @param array $data
      * @return object
