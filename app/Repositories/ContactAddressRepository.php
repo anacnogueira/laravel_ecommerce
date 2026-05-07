@@ -45,6 +45,24 @@ class ContactAddressRepository implements ContactAddressRepositoryInterface
     }
 
     /**
+     * Get Last Contact Addresses By ContactId
+     * @return array
+     */
+    public function getDefaultContactAddressesByContactId($contactId)
+    {
+        if (session()->get('contact_address_id')) {
+            $id = session()->get('contact_address_id');
+            session()->forget('contact_address_id');
+            return $this->entity
+                ->where('contact_id', $contactId)
+                ->where('id', $id)
+                ->first();
+        }
+
+        return $this->entity->where('contact_id', $contactId)->latest()->first();
+    }
+
+    /**
      * Select Contact Address by ID
      * @param int $id
      * @return object

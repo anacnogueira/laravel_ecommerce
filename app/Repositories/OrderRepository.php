@@ -93,6 +93,21 @@ class OrderRepository implements OrderRepositoryInterface
         return $this->entity->sum('value');
     }
 
+    /**
+     * Create a new Order
+     * @param array $data
+     * @return object
+     */
+    public function createOrder(array $data)
+    {
+        return $this->entity->create($data);
+    }
+
+    public function createOrderItem(array $data)
+    {
+        return $this->entity->orderItems()->create($data);
+    }
+
      /**
      * Update data of order
      * @param object $order

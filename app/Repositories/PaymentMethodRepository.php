@@ -24,6 +24,15 @@ class PaymentMethodRepository implements PaymentMethodRepositoryInterface
     }
 
     /**
+     * Get all Payment Methods
+     * @return array
+     */
+    public function getAllActivePaymentMethods()
+    {
+        return $this->entity->where('status', 1)->get();
+    }
+
+    /**
      * Select Payment Method by ID
      * @param int $id
      * @return object
