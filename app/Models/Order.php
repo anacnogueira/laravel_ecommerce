@@ -67,6 +67,11 @@ class Order extends Model
         return $this->hasOne(OrderPix::class, 'order_id');
     }
 
+     public function transaction()
+    {
+        return $this->hasOne(Transaction::class, 'order_id');
+    }
+
     /**
      * Get the created date
      *
