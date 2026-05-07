@@ -47,6 +47,7 @@
 .frm-cart-delete {
     display: none;
 }
+
 .subtotal-info,
 .shipping-info,
 .discount-info,
@@ -67,7 +68,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
+    gap: 5px;
     text-decoration: none;
     box-sizing: border-box;
     border: none;
@@ -130,6 +132,10 @@
     .cart-buttons-desktop .button {
         margin: 0;
         line-height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
     }
 
     .cart-buttons-desktop .btn-whatsapp {

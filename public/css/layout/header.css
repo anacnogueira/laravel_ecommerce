@@ -198,17 +198,17 @@ header #header-2 .bag #div-mini-cart hr {
     margin-bottom: 10px;
 }
 
-.cart-item {
+header .cart-item {
     display: flex;
     justify-content: space-between;
-    align-items: baselines;
+    align-items: baseline;
 }
 
-.cart-item img {
+header .cart-item img {
     width: 80px;
 }
 
-.cart-item .cart-item-buttons i {
+header .cart-item .cart-item-buttons i {
     font-size: 1rem !important;
 }
 

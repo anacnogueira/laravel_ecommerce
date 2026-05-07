@@ -502,6 +502,7 @@ nav#menu-dropdown {
         background: var(--background);
         content: "";
     }
+
     .button.menu-opened:after {
         -webkit-transition: all 0.3s ease;
         -ms-transition: all 0.3s ease;

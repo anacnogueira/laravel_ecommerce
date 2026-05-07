@@ -1,12 +1,33 @@
 @import url("../components/breadcrumb.css");
 
-.order {
-    display: flex;
-    flex-direction: column;
+#order-id {
+    display: none;
 }
 
-.order > div {
-    margin: 0.5rem 0;
+.details-delivery,
+.pix-info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    gap: 5px;
+}
+
+.pix-info img {
+    margin-left: -12px;
+    width: 200px;
+    height: 200px;
+}
+
+.pix-info textarea {
+    width: 100%;
+    min-height: 150px;
+    border: none;
+}
+
+.pix-info .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 .order-item-container {
@@ -56,19 +77,15 @@
 }
 
 @media (min-width: 992px) {
-    .order {
+    .details-delivery,
+    .pix-info {
+        display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
-        width: 100%;
+        margin-bottom: 10px;
     }
 
-    .order > div {
-        flex: 0 0 50%;
-        box-sizing: border-box;
-        padding: 10px;
-    }
-
-    .totals {
-        text-align: left;
+    .details-delivery > div,
+    .pix-info > div {
+        width: 50%;
     }
 }

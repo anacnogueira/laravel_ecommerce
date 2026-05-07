@@ -1,0 +1,232 @@
+@import url("../components/breadcrumb.css");
+
+.container {
+    text-align: center;
+}
+
+.cart-items {
+    margin-top: 10px;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.cart-item {
+    display: flex;
+    text-align: left;
+    gap: 15px;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+.cart-item > :first-child {
+    width: 80px;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.subtotal-info,
+.shipping-info,
+.discount-info,
+.total-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Endereços */
+.address-item {
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+}
+
+.address-item > :first-child {
+    width: 30px;
+}
+
+.address .button {
+    width: 100%;
+}
+
+#shipping-info {
+    padding-top: 5px;
+    text-align: left;
+}
+
+#shipping-error {
+    display: none;
+}
+
+/* Pagamento */
+.credit-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.payment-radio {
+    display: none;
+}
+
+.tabs-nav {
+    display: flex;
+    justify-content: space-beetween;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.tab-label {
+    padding: 15px;
+    flex: 1;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#tab-pix:checked ~ .tabs-nav label[for="tab-pix"],
+#tab-creditCard:checked ~ .tabs-nav label[for="tab-creditCard"],
+#tab-boleto:checked ~ .tabs-nav label[for="tab-boleto"] {
+    border-color: var(--primary-color);
+    background-color: #efdde2;
+    color: var(--primary-color);
+}
+
+.tab-pane {
+    display: none;
+}
+
+#tab-pix:checked ~ .tabs-content #content-pix,
+#tab-creditCard:checked ~ .tabs-content #content-creditCard,
+#tab-boleto:checked ~ .tabs-content #content-boleto {
+    display: block;
+}
+
+.payment-radio:focus-visible + .tabs-nav .tab-label {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.credit-card-info,
+.boleto-info,
+.pix-info {
+    text-align: left;
+}
+
+/* CARTÃO DE CRÉDITO */
+.credit-card-info h4 {
+    margin: 10px 0;
+}
+
+.credit-card-info .flags {
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.credit-card-data {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.credit-card-data .card-number-cvv {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.credit-card-data .card-number-cvv > * {
+    width: 50%;
+}
+
+.credit-card-mask {
+    width: 175px;
+}
+
+.credit-card-data #cardCvv {
+    width: 80px;
+}
+
+.card-expiration-installments,
+.cardExpiration {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-expiration-installments > * {
+    width: 50%;
+}
+
+.cardExpiration .month,
+.cardExpiration .year {
+    width: 100%;
+}
+
+#holderDataChoice {
+    display: flex;
+}
+
+#holderDataChoice > * {
+    width: 50%;
+}
+
+#holderDataChoice label {
+    margin-top: 0;
+}
+
+.phone-birth-date {
+    display: flex;
+    gap: 10px;
+}
+
+.form-group-phone {
+    display: flex;
+    gap: 10px;
+}
+
+.ddd-mask {
+    width: 50px;
+}
+
+.phone-without-ddd-mask {
+    width: 120px;
+}
+
+/* BOLETO */
+/* PIX */
+.pix-info h5 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 992px) {
+    form {
+        max-width: 100%;
+    }
+
+    .credit-card-data {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .credit-card-data > * {
+        width: 45%;
+    }
+}
