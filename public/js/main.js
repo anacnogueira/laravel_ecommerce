@@ -5,7 +5,7 @@ import { storeNewsletter } from "./utils/storeNewsletter.js";
 const modal = new Modal(
     "#modal-attendance",
     "#open-modal-attendance",
-    "#modal-close"
+    "#modal-close",
 );
 modal.init();
 
