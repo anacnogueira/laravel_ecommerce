@@ -10,6 +10,9 @@ use App\Http\Controllers\Api\ContactNewsletterController;
 use App\Http\Controllers\Api\ShippingController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\CartController;
+use App\Http\Controllers\Api\ContactAddressController;
+use App\Http\Controllers\Api\BuyerInformationController;
+use App\Http\Controllers\Api\PixController;
 
 // A - ADMIN
 Route::prefix('admin')->name('admin.')->group(function(){
@@ -30,5 +33,10 @@ Route::post('/shippings/calculate',[ShippingController::class,'calculate'])->nam
 Route::post('/comments/rate',[CommentController::class,'rate'])->name("comments.rate");
 Route::post('/comments/store',[CommentController::class,'store'])->name("comments.store");
 Route::get('/carts/show-cart', [CartController::class,'showCart'])->name('carts.show-cart');
+Route::get('/addresses/set-order-default/{addressId}', [ContactAddressController::class,'setOrderDefaultAddress'])->name('addresses.set-order-default');
+
 Route::apiResource('/carts',CartController::class);
+
+Route::get('customers/get-buyer-information', BuyerInformationController::class)->name('customers.get-buyer-information');
+Route::get('pix/confirm-payment/{order}', [PixController::class,'confirmPayment'])->name('pix.confirm-payment');
 
