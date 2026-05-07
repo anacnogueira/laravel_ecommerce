@@ -50,6 +50,9 @@
                 <div class="address-container">
                     @foreach ($addresses as $address)
                         <div class="address-item">
+                            @if (session('redirect'))
+                                <input type="radio" name="address_id" value="{{ $address->id }}" />
+                            @endif
                             <div class="address-details">
                                 <h2>{{ $address->title }}</h2>
                                 {{ $address->contact }}<br>
@@ -101,5 +104,6 @@
     <script type="text/javascript" src="{{ asset('js/utils/mask-field.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="{{ asset('js/admin/utils/deleteConfirm.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/utils/get-address-by-id.js') }}"></script>
 @endpush
 

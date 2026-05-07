@@ -1,7 +1,7 @@
 @php
     $cart = collect(session('cart', []));
     $totalItemsCart = $cart->sum('quantity');
-    $page = "cart-view";
+    $page = 'cart-view';
 @endphp
 
 <div class="shipping">
@@ -13,42 +13,20 @@
         <input type="hidden" name="sku" value="" />
         <input type="hidden" name="page" value="{{ $page }}" />
         <input type="hidden" name="weight" value="{{ !empty($weight) ? $weight : 1 }}" />
-        <input type="hidden" name="length" value="{{ (!empty($length) ? $length: env('SHIPPING_LENGTH')) }}" />
-        <input type="hidden" name="height" value="{{ (!empty($height) ? $height : env('SHIPPING_HEIGHT')) }}"  />
-        <input type="hidden" name="width" value="{{ (!empty($width) ? $width :  env('SHIPPING_WIDTH')) }}" />
+        <input type="hidden" name="length" value="{{ !empty($length) ? $length : env('SHIPPING_LENGTH') }}" />
+        <input type="hidden" name="height" value="{{ !empty($height) ? $height : env('SHIPPING_HEIGHT') }}" />
+        <input type="hidden" name="width" value="{{ !empty($width) ? $width : env('SHIPPING_WIDTH') }}" />
         <div class="frm-components">
             <div class="form-group">
-            <input type="text"
-                required
-                placeholder="Informe o CEP"
-                name="cep"
-                value="{{ session('cep') }}"
-                class="cep-mask"
-            />
-        </div>
-        <div class="submit">
-            <button type="submit" class="button">Calcular</button>
-        </div>
+                <input type="text" required placeholder="Informe o CEP" name="cep" value="{{ session('cep') }}"
+                    class="cep-mask" />
+            </div>
+            <div class="submit">
+                <button type="submit" class="button">Calcular</button>
+            </div>
         </div>
 
     </form>
-    <div id="shipping-info">
-        <p><strong>Opções de Entrega</strong></p>
-        <table id="tbl-shipping-info">
-            <thead>
-                <tr>
-                    @if ($page == 'cart-view')
-			            <th></th>
-		            @endif
-                    <th>Entrega</th>
-		            <th>Frete</th>
-		        	<th>Prazo</th>
-                </tr>
-            </thead>
-            <tbody>
 
-            </tbody>
-        </table>
-        <div id="shipping-error" class="panel alert"></div>
-    </div>
+    <div id="shipping-options"></div>
 </div>
