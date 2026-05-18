@@ -116,7 +116,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
         //6 Newsletter
         Route::resource('newsletters', AdminContactNewsletterController::class);
-        Route::get('newsletters/export', [AdminContactNewsletterController::class, 'export'])->name("newsletters.export");
+        //Route::get('newsletters/export', [AdminContactNewsletterController::class, 'export'])->name("newsletters.export");
 
         //7. Conteúdo
         //7.1 Páginas

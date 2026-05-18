@@ -78,7 +78,7 @@
 @media (min-width: 600px) {
     .products {
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
     }
     .product-item {
         flex-basis: calc(50% - 11.25px);

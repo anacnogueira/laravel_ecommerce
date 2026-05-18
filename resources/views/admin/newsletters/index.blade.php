@@ -21,22 +21,29 @@
             ['label' => 'Ações', 'no-export' => true, 'width' => 5],
         ];
 
-        foreach($newsletters  as $key => $newsletter) {
-
+        foreach ($newsletters as $key => $newsletter) {
             $data[$key] = [
                 $newsletter->id,
                 $newsletter->email,
                 $newsletter->contact ? $newsletter->contact->id . ' - ' . $newsletter->contact->name : '',
-                '<nobr><a href="'. route('admin.newsletters.edit', $newsletter->id).'" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar">
+                '<nobr><a href="' .
+                route('admin.newsletters.edit', $newsletter->id) .
+                '" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar">
                 <i class="fa fa-lg fa-fw fa-pen"></i></a>
-                <form action="'.route('admin.newsletters.destroy', $newsletter->id) .'" method="POST" class="frm-delete" style="display: inline">
-                    <input type="hidden" name="_token" value="'.csrf_token().'">
+                <form action="' .
+                route('admin.newsletters.destroy', $newsletter->id) .
+                '" method="POST" class="frm-delete" style="display: inline">
+                    <input type="hidden" name="_token" value="' .
+                csrf_token() .
+                '">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Excluir">
                         <i class="fa fa-lg fa-fw fa-trash"></i>
                     </button>
                 </form>
-                <a href="'.route('admin.newsletters.show', $newsletter->id) .'" class="btn btn-xs btn-default text-teal mx-1 shadow" title="Detalhes">
+                <a href="' .
+                route('admin.newsletters.show', $newsletter->id) .
+                '" class="btn btn-xs btn-default text-teal mx-1 shadow" title="Detalhes">
                     <i class="fa fa-lg fa-fw fa-eye"></i>
                 </a>
                 </nobr>',
@@ -47,7 +54,6 @@
             'data' => $data,
             'order' => [[1, 'asc']],
             'columns' => [null, null, null, ['orderable' => false]],
-
         ];
     @endphp
     <div class="row">
@@ -57,15 +63,16 @@
                     <a href="{{ route('admin.newsletters.create') }}" class="btn btn-sm btn-primary">
                         <i class="fa fa-lg fa-fw fa-file"></i> Adicionar
                     </a>
-                    <a href="{{ route('admin.newsletters.export') }}" class="btn btn-sm btn-success">
+                    <a href="#" class="btn btn-sm btn-success">
                         <i class="fa fa-lg fa-fw fa-download"></i> Exportar Dados
                     </a>
                 </div>
                 <div class="card-body">
-                    <x-adminlte-datatable id="table-newsletter" :heads="$heads" head-theme="light" hoverable bordered with-buttons>
-                        @foreach($config['data'] as $row)
+                    <x-adminlte-datatable id="table-newsletter" :heads="$heads" head-theme="light" hoverable bordered
+                        with-buttons>
+                        @foreach ($config['data'] as $row)
                             <tr>
-                                @foreach($row as $cell)
+                                @foreach ($row as $cell)
                                     <td>{!! $cell !!}</td>
                                 @endforeach
                             </tr>
@@ -80,8 +87,8 @@
 
 
 @push('js')
-    <script  type="text/javascript" src="{{ asset('js/admin/utils/deleteConfirm.js') }}"></script>
-    <script  type="text/javascript" src="{{ asset('js/admin/utils/translateDatatable.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/admin/utils/deleteConfirm.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/admin/utils/translateDatatable.js') }}"></script>
     <script type="text/javascript" defer>
         translate("#table-newsletter");
     </script>
