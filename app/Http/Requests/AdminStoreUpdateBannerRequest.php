@@ -26,17 +26,14 @@ class AdminStoreUpdateBannerRequest extends FormRequest
 
         return [
             'name' => ['required'],
-            'upload' => ['file', 'image', 'mimes: jpeg,png,jpg,gif', 'max:20248'],
+            'upload' => ['file', 'image', 'mimes: jpeg,png,jpg,gif', 'max:2000'],
         ];
     }
 
     public function messages()
     {
         return [
-            'required' => 'O campo é obrigatório',
-            'image' => 'O arquivo deve ser uma imagem.',
-            'mimes' => 'Os tipos de imagens suporttados são: jpeg, png, jpg, e gif.',
-            'max' => 'O tamamanho do arquivo não deve exceder 2MB.',
+            'max' => 'O tamanho do arquivo não deve exceder 2MB.',
         ];
     }
 

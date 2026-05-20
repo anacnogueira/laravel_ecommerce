@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\BannerLog;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Carbon\Carbon;
 
 class Banner extends Model
@@ -27,74 +29,41 @@ class Banner extends Model
         return $this->hasMany(BannerLog::class);
     }
 
-    /**
-     * Set the scheduled date
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setScheduledDateAttribute($value)
+    protected function scheduledDate(): Attribute
     {
-        $this->attributes['scheduled_date'] = $value ?
-        Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d') :
-        null;
+        return Attribute::make(
+            get: fn (?string $value) => $value ? Carbon::parse($value)->format('d/m/Y') : null,
+            set: fn (?string $value) => $value ? Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d') : null,
+        );
     }
 
-    /**
-     * Set the expire date
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setExpireDateAttribute($value)
+    protected function expireDate(): Attribute
     {
-        $this->attributes['expire_date'] = $value ?
-        Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d') :
-        null;
+        return Attribute::make(
+            get: fn (?string $value) => $value ? Carbon::parse($value)->format('d/m/Y') : null,
+            set: fn (?string $value) => $value ? Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d') : null,
+        );
     }
 
-    /**
-     * Get the scheduled date
-     *
-     * @param  string  scheduled date
-     * @return string
-     */
-    public function getScheduledDateAttribute($value)
-    {
-        return $value ? Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y') : null;
-    }
-
-    /**
-     * Get the expire date
-     *
-     * @param  string  expire date
-     * @return string
-     */
-    public function getExpireDateAttribute($value)
-    {
-        return $value ? Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y') : null;
-    }
-
-    /**
+     /**
      * Get the created date
      *
      * @param  string  expire date
      * @return string
      */
-    public function getCreatedAttribute($value)
+    protected function createdFormatted(): Attribute
     {
-        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i') : null;
+        return Attribute::make(
+            get: fn ($value, array $attributes) =>
+                isset($attributes['created']) ? \Carbon\Carbon::parse($attributes['created'])->format('d/m/Y H:i') : null,
+        );
     }
 
-    /**
-     * Get the modified date
-     *
-     * @param  string  expire date
-     * @return string
-     */
-    public function getModifiedAttribute($value)
+    protected function modified(): Attribute
     {
-         return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i') : null;
+        return Attribute::make(
+            get: fn (?string $value) => $value ? Carbon::parse($value)->format('d/m/Y H:i') : null
+        );
     }
 
     public static function show()
@@ -103,6 +72,7 @@ class Banner extends Model
             ->where('status','S')
             ->where(function($query){
                 $today = date('Y-m-d');
+
                 $query->orWhere(function($query){
                     $query->where('scheduled_date', null)
                           ->where('expire_date', null);
@@ -118,7 +88,7 @@ class Banner extends Model
                 })
                 ->orWhere(function($query) use ($today){
                     $query->where('scheduled_date', "<=", $today)
-                          ->where('expire_date', "=>", $today);
+                          ->where('expire_date', ">=", $today);
                 });
             })
             ->limit(4)

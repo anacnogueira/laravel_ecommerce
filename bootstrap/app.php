@@ -21,6 +21,9 @@ return Application::configure(basePath: dirname(__DIR__))
 
             return route('login');
         });
+        $middleware->validateCsrfTokens(except: [
+            'api/admin/status-change',
+        ]);
         $middleware->trustProxies(
             at: '*',
             headers: Request::HEADER_X_FORWARDED_FOR |

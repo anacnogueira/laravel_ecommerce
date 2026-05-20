@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
         item.addEventListener("click", async (event) => {
             let inputCheckbox =
                 event.target.parentNode.parentNode.querySelector(
-                    "input[type=checkbox]"
+                    "input[type=checkbox]",
                 );
             let table = inputCheckbox.dataset.table;
 
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (table == "payment_gateways") {
                 status = inputCheckbox.checked == true ? 0 : 1;
             } else {
-                status = inputCheckbox.checked == true ? "S" : "N";
+                status = inputCheckbox.checked == true ? "N" : "S";
             }
 
             formData = {
