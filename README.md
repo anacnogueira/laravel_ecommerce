@@ -6,28 +6,31 @@ Veja a loja em funcionamento:
 
 ## 🚀 Funcionalidades
 
--   Cadastro e login de clientes
--   Catálogo de produtos com busca e filtro por categoria
--   Carrinho de compras e finalização de pedido
--   Pagamento via API para Cartão De Crédito, Boleto e Pix(EFí)
--   Dashboard administrativo para gerenciamento de:
-    -   Produtos e categorias
-    -   Pedidos e status de entrega
-    -   Clientes
--   Controle de estoque
--   Imagens dos produtos
--   Cupons de desconto
--   Paǵinas Estáticas
+- Cadastro e login de clientes
+- Catálogo de produtos com busca e filtro por categoria
+- Carrinho de compras e finalização de pedido
+- Pagamento via API para Cartão De Crédito, Boleto e Pix(EFí)
+- Dashboard administrativo para gerenciamento de:
+    - Produtos e categorias
+    - Pedidos e status de entrega
+    - Clientes
+- Controle de estoque
+- Imagens dos produtos
+- Cupons de desconto
+- Estilização de páginas da loja
+- Sistema de avaliação dos produtos
+- Notificações por email
+- Versão mobile-first responsiva
 
 ## 🧰 Tecnologias utilizadas
 
--   **PHP 8.5+**
--   **Laravel 12**
--   **MySQL**
--   **CSS**
--   **Javascript**
--   **Composer**
--   **Blade Templates**
+- **PHP 8.5+**
+- **Laravel 12**
+- **MySQL**
+- **CSS**
+- **Javascript**
+- **Composer**
+- **Blade Templates**
 
 ## ⚙️ Instalação
 
@@ -68,21 +71,13 @@ Veja a loja em funcionamento:
 
 🗂️ Estrutura do projeto
 
--   app/Models: Modelos Eloquent
--   app/Repositories: Repositorios
--   app/Http/Controllers: Lógica dos controladores
--   app/Services: Lógica dos serviços
--   resources/views: Arquivos Blade (frontend)
--   routes/web.php: Rotas web da aplicação
--   routes/api.php: Rotas API da aplicação
-
-📦 Futuras melhorias
-
--   Estilização de páginas da loja
--   Sistema de avaliação dos produtos
--   Notificações por email
--   Integração com redes sociais
--   Versão mobile-first responsiva
+- app/Models: Modelos Eloquent
+- app/Repositories: Repositorios
+- app/Http/Controllers: Lógica dos controladores
+- app/Services: Lógica dos serviços
+- resources/views: Arquivos Blade (frontend)
+- routes/web.php: Rotas web da aplicação
+- routes/api.php: Rotas API da aplicação
 
 📄 Licença
 
