@@ -26,20 +26,13 @@ class ImageProcessorService
                 return null;
             }
 
-            // 1. Carrega o arquivo (Retorna ImageInterface)
             $image = Image::read($file);
 
-            // 2. Aplica as transformações (Retorna ImageInterface)
             $image = $this->applyTransformations($image, $rules);
 
-            // --- AQUI ESTÁ A CORREÇÃO ---
-            // Capturamos largura e altura do objeto $image (ImageInterface)
-            // ANTES dele ser convertido para o formato binário final.
             $this->width = $image->width();
             $this->height = $image->height();
-            // ----------------------------
 
-            // 3. Codifica para o formato de saída (Retorna EncodedImageInterface)
             $format = $rules['output'] ?? $extension;
             $quality = $rules['quality'] ?? 90;
 

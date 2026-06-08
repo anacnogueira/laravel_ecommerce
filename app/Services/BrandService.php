@@ -9,7 +9,6 @@ use App\Services\DeleteFileService;
 
 class BrandService
 {
-
     protected $brandRepository;
 
     public function __construct(BrandRepositoryInterface $brandRepository)

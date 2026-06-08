@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Carbon\Carbon;
 
 class Brand extends Model
@@ -21,26 +22,19 @@ class Brand extends Model
         'permalink',
     ];
 
-    /**
-     * Get the created date
-     *
-     * @param  string  expire date
-     * @return string
-     */
-    public function getCreatedAttribute($value)
+    protected function createdFormatted(): Attribute
     {
-        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i') : null;
+        return Attribute::make(
+            get: fn ($value, array $attributes) =>
+                isset($attributes['created']) ? \Carbon\Carbon::parse($attributes['created'])->format('d/m/Y H:i') : null,
+        );
     }
 
-    /**
-     * Get the modified date
-     *
-     * @param  string  expire date
-     * @return string
-     */
-    public function getModifiedAttribute($value)
+    protected function modified(): Attribute
     {
-         return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i') : null;
+        return Attribute::make(
+            get: fn (?string $value) => $value ? Carbon::parse($value)->format('d/m/Y H:i') : null
+        );
     }
 
     public static function menu()
@@ -55,7 +49,6 @@ class Brand extends Model
     {
         return static::select('*')
             ->where('status','S')
-            ->orderBy('name')
-           ;
+            ->orderBy('name');
     }
 }
