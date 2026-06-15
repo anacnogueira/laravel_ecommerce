@@ -80,7 +80,7 @@ class BannerService
 
         $data["status"] = isset($data["status"]) ? 'S' : 'N';
 
-        if ( $data["upload"]) {
+        if (isset($data["upload"])) {
             $oldFile = $banner->image;
             $filename = Str::slug($data["name"])."-".date('dmYHis');
             $pathFile = $this->storeImage($data["upload"], $filename, $oldFile);
