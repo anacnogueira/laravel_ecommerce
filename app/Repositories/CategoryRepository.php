@@ -9,9 +9,9 @@ class CategoryRepository implements CategoryRepositoryInterface
 {
     protected $entity;
 
-    public function __construct(Category $Category)
+    public function __construct(Category $category)
     {
-        $this->entity = $Category;
+        $this->entity = $category;
     }
 
     /**
