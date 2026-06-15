@@ -82,7 +82,7 @@ class ContactNewsletterService
         $newEmail = $data["email"];
         $customerName = '';
 
-        if ($data["contact_id"]) {
+        if (isset($data["contact_id"])) {
             $customer = $this->customerService->getCustomerById($data["contact_id"]);
             $customerName = $customer->name;
         }

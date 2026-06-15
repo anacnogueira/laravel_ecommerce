@@ -44,7 +44,7 @@ class SupplierService
         //1. Cadastrar Dados Gerais e de Contato
         $supplier = $this->supplierRepository->createSupplier($data);
 
-        if ($data["upload"]) {
+        if (isset($data["upload"])) {
             $filename = Str::slug($data["name"])."-".date('dmYHis');
             $pathFile = $this->storeImage($data["upload"], $filename);
 
@@ -96,7 +96,7 @@ class SupplierService
             return response()->json(['message' => 'Supplier Not Found'], 404);
         }
 
-        if ( $data["upload"]) {
+        if (isset($data["upload"])) {
             $oldFile = $supplier->image;
             $filename = Str::slug($data["name"])."-".date('dmYHis');
             $pathFile = $this->storeImage($data["upload"], $filename, $oldFile);

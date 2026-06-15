@@ -38,7 +38,7 @@ class TimeService
 
     public function setDateToCorrectTimezone($date)
     {
-    		return date_format(date_sub(date_create($date), date_interval_create_from_date_string("3 hours")),"Y-m-d H:i:s");
+    	return date_format(date_sub(date_create($date), date_interval_create_from_date_string("3 hours")),"Y-m-d H:i:s");
     }
 
     public function setDateToRFC3339($date)

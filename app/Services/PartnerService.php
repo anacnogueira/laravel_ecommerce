@@ -45,7 +45,7 @@ class PartnerService
         //1. Cadastrar Dados Gerais e de Contato
         $partner = $this->partnerRepository->createPartner($data);
 
-        if ($data["upload"]) {
+        if (isset($data["upload"])) {
             $filename = Str::slug($data["name"])."-".date('dmYHis');
             $pathFile = $this->storeImage($data["upload"], $filename);
 
@@ -96,7 +96,7 @@ class PartnerService
             return response()->json(['message' => 'Partner Not Found'], 404);
         }
 
-        if ( $data["upload"]) {
+        if (isset($data["upload"])) {
             $oldFile = $partner->image;
             $filename = Str::slug($data["name"])."-".date('dmYHis');
             $pathFile = $this->storeImage($data["upload"], $filename, $oldFile);
