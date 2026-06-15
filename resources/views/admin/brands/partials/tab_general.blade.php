@@ -1,7 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <x-adminlte-input name="name" label="Nome:*" value="{{ $brand->name ?? '' }}" placeholder="Insira nome da marca"
-            enable-old-support />
+        <x-adminlte-input name="name" label="Nome:*" value="{{ $brand->name ?? '' }}" enable-old-support />
         @php
             $config = [
                 'state' => (isset($brand) && $brand->status == 'S') || !isset($brand) ? true : false,
