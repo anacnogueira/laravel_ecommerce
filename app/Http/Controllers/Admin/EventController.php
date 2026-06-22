@@ -51,7 +51,7 @@ class EventController extends Controller
 
         $countries = $this->countryService->getCountriesToSelect();
         $states = $this->stateService->getStatesToSelect();
-        $cities = $this->cityService->getCitiesToSelect();
+        $cities = null;
 
         return view('admin.events.create', compact('event','countries','states','cities'));
     }
@@ -99,7 +99,7 @@ class EventController extends Controller
 
         $countries = $this->countryService->getCountriesToSelect();
         $states = $this->stateService->getStatesToSelect();
-        $cities = $this->cityService->getCitiesToSelect();
+        $cities = null;
 
         return view('admin.events.edit', compact('event','countries','states','cities'));
     }
