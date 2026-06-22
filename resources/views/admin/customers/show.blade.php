@@ -16,7 +16,7 @@
                     <dl>
                         <dt>ID:</dt>
                         <dd>{{ $customer->id }}&nbsp;</dd>
-                        @if ($customer->type_person == "pf")
+                        @if ($customer->type_person == 'pf')
                             <dt>Nome Completo:</dt>
                             <dd>{{ $customer->name }}&nbsp;</dd>
                             <dt>CPF:</dt>
@@ -40,7 +40,7 @@
                         <dt>Newsletter:</dt>
                         <dd>{{ $customer->newsletter }}&nbsp;</dd>
                         <dt>Criado em:</dt>
-                        <dd>{{ $customer->created }}&nbsp;</dd>
+                        <dd>{{ $customer->created_formatted }}&nbsp;</dd>
                         <dt>Modificado em:</dt>
                         <dd>{{ $customer->modified }}&nbsp;</dd>
                     </dl>
@@ -52,23 +52,24 @@
                     <div class="row" style="margin-top: 20px">
                         <div class="col-md-12">
                             <div class="btn-group" style="display: inline">
-                                    <a href="{{ route('admin.customers.edit', $customer->id) }}" class="btn btn-success">
-                                        <i class="fa fa-pen"></i> Editar
-                                    </a>
-                                    <form action="{{ route('admin.customers.destroy', $customer->id) }}" method="POST" class="frm-delete" style="display: inline">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="btn btn-danger" title="Delete">
-                                            <i class="fa fa-trash"></i>  Excluir
-                                        </button>
-                                    </form>
+                                <a href="{{ route('admin.customers.edit', $customer->id) }}" class="btn btn-success">
+                                    <i class="fa fa-pen"></i> Editar
+                                </a>
+                                <form action="{{ route('admin.customers.destroy', $customer->id) }}" method="POST"
+                                    class="frm-delete" style="display: inline">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger" title="Delete">
+                                        <i class="fa fa-trash"></i> Excluir
+                                    </button>
+                                </form>
 
-                                    <a href="{{ route('admin.customers.index') }}" class="btn btn-warning">
-                                        <i class="fa fa-list-alt"></i> Listar
-                                    </a>
-                                    <a href="{{ route('admin.customers.create') }}" class="btn btn-primary">
-                                        <i class="fa fa-file"></i> Adicionar
-                                    </a>
+                                <a href="{{ route('admin.customers.index') }}" class="btn btn-warning">
+                                    <i class="fa fa-list-alt"></i> Listar
+                                </a>
+                                <a href="{{ route('admin.customers.create') }}" class="btn btn-primary">
+                                    <i class="fa fa-file"></i> Adicionar
+                                </a>
                                 </ul>
                             </div>
                         </div>
@@ -80,5 +81,5 @@
 @stop
 
 @push('js')
-    <script  type="text/javascript" src="{{ asset('js/admin/utils/deleteConfirm.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/admin/utils/deleteConfirm.js') }}"></script>
 @endpush

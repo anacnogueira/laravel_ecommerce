@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Contact extends Authenticatable
 {
@@ -101,26 +102,25 @@ class Contact extends Authenticatable
         );
     }
 
-     /**
+    /**
      * Get the created date
      *
      * @param  string  expire date
      * @return string
      */
-    public function getCreatedAttribute($value)
+    protected function createdFormatted(): Attribute
     {
-        return $value ? Carbon::parse($value)->format('d/m/Y H:i') : null;
+        return Attribute::make(
+            get: fn ($value, array $attributes) =>
+                isset($attributes['created']) ? \Carbon\Carbon::parse($attributes['created'])->format('d/m/Y H:i') : null,
+        );
     }
 
-    /**
-     * Get the modified date
-     *
-     * @param  string  expire date
-     * @return string
-     */
-    public function getModifiedAttribute($value)
+    protected function modified(): Attribute
     {
-         return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i') : null;
+        return Attribute::make(
+            get: fn (?string $value) => $value ? Carbon::parse($value)->format('d/m/Y H:i') : null
+        );
     }
 
 
