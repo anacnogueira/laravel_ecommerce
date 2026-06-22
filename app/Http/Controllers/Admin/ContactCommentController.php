@@ -32,7 +32,6 @@ class ContactCommentController extends Controller
      */
     public function index($contactId)
     {
-
         $customer = $this->customerService->getCustomerById($contactId);
 
         $comments = $this->commentService->getAllCommentsByContactId($contactId);
