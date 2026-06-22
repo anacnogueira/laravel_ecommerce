@@ -81,13 +81,7 @@ class CityController extends Controller
     {
         $city = $this->cityService->getCityById($id);
 
-        $select = new \stdClass();
-        $select->id = null;
-        $select->name = "Selecione o estado";
-
-        $states = $this->stateService->getAllStates();
-        $states = $states->sortBy('name');
-        $states = $states->prepend($select);
+        $states = $this->stateService->getStatesToSelect();
 
         return view('admin.cities.edit', compact('city','states'));
     }
