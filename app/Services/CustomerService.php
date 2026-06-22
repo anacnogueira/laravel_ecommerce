@@ -137,4 +137,17 @@ class CustomerService
         return $data;
 
     }
+
+    public function getCustomersToSelect()
+    {
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione o cliente";
+
+        $products = $this->getAllCustomers()
+            ->sortBy('name')
+            ->prepend($select);
+
+        return $products;
+    }
 }

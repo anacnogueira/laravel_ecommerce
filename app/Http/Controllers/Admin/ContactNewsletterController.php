@@ -42,14 +42,7 @@ class ContactNewsletterController extends Controller
     {
         $newsletter = null;
 
-        $select = new \stdClass();
-        $select->id = null;
-        $select->name = "Selecione o cliente";
-
-        $customers = $this->customerService
-            ->getAllCustomers()
-            ->sortBy('name')
-            ->prepend($select);
+        $customers = $this->customerService->getCustomersToSelect();
 
         return view('admin.newsletters.create', compact('newsletter','customers'));
     }
@@ -92,14 +85,7 @@ class ContactNewsletterController extends Controller
     {
         $newsletter = $this->contactNewsletterService->getContactNewsletterById($id);
 
-        $select = new \stdClass();
-        $select->id = null;
-        $select->name = "Selecione o Cliente";
-
-        $customers = $this->customerService
-            ->getAllCustomers()
-            ->sortBy('name')
-            ->prepend($select);
+        $customers = $this->customerService->getCustomersToSelect();
 
         return view('admin.newsletters.edit', compact('newsletter', 'customers'));
     }
