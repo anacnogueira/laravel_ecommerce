@@ -190,7 +190,6 @@ class ProductService
             }
         }
 
-
         return response()->json(['message' => 'Product Updated'], 200);
     }
 
@@ -221,7 +220,7 @@ class ProductService
         $select->id = null;
         $select->name = "Selecione o produto";
 
-        $products = $this->getAllProducts()
+        $products = $this->productRepository->getAllActiveProducts()
             ->sortBy('name')
             ->prepend($select);
 

@@ -24,6 +24,14 @@ class ProductRepository implements ProductRepositoryInterface
         return $this->entity->all();
     }
 
+    /**
+     * Get all Active Products
+     * @return array
+     */
+    public function getAllActiveProducts()
+    {
+        return $this->entity->active();
+    }
 
     /**
      * Get all highlight Products

@@ -40,6 +40,7 @@ class CommentService
     */
     public function makeComment(array $data)
     {
+        $data["status"] = isset($data["status"]) ? 'S' : 'N';
         $comment = $this->commentRepository->createComment($data);
 
         return $comment;

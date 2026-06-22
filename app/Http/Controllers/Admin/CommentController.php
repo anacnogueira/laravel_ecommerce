@@ -9,7 +9,6 @@ use App\Http\Requests\AdminStoreUpdateCommentRequest;
 
 class CommentController extends Controller
 {
-
     protected $commentService;
 
     public function __construct(
@@ -38,7 +37,7 @@ class CommentController extends Controller
     {
         $comment = null;
 
-        $products = $this->getProducts();
+        $products = $this->productService->getProductsToSelect();
 
         return view('admin.comments.create', compact('comment', 'products'));
     }
@@ -50,7 +49,6 @@ class CommentController extends Controller
     {
         $data = $request->all();
         $data["ip"] = $request->ip();
-        $data["status"] = isset($data["status"]) ? 'S' : 'N';
 
         $comment = $this->commentService->makeComment($data);
 
@@ -75,7 +73,7 @@ class CommentController extends Controller
     {
         $comment = $this->commentService->getCommentById($id);
 
-        $products = $this->getProducts();
+        $products = $this->productService->getProductsToSelect();
 
         return view('admin.comments.edit', compact('comment', 'products'));
     }
@@ -100,19 +98,5 @@ class CommentController extends Controller
         $comment = $this->commentService->destroyComment($id);
 
         return redirect()->route('admin.comments.index');
-    }
-
-    private function getProducts()
-    {
-        $select = new \stdClass();
-        $select->id = null;
-        $select->name = "Selecione o produto";
-
-        $products = $this->productService
-            ->getAllProducts()
-            ->sortBy('name')
-            ->prepend($select);
-
-        return $products;
     }
 }

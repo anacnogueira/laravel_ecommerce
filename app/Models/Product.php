@@ -86,6 +86,13 @@ class Product extends Model
         return $this->hasMany(ProductNotification::class);
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'S')
+        ->where('current_stock', '>',0)
+        ->get();
+    }
+
     public function scopeHighlight($query)
     {
         return $query->where('status', 'S')
