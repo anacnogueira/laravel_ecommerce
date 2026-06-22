@@ -148,4 +148,20 @@ class CategoryService
 
         return $pathFile;
     }
+
+    public function getCategoriesToSelect()
+    {
+        $select = new \stdClass();
+        $select->id = null;
+        $select->name = "Selecione a categoria";
+
+        $categories = $this->getAllCategories()
+            ->sortBy('name')
+            ->prepend($select);
+
+        $categories[0]->id = 0;
+        $categories[0]->name = " Categoria Pai";
+
+        return  $categories;
+    }
 }

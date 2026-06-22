@@ -26,6 +26,7 @@ class AdminStoreUpdateCategoryRequest extends FormRequest
 
         return [
             'name' => ['required'],
+            'parent_id' => ['required'],
             'order' => ['required'],
             'permalink' => ['required'],
             'upload' => ['file', 'image', 'mimes: jpeg,png,jpg,gif', 'max:20248'],

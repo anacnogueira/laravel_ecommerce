@@ -36,10 +36,7 @@ class CategoryController extends Controller
     {
         $category = null;
 
-        $categories = $this->categoryService->getAllCategories();
-    	$categories[0]->id = 0;
-        $categories[0]->name = " Categoria Pai";
-      	$categories = $categories->sortBy('name');
+        $categories = $this->categoryService->getCategoriesToSelect();
 
         return view('admin.categories.create', compact('category', 'categories'));
     }

@@ -90,7 +90,7 @@ class CityService
         return response()->json(['message' => 'City Deleted'], 200);
     }
 
-     public function getCitiesToSelect()
+    public function getCitiesToSelect()
     {
         $select = new \stdClass();
         $select->id = null;
