@@ -27,6 +27,7 @@ class AdminStoreUpdateFaqRequest extends FormRequest
         return [
             'question' => ['required'],
             'answer' => ['required'],
+            'order' => ['required', 'integer'],
         ];
     }
 

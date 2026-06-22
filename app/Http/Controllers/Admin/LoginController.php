@@ -58,16 +58,13 @@ class LoginController extends Controller
             $cakeHasher = new CakeSHA1Hasher();
 
             if ($cakeHasher->check($request->input('password'), $user->password)) {
-                // 3a. Cria o novo hash seguro
+
                 $newPasswordHash = Hash::make($credentials['password']);
 
-                // 3b. Atualiza o banco de dados
                 $user->forceFill(['password' => $newPasswordHash])->save();
 
-                // 3c. Loga o usuário no Laravel
                 Auth::guard('admin')->login($user);
 
-                // Redireciona para o destino (ex: dashboard)
                 return redirect()->intended('/');
             }
         }
