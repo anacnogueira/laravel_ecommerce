@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-//use App\Services\OrderService;
+use App\Services\OrderService;
 use App\Services\CustomerService;
 
 class DashboardController extends Controller
@@ -13,17 +13,17 @@ class DashboardController extends Controller
     protected $orderService;
     protected $customerService;
 
-    /*public function __construct(OrderService $orderService, CustomerService $customerService)
+    public function __construct(OrderService $orderService, CustomerService $customerService)
     {
         $this->orderService = $orderService;
         $this->customerService = $customerService;
-    }*/
+    }
 
     public function index()
     {
-        $totalOrders = 0; //$this->getTotalOrders();
-        $totalUsers = 0; //$this->getTotalUsers();
-        $totalSales = 0; //$this->getTotalSales();
+        $totalOrders = $this->getTotalOrders();
+        $totalUsers = $this->getTotalUsers();
+        $totalSales = $this->getTotalSales();
         $totalCustomers = 50;
         $totalVisitors = 1547;
         $totalBounceRate = 50;
