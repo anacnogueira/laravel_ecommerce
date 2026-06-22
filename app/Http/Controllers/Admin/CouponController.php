@@ -70,8 +70,8 @@ class CouponController extends Controller
     {
         $coupon = $this->couponService->getCouponById($id);
         $coupon->status = $coupon->status === 'S' ? 'Ativo' : ' Inativo';
-        $coupon->customer_login = $coupon->customer_login === 'S' ? 'Sim' : ' Não';
-        $coupon->free_shipping = $coupon->free_shipping === 'S' ? 'Sim' : ' Não';
+        $coupon->customer_login = $coupon->customer_login === 'S' ? 'Sim' : 'Não';
+        $coupon->free_shipping = $coupon->free_shipping === 'S' ? 'Sim' : 'Não';
         $coupon->discount_type = $this->types[$coupon->discount_type];
 
         return view('admin.coupons.show', compact('coupon'));
