@@ -32,7 +32,7 @@ class OrderRepository implements OrderRepositoryInterface
     {
         $orders = $this->entity->where('contact_id', $contactId);
         //Filters
-        if ($queryParams['filter']) {
+        if (isset($queryParams['filter'])) {
             switch ($queryParams['filter']) {
                 case "ultimos":
                     $orders = $orders->latest()->take(5);
@@ -52,7 +52,7 @@ class OrderRepository implements OrderRepositoryInterface
             }
         }
 
-        if ($queryParams['sort'] && $queryParams['direction']) {
+        if (isset($queryParams['sort']) && isset($queryParams['direction'])) {
             $orders = $orders->orderBy($queryParams['sort'], $queryParams['direction']);
         }
         $orders = !empty($queryParams['paginate']) ? $orders->paginate($queryParams['paginate']) : $orders->get();

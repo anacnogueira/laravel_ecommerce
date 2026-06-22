@@ -36,7 +36,7 @@ class OrderLogCustomerNotified extends Mailable
         $orderStatusName = $orderLog->status->name;
         $text = null;
 
-        if ($orderLog->client_comment === 'S') {
+        if ($orderLog->client_comment == 'Sim') {
             $text = $orderLog->comment;
         }
 

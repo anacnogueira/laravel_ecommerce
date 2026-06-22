@@ -6,22 +6,29 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\CustomerService;
 use App\Services\OrderService;
+use App\Services\OrderStatusService;
+use App\Services\OrderLogService;
 use App\Services\ShippingService;
-use App\Http\Requests\AdminUpdateContactOrderRequest;
 
 class ContactOrderController extends Controller
 {
     protected $customerService;
     protected $orderService;
+    protected $orderStatusService;
+    protected $orderLogService;
     protected $shippingService;
 
     public function __construct(
         CustomerService $customerService,
         OrderService $orderService,
+        OrderStatusService $orderStatusService,
+        OrderLogService $orderLogService,
         ShippingService $shippingService)
     {
         $this->customerService = $customerService;
         $this->orderService = $orderService;
+        $this->orderStatusService = $orderStatusService;
+        $this->orderLogService = $orderLogService;
         $this->shippingService = $shippingService;
     }
 
@@ -32,7 +39,6 @@ class ContactOrderController extends Controller
      */
     public function index($contactId)
     {
-
         $customer = $this->customerService->getCustomerById($contactId);
 
         $orders = $this->orderService->getAllOrdersByContactId($contactId);
@@ -64,8 +70,7 @@ class ContactOrderController extends Controller
     public function edit($contactId, $id)
     {
         $order = $this->orderService->getOrderById($id);
-        $orderStatuses = [];
-
+        $orderStatuses = $this->orderStatusService->getAllOrderStatusesToSelect();
 
         return view('admin.contact-orders.edit', compact('order','orderStatuses'));
     }
@@ -79,6 +84,16 @@ class ContactOrderController extends Controller
      */
     public function update(Request $request, $contactId, $id)
     {
+        $data = $request->all();
+
+        if ($data['type'] === 'order') {
+            $this->orderService->updateTrackingCodeOrder($id, $data);
+        }
+
+        if ($data['type'] === 'log') {
+            $this->orderLogService->makeOrderLog($id, $data);
+        }
+
         return redirect()->back();
     }
 
