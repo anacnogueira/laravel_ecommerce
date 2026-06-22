@@ -22,7 +22,7 @@ class ContactAddressRepository implements ContactAddressRepositoryInterface
     {
         $addresses =$this->entity->where('contact_id', $contactId);
 
-         if (isset($queryParams["conditions"])) {
+        if (isset($queryParams["conditions"])) {
             foreach ($queryParams["conditions"] as $condition) {
                 if ($condition["operator"]!= "between") {
                     $addresses = $addresses->where($condition["column"], $condition["operator"], $condition["value"]);
@@ -33,7 +33,7 @@ class ContactAddressRepository implements ContactAddressRepositoryInterface
             }
         }
 
-        if ($queryParams['sort'] && $queryParams['direction']) {
+        if (isset($queryParams['sort']) && isset($queryParams['direction'])) {
             $addresses = $addresses->orderBy($queryParams['sort'], $queryParams['direction']);
         }
 

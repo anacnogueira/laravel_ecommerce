@@ -41,7 +41,11 @@ class CityService
     */
     public function getCitiesByStateId(int $stateId)
     {
-        return $this->cityRepository->getCitiesByStateId($stateId);
+        $cities = $this->cityRepository
+            ->getCitiesByStateId($stateId)
+            ->sortBy('name');
+
+        return $cities;
     }
 
     /**

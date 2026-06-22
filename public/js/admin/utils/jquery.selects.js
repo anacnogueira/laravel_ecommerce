@@ -22,7 +22,7 @@
                     $.each(optionsDataArray, function (index, optionData) {
                         var option = new Option(
                             optionData.caption,
-                            optionData.value
+                            optionData.value,
                         );
                         selectElement.add(option);
                     });

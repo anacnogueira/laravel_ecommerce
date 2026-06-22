@@ -20,10 +20,9 @@ function get_cities(state_id, city_id, text, disabled = true) {
         $.ajax({
             type: "GET",
             url: "/api/cities/" + state_sel,
-            async: true,
+            async: false,
             processData: true,
             success: function (data) {
-                //json = $.parseJSON($.trim(data));
                 $(dropdownSet).loadSelect(data, city_sel, text);
             },
             error: function (xhr, ajaxOptions, thrownError) {

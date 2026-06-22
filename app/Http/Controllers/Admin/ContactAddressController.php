@@ -40,7 +40,6 @@ class ContactAddressController extends Controller
      */
     public function index($contactId)
     {
-
         $customer = $this->customerService->getCustomerById($contactId);
 
         $addresses = $this->contactAddressService->getAllContactAddressesByContactId($contactId);
@@ -59,32 +58,9 @@ class ContactAddressController extends Controller
 
         $customer = $this->customerService->getCustomerById($contactId);
 
-        $select = new \stdClass();
-        $select->id = null;
-        $select->name = "Selecione o país";
-
-        $countries = $this->countryService
-            ->getAllCountries()
-            ->sortBy('name')
-            ->prepend($select);
-
-        $select = new \stdClass();
-        $select->id = null;
-        $select->name = "Selecione o estado";
-
-        $states = $this->stateService
-            ->getAllStates()
-            ->sortBy('name')
-            ->prepend($select);
-
-        $select = new \stdClass();
-        $select->id = null;
-        $select->name = "Selecione a cidade";
-
-        $cities = $this->cityService
-            ->getAllCities()
-            ->sortBy('name')
-            ->prepend($select);
+        $countries = $this->countryService->getCountriesToSelect();
+        $states = $this->stateService->getStatesToSelect();
+        $cities = null;
 
         return view('admin.contact-addresses.create', compact('address','customer', 'countries','states', 'cities'));
     }
@@ -129,33 +105,9 @@ class ContactAddressController extends Controller
         $customer = $this->customerService->getCustomerById($contactId);
         $address = $this->contactAddressService->getContactAddressById($id);
 
-        $select = new \stdClass();
-        $select->id = null;
-        $select->name = "Selecione o país";
-
-        $countries = $this->countryService
-            ->getAllCountries()
-            ->sortBy('name')
-            ->prepend($select);
-
-        $select = new \stdClass();
-        $select->id = null;
-        $select->name = "Selecione o estado";
-
-        $states = $this->stateService
-            ->getAllStates()
-            ->sortBy('name')
-            ->prepend($select);
-
-        $select = new \stdClass();
-        $select->id = null;
-        $select->name = "Selecione a cidade";
-
-        $cities = $this->cityService
-            ->getAllCities()
-            ->sortBy('name')
-            ->prepend($select);
-
+        $countries = $this->countryService->getCountriesToSelect();
+        $states = $this->stateService->getStatesToSelect();
+        $cities = $this->cityService->getCitiesToSelect();
 
         return view('admin.contact-addresses.edit', compact('customer', 'address', 'countries', 'states', 'cities'));
     }

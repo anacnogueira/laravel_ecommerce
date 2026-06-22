@@ -26,6 +26,7 @@ cepField.addEventListener("blur", async (event) => {
                 neighborhoodField.value = data.bairro;
                 selectedOption("#country-id", "Brasil");
                 selectedOption("#state-id", data.estado);
+                get_cities($("#state-id"), $("#city-id"), "");
                 selectedOption("#city-id", data.localidade);
             } else {
                 console.log("Erro");
