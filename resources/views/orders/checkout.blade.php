@@ -43,7 +43,7 @@
                 </div>
                 <div class="cart-summary">
                     <div class="subtotal-info">
-                        <span>SUBTOTAL:</span>
+                        <span id="subtotal-amount" data-subtotal="{{ $subtotal }}">SUBTOTAL:</span>
                         <span>R$ {{ number_format($subtotal, 2, ',', '.') }}</span>
                     </div>
                     <div class="shipping-info">

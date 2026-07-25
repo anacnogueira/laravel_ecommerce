@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 radioShipping.dataset.deliveryTime;
             const divShippingAmount =
                 document.querySelector("#shipping-amount");
+            const divSubtotalAmount = document.querySelector("#subtotal-amount");
             const divTotalAmount = document.querySelector("#total-amount");
             const inputValueShipping =
                 document.querySelector("#value-shipping");
@@ -60,8 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,
             })}`;
-            const currentTotal = parseFloat(divTotalAmount.dataset.total);
-            const newTotal = currentTotal + parseFloat(valueSelectedShipping);
+            const currentSubTotal = parseFloat(divSubtotalAmount.dataset.subtotal);
+            const newTotal = currentSubTotal + parseFloat(valueSelectedShipping);
             divTotalAmount.textContent = `R$ ${newTotal.toLocaleString(
                 "pt-BR",
                 {
