@@ -76,7 +76,6 @@ class ProductService
         return $products;
     }
 
-
     /**
      * list products in a list of categories
      * @return array
@@ -89,7 +88,6 @@ class ProductService
         }
         return $products;
     }
-
 
     public function getProductByPermalink($permalink)
     {

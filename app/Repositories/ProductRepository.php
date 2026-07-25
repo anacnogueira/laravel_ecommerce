@@ -65,7 +65,6 @@ class ProductRepository implements ProductRepositoryInterface
             ->paginate(12);
     }
 
-
      /**
      * Get Products by Category id
      * @return array
@@ -94,7 +93,7 @@ class ProductRepository implements ProductRepositoryInterface
      */
     public function getProductByPermalink($permalink)
     {
-        return $this->entity->where("permalink", $permalink)->firstOrFail();
+        return $this->entity->where("permalink", $permalink)->first();
     }
 
     /**

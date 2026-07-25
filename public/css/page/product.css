@@ -149,10 +149,11 @@ hr {
     text-transform: uppercase;
     font-weight: 700;
 }
+
 .unavailable form {
-    width: 255px;
-    text-align: right;
+    margin: 0;
 }
+
 .unavailable form button {
     background: var(--secondary-color);
     color: #fff;
