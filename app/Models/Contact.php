@@ -98,7 +98,6 @@ class Contact extends Authenticatable
     {
         return Attribute::make(
             get: fn (?string $value) => $value ? Carbon::parse($value)->format('d/m/Y') : null,
-            set: fn (?string $value) => $value ? Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d') : null,
         );
     }
 
