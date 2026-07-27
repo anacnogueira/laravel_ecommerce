@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         const action = event.target.action;
         const productId = document.querySelector("#product-id");
+        const token = document.querySelector("input[name='_token']");
         const name = document.querySelector("#name");
         const email = document.querySelector("#email");
 
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
             name: name.value,
             email: email.value,
             product_id: productId.value,
+            _token: token.value
         };
 
         try {

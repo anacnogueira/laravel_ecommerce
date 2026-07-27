@@ -93,7 +93,7 @@ class ProductRepository implements ProductRepositoryInterface
      */
     public function getProductByPermalink($permalink)
     {
-        return $this->entity->where("permalink", $permalink)->first();
+        return $this->entity->where("permalink", $permalink)->firstOrFail();
     }
 
     /**

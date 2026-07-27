@@ -67,7 +67,7 @@
     <script type="text/javascript" src="{{ asset("js/components/img-gallery.js") }}"></script>
     <!--script type="text/javascript" src="{{ asset("js/utils/add-by-whatsapp-button.js?v=2.0") }}"></script-->
     @if ($product->current_stock == 0 && $product->status == 'N')
-        <script type="text/javascript" src="{{ asset("js/utils/send-product-notification-form.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("js/utils/send-product-notification-form.js?v=1") }}"></script>
     @endif
     <script type="application/ld+json">
         @json($schema)
