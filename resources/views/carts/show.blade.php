@@ -83,15 +83,16 @@
                 <div class="cart-summary">
                     <div class="subtotal-info">
                         <span>SUBTOTAL:</span>
-                        <span>R$ {{ number_format($subtotal, 2, ',', '.') }}</span>
+                        <span id="subtotal-amount" data-subtotal="{{ $subtotal }}">R$
+                            {{ number_format($subtotal, 2, ',', '.') }}</span>
                     </div>
                     <div class="shipping-info">
                         <span>FRETE:</span>
-                        <span id="shipping-amount">R$ 0,00</span>
+                        <span id="shipping-amount" data-shipping="0">R$ 0,00</span>
                     </div>
                     <div class="discount-info">
                         <span>DESCONTO:</span>
-                        <span id="discount-amount">R$ 0,00</span>
+                        <span id="discount-amount" data-discount="0">R$ 0,00</span>
                     </div>
                     <div class="total-info">
                         <span>TOTAL:</span>
@@ -132,5 +133,6 @@
 @push('scripts')
     <script type="text/javascript" src="{{ asset('js/components/shipping-calculate.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/cart/update.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/utils/checkout.js') }}"></script>
     <!--script type="text/javascript" src="{{ asset('js/cart/checkout-whatsapp.js') }}"></script-->
 @endpush

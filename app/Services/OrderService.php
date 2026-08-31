@@ -7,6 +7,7 @@ use App\Services\CartService;
 use App\Services\CreditCardService;
 use App\Services\BilletService;
 use App\Services\OrderStatusService;
+use App\Services\CouponService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderDone;
@@ -16,6 +17,7 @@ class OrderService
     protected $orderRepository;
     protected $cartService;
     protected $orderStatusService;
+    protected $couponService;
 
     //Payment Methods
     protected $creditCard = 1;
@@ -30,16 +32,17 @@ class OrderService
     protected $refunded = 6;
     protected $expired = 11;
 
-
     public function __construct(
         OrderRepositoryInterface $orderRepository,
         CartService $cartService,
-        OrderStatusService $orderStatusService
+        OrderStatusService $orderStatusService,
+        CouponService $couponService,
     )
     {
         $this->orderRepository = $orderRepository;
         $this->cartService = $cartService;
         $this->orderStatusService = $orderStatusService;
+        $this->couponService = $couponService;
     }
 
     /**
@@ -124,9 +127,14 @@ class OrderService
             $payerBirthDate = auth()->user()->date_birth;
         }
 
+        $discountAmount = 0;
+        if (!empty(session('coupon'))) {
+            $discountAmount = session("coupon.discount_amount");
+        }
+
         $data["contact_id"] = auth()->id();
         $data["order_status_id"] = $this->pendingPayment;
-        $data['value_discount'] = 0; // Vem do checkout
+        $data['value_discount'] = $discountAmount;
         $data['value_total'] = ($data['value'] + $data['value_shipping']) - $data['value_discount'];
         $data["installments"] = isset($data["installment_quantity"]) ? $data["installment_quantity"] : 1;
 
@@ -151,6 +159,10 @@ class OrderService
 
             return $order;
         });
+
+        if (!empty(session('coupon'))) {
+            $couponHistory = $this->couponService->addLog($order->id);
+        }
 
         $i = 0;
         foreach ($carts as $productId => $item) {
@@ -190,7 +202,6 @@ class OrderService
                 'name' => $payerName,
                 'email' => $payerEmail,
                 'phone' => $completePhone,
-                'birth' => $payerBirthDate,
                 'items' => $itemsToPayment,
                 'shippings' => $shippings,
                 'discount' => $discount,
@@ -260,6 +271,7 @@ class OrderService
         session()->forget('redirect');
         session()->forget('cart');
         session()->forget('cep');
+        session()->forget('coupon');
 
         return $order;
     }

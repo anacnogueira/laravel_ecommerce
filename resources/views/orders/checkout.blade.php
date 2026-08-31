@@ -43,16 +43,17 @@
                 </div>
                 <div class="cart-summary">
                     <div class="subtotal-info">
-                        <span id="subtotal-amount" data-subtotal="{{ $subtotal }}">SUBTOTAL:</span>
-                        <span>R$ {{ number_format($subtotal, 2, ',', '.') }}</span>
+                        <span>SUBTOTAL:</span>
+                        <span id="subtotal-amount" data-subtotal="{{ $subtotal }}">R$
+                            {{ number_format($subtotal, 2, ',', '.') }}</span>
                     </div>
                     <div class="shipping-info">
                         <span>FRETE:</span>
-                        <span id="shipping-amount">R$ 0,00</span>
+                        <span id="shipping-amount" data-shipping="0">R$ 0,00</span>
                     </div>
                     <div class="discount-info">
                         <span>DESCONTO:</span>
-                        <span id="discount-amount">R$ 0,00</span>
+                        <span id="discount-amount" data-discount="0">R$ 0,00</span>
                     </div>
                     <div class="total-info">
                         <span>TOTAL:</span>
@@ -66,42 +67,23 @@
                 <!-- Endereço de Entrega -->
                 <div class="address">
                     <h2><i class="fa fa-home" aria-hidden="true"></i> 1. Endereço de Entrega</h2>
-                    @if ($address)
-                        <div class="address-item">
-                            <input type="radio" name="contact_address_id" value="{{ $address->id }}" checked />
-                            <div class="adress-item-info">
-                                <p><strong>{{ $address->title }}</strong></p>
-                                <p>{{ $address->address }}, {{ $address->number }}</p>
-                                @if (!empty($address->complement))
-                                    <p>{{ $address->complement }}</p>
-                                @endif
-                                <p>{{ $address->neighborhood }}</p>
-                                <p>CEP: <span id="cep-selected">{{ $address->cep }}</span></p>
-                                <p>{{ $address->city->name }} - {{ $address->state->uf }} - {{ $address->country->name }}
-                                </p>
-                            </div>
-                        </div>
-                        <p><a href="{{ route('customers.addresses.index', 'redirect=checkout') }}" class="button">Usar
-                                outro
-                                endereço</a></p>
-                    @else
-                        <p>Nenhum endereço de entrega cadastrado.</p>
-                        <p><a href="{{ route('customers.addresses.create', 'redirect=checkout') }}"
-                                class="button">Cadastrar endereço</a></p>
-                    @endif
-
+                    @include('partials.orders.address')
                 </div>
                 <!-- Frete -->
                 <div class="shipping">
                     <h2><i class="fa fa-truck" aria-hidden="true"></i> 2. Opções de Entrega</h2>
                     <x-shipping-options :shippings="$shippings" page="cart-view" />
                 </div>
+                <!-- Cupom -->
+                <div class="coupom">
+                    <h2><i class="fa fa-ticket" aria-hidden="true"></i> 3. Cupom de desconto</h2>
+                    @include('partials.orders.coupon')
+                </div>
                 <!-- Forma de Pagamento -->
                 <div class="payment">
-                    <h2><i class="fa fa-credit-card" aria-hidden="true"></i> 3. Formas de Pagamento</h2>
+                    <h2><i class="fa fa-credit-card" aria-hidden="true"></i> 4. Formas de Pagamento</h2>
                     @include('partials.orders.payment-methods')
                 </div>
-
             </form>
         @else
             <h1>Sacola vazia :(</h1>
@@ -132,4 +114,5 @@
     <script type="text/javascript" src="{{ asset('js/orders/credit-card-payment.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/orders/validate-form.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/orders/do-payment.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/utils/checkout.js') }}"></script>
 @endpush

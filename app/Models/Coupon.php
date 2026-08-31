@@ -39,7 +39,7 @@ class Coupon extends Model
 
     public function histories()
     {
-        return $this->belongsTo(CouponHistory::class);
+        return $this->hasMany(CouponHistory::class);
     }
 
     protected function fromDate(): Attribute

@@ -1,7 +1,9 @@
 @props(['shippings', 'page'])
 <div id="shipping-info">
 
-    @if (isset($shippings) && is_array($shippings) && count($shippings) > 0)
+    @if (isset($shippings['error']))
+        <div id="shipping-error" class="panel alert">Não foi possível calcular o frete.</div>
+    @else
         <table id="tbl-shipping-info">
             <thead>
                 <tr>
@@ -36,7 +38,5 @@
 
             </tbody>
         </table>
-    @else
-        <div id="shipping-error" class="panel alert">Não foi possível calcular o frete.</div>
     @endif
 </div>

@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\ContactAddressController;
 use App\Http\Controllers\Api\BuyerInformationController;
 use App\Http\Controllers\Api\PixController;
+use App\Http\Controllers\Api\CouponController;
 
 // A - ADMIN
 Route::prefix('admin')->name('admin.')->group(function(){
@@ -39,4 +40,5 @@ Route::apiResource('/carts',CartController::class);
 
 Route::get('customers/get-buyer-information', BuyerInformationController::class)->name('customers.get-buyer-information');
 Route::get('pix/confirm-payment/{order}', [PixController::class,'confirmPayment'])->name('pix.confirm-payment');
+Route::post('/coupons/apply', [CouponController::class, 'apply'])->name('coupons.apply');
 

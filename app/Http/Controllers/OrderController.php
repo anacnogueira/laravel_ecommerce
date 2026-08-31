@@ -137,6 +137,7 @@ class OrderController extends Controller
         $contactId = Auth::id();
         $address = $this->contactAddressService->getDefaultContactAddressesByContactId($contactId);
         $shippings = [];
+        $couponCode = session('coupon.code') ?: "";
 
 
         if ($carts > 0) {
@@ -163,17 +164,21 @@ class OrderController extends Controller
                     'width' => $width,
                     'sku' =>  $collection->first()['code'],
                 ]);
+
+                //dd($shippings);
             }
         }
 
         $paymentMethods = $this->paymentMethodService->getAllActivePaymentMethods();
 
-        return view('orders.checkout', compact('title', 'carts','quantity','weight', 'subtotal','address','shippings','paymentMethods'));
+        return view('orders.checkout', compact('title', 'carts','quantity','weight', 'subtotal','address','shippings','paymentMethods', 'couponCode'));
     }
 
     public function store(StoreOrderRequest $request)
     {
         $data = $request->all();
+
+        //dd($data);
 
         $order = $this->orderService->makeOrder($data);
 

@@ -22,7 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
             return route('login');
         });
         $middleware->validateCsrfTokens(except: [
-            'api/admin/status-change',
+            'api/*',
         ]);
         $middleware->trustProxies(
             at: '*',

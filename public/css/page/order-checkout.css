@@ -58,9 +58,23 @@
     text-align: left;
 }
 
-#shipping-error {
+/*#shipping-error {
     display: none;
+}*/
+
+/* Cupom */
+.coupon-wrap {
+    padding: 1rem 0;
 }
+
+.form-coupon-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
 
 /* Pagamento */
 .credit-card-info {
@@ -228,5 +242,10 @@
 
     .credit-card-data > * {
         width: 45%;
+    }
+
+    .form-coupon-wrap {
+        flex-direction: row;
+        align-items: baseline;
     }
 }

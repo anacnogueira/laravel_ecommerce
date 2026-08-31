@@ -45,33 +45,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (radioShipping) {
             event.preventDefault();
             const valueSelectedShipping = radioShipping.dataset.value;
-            const DeliveryTimeSelectedShipping =
-                radioShipping.dataset.deliveryTime;
-            const divShippingAmount =
-                document.querySelector("#shipping-amount");
-            const divSubtotalAmount = document.querySelector("#subtotal-amount");
-            const divTotalAmount = document.querySelector("#total-amount");
-            const inputValueShipping =
-                document.querySelector("#value-shipping");
+            const DeliveryTimeSelectedShipping = radioShipping.dataset.deliveryTime;
+            const inputValueShipping = document.querySelector("#value-shipping");
             const inputDeliveryTime = document.querySelector("#delivery-time");
 
-            divShippingAmount.textContent = `R$ ${parseFloat(
-                valueSelectedShipping,
-            ).toLocaleString("pt-BR", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-            })}`;
-            const currentSubTotal = parseFloat(divSubtotalAmount.dataset.subtotal);
-            const newTotal = currentSubTotal + parseFloat(valueSelectedShipping);
-            divTotalAmount.textContent = `R$ ${newTotal.toLocaleString(
-                "pt-BR",
-                {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                },
-            )}`;
+            setShipping (valueSelectedShipping);
 
-            divTotalAmount.dataset.total = newTotal.toFixed(2);
+            const newTotal =  getSubtotal() + getShipping() - getDiscount();
+            setTotal (newTotal);
+
             inputValueShipping.value = valueSelectedShipping;
             inputDeliveryTime.value = DeliveryTimeSelectedShipping;
         }

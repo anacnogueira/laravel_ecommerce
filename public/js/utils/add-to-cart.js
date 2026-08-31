@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    //Show/Hide Mini Bag
     const btnMiniBag = document.querySelector("#btn-mini-cart");
     const divMiniBag = document.querySelector("#div-mini-cart");
 

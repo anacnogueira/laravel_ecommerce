@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\Contracts\CouponRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class CouponService
 {
@@ -36,6 +37,34 @@ class CouponService
         $coupon = $this->couponRepository->createCoupon($data);
 
         return $coupon;
+    }
+
+    /**
+     * Add log of a coupon
+     * @param array $data
+     * @return object
+    */
+    public function addLog($orderId)
+    {
+        $coupon = $this->isCouponValid(session('coupon.code'));
+
+        $data = [
+            'order_id' => $orderId,
+            'contact_id' => Auth::id(),
+            'ip' => ''
+        ];
+
+        return $this->couponRepository->addLog($coupon, $data);
+    }
+
+    /**
+     * Get a valid coupon
+     * @param int $id
+     * @return object
+    */
+    public function isCouponValid(string $code)
+    {
+        return $this->couponRepository->isCouponValid($code);
     }
 
     /**

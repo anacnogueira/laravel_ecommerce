@@ -54,7 +54,6 @@ class BilletService
             "cpf" =>  $infoBillet['cpf'],
             "phone_number" => $infoBillet['phone'],
             "email" => $infoBillet['email'],
-            "birth" => $infoBillet['birth'],
         ];
 
         $configurations = [

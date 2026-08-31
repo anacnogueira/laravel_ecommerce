@@ -33,6 +33,30 @@ class CouponRepository implements CouponRepositoryInterface
         return $this->entity->find($id);
     }
 
+
+    /**
+     * Get a valid Coupon
+     * @param int $id
+     * @return object
+     */
+    public function isCouponValid($code)
+    {
+        $now = now();
+
+        return $this->entity
+            ->where('code', $code)
+            ->where('status', 'S')
+            ->where(function ($query) use ($now) {
+            $query->whereNull('from_date')
+                ->orWhere('from_date', '<=', $now);
+            })
+            ->where(function ($query) use ($now) {
+                $query->whereNull('to_date')
+                    ->orWhere('to_date', '>=', $now);
+            })
+            ->first();
+    }
+
     /**
      * Create a new Coupon
      * @param array $data
@@ -41,6 +65,16 @@ class CouponRepository implements CouponRepositoryInterface
     public function createCoupon(array $data)
     {
         return $this->entity->create($data);
+    }
+
+    /**
+     * Add log from a coupn
+     * @param array $data
+     * @return object
+     */
+    public function addLog($coupon, $data)
+    {
+        return $coupon->histories()->create($data);
     }
 
      /**
