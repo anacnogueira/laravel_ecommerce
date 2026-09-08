@@ -11,14 +11,28 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('user_groups', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->enum('status',['S', 'N'])->default('S');
+            $table->text('permissions');
+            $table->datetime('created');
+            $table->datetime('modified');
+        });
+
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 100);
+            $table->string('email', 100)->unique();
+            $table->string('telephone', 20)->nullable();
+            $table->string('cellular', 20)->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
+            $table->enum('status',['S', 'N'])->default('S');
+            $table->foreignId('user_group_id')->constrained()->onDelete('cascade');
+            $table->datetime('created');
+            $table->datetime('modified');
+
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
@@ -42,6 +56,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('user_groups');
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
