@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\CategoryService;
-use App\Http\Requests\AdminStoreUpdateCategoryRequest;
+use App\Http\Requests\Admin\StoreUpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -47,7 +47,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateCategoryRequest $request)
+    public function store(StoreUpdateCategoryRequest $request)
     {
         $data = $request->all();
 
@@ -95,7 +95,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateCategoryRequest $request, $id)
+    public function update(StoreUpdateCategoryRequest $request, $id)
     {
         $data = $request->all();
 

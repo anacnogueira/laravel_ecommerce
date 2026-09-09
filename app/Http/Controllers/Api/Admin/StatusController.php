@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminStatusChangeRequest;
+use App\Http\Requests\Admin\StatusChangeRequest;
 use Illuminate\Support\Facades\DB;
 
 class StatusController extends Controller
 {
-    public function change(AdminStatusChangeRequest $request)
+    public function change(StatusChangeRequest $request)
     {
         $table = $request->input("table");
         $status = $request->input("status");

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\BannerService;
-use App\Http\Requests\AdminStoreUpdateBannerRequest;
+use App\Http\Requests\Admin\StoreUpdateBannerRequest;
 
 class BannerController extends Controller
 {
@@ -45,7 +45,7 @@ class BannerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateBannerRequest $request)
+    public function store(StoreUpdateBannerRequest $request)
     {
         $data = $request->all();
 
@@ -87,7 +87,7 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateBannerRequest $request, $id)
+    public function update(StoreUpdateBannerRequest $request, $id)
     {
         $data = $request->all();
 
