@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\CityService;
 use App\Services\StateService;
-use App\Http\Requests\AdminStoreUpdateCityRequest;
+use App\Http\Requests\Admin\StoreUpdateCityRequest;
 
 class CityController extends Controller
 {
@@ -49,7 +49,7 @@ class CityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateCityRequest $request)
+    public function store(StoreUpdateCityRequest $request)
     {
         $data = $request->all();
 
@@ -93,7 +93,7 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateCityRequest $request, $id)
+    public function update(StoreUpdateCityRequest $request, $id)
     {
         $data = $request->all();
 

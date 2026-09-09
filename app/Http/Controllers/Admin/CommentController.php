@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\CommentService;
 use App\Services\ProductService;
-use App\Http\Requests\AdminStoreUpdateCommentRequest;
+use App\Http\Requests\Admin\StoreUpdateCommentRequest;
 
 class CommentController extends Controller
 {
@@ -45,7 +45,7 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(AdminStoreUpdateCommentRequest $request)
+    public function store(StoreUpdateCommentRequest $request)
     {
         $data = $request->all();
         $data["ip"] = $request->ip();
@@ -81,7 +81,7 @@ class CommentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(AdminStoreUpdateCommentRequest $request, string $id)
+    public function update(StoreUpdateCommentRequest $request, string $id)
     {
         $data = $request->all();
 
