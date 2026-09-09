@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\ContactNewsletterService;
 use App\Services\CustomerService;
-use App\Http\Requests\AdminStoreUpdateContactNewsletterRequest;
+use App\Http\Requests\Admin\StoreUpdateContactNewsletterRequest;
 
 class ContactNewsletterController extends Controller
 {
@@ -53,7 +53,7 @@ class ContactNewsletterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateContactNewsletterRequest $request)
+    public function store(StoreUpdateContactNewsletterRequest $request)
     {
         $data = $request->all();
 
@@ -97,7 +97,7 @@ class ContactNewsletterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateContactNewsletterRequest $request, $id)
+    public function update(StoreUpdateContactNewsletterRequest $request, $id)
     {
         $data = $request->all();
 

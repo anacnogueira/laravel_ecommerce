@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\CommentService;
 use App\Services\CustomerService;
 use App\Services\ProductService;
-use App\Http\Requests\AdminStoreUpdateCommentRequest;
+use App\Http\Requests\Admin\StoreUpdateCommentRequest;
 
 class ContactCommentController extends Controller
 {
@@ -63,7 +63,7 @@ class ContactCommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateCommentRequest $request, $contactId)
+    public function store(StoreUpdateCommentRequest $request, $contactId)
     {
         $data = $request->all();
         $data["ip"] = '';
@@ -109,7 +109,7 @@ class ContactCommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateCommentRequest $request, $contactId, $id)
+    public function update(StoreUpdateCommentRequest $request, $contactId, $id)
     {
         $data = $request->all();
 
