@@ -8,7 +8,7 @@ use App\Services\CustomerService;
 use App\Services\CountryService;
 use App\Services\StateService;
 use App\Services\CityService;
-use App\Http\Requests\AdminStoreUpdateContactAddressRequest;
+use App\Http\Requests\Admin\StoreUpdateContactAddressRequest;
 
 class ContactAddressController extends Controller
 {
@@ -71,7 +71,7 @@ class ContactAddressController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateContactAddressRequest $request, $contactId)
+    public function store(StoreUpdateContactAddressRequest $request, $contactId)
     {
         $data = $request->all();
 
@@ -119,7 +119,7 @@ class ContactAddressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateContactAddressRequest $request, $contactId, $id)
+    public function update(StoreUpdateContactAddressRequest $request, $contactId, $id)
     {
         $data = $request->all();
 
