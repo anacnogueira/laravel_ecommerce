@@ -51,7 +51,7 @@ class LoginController extends Controller
                 $user->forceFill(['password' => Hash::make($credentials['password'])])->save();
             }
 
-            return redirect()->intended('/');
+            return redirect()->intended(route('admin.dashboard'));
         }
 
         if ($user) {
@@ -65,7 +65,7 @@ class LoginController extends Controller
 
                 Auth::guard('admin')->login($user);
 
-                return redirect()->intended('/');
+                return redirect()->intended(route('admin.dashboard'));
             }
         }
 
