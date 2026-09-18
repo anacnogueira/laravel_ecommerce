@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminUpdateOrderRequest;
+use App\Http\Requests\Admin\UpdateOrderRequest;
 use App\Services\OrderService;
 use App\Services\OrderStatusService;
 use App\Services\OrderLogService;
@@ -59,7 +59,7 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminUpdateOrderRequest $request, $id)
+    public function update(UpdateOrderRequest $request, $id)
     {
         $data = $request->all();
 
