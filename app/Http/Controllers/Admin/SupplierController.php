@@ -7,7 +7,7 @@ use App\Services\SupplierService;
 use App\Services\CountryService;
 use App\Services\StateService;
 use App\Services\CityService;
-use App\Http\Requests\AdminStoreUpdateSupplierRequest;
+use App\Http\Requests\Admin\StoreUpdateSupplierRequest;
 
 class SupplierController extends Controller
 {
@@ -60,7 +60,7 @@ class SupplierController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateSupplierRequest $request)
+    public function store(StoreUpdateSupplierRequest $request)
     {
         $data = $request->all();
         $supplier = $this->supplierService->makeSupplier($data);
@@ -106,7 +106,7 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateSupplierRequest $request, $id)
+    public function update(StoreUpdateSupplierRequest $request, $id)
     {
         $data = $request->all();
 
