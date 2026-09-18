@@ -7,7 +7,7 @@ use App\Services\ShippingService;
 use App\Services\StateService;
 use App\Services\CityService;
 use App\Services\ProductService;
-use App\Http\Requests\AdminStoreUpdateShippingRequest;
+use App\Http\Requests\Admin\StoreUpdateShippingRequest;
 
 class ShippingController extends Controller
 {
@@ -63,7 +63,7 @@ class ShippingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateShippingRequest $request)
+    public function store(StoreUpdateShippingRequest $request)
     {
         $data = $request->all();
 
@@ -109,7 +109,7 @@ class ShippingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateShippingRequest $request, $id)
+    public function update(StoreUpdateShippingRequest $request, $id)
     {
         $data = $request->all();
 
