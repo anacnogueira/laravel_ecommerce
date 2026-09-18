@@ -7,7 +7,7 @@ use App\Services\PartnerService;
 use App\Services\CountryService;
 use App\Services\StateService;
 use App\Services\CityService;
-use App\Http\Requests\AdminStoreUpdatePartnerRequest;
+use App\Http\Requests\Admin\StoreUpdatePartnerRequest;
 
 class PartnerController extends Controller
 {
@@ -60,7 +60,7 @@ class PartnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdatePartnerRequest $request)
+    public function store(StoreUpdatePartnerRequest $request)
     {
         $data = $request->all();
         $partner = $this->partnerService->makePartner($data);
@@ -106,7 +106,7 @@ class PartnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdatePartnerRequest $request, $id)
+    public function update(StoreUpdatePartnerRequest $request, $id)
     {
         $data = $request->all();
 
