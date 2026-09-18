@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\CountryService;
-use App\Http\Requests\AdminStoreUpdateCountryRequest;
+use App\Http\Requests\Admin\StoreUpdateCountryRequest;
 
 class CountryController extends Controller
 {
@@ -45,7 +45,7 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateCountryRequest $request)
+    public function store(StoreUpdateCountryRequest $request)
     {
         $data = $request->all();
 
@@ -87,7 +87,7 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateCountryRequest $request, $id)
+    public function update(StoreUpdateCountryRequest $request, $id)
     {
         $data = $request->all();
 
