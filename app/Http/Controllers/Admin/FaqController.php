@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\FaqService;
-use App\Http\Requests\AdminStoreUpdateFaqRequest;
+use App\Http\Requests\Admin\StoreUpdateFaqRequest;
 
 class FaqController extends Controller
 {
@@ -45,7 +45,7 @@ class FaqController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateFaqRequest $request)
+    public function store(StoreUpdateFaqRequest $request)
     {
         $data = $request->all();
 
@@ -88,7 +88,7 @@ class FaqController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateFaqRequest $request, $id)
+    public function update(StoreUpdateFaqRequest $request, $id)
     {
         $data = $request->all();
 

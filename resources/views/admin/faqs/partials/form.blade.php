@@ -18,11 +18,13 @@
             ];
         @endphp
 
-        <x-adminlte-text-editor name="question" label="Pergunta:*" igroup-size="sm" :config="$config" enable-old-support>
+        <x-adminlte-text-editor name="question" label="Pergunta:*" igroup-size="sm" :config="$config" enable-old-support
+            error-key="question_pure_text">
             {!! $faq->question ?? '' !!}
         </x-adminlte-text-editor>
 
-        <x-adminlte-text-editor name="answer" label="Resposta:*" igroup-size="sm" :config="$config" enable-old-support>
+        <x-adminlte-text-editor name="answer" label="Resposta:*" igroup-size="sm" :config="$config" enable-old-support
+            error-key="answer_pure_text">
             {!! $faq->answer ?? '' !!}
         </x-adminlte-text-editor>
 
