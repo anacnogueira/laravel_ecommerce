@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\PaymentGatewayService;
-use App\Http\Requests\AdminStoreUpdatePaymentGatewayRequest;
+use App\Http\Requests\Admin\StoreUpdatePaymentGatewayRequest;
 
 class PaymentGatewayController extends Controller
 {
@@ -45,7 +45,7 @@ class PaymentGatewayController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdatePaymentGatewayRequest $request)
+    public function store(StoreUpdatePaymentGatewayRequest $request)
     {
         $data = $request->all();
 
@@ -88,7 +88,7 @@ class PaymentGatewayController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdatePaymentGatewayRequest $request, $id)
+    public function update(StoreUpdatePaymentGatewayRequest $request, $id)
     {
         $data = $request->all();
 
