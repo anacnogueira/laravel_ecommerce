@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\CouponService;
-use App\Http\Requests\AdminStoreUpdateCouponRequest;
+use App\Http\Requests\Admin\StoreUpdateCouponRequest;
 
 class CouponController extends Controller
 {
@@ -51,7 +51,7 @@ class CouponController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateCouponRequest $request)
+    public function store(StoreUpdateCouponRequest $request)
     {
         $data = $request->all();
 
@@ -98,7 +98,7 @@ class CouponController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateCouponRequest $request, $id)
+    public function update(StoreUpdateCouponRequest $request, $id)
     {
         $data = $request->all();
 
