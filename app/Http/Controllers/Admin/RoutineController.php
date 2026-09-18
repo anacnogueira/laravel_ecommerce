@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\RoutineService;
 use App\Services\ModuleService;
-use App\Http\Requests\AdminStoreUpdateRoutineRequest;
+use App\Http\Requests\Admin\StoreUpdateRoutineRequest;
 
 class RoutineController extends Controller
 {
@@ -50,7 +50,7 @@ class RoutineController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateRoutineRequest $request)
+    public function store(StoreUpdateRoutineRequest $request)
     {
         $data = $request->all();
 
@@ -95,7 +95,7 @@ class RoutineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateRoutineRequest $request, $id)
+    public function update(StoreUpdateRoutineRequest $request, $id)
     {
         $data = $request->all();
 
