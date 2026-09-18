@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\ModuleService;
-use App\Http\Requests\AdminStoreUpdateModuleRequest;
+use App\Http\Requests\Admin\StoreUpdateModuleRequest;
 
 class ModuleController extends Controller
 {
@@ -47,7 +47,7 @@ class ModuleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateModuleRequest $request)
+    public function store(StoreUpdateModuleRequest $request)
     {
         $data = $request->all();
 
@@ -92,7 +92,7 @@ class ModuleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateModuleRequest $request, $id)
+    public function update(StoreUpdateModuleRequest $request, $id)
     {
         $data = $request->all();
 
