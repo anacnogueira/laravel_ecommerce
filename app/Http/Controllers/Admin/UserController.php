@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\UserService;
 use App\Services\UserGroupService;
-use App\Http\Requests\AdminStoreUserRequest;
-use App\Http\Requests\AdminUpdateUserRequest;
+use App\Http\Requests\Admin\StoreUserRequest;
+use App\Http\Requests\Admin\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -57,7 +57,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUserRequest $request)
+    public function store(StoreUserRequest $request)
     {
         $data = $request->all();
 
@@ -108,7 +108,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminUpdateUserRequest $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
         $data = $request->all();
         $data['type'] = 'admin';

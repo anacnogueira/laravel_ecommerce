@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\UserService;
-use App\Http\Requests\AdminUpdateProfileRequest;
+use App\Http\Requests\Admin\UpdateProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -35,7 +35,7 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminUpdateProfileRequest $request)
+    public function update(UpdateProfileRequest $request)
     {
         $data = $request->all();
         $data['type'] = 'profile';
