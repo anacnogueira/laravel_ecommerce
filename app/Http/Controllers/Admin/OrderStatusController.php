@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\OrderStatusService;
-use App\Http\Requests\AdminStoreUpdateOrderStatusRequest;
+use App\Http\Requests\Admin\StoreUpdateOrderStatusRequest;
 
 class OrderStatusController extends Controller
 {
@@ -45,7 +45,7 @@ class OrderStatusController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateOrderStatusRequest $request)
+    public function store(StoreUpdateOrderStatusRequest $request)
     {
         $data = $request->all();
 
@@ -87,7 +87,7 @@ class OrderStatusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateOrderStatusRequest $request, $id)
+    public function update(StoreUpdateOrderStatusRequest $request, $id)
     {
         $data = $request->all();
 

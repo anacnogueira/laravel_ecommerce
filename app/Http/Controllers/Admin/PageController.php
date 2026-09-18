@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\PageService;
-use App\Http\Requests\AdminStoreUpdatePageRequest;
+use App\Http\Requests\Admin\StoreUpdatePageRequest;
 
 class PageController extends Controller
 {
@@ -45,7 +45,7 @@ class PageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdatePageRequest $request)
+    public function store(StoreUpdatePageRequest $request)
     {
         $data = $request->all();
 
@@ -89,7 +89,7 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdatePageRequest $request, $id)
+    public function update(StoreUpdatePageRequest $request, $id)
     {
         $data = $request->all();
 

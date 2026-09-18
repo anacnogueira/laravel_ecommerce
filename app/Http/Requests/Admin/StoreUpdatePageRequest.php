@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminStoreUpdateOrderStatusRequest extends FormRequest
+class StoreUpdatePageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,8 @@ class AdminStoreUpdateOrderStatusRequest extends FormRequest
     {
 
         return [
-            'name' => ['required'],
+            'title' => ['required'],
+            'content' => ['required'],
         ];
     }
 
@@ -33,6 +34,9 @@ class AdminStoreUpdateOrderStatusRequest extends FormRequest
     {
         return [
             'required' => 'O campo é obrigatório',
+            'image' => 'O arquivo deve ser uma imagem.',
+            'mimes' => 'Os tipos de imagens suporttados são: jpeg, png, jpg, e gif.',
+            'max' => 'O tamamanho do arquivo não deve exceder 2MB.',
         ];
     }
 
