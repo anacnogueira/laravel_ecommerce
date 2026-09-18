@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\CustomerService;
-use App\Http\Requests\AdminStoreUpdateCustomerRequest;
+use App\Http\Requests\Admin\StoreUpdateCustomerRequest;
 
 class CustomerController extends Controller
 {
@@ -45,7 +45,7 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateCustomerRequest $request)
+    public function store(StoreUpdateCustomerRequest $request)
     {
         $data = $request->all();
         $data["type_contact"] = "client";
@@ -90,7 +90,7 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateCustomerRequest $request, $id)
+    public function update(StoreUpdateCustomerRequest $request, $id)
     {
         $data = $request->all();
 

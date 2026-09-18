@@ -132,8 +132,6 @@
             </span>
         @enderror
     </div>
-
-    <x-adminlte-button type="submit" label="Salvar" theme="success" icon="fas fa-check" />
 </div>
-
+<x-adminlte-button type="submit" label="Salvar" theme="success" icon="fas fa-check" />
 <a href="{{ route('admin.customers.index') }}" class="btn btn-warning"><i class="fa fa-times"></i> Cancelar</a>
