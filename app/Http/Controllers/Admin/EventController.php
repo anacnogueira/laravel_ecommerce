@@ -7,7 +7,7 @@ use App\Services\EventService;
 use App\Services\CountryService;
 use App\Services\StateService;
 use App\Services\CityService;
-use App\Http\Requests\AdminStoreUpdateEventRequest;
+use App\Http\Requests\Admin\StoreUpdateEventRequest;
 
 class EventController extends Controller
 {
@@ -62,7 +62,7 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateEventRequest $request)
+    public function store(StoreUpdateEventRequest $request)
     {
         $data = $request->all();
 
@@ -111,7 +111,7 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateEventRequest $request, $id)
+    public function update(StoreUpdateEventRequest $request, $id)
     {
         $data = $request->all();
 
