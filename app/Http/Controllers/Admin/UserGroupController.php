@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\UserGroupService;
-use App\Http\Requests\AdminStoreUpdateUserGroupRequest;
+use App\Http\Requests\Admin\StoreUpdateUserGroupRequest;
 
 class UserGroupController extends Controller
 {
@@ -45,7 +45,7 @@ class UserGroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateUserGroupRequest $request)
+    public function store(StoreUpdateUserGroupRequest $request)
     {
         $data = $request->all();
 
@@ -87,7 +87,7 @@ class UserGroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateUserGroupRequest $request, $id)
+    public function update(StoreUpdateUserGroupRequest $request, $id)
     {
         $data = $request->all();
 
