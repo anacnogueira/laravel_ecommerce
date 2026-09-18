@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\PromotionService;
 use App\Services\ProductService;
-use App\Http\Requests\AdminStoreUpdatePromotionRequest;
+use App\Http\Requests\Admin\StoreUpdatePromotionRequest;
 
 class PromotionController extends Controller
 {
@@ -53,7 +53,7 @@ class PromotionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdatePromotionRequest $request)
+    public function store(StoreUpdatePromotionRequest $request)
     {
         $data = $request->all();
 
@@ -101,7 +101,7 @@ class PromotionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdatePromotionRequest $request, $id)
+    public function update(StoreUpdatePromotionRequest $request, $id)
     {
         $data = $request->all();
 
