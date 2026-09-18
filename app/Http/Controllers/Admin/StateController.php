@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\StateService;
 use App\Services\CountryService;
-use App\Http\Requests\AdminStoreUpdateStateRequest;
+use App\Http\Requests\Admin\StoreUpdateStateRequest;
 
 class StateController extends Controller
 {
@@ -49,7 +49,7 @@ class StateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminStoreUpdateStateRequest $request)
+    public function store(StoreUpdateStateRequest $request)
     {
         $data = $request->all();
 
@@ -99,7 +99,7 @@ class StateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminStoreUpdateStateRequest $request, $id)
+    public function update(StoreUpdateStateRequest $request, $id)
     {
         $data = $request->all();
 
