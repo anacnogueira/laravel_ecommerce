@@ -7,7 +7,7 @@ use App\Services\ProductService;
 use App\Services\SupplierService;
 use App\Services\BrandService;
 use App\Services\CategoryService;
-use App\Http\Requests\AdminStoreUpdateProductRequest;
+use App\Http\Requests\Admin\StoreUpdateProductRequest;
 
 class ProductController extends Controller
 {
@@ -69,7 +69,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(AdminStoreUpdateProductRequest $request)
+    public function store(StoreUpdateProductRequest $request)
     {
 
         $data = $request->all();
@@ -111,7 +111,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(AdminStoreUpdateProductRequest $request, string $id)
+    public function update(StoreUpdateProductRequest $request, string $id)
     {
         $data = $request->all();
 
