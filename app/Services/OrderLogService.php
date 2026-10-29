@@ -26,7 +26,7 @@ class OrderLogService
 
         $orderLog = $this->orderLogRepository->createOrderLog($data);
 
-        if ($data['client_notified'] === 'S') {
+        if (isset($data['client_notified']) && $data['client_notified'] === 'S') {
             $this->sendEmailToCustomer($data['email'], $orderLog);
         }
 
