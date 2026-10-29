@@ -165,7 +165,6 @@ class OrderController extends Controller
                     'sku' =>  $collection->first()['code'],
                 ]);
 
-                //dd($shippings);
             }
         }
 
@@ -177,8 +176,6 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         $data = $request->all();
-
-        //dd($data);
 
         $order = $this->orderService->makeOrder($data);
 

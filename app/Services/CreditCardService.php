@@ -4,11 +4,9 @@ namespace App\Services;
 use Exception;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Mail;
 use Efi\Exception\EfiException;
 use Efi\EfiPay;
 use Carbon\Carbon;
-use App\Mail\OrderPaymentDone;
 
 class CreditCardService
 {

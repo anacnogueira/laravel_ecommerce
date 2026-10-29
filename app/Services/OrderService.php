@@ -208,6 +208,7 @@ class OrderService
                 'order_id' => $order->id,
                 'installments' => $order->installments,
                 'billing_address' => $billingAddress,
+                'birth' => $payerBirthDate,
             ];
         }
 
