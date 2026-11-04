@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 
 class UpdatePasswordRequest extends FormRequest
 {
@@ -24,7 +25,20 @@ class UpdatePasswordRequest extends FormRequest
         return [
             'token' => ['required'],
             'email' => ['required','email'],
-            'password' => ['required','min:8','confirmed'],
+            'password' => ['required', Password::defaults(), 'confirmed'],
+        ];
+    }
+
+     public function messages()
+    {
+        return [
+            'required' => 'O campo é obrigatório',
+            'confirmed' =>'A confirmação da senha não corresponde',
+            'password' => [
+                'min'=> 'A senha deve ter pelo menos :min caracteres.',
+                'max'=> 'A senha deve ter pelo menos :max caracteres.',
+
+            ],
         ];
     }
 }

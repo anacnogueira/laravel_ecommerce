@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 
 class StoreCustomerRequest extends FormRequest
 {
@@ -24,8 +25,8 @@ class StoreCustomerRequest extends FormRequest
        $rules = [
             'type_person' => ['required','in:pf,pj'],
             'name' => ['required'],
-            'email' => ['required','email','unique:contacts,email'],
-            'password' => ['required', 'confirmed', 'between:6,15'],
+            'email' => ['required','string', 'email','max:255','unique:contacts,email'],
+            'password' => ['required', Password::defaults(), 'confirmed'],
             'mobile' => ['required'],
             'privacy' => ['accepted']
         ];
@@ -53,7 +54,12 @@ class StoreCustomerRequest extends FormRequest
             'confirmed' =>'A confirmação da senha não corresponde',
             'cpf.unique' => 'CPF já cadastrado',
             'cnpj.unique' => 'CNPJ já cadastrado',
-            'accepted' => 'Concorde com os termos de uso'
+            'accepted' => 'Concorde com os termos de uso',
+            'password' => [
+                'min'=> 'A senha deve ter pelo menos :min caracteres.',
+                'max'=> 'A senha deve ter pelo menos :max caracteres.',
+
+            ],
         ];
     }
 }

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Hashing\CakeSHA1Hasher;
 use Illuminate\Auth\Notifications\ResetPassword;
 use App\Models\User;
+use App\Models\Contact;
+use Illuminate\Validation\Rules\Password;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -41,7 +43,25 @@ class AppServiceProvider extends ServiceProvider
                 return url("/resetar-senha/{$token}");
             }
 
-            //return env('APP_URL') . '/admin/password/reset/' . $token;
+        });
+
+        $this->definePasswordRules();
+    }
+
+    private function definePasswordRules()
+    {
+        Password::defaults(function () {
+            if ($this->app->isProduction()) {
+                return Password::min(8)
+                    ->max(15)
+                    ->letters()
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised();
+            }
+
+            return Password::min(6);
         });
     }
 }

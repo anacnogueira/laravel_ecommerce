@@ -15,6 +15,10 @@ h2 {
     margin-top: 0.5rem;
 }
 
+hr {
+    margin: 0.25rem 0;
+}
+
 div.type-person,
 div.gender {
     display: flex;

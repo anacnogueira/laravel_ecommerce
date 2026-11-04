@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 
 class UpdatePasswordCustomerRequest extends FormRequest
 {
@@ -23,7 +24,7 @@ class UpdatePasswordCustomerRequest extends FormRequest
     {
         return [
             'old_password' => ['required','current_password'],
-            'password' => ['required', 'confirmed', 'between:6,15'],
+            'password' => ['required', Password::defaults(), 'confirmed'],
         ];
     }
 
@@ -32,6 +33,10 @@ class UpdatePasswordCustomerRequest extends FormRequest
         return [
             'required' => 'O campo é obrigatório',
             'confirmed' =>'A confirmação da senha não corresponde',
+            'password' => [
+                'min'=> 'A senha deve ter pelo menos :min caracteres.',
+                'max'=> 'A senha deve ter pelo menos :max caracteres.',
+            ],
         ];
     }
 }

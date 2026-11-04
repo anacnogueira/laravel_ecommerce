@@ -13,15 +13,11 @@
     <div class="container">
         <h1>{{ $title }}</h1>
         <form action="{{ route('password.update') }}" method="post">
-             @csrf
-             <input type="hidden" name="token" value="{{ $token }}">
+            @csrf
+            <input type="hidden" name="token" value="{{ $token }}">
             <div class="form-group">
                 <label for="email">E-mail:</label>
-                <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    value="{{ old('email') }}"
+                <input type="email" name="email" id="email" value="{{ old('email') }}"
                     class="@error('email') is-invalid @enderror">
                 @error('email')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -30,22 +26,25 @@
 
             <div class="form-group">
                 <label for="password">Senha:</label>
-                <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    class="@error('password') is-invalid @enderror">
+                <input type="password" name="password" id="password" class="@error('password') is-invalid @enderror">
                 @error('password')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+
+                <ul>
+                    <li><strong>Sua senha deve conter:</strong></li>
+                    <li>mínimo de 8 caracteres;</li>
+                    <li>máximo de 15 caracteres;</li>
+                    <li>ao menos uma letra</li>
+                    <li>ao menos um número</li>
+                    <li>ao menos uma letra maiúscula e uma letra minúscula</li>
+                    <li>ao menos um caracter especial como ?-!*$#</li>
+                </ul>
             </div>
 
             <div class="form-group">
                 <label for="password_confirmation">Repita a senha:</label>
-                <input
-                    type="password"
-                    name="password_confirmation"
-                    id="password_confirmation"
+                <input type="password" name="password_confirmation" id="password_confirmation"
                     class="@error('password_confirmation') is-invalid @enderror">
                 @error('password_confirmation')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -57,6 +56,6 @@
 
 @endsection
 
-@push("css")
+@push('css')
     <link rel="stylesheet" href="{{ asset('css/page/login.css') }}">
 @endpush

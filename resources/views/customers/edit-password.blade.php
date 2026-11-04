@@ -5,7 +5,8 @@
 @section('content')
     <nav class="breadcrumb">
         <ul>
-            <li><a href="{{ route('index') }}"><img src="{{ asset('img/i-home.png') }}" alt="Página Inicial" title="Página Inicial"></a></li>
+            <li><a href="{{ route('index') }}"><img src="{{ asset('img/i-home.png') }}" alt="Página Inicial"
+                        title="Página Inicial"></a></li>
             <li><a href="{{ route('customer.index') }}">Minha Conta</a></li>
             <li><span>{{ $title }}</span></li>
         </ul>
@@ -13,7 +14,7 @@
     <div class="container">
 
         <h1>{{ $title }}</h1>
-        @if(session('success'))
+        @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
@@ -22,12 +23,9 @@
         <form method="POST" action="{{ route('customers.update-password') }}">
             @method('PUT')
             @csrf
-           <div class="form-group">
+            <div class="form-group">
                 <label for="old-password">Senha Atual:*</label>
-                <input
-                    type="password"
-                    name="old_password"
-                    id="old-password"
+                <input type="password" name="old_password" id="old-password"
                     class="@error('old_password') is-invalid @enderror">
                 @error('old_password')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -36,22 +34,25 @@
 
             <div class="form-group">
                 <label for="old-password">Nova Senha:*</label>
-                <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    class="@error('password') is-invalid @enderror">
+                <input type="password" name="password" id="password" class="@error('password') is-invalid @enderror">
                 @error('password')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+
+                <ul>
+                    <li><strong>Sua senha deve conter:</strong></li>
+                    <li>mínimo de 8 caracteres;</li>
+                    <li>máximo de 15 caracteres;</li>
+                    <li>ao menos uma letra</li>
+                    <li>ao menos um número</li>
+                    <li>ao menos uma letra maiúscula e uma letra minúscula</li>
+                    <li>ao menos um caracter especial como ?-!*$#</li>
+                </ul>
             </div>
 
             <div class="form-group">
                 <label for="password-confirmation">Redigite a nova senha:*</label>
-                <input
-                    type="password"
-                    name="password_confirmation"
-                    id="password-confirmation"
+                <input type="password" name="password_confirmation" id="password-confirmation"
                     class="@error('password_confirmation') is-invalid @enderror">
                 @error('password_confirmation')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -63,6 +64,6 @@
 
 @endsection
 
-@push("css")
+@push('css')
     <link rel="stylesheet" href="{{ asset('css/page/customer-edit-password.css') }}">
 @endpush
