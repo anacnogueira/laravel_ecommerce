@@ -14,6 +14,7 @@ use App\Http\Controllers\ContactAddressController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\VerifyCustomerController;
 
 //2. SITE
 Route::get('/', [ProductController::class,'index'])->name('index');
@@ -53,6 +54,9 @@ Route::get('/cadastro', [CustomerController::class,'create'])->name('register');
 Route::post('/cadastro', [CustomerController::class,'store'])->name('register.store');
 Route::get('/confirma-cadastro', [CustomerController::class,'confirm'])->name('register.confirm-store');
 Route::post('/verifica-cadastro', [CustomerController::class,'verify'])->name('register.verify');
+Route::get('/email/verify/{id}/{hash}', [VerifyCustomerController::class, 'verify'])
+    ->middleware(['signed'])
+    ->name('verification.verify');
 
 //5. Login
 Route::get('/login',[LoginController::class,'login'])->name('login');

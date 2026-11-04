@@ -40,7 +40,10 @@ class CustomerRepository implements CustomerRepositoryInterface
      */
     public function getCustomerByEmail($email)
     {
-        return $this->entity->customers()->where('email',$email)->first();
+        return $this->entity->customers()
+            ->where('status', 'S')
+            ->where('email',$email)
+            ->first();
     }
 
     /**
@@ -71,5 +74,19 @@ class CustomerRepository implements CustomerRepositoryInterface
     public function destroyCustomer(Contact $contact)
     {
         return $contact->delete();
+    }
+
+    /**
+    * Update status for active of customer
+    * @param object $contact
+    * @return object
+    */
+
+    public function markAsActive(Contact $contact)
+    {
+        return $contact->update([
+            'status' => 'S',
+            'email_verified_at' => now(),
+        ]);
     }
 }

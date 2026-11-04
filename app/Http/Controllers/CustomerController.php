@@ -52,6 +52,7 @@ class CustomerController extends Controller
         $data = $request->all();
 
         $data["type_contact"] = "client";
+        $data["status"] = "N";
 
         $customer = $this->customerService->makeCustomer($data, "site");
 

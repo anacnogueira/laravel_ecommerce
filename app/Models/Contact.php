@@ -44,6 +44,11 @@ class Contact extends Authenticatable
         'url',
         'status',
         'privacy',
+        'email_verified_at',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 
     /**

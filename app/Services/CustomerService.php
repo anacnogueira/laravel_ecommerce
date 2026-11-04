@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Repositories\Contracts\CustomerRepositoryInterface;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\CustomerRegistered;
+use App\Models\Contact;
+use App\Notifications\CustomerRegisteredNotification;
 use Illuminate\Support\Facades\Hash;
 use App\Services\MailchimpService;
 
@@ -30,6 +30,11 @@ class CustomerService
         return $this->customerRepository->getAllCustomers();
     }
 
+    public function sendActivationEmail(Contact $contact, $method): void
+    {
+        $contact->notify(new CustomerRegisteredNotification($method));
+    }
+
      /**
      * Create a new customer
      * @param array $data
@@ -48,7 +53,7 @@ class CustomerService
 
         $customer = $this->customerRepository->createCustomer($data);
 
-        $this->sendEmailToRegisteredCustomer($customer->email, $method);
+        $this->sendActivationEmail($customer, $method);
 
         return $customer;
     }
@@ -117,12 +122,12 @@ class CustomerService
         return response()->json(['message' => 'Customer Deleted'], 200);
     }
 
-    private function sendEmailToRegisteredCustomer($email, $method)
+    /*private function sendEmailToRegisteredCustomer($email, $method)
     {
         Mail::to($email)
             ->bcc("anacnogueira@gmail.com")
             ->send(new CustomerRegistered($email, $method));
-    }
+    }*/
 
     private function dataSanitization ($data)
     {

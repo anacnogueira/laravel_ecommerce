@@ -11,4 +11,5 @@ interface CustomerRepositoryInterface
     public function createCustomer(array $data);
     public function updateCustomer(Contact $contact, array $data);
     public function destroyCustomer(Contact $contact);
+    public function markAsActive(Contact $contact);
 }
