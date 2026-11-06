@@ -34,6 +34,13 @@ class AppServiceProvider extends ServiceProvider
             return new CakeSHA1Hasher();
         });
 
+        $this->createResetPasswordUrl();
+
+        $this->definePasswordRules();
+    }
+
+    private function createResetPasswordUrl()
+    {
         ResetPassword::createUrlUsing(function (object $user, string $token) {
             if ($user instanceof User) {
                 return url("/admin/password/reset/{$token}");
@@ -44,24 +51,20 @@ class AppServiceProvider extends ServiceProvider
             }
 
         });
-
-        $this->definePasswordRules();
     }
 
     private function definePasswordRules()
     {
         Password::defaults(function () {
-            if ($this->app->isProduction()) {
-                return Password::min(8)
-                    ->max(15)
-                    ->letters()
+            $rule = Password::min(8)->max(15);
+
+            return $this->app->isProduction()
+                ? $rule->letters()
                     ->mixedCase()
                     ->numbers()
                     ->symbols()
-                    ->uncompromised();
-            }
-
-            return Password::min(6);
+                    ->uncompromised()
+                : $rule;
         });
     }
 }

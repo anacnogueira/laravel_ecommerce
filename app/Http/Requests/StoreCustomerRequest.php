@@ -58,7 +58,6 @@ class StoreCustomerRequest extends FormRequest
             'password' => [
                 'min'=> 'A senha deve ter pelo menos :min caracteres.',
                 'max'=> 'A senha deve ter pelo menos :max caracteres.',
-
             ],
         ];
     }
